@@ -24,7 +24,7 @@ package GantryControlSystem
       der(theta) = omega;
 
     // Third equation
-      der(v) = (r * d_c);
+      der(v) = (r * (d_c * v - m * (g * sin(theta) * cos(theta) + r * omega^2 * sin(theta)) - u) - (d_p * cos(theta) * omega)) / (-r * (M + m (sin(theta))^2));
 
     // Fourth equation
   end CraneModel;
