@@ -18,10 +18,13 @@ package GantryControlSystem
     Modelica.Units.SI.AngularVelocity omega "The angular velocity of the pendulum";
   equation
     // First equation
+      der(x) = v;
 
     // Second equation
+      der(theta) = omega;
 
     // Third equation
+      der(v) = ()
 
     // Fourth equation
   end CraneModel;
