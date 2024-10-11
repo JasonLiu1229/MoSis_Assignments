@@ -1,0 +1,90 @@
+# exclude following files
+*~
+*.bak
+*.bak-mo
+*.exe
+*.exp
+*.la
+*.lo
+*.m4
+*.o
+*.pyc
+.deps
+.dirstamp
+.libs
+Modelica/Resources/BuildProjects/VisualStudio2005/*.filters
+Modelica/Resources/BuildProjects/VisualStudio2005/*.vcxproj
+Modelica/Resources/BuildProjects/autotools/AUTHORS
+Modelica/Resources/BuildProjects/autotools/COPYING
+Modelica/Resources/BuildProjects/autotools/ChangeLog
+Modelica/Resources/BuildProjects/autotools/INSTALL
+Modelica/Resources/BuildProjects/autotools/Makefile*
+Modelica/Resources/BuildProjects/autotools/NEWS
+Modelica/Resources/BuildProjects/autotools/compile
+Modelica/Resources/BuildProjects/gcc/lib*.a
+ResolvedGitHubIssues.md
+ResolvedGitHubIssues.pdf
+autom4te.cache
+buildlog.txt
+config.*
+configure
+depcomp
+dsfinal.txt
+dsin.txt
+dslog.txt
+dsmodel*
+dymosim*
+install-sh
+libtool
+ltmain.sh
+m4
+missing
+tidy.dll
+
+# User-specific Visual Studio files
+*.suo
+*.user
+
+# Visual Studio build results
+LIB [Dd]ebug/
+LIB [Rr]elease/
+Debug/
+Release/
+
+# Files built by Visual Studio
+*.idb
+*.obj
+*.pdb
+*.tlog
+
+# Visual C++ cache files
+ipch/
+*.aps
+*.ncb
+*.opendb
+*.opensdf
+*.sdf
+*.cachefile
+*.VC.db
+*.VC.VC.opendb
+
+# IDE
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.idea/*
+
+# Python virtual environment
+/.venv/
+
+# Backup & report files from converting an old project file
+# to a newer Visual Studio version. Backup files are not needed,
+# because we have git ;-)
+_UpgradeReport_Files/
+Backup*/
+UpgradeLog*.XML
+UpgradeLog*.htm
+ServiceFabricBackup/
+*.rptproj.bak
