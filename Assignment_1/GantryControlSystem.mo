@@ -1,5 +1,5 @@
-package Assignment1
-  model crane_model
+package GantryControlSystem
+  model CraneModel
   // Types
     type Meter = Real(unit = "m");
     type Velocity = Real(unit = "m/s");
@@ -12,8 +12,7 @@ package Assignment1
   // Parameters
 
   // Variables
-    
   equation
 
-  end crane_model;
-end Assignment1;
+  end CraneModel;
+end GantryControlSystem;
