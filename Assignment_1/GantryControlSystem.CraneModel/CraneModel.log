@@ -1,0 +1,26 @@
+/home/jason/Documents/School/MoSis_Assignments/Assignment_1/GantryControlSystem.CraneModel/CraneModel -port=44889 -logFormat=xmltcp -override=startTime=0,stopTime=20,stepSize=0.004,tolerance=1e-06,solver=dassl,outputFormat=mat,variableFilter=.* -r=/home/jason/Documents/School/MoSis_Assignments/Assignment_1/GantryControlSystem.CraneModel/CraneModel_res.mat -w -lv=LOG_STDOUT,LOG_ASSERT,LOG_STATS -inputPath=/home/jason/Documents/School/MoSis_Assignments/Assignment_1/GantryControlSystem.CraneModel -outputPath=/home/jason/Documents/School/MoSis_Assignments/Assignment_1/GantryControlSystem.CraneModel
+The initialization finished successfully without homotopy method.
+### STATISTICS ###
+timer
+ 0.000493848s          reading init.xml
+   8.342e-05s          reading info.xml
+ 0.000122359s [  0.4%] pre-initialization
+   5.983e-05s [  0.2%] initialization
+   2.823e-06s [  0.0%] steps
+  0.00352746s [ 11.2%] solver (excl. callbacks)
+  0.00219009s [  6.9%] creating output-file
+  0.00101102s [  3.2%] event-handling
+  0.00131573s [  4.2%] overhead
+   0.0233043s [ 73.9%] simulation
+   0.0315337s [100.0%] total
+events
+    1 state events
+    0 time events
+solver: dassl
+  358 steps taken
+  399 calls of functionODE
+   41 evaluations of jacobian
+    1 error test failures
+    0 convergence test failures
+6.2972e-05s time of jacobian evaluation
+The simulation finished successfully.

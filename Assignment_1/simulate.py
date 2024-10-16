@@ -4,20 +4,20 @@ import os
 # This function simulates the model, once, with the given parameters, by executing through a shell command.
 # It reads the results by calling the readMat function and displays a graph of the Temperature versus Time by calling the plotData function
 # This function takes parameter values of the newtonCoolingWithTypes model.
-def singleSimulation(T_inf=298.15, T0=363.15, h=0.7, A=1.0, m=0.1, c_p=1.2):
+def singleSimulation(m=0.2, M=10.0, r=1, d_p=0.5, d_c=2, g=9.81):
     # Create the string command that will be executed to execute the Modelica model
     # The command is structured as './<executable name> -override <param1 name>=<param1 value>, <param2 name>=<param2 value>..'
-    simulationCommand='./NewtonCooling -override T_inf='+str(T_inf)+',T0='+str(T0)+',h='+str(h)+',A='+str(A)+',m='+str(m)+',c_p='+str(c_p)
+    simulationCommand='./CraneModel -override m='+str(m)+', M='+str(M)+', r='+str(r)+', d_p='+str(d_p)+', d_c='+str(d_c)+', g='+str(g)
     # Assuming that your shell is focused on the example/ directory, you should change directory to the one actually containing the executable. This directory usually has the same name as the Modelica file name.
     # Create the corresponding string command and execute it.
-    directoryChangeCommand='cd NewtonCooling/'
-    os.chdir('NewtonCooling')
+    directoryChangeCommand='cd /GantryControlSystem.CraneModel'
+    os.chdir('GantryControlSystem.CraneModel')
     # Simulate the model
     os.system(simulationCommand)
     # Obtain the variable values by reading the MAT-file
-    [names, data] = readMat('NewtonCooling_res.mat')
+    [names, data] = readMat('CraneModel_res.mat')
     # Create a plot of the Temperature over time in the simulation
-    openDataPlot([data[0]],[data[1]],'time (seconds)','temperature (C)')
+    openDataPlot([data[0]],[data[1]],'time (seconds)','theta (radians)')
 
 # You need scipy package to read MAT-files
 from scipy import io
@@ -101,4 +101,3 @@ if __name__ == "__main__":
 #     model.simulate()
 #     samples = model.getSolutions(["time", "T"])
 #     openDataPlot([samples[0]],[samples[1]],'time (seconds)','temperature (C)')
-
