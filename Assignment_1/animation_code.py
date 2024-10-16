@@ -99,4 +99,4 @@ if __name__ == '__main__':
     x = 2 * np.sin(0.5 * t)  # Example cart positions
     theta = 0.2 * np.sin(2 * t)  # Example pendulum angles (in radians)
     # Call the animation function with sample data
-    animate_gantry_system(x, theta)
+    animate_gantry_system(x, theta, length=1, interval=0.004)
