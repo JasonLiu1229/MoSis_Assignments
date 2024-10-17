@@ -17,7 +17,7 @@ def singleSimulation(m=0.2, M=10.0, r=1, d_p=0.5, d_c=2, g=9.81):
     # Obtain the variable values by reading the MAT-file
     [names, data] = readMat('CraneModel_res.mat')
     # Create a plot of the Temperature over time in the simulation
-    openDataPlot([data[0]],[data[1]],'time (seconds)','theta (radians)')
+    openDataPlot([data[0]],[data[names.index("theta")]],'time (seconds)','theta (radians)')
 
 # You need scipy package to read MAT-files
 from scipy import io
