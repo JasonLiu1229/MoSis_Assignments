@@ -1,6 +1,10 @@
 # This file contains example Python code to demonstrate the simulation of the newtonCooling Modelica model
 # You need os package to execute commands in shell
 import os
+
+# ´os.system()´ does not wait until process is finished in linux, so use subprocess instead
+import subprocess
+
 # This function simulates the model, once, with the given parameters, by executing through a shell command.
 # It reads the results by calling the readMat function and displays a graph of the Temperature versus Time by calling the plotData function
 # This function takes parameter values of the newtonCoolingWithTypes model.
@@ -47,14 +51,16 @@ def singleSimExpOne(M=10, r=1, d_c=2):
         tuple: data and names
     """
     # Create the string command that will be executed to
-    simulationCommand=f'./GantryControlSystem.CraneModelExpOne/CraneModelExpOne -override M={M},r={r},d_c={d_c}'
+    simulationCommand=f'./GantryControlSystem.CraneModelExpOne/CraneModelExpOne'
+    arguments = f'-override M={M},r={r},d_c={d_c}'
     # Assuming that your shell is focused on the example/ directory, you should change directory to the one actually containing the executable. This directory usually has the same name as the Modelica file name.
     # Create the corresponding string command and execute it.
     # directoryChangeCommand='cd /GantryControlSystem.CraneModelExpOne'
     # print all directories in the current directory
     # os.chdir('GantryControlSystem.CraneModelExpOne')
     # Simulate the model
-    os.system(simulationCommand)
+    # os.system(simulationCommand)
+    subprocess.run([simulationCommand, arguments])
     # Obtain the variable values by reading the MAT-file    
     [names, data] = readMat('GantryControlSystem.CraneModelExpOne/CraneModelExpOne_res.mat')
     # Return the data and names
