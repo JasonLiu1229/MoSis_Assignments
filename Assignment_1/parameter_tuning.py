@@ -1,15 +1,25 @@
 from simulate import singleSimExpOne
+import os
 
 def runExperimintOne():
+    # Ensure the 'traces' directory exists
+    os.makedirs('traces', exist_ok=True)
+    
     i = 0.00
     while i < 5.00:
-        i += 5.00/5001.00
+        i += 5.00 / 5001.00
         output = singleSimExpOne(d_c=i)
-        with open(f"traces/experiminent_one_traces_{i}.csv", "w", encoding="utf-8") as f:
+        i_name = str(i).replace(".", "_")
+        
+        # Create and write header to the CSV file
+        with open(f"traces/experiminent_one_traces_{i_name}.csv", "w", encoding="utf-8") as f:
             f.write("d_c, x\n")
-        with open(f"traces/experiminent_one_traces_{i}.csv", "a", encoding="utf-8") as f:
+        
+        # Append data to the CSV file
+        with open(f"traces/experiminent_one_traces_{i_name}.csv", "a", encoding="utf-8") as f:
             for j, x in enumerate(output[0][output[1].index("x")]):
                 f.write(f"{j}, {x}\n")
+
             
 def runExperimintTwo():
     pass

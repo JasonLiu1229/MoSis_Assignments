@@ -47,16 +47,16 @@ def singleSimExpOne(M=10, r=1, d_c=2):
         tuple: data and names
     """
     # Create the string command that will be executed to
-    simulationCommand=f'./CraneModelExpOne -override M={M},r={r},d_c={d_c}'
+    simulationCommand=f'./GantryControlSystem.CraneModelExpOne/CraneModelExpOne -override M={M},r={r},d_c={d_c}'
     # Assuming that your shell is focused on the example/ directory, you should change directory to the one actually containing the executable. This directory usually has the same name as the Modelica file name.
     # Create the corresponding string command and execute it.
-    directoryChangeCommand='cd /GantryControlSystem.CraneModelExpOne'
+    # directoryChangeCommand='cd /GantryControlSystem.CraneModelExpOne'
     # print all directories in the current directory
-    os.chdir('GantryControlSystem.CraneModelExpOne')
+    # os.chdir('GantryControlSystem.CraneModelExpOne')
     # Simulate the model
     os.system(simulationCommand)
     # Obtain the variable values by reading the MAT-file    
-    [names, data] = readMat('CraneModelExpOne_res.mat')
+    [names, data] = readMat('GantryControlSystem.CraneModelExpOne/CraneModelExpOne_res.mat')
     # Return the data and names
     return (data, names)
 
