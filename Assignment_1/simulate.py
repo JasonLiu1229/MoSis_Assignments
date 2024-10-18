@@ -7,7 +7,7 @@ import os
 def singleSimulation(m=0.2, M=10, r=1, d_p=0.5, d_c=2):
     # Create the string command that will be executed to execute the Modelica model
     # The command is structured as './<executable name> -override <param1 name>=<param1 value>, <param2 name>=<param2 value>..'
-    simulationCommand='./CraneModel -override m='+str(m)+',M='+str(M)+',r='+str(r)+',d_p='+str(d_p)+',d_c='+str(d_c)
+    simulationCommand=f'./CraneModel -override m={m},M={M},r={r},d_p={d_p},d_c={d_c}'
     # Assuming that your shell is focused on the example/ directory, you should change directory to the one actually containing the executable. This directory usually has the same name as the Modelica file name.
     # Create the corresponding string command and execute it.
     directoryChangeCommand='cd /GantryControlSystem.CraneModel'
@@ -17,7 +17,7 @@ def singleSimulation(m=0.2, M=10, r=1, d_p=0.5, d_c=2):
     # Obtain the variable values by reading the MAT-file    
     [names, data] = readMat('CraneModel_res.mat')
     # Create a plot
-    openDataPlot(data[names.index("time")],data[names.index("theta")],'time (s)','theta (rad)')
+    openDataPlot(data[names.index('time')],data[names.index('theta')],'time (s)','theta (rad)')
 
 # You need scipy package to read MAT-files
 from scipy import io
