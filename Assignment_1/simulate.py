@@ -13,6 +13,7 @@ def singleSimulation(m=0.2, M=10, r=1, d_p=0.5, d_c=2, plot=False):
         r (int, optional): length of pendulum rope. Defaults to 1.
         d_p (float, optional): damping factor of pendulum. Defaults to 0.5.
         d_c (int, optional): damping factor of motion of cart. Defaults to 2.
+        plot (bool, optional): plot the data. Defaults to False.
 
     Returns:
         tuple: data and names
@@ -34,21 +35,19 @@ def singleSimulation(m=0.2, M=10, r=1, d_p=0.5, d_c=2, plot=False):
     # Return the data and names
     return (data, names)
 
-def singleSimExpOne(m=0.2, M=10, r=1, d_p=0.5, d_c=2):
+def singleSimExpOne(M=10, r=1, d_c=2):
     """Single simulation function
 
     Args:
-        m (float, optional): mass of pendulum. Defaults to 0.2.
         M (int, optional): mass of trolley. Defaults to 10.
         r (int, optional): length of pendulum rope. Defaults to 1.
-        d_p (float, optional): damping factor of pendulum. Defaults to 0.5.
         d_c (int, optional): damping factor of motion of cart. Defaults to 2.
 
     Returns:
         tuple: data and names
     """
     # Create the string command that will be executed to
-    simulationCommand=f'./CraneModel -override m={m},M={M},r={r},d_p={d_p},d_c={d_c}'
+    simulationCommand=f'./CraneModel -override M={M},r={r},d_c={d_c}'
     # Assuming that your shell is focused on the example/ directory, you should change directory to the one actually containing the executable. This directory usually has the same name as the Modelica file name.
     # Create the corresponding string command and execute it.
     directoryChangeCommand='cd /GantryControlSystem.CraneModelExpOne'
