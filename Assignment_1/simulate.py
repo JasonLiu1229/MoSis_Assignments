@@ -4,10 +4,10 @@ import os
 # This function simulates the model, once, with the given parameters, by executing through a shell command.
 # It reads the results by calling the readMat function and displays a graph of the Temperature versus Time by calling the plotData function
 # This function takes parameter values of the newtonCoolingWithTypes model.
-def singleSimulation(m=0.2, M=10.0, r=1, d_p=0.5, d_c=2, g=9.81):
+def singleSimulation(m=0.2, M=10, r=1, d_p=0.5, d_c=2):
     # Create the string command that will be executed to execute the Modelica model
     # The command is structured as './<executable name> -override <param1 name>=<param1 value>, <param2 name>=<param2 value>..'
-    simulationCommand='./CraneModel -override m='+str(m)+', M='+str(M)+', r='+str(r)+', d_p='+str(d_p)+', d_c='+str(d_c)+', g='+str(g)
+    simulationCommand='./CraneModel -override m='+str(m)+',M='+str(M)+',r='+str(r)+',d_p='+str(d_p)+',d_c='+str(d_c)
     # Assuming that your shell is focused on the example/ directory, you should change directory to the one actually containing the executable. This directory usually has the same name as the Modelica file name.
     # Create the corresponding string command and execute it.
     directoryChangeCommand='cd /GantryControlSystem.CraneModel'
