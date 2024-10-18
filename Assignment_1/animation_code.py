@@ -79,7 +79,7 @@ def animate_gantry_system(x_array, theta_array, length, interval=1):
     fig, ax = plt.subplots()
     ax.set_xlim(x_min, x_max)
     ax.set_ylim(y_min, y_max)
-    ax.set_aspect('equal')
+    ax.set_aspect('auto')
     ax.grid()
 
     # Draw rails
@@ -139,7 +139,7 @@ if __name__ == "__main__":
 
     # Obtain the variable values by reading the MAT-file
     names, data = readMat("GantryControlSystem.CraneModel/CraneModel_res.mat")
-    x = data[names.index("x")]
+    x = data[names.index("x")] / 10
     theta = data[names.index("theta")]
 
     # Call the animation function with sample data
