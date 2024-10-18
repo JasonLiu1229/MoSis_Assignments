@@ -1,18 +1,18 @@
-/home/jason/Documents/School/MoSis_Assignments/Assignment_1/GantryControlSystem.CraneModel/CraneModel -port=44747 -logFormat=xmltcp -override=startTime=0,stopTime=20,stepSize=0.004,tolerance=1e-06,solver=dassl,outputFormat=mat,variableFilter=.* -r=/home/jason/Documents/School/MoSis_Assignments/Assignment_1/GantryControlSystem.CraneModel/CraneModel_res.mat -w -lv=LOG_STDOUT,LOG_ASSERT,LOG_STATS -inputPath=/home/jason/Documents/School/MoSis_Assignments/Assignment_1/GantryControlSystem.CraneModel -outputPath=/home/jason/Documents/School/MoSis_Assignments/Assignment_1/GantryControlSystem.CraneModel
+/home/jason/Documents/School/MoSis_Assignments/Assignment_1/GantryControlSystem.CraneModel/CraneModel -port=39913 -logFormat=xmltcp -override=startTime=0,stopTime=20,stepSize=0.004,tolerance=1e-06,solver=dassl,outputFormat=mat,variableFilter=.* -r=/home/jason/Documents/School/MoSis_Assignments/Assignment_1/GantryControlSystem.CraneModel/CraneModel_res.mat -w -lv=LOG_STDOUT,LOG_ASSERT,LOG_STATS -inputPath=/home/jason/Documents/School/MoSis_Assignments/Assignment_1/GantryControlSystem.CraneModel -outputPath=/home/jason/Documents/School/MoSis_Assignments/Assignment_1/GantryControlSystem.CraneModel
 The initialization finished successfully without homotopy method.
 ### STATISTICS ###
 timer
-   0.0016904s          reading init.xml
- 0.000268501s          reading info.xml
-  0.00102774s [  3.1%] pre-initialization
-  0.00012544s [  0.4%] initialization
-   4.811e-06s [  0.0%] steps
-  0.00389036s [ 11.7%] solver (excl. callbacks)
-  0.00247492s [  7.4%] creating output-file
-  0.00115812s [  3.5%] event-handling
-  0.00108724s [  3.3%] overhead
-   0.0234736s [ 70.6%] simulation
-   0.0332422s [100.0%] total
+ 0.000545442s          reading init.xml
+  9.2625e-05s          reading info.xml
+ 0.000205054s [  1.0%] pre-initialization
+  6.3716e-05s [  0.3%] initialization
+   3.159e-06s [  0.0%] steps
+  0.00202929s [  9.8%] solver (excl. callbacks)
+  0.00142456s [  6.9%] creating output-file
+ 0.000633662s [  3.1%] event-handling
+ 0.000751332s [  3.6%] overhead
+   0.0155265s [ 75.2%] simulation
+   0.0206373s [100.0%] total
 events
     1 state events
     0 time events
@@ -22,5 +22,5 @@ solver: dassl
    41 evaluations of jacobian
     1 error test failures
     0 convergence test failures
-0.000129369s time of jacobian evaluation
+6.0136e-05s time of jacobian evaluation
 The simulation finished successfully.
