@@ -4,7 +4,19 @@ import os
 # This function simulates the model, once, with the given parameters, by executing through a shell command.
 # It reads the results by calling the readMat function and displays a graph of the Temperature versus Time by calling the plotData function
 # This function takes parameter values of the newtonCoolingWithTypes model.
-def singleSimulation(m=0.2, M=10, r=1, d_p=0.5, d_c=2):
+def singleSimulation(m=0.2, M=10, r=1, d_p=0.5, d_c=2, plot=False):
+    """Single simulation function
+
+    Args:
+        m (float, optional): mass of pendulum. Defaults to 0.2.
+        M (int, optional): mass of trolley. Defaults to 10.
+        r (int, optional): length of pendulum rope. Defaults to 1.
+        d_p (float, optional): damping factor of pendulum. Defaults to 0.5.
+        d_c (int, optional): damping factor of motion of cart. Defaults to 2.
+
+    Returns:
+        tuple: data and names
+    """
     # Create the string command that will be executed to execute the Modelica model
     # The command is structured as './<executable name> -override <param1 name>=<param1 value>, <param2 name>=<param2 value>..'
     simulationCommand=f'./CraneModel -override m={m},M={M},r={r},d_p={d_p},d_c={d_c}'
@@ -17,7 +29,36 @@ def singleSimulation(m=0.2, M=10, r=1, d_p=0.5, d_c=2):
     # Obtain the variable values by reading the MAT-file    
     [names, data] = readMat('CraneModel_res.mat')
     # Create a plot
-    openDataPlot(data[names.index('time')],data[names.index('theta')],'time (s)','theta (rad)')
+    if plot:
+        openDataPlot(data[names.index('time')],data[names.index('theta')],'time (s)','theta (rad)')
+    # Return the data and names
+    return (data, names)
+
+def singleSimExpOne(m=0.2, M=10, r=1, d_p=0.5, d_c=2):
+    """Single simulation function
+
+    Args:
+        m (float, optional): mass of pendulum. Defaults to 0.2.
+        M (int, optional): mass of trolley. Defaults to 10.
+        r (int, optional): length of pendulum rope. Defaults to 1.
+        d_p (float, optional): damping factor of pendulum. Defaults to 0.5.
+        d_c (int, optional): damping factor of motion of cart. Defaults to 2.
+
+    Returns:
+        tuple: data and names
+    """
+    # Create the string command that will be executed to
+    simulationCommand=f'./CraneModel -override m={m},M={M},r={r},d_p={d_p},d_c={d_c}'
+    # Assuming that your shell is focused on the example/ directory, you should change directory to the one actually containing the executable. This directory usually has the same name as the Modelica file name.
+    # Create the corresponding string command and execute it.
+    directoryChangeCommand='cd /GantryControlSystem.CraneModelExpOne'
+    os.chdir('GantryControlSystem.CraneModelExpOne')
+    # Simulate the model
+    os.system(simulationCommand)
+    # Obtain the variable values by reading the MAT-file    
+    [names, data] = readMat('CraneModelExpOne_res.mat')
+    # Return the data and names
+    return (data, names)
 
 # You need scipy package to read MAT-files
 from scipy import io
