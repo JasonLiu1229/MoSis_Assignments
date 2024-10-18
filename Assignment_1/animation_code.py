@@ -79,7 +79,7 @@ def animate_gantry_system(x_array, theta_array, length, interval=1):
     fig, ax = plt.subplots()
     ax.set_xlim(x_min, x_max)
     ax.set_ylim(y_min, y_max)
-    ax.set_aspect('auto')
+    ax.set_aspect('equal')
     ax.grid()
 
     # Draw rails
