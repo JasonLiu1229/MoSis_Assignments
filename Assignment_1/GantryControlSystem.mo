@@ -38,10 +38,19 @@ package GantryControlSystem
     // Fourth equation
       der(omega) = ((d_p * omega * (m + M)) + (m^2 * r^2 * sin(theta) * cos(theta) * omega^2) + m * r * (((g * sin(theta)) * (m + M)) + (cos(theta) * (u - d_c * v)))) / ((m * r^2) * (-M - (m * (sin(theta))^2)));
     
+    // u signal change
       if time < 0.5 then 
         u = 1000;
       else 
         u = 0;
       end if;
   end CraneModel;
+
+  model CraneModelExpOne
+
+  end CraneModelExpOne;
+
+  model CraneModelExpTwo
+
+  end CraneModelExpTwo;
 end GantryControlSystem;
