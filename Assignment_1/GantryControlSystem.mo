@@ -68,7 +68,7 @@ package GantryControlSystem
   
   initial equation
     x = 0;
-    v = 0;
+    v = 5;
     theta = 0;
     omega = 0;
     
@@ -77,20 +77,8 @@ package GantryControlSystem
       der(x) = v;
 
     // Second equation
-      der(theta) = omega;
-
-    // Third equation
-      der(v) = (r * (d_c * v - m * (g * sin(theta) * cos(theta) + r * omega^2 * sin(theta)) - u) - (d_p * cos(theta) * omega)) / (-r * (M + m * (sin(theta))^2));
-
-    // Fourth equation
-      der(omega) = ((d_p * omega * (m + M)) + (m^2 * r^2 * sin(theta) * cos(theta) * omega^2) + m * r * (((g * sin(theta)) * (m + M)) + (cos(theta) * (u - d_c * v)))) / ((m * r^2) * (-M - (m * (sin(theta))^2)));
+      der(v) = -(d_c / M) * v;
     
-    // u signal change
-      if time < 0.5 then 
-        u = 1000;
-      else 
-        u = 0;
-      end if;
   end CraneModelExpOne;
 
   model CraneModelExpTwo
