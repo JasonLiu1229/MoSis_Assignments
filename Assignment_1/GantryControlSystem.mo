@@ -111,4 +111,17 @@ package GantryControlSystem
         u = 0;
       end if;
   end CraneModelExpTwo;
+
+  block CraneModelBlock
+    extends GantryControlSystem.CraneModel;
+    extends Modelica.Blocks.Icons.Block;
+    
+    Modelica.Blocks.Interfaces.RealInput u_input "Input signal connector";
+    Modelica.Blocks.Interfaces.RealInput x_output "Output signal connector";
+
+    equation
+      u_input = u;
+      x_output = x;
+  end CraneModelBlock;
+  
 end GantryControlSystem;
