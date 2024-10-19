@@ -90,10 +90,10 @@ package GantryControlSystem
   block CraneModelBlock
     extends GantryControlSystem.CraneModel;
     extends Modelica.Blocks.Icons.Block;
-    Modelica.Blocks.Interfaces.RealInput u_input "Input signal connector" annotation(
-      Placement(transformation(origin = {-40, 0}, extent = {{-84, -12}, {-60, 12}}), iconTransformation(extent = {{-140, -20}, {-100, 20}})));
-    Modelica.Blocks.Interfaces.RealInput x_output "Output signal connector" annotation(
-      Placement(transformation(origin = {-10, 0}, extent = {{100, -10}, {120, 10}}), iconTransformation(extent = {{100, -10}, {120, 10}})));
+    Modelica.Blocks.Interfaces.RealInput u_input "Input signal connector" annotation (Placement(
+          transformation(origin = {-40, 0}, extent = {{-84, -12}, {-60, 12}}), iconTransformation(extent = {{-140, -20}, {-100, 20}}))); 
+    Modelica.Blocks.Interfaces.RealInputx_output "Output signal connector" annotation (Placement(
+          transformation(origin = {-10, 0}, extent = {{100, -10}, {120, 10}}), iconTransformation(extent = {{100, -10}, {120, 10}})));
   equation
     u_input = u;
     x_output = x;
@@ -101,46 +101,33 @@ package GantryControlSystem
 
   block PIDControllerBlock
     extends Modelica.Blocks.Icons.Block;
-    Modelica.Blocks.Interfaces.RealInput pid_in annotation(
-      Placement(transformation(origin = {-40, 0}, extent = {{-84, -12}, {-60, 12}}), iconTransformation(extent = {{-140, -20}, {-100, 20}})));
-    Modelica.Blocks.Interfaces.RealOutput pid_out annotation(
-      Placement(transformation(extent = {{100, -10}, {120, 10}}), iconTransformation(extent = {{100, -10}, {120, 10}})));
+    
+    Modelica.Blocks.Interfaces.RealInput pid_in;
+    Modelica.Blocks.Interfaces.RealOutput pid_out;
     Modelica.Blocks.Math.Sum sum11(nin = 3) annotation(
       Placement(transformation(origin = {42, 0}, extent = {{-10, -10}, {10, 10}})));
-    Modelica.Blocks.Math.Gain gain(k = K_p) annotation(
+  Modelica.Blocks.Math.Gain gain(k = K_p) annotation(
       Placement(transformation(origin = {-10, 44}, extent = {{-10, -10}, {10, 10}})));
-    Modelica.Blocks.Continuous.Integrator integrator(k = K_I) annotation(
+  Modelica.Blocks.Continuous.Integrator integrator(k = K_I)  annotation(
       Placement(transformation(origin = {-12, 0}, extent = {{-10, -10}, {10, 10}})));
-    Modelica.Blocks.Continuous.Derivative derivative(k = K_D) annotation(
+  Modelica.Blocks.Continuous.Derivative derivative(k = K_D)  annotation(
       Placement(transformation(origin = {-10, -36}, extent = {{-10, -10}, {10, 10}})));
-    Modelica.Blocks.Math.Feedback feedback annotation(
+  Modelica.Blocks.Math.Feedback feedback annotation(
       Placement(transformation(origin = {-80, 0}, extent = {{-10, -10}, {10, 10}})));
-  CraneModelBlock craneModelBlock annotation(
-      Placement(transformation(origin = {80, 0}, extent = {{-10, -10}, {10, 10}})));
-  equation
+    equation
     connect(feedback.y, integrator.u) annotation(
       Line(points = {{-70, 0}, {-24, 0}}, color = {0, 0, 127}));
     connect(derivative.u, feedback.y) annotation(
       Line(points = {{-22, -36}, {-42, -36}, {-42, 0}, {-70, 0}}, color = {0, 0, 127}));
-    connect(sum11.u, integrator.y) annotation(
+  connect(sum11.u, integrator.y) annotation(
       Line(points = {{30, 0}, {0, 0}}, color = {0, 0, 127}));
-    connect(derivative.y, sum11.u) annotation(
+  connect(derivative.y, sum11.u) annotation(
       Line(points = {{2, -36}, {24, -36}, {24, 0}, {30, 0}}, color = {0, 0, 127}));
-    connect(gain.y, sum11.u) annotation(
+  connect(gain.y, sum11.u) annotation(
       Line(points = {{1, 44}, {24, 44}, {24, 0}, {30, 0}}, color = {0, 0, 127}));
-    connect(gain.u, feedback.y) annotation(
+  connect(gain.u, feedback.y) annotation(
       Line(points = {{-22, 44}, {-42, 44}, {-42, 0}, {-70, 0}}, color = {0, 0, 127}));
-  connect(craneModelBlock.u_input, sum11.y) annotation(
-      Line(points = {{68, 0}, {54, 0}}, color = {0, 0, 127}));
-  connect(craneModelBlock.x_output, feedback.u2) annotation(
-      Line(points = {{92, 0}, {94, 0}, {94, -72}, {-80, -72}, {-80, -8}}, color = {0, 0, 127}));
-  connect(craneModelBlock.x_output, pid_out) annotation(
-      Line(points = {{92, 0}, {110, 0}}, color = {0, 0, 127}));
-  connect(pid_in, feedback.u1) annotation(
-      Line(points = {{-112, 0}, {-88, 0}}, color = {0, 0, 127}));
-  annotation(
-      Diagram);
-end PIDControllerBlock;
+  end PIDControllerBlock;
 
   model PIDControlLoopModel
   equation
