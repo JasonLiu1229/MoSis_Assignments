@@ -50,21 +50,30 @@ def singleSimExpOne(M=10, r=1, d_c=2):
     Returns:
         tuple: data and names
     """
-    # Create the string command that will be executed to
-    simulationCommand=f'./GantryControlSystem.CraneModelExpOne/CraneModelExpOne'
-    arguments = f'-override M={M},r={r},d_c={d_c}'
-    # Assuming that your shell is focused on the example/ directory, you should change directory to the one actually containing the executable. This directory usually has the same name as the Modelica file name.
-    # Create the corresponding string command and execute it.
-    # directoryChangeCommand='cd /GantryControlSystem.CraneModelExpOne'
-    # print all directories in the current directory
-    # os.chdir('GantryControlSystem.CraneModelExpOne')
-    # Simulate the model
-    # os.system(simulationCommand)
-    subprocess.run([simulationCommand, arguments])
-    # Obtain the variable values by reading the MAT-file    
-    [names, data] = readMat('GantryControlSystem.CraneModelExpOne/CraneModelExpOne_res.mat')
+    try:
+        # Change directory to the folder where the CraneModelExpOne executable is located
+        os.chdir('GantryControlSystem.CraneModelExpOne')
+        
+        # Create the list of arguments that will be executed
+        simulationCommand = [
+            './CraneModelExpOne',
+            '-override',
+            f'M={M},r={r},d_c={round(d_c, 6)}'
+        ]
+        
+        # Simulate the model using subprocess without shell=True
+        subprocess.run(simulationCommand)
+        
+        # Obtain the variable values by reading the MAT-file
+        [names, data] = readMat('CraneModelExpOne_res.mat')
+    
+    finally:
+        # Change back to the parent directory
+        os.chdir('..')
+
     # Return the data and names
     return (data, names)
+
 
 # You need scipy package to read MAT-files
 from scipy import io
