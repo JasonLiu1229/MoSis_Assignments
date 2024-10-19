@@ -109,7 +109,8 @@ def runExperimintOne(interval=5.00/10000):
     plt.plot(extracted_data2, label="Calibration Data", color="blue")
     
     plt.xlabel("Iteration")
-    plt.ylabel("d_c")
+    plt.ylabel("x")
+    plt.title("Model Output vs Calibration Data")
     
     plt.legend()
     plt.grid(True)
@@ -119,7 +120,8 @@ def runExperimintOne(interval=5.00/10000):
     plt.figure()
     plt.plot(extracted_data1, label="Model Output", color="red")
     plt.xlabel("Iteration")
-    plt.ylabel("d_c")
+    plt.ylabel("x")
+    plt.title("Model Output")
     
     plt.legend()
     plt.grid(True)
@@ -129,7 +131,8 @@ def runExperimintOne(interval=5.00/10000):
     plt.figure()
     plt.plot(extracted_data2, label="Calibration Output", color="blue")
     plt.xlabel("Iteration")
-    plt.ylabel("d_c")
+    plt.ylabel("x")
+    plt.title("Calibration Data")
     
     plt.legend()
     plt.grid(True)
