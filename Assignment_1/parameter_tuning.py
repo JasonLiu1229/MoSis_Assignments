@@ -1,6 +1,9 @@
 from simulate import singleSimExpOne
+
 import os
 import shutil
+import pandas as pd
+import matplotlib.pyplot as plt
 
 def sumSquaredError(trace_file: str, calibration_file: str):
     """Calculate the sum of squared errors between the model output and calibration data.
@@ -86,6 +89,7 @@ def runExperimintOne(interval=5.00/10000):
     # Copy the smallest error file to an answer folder
     os.makedirs("answers", exist_ok=True)
     os.makedirs("answers/exp1", exist_ok=True)
+    os.makedirs("assets/part_2", exist_ok=True)
     
     d_c_value = error_output[1].split("_")[-1].replace(".csv", "").replace("_", ".")
     # Copy the file to the answers folder
@@ -93,6 +97,44 @@ def runExperimintOne(interval=5.00/10000):
     
     # delete the traces exp1 folder
     shutil.rmtree("traces/exp1")
+    
+    # Plot the data
+    data1 = pd.read_csv(f"answers/exp1/experiminent_one_traces_{d_c_value}_{error_output[0]}.csv")
+    data2 = pd.read_csv("calibration_data_d_c.csv")
+    
+    extracted_data1 = data1.iloc[:, 1]
+    extracted_data2 = data2.iloc[:, 1]
+    
+    plt.plot(extracted_data1, label="Model Output", color="red")
+    plt.plot(extracted_data2, label="Calibration Data", color="blue")
+    
+    plt.xlabel("Iteration")
+    plt.ylabel("d_c")
+    
+    plt.legend()
+    plt.grid(True)
+    
+    plt.savefig(f"assets/part_2/experiminent_one_traces_{d_c_value}_{error_output[0]}.png")
+    
+    plt.figure()
+    plt.plot(extracted_data1, label="Model Output", color="red")
+    plt.xlabel("Iteration")
+    plt.ylabel("d_c")
+    
+    plt.legend()
+    plt.grid(True)
+    
+    plt.savefig(f"assets/part_2/experiminent_one_traces_{d_c_value}_{error_output[0]}_Model.png")
+    
+    plt.figure()
+    plt.plot(extracted_data2, label="Calibration Output", color="blue")
+    plt.xlabel("Iteration")
+    plt.ylabel("d_c")
+    
+    plt.legend()
+    plt.grid(True)
+    
+    plt.savefig(f"assets/part_2/experiminent_one_traces_{d_c_value}_{error_output[0]}_Cali.png")
 
             
 def runExperimintTwo():
