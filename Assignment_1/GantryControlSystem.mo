@@ -102,18 +102,51 @@ package GantryControlSystem
     
     Modelica.Blocks.Interfaces.RealInput pid_in;
     Modelica.Blocks.Interfaces.RealOutput pid_out;
-    Modelica.Blocks.Math.Sum sum1(nin = 2)  annotation(
-      Placement(transformation(origin = {-78, 0}, extent = {{-10, -10}, {10, 10}})));
     Modelica.Blocks.Math.Sum sum11(nin = 3) annotation(
-      Placement(transformation(origin = {62, 0}, extent = {{-10, -10}, {10, 10}})));
+      Placement(transformation(origin = {72, 18}, extent = {{-10, -10}, {10, 10}})));
     Modelica.Blocks.Math.Gain gain(k = K_p)  annotation(
-        Placement(transformation(origin = {-16, 80}, extent = {{-10, -10}, {10, 10}})));
+        Placement(transformation(origin = {-12, 80}, extent = {{-10, -10}, {10, 10}})));
     Modelica.Blocks.Math.Gain gain1(k = K_I) annotation(
-        Placement(transformation(origin = {-18, 0}, extent = {{-10, -10}, {10, 10}})));
+        Placement(transformation(origin = {-10, 38}, extent = {{-10, -10}, {10, 10}})));
     Modelica.Blocks.Math.Gain gain11(k = K_D) annotation(
-        Placement(transformation(origin = {-18, -80}, extent = {{-10, -10}, {10, 10}})));
+        Placement(transformation(origin = {-10, -68}, extent = {{-10, -10}, {10, 10}})));
+  Modelica.Blocks.Continuous.Integrator integrator annotation(
+      Placement(transformation(origin = {-12, 0}, extent = {{-10, -10}, {10, 10}})));
+  Modelica.Blocks.Continuous.Derivative derivative annotation(
+      Placement(transformation(origin = {-10, -36}, extent = {{-10, -10}, {10, 10}})));
+  Modelica.Blocks.Math.Product product annotation(
+      Placement(transformation(origin = {26, 18}, extent = {{-10, -10}, {10, 10}})));
+  Modelica.Blocks.Math.Product product1 annotation(
+      Placement(transformation(origin = {24, -42}, extent = {{-10, -10}, {10, 10}})));
+  Modelica.Blocks.Math.Product product2 annotation(
+      Placement(transformation(origin = {24, 60}, extent = {{-10, -10}, {10, 10}})));
+  Modelica.Blocks.Math.Feedback feedback annotation(
+      Placement(transformation(origin = {-80, 0}, extent = {{-10, -10}, {10, 10}})));
     equation
-
+    connect(product.y, sum11.u) annotation(
+      Line(points = {{37, 18}, {60, 18}}, color = {0, 0, 127}));
+    connect(integrator.y, product.u2) annotation(
+      Line(points = {{-1, 0}, {6, 0}, {6, 12}, {14, 12}}, color = {0, 0, 127}));
+    connect(product.u1, gain1.y) annotation(
+      Line(points = {{14, 24}, {6, 24}, {6, 38}, {2, 38}}, color = {0, 0, 127}));
+    connect(derivative.y, product1.u1) annotation(
+      Line(points = {{1, -36}, {12, -36}}, color = {0, 0, 127}));
+    connect(product1.u2, gain11.y) annotation(
+      Line(points = {{12, -48}, {12, -68}, {2, -68}}, color = {0, 0, 127}));
+    connect(gain.y, product2.u1) annotation(
+      Line(points = {{0, 80}, {0, 66}, {12, 66}}, color = {0, 0, 127}));
+  connect(sum11.y, feedback.u2) annotation(
+      Line(points = {{84, 18}, {90, 18}, {90, -90}, {-80, -90}, {-80, -8}}, color = {0, 0, 127}));
+  connect(feedback.y, integrator.u) annotation(
+      Line(points = {{-70, 0}, {-24, 0}}, color = {0, 0, 127}));
+  connect(derivative.u, feedback.y) annotation(
+      Line(points = {{-22, -36}, {-42, -36}, {-42, 0}, {-70, 0}}, color = {0, 0, 127}));
+  connect(product2.u2, feedback.y) annotation(
+      Line(points = {{12, 54}, {-42, 54}, {-42, 0}, {-70, 0}}, color = {0, 0, 127}));
+  connect(product1.y, sum11.u) annotation(
+      Line(points = {{36, -42}, {46, -42}, {46, 18}, {60, 18}}, color = {0, 0, 127}));
+  connect(product2.y, sum11.u) annotation(
+      Line(points = {{36, 60}, {46, 60}, {46, 18}, {60, 18}}, color = {0, 0, 127}));
   end PIDControllerBlock;
 
   model PIDControlLoopModel
