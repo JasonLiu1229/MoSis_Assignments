@@ -99,19 +99,20 @@ package GantryControlSystem
 
   block PIDControllerBlock
     extends Modelica.Blocks.Icons.Block;
+    
     Modelica.Blocks.Interfaces.RealInput pid_in;
     Modelica.Blocks.Interfaces.RealOutput pid_out;
     Modelica.Blocks.Math.Sum sum1(nin = 2)  annotation(
       Placement(transformation(origin = {-78, 0}, extent = {{-10, -10}, {10, 10}})));
     Modelica.Blocks.Math.Sum sum11(nin = 3) annotation(
       Placement(transformation(origin = {62, 0}, extent = {{-10, -10}, {10, 10}})));
-  Modelica.Blocks.Math.Gain gain(k = K_p)  annotation(
-      Placement(transformation(origin = {-16, 80}, extent = {{-10, -10}, {10, 10}})));
-  Modelica.Blocks.Math.Gain gain1(k = K_I) annotation(
-      Placement(transformation(origin = {-18, 0}, extent = {{-10, -10}, {10, 10}})));
-  Modelica.Blocks.Math.Gain gain11(k = K_D) annotation(
-      Placement(transformation(origin = {-18, -80}, extent = {{-10, -10}, {10, 10}})));
-  equation
+    Modelica.Blocks.Math.Gain gain(k = K_p)  annotation(
+        Placement(transformation(origin = {-16, 80}, extent = {{-10, -10}, {10, 10}})));
+    Modelica.Blocks.Math.Gain gain1(k = K_I) annotation(
+        Placement(transformation(origin = {-18, 0}, extent = {{-10, -10}, {10, 10}})));
+    Modelica.Blocks.Math.Gain gain11(k = K_D) annotation(
+        Placement(transformation(origin = {-18, -80}, extent = {{-10, -10}, {10, 10}})));
+    equation
 
   end PIDControllerBlock;
 
