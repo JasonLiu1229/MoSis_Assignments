@@ -38,14 +38,15 @@ def singleSimulation(m=0.2, M=10, r=1, d_p=0.5, d_c=2, plot=False):
         openDataPlot(data[names.index('time')],data[names.index('theta')],'time (s)','theta (rad)')
     # Return the data and names
     return (data, names)
+    
 
-def singleSimExpOne(M=10, r=1, d_c=2):
+def singleSimExpOne(d_c=2, M=10, r=1):
     """Single simulation function
 
     Args:
+        d_c (float, optional): damping factor of motion of cart. Defaults to 2.
         M (int, optional): mass of trolley. Defaults to 10.
         r (int, optional): length of pendulum rope. Defaults to 1.
-        d_c (int, optional): damping factor of motion of cart. Defaults to 2.
 
     Returns:
         tuple: data and names
@@ -66,6 +67,42 @@ def singleSimExpOne(M=10, r=1, d_c=2):
         
         # Obtain the variable values by reading the MAT-file
         [names, data] = readMat('CraneModelExpOne_res.mat')
+    
+    finally:
+        # Change back to the parent directory
+        os.chdir('..')
+
+    # Return the data and names
+    return (data, names)
+
+
+def singleSimExpTwo(d_p=0.5, m=0.2, r=1):
+    """Single simulation function, exactly the same as `singleSimExpOne`, except a different model.
+
+    Args:
+        d_p (float, optional): damping factor of motion of pendulum. Defaults to 0.5.
+        m (float, optional): mass of pendulum / container. Defaults to 0.2.
+        r (float, optional): length of pendulum rope. Defaults to 1.
+
+    Returns:
+        tuple: data and names
+    """
+    try:
+        # Change directory to the folder where the CraneModelExpOne executable is located
+        os.chdir('GantryControlSystem.CraneModelExpTwo')
+        
+        # Create the list of arguments that will be executed
+        simulationCommand = [
+            './CraneModelExpTwo',
+            '-override',
+            f'm={m},r={r},d_p={round(d_p, 6)}'
+        ]
+        
+        # Simulate the model using subprocess without shell=True
+        subprocess.run(simulationCommand)
+        
+        # Obtain the variable values by reading the MAT-file
+        [names, data] = readMat('CraneModelExpTwo_res.mat')
     
     finally:
         # Change back to the parent directory

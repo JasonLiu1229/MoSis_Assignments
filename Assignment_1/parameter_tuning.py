@@ -1,4 +1,4 @@
-from simulate import singleSimExpOne
+from simulate import singleSimExpOne, singleSimExpTwo
 
 import os
 import shutil
@@ -43,64 +43,31 @@ def smallestError(trace_dir:str, calibration_file:str):
     Returns:
         tuple: The smallest error and the file with the smallest error.
     """
+    print("Finding smallest error")
     smallest_error = None
     smallest_error_file = None
     for file in os.listdir(trace_dir):
         error = sumSquaredError(os.path.join(trace_dir, file), calibration_file)
         if smallest_error is None or error < smallest_error:
+            print(f"Current smallest error: {error}")
+            print(f"File: {file}")
             smallest_error = error
             smallest_error_file = file
     
     return (smallest_error, smallest_error_file)
 
-def runExperimintOne(interval=5.00/10000):
-    """Run experiment one. Copy the trace file with the smallest error to the answers folder.
 
+def plotData(param_value, error_value, calibration_file, output_file):
+    """Plot the model data and the calibration data
+    
     Args:
-        interval (float, optional): The interval to increment d_c by. Defaults to 5.00/10000.
-        
-    Returns:
-        None
+        param_value (str): Value of parameter, part of file name to read.
+        error_value (str): Value of smallest error, part of file name.
+        calibration_file (str): File name to open for calibration data.
+        output_file (str): Part of output file name.
     """
-    # Ensure the 'traces' directory exists and create the 'exp1' subdirectory
-    os.makedirs('traces', exist_ok=True)
-    os.makedirs('traces/exp1', exist_ok=True)
-    
-    i = 0.00
-    k = 0
-    while i < 5.00:
-        print("Running simulation ", k)
-        k += 1
-        i += interval
-        output = singleSimExpOne(d_c=i)
-        
-        # Create and write header to the CSV file
-        with open(f"traces/exp1/experiminent_one_traces_{i}.csv", "w", encoding="utf-8") as f:
-            f.write("iteration, x\n")
-        
-        # Append data to the CSV file
-        with open(f"traces/exp1/experiminent_one_traces_{i}.csv", "a", encoding="utf-8") as f:
-            for j, x in enumerate(output[0][output[1].index("x")]):
-                f.write(f"{j}, {x}\n")
-    
-    # Find the smallest error
-    error_output = smallestError("traces/exp1", "calibration_data_d_c.csv")
-    
-    # Copy the smallest error file to an answer folder
-    os.makedirs("answers", exist_ok=True)
-    os.makedirs("answers/exp1", exist_ok=True)
-    os.makedirs("assets/part_2", exist_ok=True)
-    
-    d_c_value = error_output[1].split("_")[-1].replace(".csv", "").replace("_", ".")
-    # Copy the file to the answers folder
-    shutil.copyfile(f"traces/exp1/{error_output[1]}", f"answers/exp1/experiminent_one_traces_{d_c_value}_{error_output[0]}.csv")
-    
-    # delete the traces exp1 folder
-    shutil.rmtree("traces/exp1")
-    
-    # Plot the data
-    data1 = pd.read_csv(f"answers/exp1/experiminent_one_traces_{d_c_value}_{error_output[0]}.csv")
-    data2 = pd.read_csv("calibration_data_d_c.csv")
+    data1 = pd.read_csv(f"answers/part_2/{output_file}_{param_value}_{error_value}.csv")
+    data2 = pd.read_csv(calibration_file)
     
     extracted_data1 = data1.iloc[:, 1]
     extracted_data2 = data2.iloc[:, 1]
@@ -115,7 +82,7 @@ def runExperimintOne(interval=5.00/10000):
     plt.legend()
     plt.grid(True)
     
-    plt.savefig(f"assets/part_2/experiminent_one_traces_{d_c_value}_{error_output[0]}.png")
+    plt.savefig(f"assets/part_2/{output_file}_{param_value}_{error_value}.png")
     
     plt.figure()
     plt.plot(extracted_data1, label="Model Output", color="red")
@@ -126,7 +93,7 @@ def runExperimintOne(interval=5.00/10000):
     plt.legend()
     plt.grid(True)
     
-    plt.savefig(f"assets/part_2/experiminent_one_traces_{d_c_value}_{error_output[0]}_Model.png")
+    plt.savefig(f"assets/part_2/{output_file}_{param_value}_{error_value}_Model.png")
     
     plt.figure()
     plt.plot(extracted_data2, label="Calibration Output", color="blue")
@@ -137,12 +104,72 @@ def runExperimintOne(interval=5.00/10000):
     plt.legend()
     plt.grid(True)
     
-    plt.savefig(f"assets/part_2/experiminent_one_traces_{d_c_value}_{error_output[0]}_Cali.png")
+    plt.savefig(f"assets/part_2/{output_file}_{param_value}_{error_value}_Cali.png")
+
+
+def runExperiment(exp=1, interval=5.00/10000):
+    """Run experiment one. Copy the trace file with the smallest error to the answers folder.
+
+    Args:
+        exp (int): Experiment number to run. Either 1 or 2. Default to 1.
+        interval (float, optional): The interval to increment d_c by. Defaults to 5.00/10000.
+        
+    Returns:
+        None
+    """
+    # Ensure the 'traces' directory exists and create the 'exp1' subdirectory
+    os.makedirs('traces', exist_ok=True)
+    os.makedirs(f'traces/exp{exp}', exist_ok=True)
+
+    if exp == 1: 
+        calibration_file = "calibration_data_d_c.csv"
+        output_file = "experiminent_one_traces"
+        simulate_function = singleSimExpOne
+        param_name = "x"
+    else:
+        calibration_file = "calibration_data_d_p.csv"
+        output_file = "experiminent_two_traces"
+        simulate_function = singleSimExpTwo
+        param_name = "theta"
+    
+    i = 0.00
+    k = 0
+    while i < 5.00:
+        print("Running simulation ", k)
+        k += 1
+        i += interval
+        output = simulate_function(i)
+        
+        # Create and write header to the CSV file
+        with open(f"traces/exp{exp}/{output_file}_{i}.csv", "w", encoding="utf-8") as f:
+            f.write("iteration, x\n")
+        
+        # Append data to the CSV file
+        with open(f"traces/exp{exp}/{output_file}_{i}.csv", "a", encoding="utf-8") as f:
+            for j, x in enumerate(output[0][output[1].index(param_name)]):
+                f.write(f"{j}, {x}\n")
+    
+    # Find the smallest error
+    error_output = smallestError(f"traces/exp{exp}", calibration_file)
+    
+    # Copy the smallest error file to an answer folder
+    os.makedirs("answers", exist_ok=True)
+    os.makedirs("answers/part_2", exist_ok=True)
+    os.makedirs("assets/part_2", exist_ok=True)
+    
+    param_value = error_output[1].split("_")[-1].replace(".csv", "").replace("_", ".")
+    # Copy the file to the answers folder
+    shutil.copyfile(f"traces/exp{exp}/{error_output[1]}", f"answers/part_2/{output_file}_{param_value}_{error_output[0]}.csv")
+    
+    # delete the traces exp1 folder
+    shutil.rmtree(f"traces/exp{exp}")
+
+    plotData(param_value, error_output[0], calibration_file, output_file)
 
             
 def runExperimintTwo():
     pass
 
 if __name__ == "__main__":
-    runExperimintOne()
-    # runExperimintTwo()
+    # runExperiment(1)
+    runExperiment(2)
