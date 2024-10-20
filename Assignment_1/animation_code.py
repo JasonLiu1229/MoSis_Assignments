@@ -139,7 +139,7 @@ if __name__ == "__main__":
 
     from simulate import simPIDControlModel
 
-    data, names = simPIDControlModel(K_p=5, K_i=5, K_d=10)
+    data, names = simPIDControlModel(K_p=26, K_i=0, K_d=10)
     x = data[names.index("craneModelBlock.x")]
     theta = data[names.index("craneModelBlock.theta")]
 

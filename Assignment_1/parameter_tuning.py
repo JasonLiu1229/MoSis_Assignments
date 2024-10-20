@@ -1,4 +1,4 @@
-from simulate import singleSimExpOne, singleSimExpTwo
+from simulate import singleSimExpOne, singleSimExpTwo, simPIDControlModel
 
 import os
 import shutil
@@ -6,6 +6,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import queue
 import concurrent.futures
+import numpy as np
 
 def sumSquaredError(trace_file: str, calibration_file: str):
     """Calculate the sum of squared errors between the model output and calibration data.
@@ -228,6 +229,140 @@ def runExperiment(exp=1, interval=5.00/10000):
     plotData(param_value, error_output[0], calibration_file, output_file, param_name)
 
 
+def PIDCostFunction(max_theta: float, tast_time: float):
+    """Cost function to fine tune PID controller. Modifier is based on student number.
+    Used student number: `{student_number}`
+    theta modifer: `{a}`
+    time modifier: `{b}`
+
+    Args:
+        max_theta (float): Largest angular displacement observed in radians.
+        task_time (float): Time it takes to reach the set-point, with theta within 10 degrees.
+    """
+    a, b = 1, 1
+    return (a * max_theta) + (b * tast_time)
+
+
+def getTaskTime(t_list, x_list, theta_list, set_point=10, theta_bounds = 10 * np.pi / 180, accuracy=0.1):
+    """Calculate task time given simulation data
+
+    Args:
+        t_list ([float]): list of times.
+        x_list ([float]): list of cart displacements in meters.
+        theta_list ([float]): list of angular displacements in radians.
+        set_point (float, optional): Trolley needs to reach this point for task to be considered done. Defaults to 10.
+        theta_bounds (float, optional): Theta must be within this angle for task to be considered done. Defaults to 10 degrees.
+        accuracy (float, optional): Accuracy considered for trolley to reach set_point. Defaults to 0.1.
+
+    Returns:
+        task_time (float): Time it took for task to be considered done.
+    """
+    def nextPoint(x_list, set_point, accuracy):
+        """Generator to get next point that crosses set_point
+        """
+        for i, x in enumerate(x_list):
+            if x > (set_point - accuracy):
+                yield i, x
+        raise "No more points"
+    
+    gen = nextPoint(x_list, set_point, accuracy)
+    while True:
+        try:
+            i, _x = next(gen)
+        except:
+            return np.Infinity
+        
+        # See if pendulum is stable
+        current_theta = theta_list[i]
+        for theta in theta_list[i:]:
+            
+            if not (current_theta - theta_bounds <= theta <= current_theta + theta_bounds):
+                break
+        else:
+            break
+    return t_list[i]
+
+
+def lowestCostMultiThread(q: queue.Queue, set_point=10, theta_bounds = 10 * np.pi / 180, accuracy=0.1):
+    """data send by queue should be of (data, names, (p, i, d))"""
+
+    print("Calculating smallest cost on a different thread.", flush=True)
+    lowest_cost = np.Infinity
+    pid = None
+
+    # pop from queue
+    while (trace_data := q.get()) is not None:
+        t = trace_data[0][0]
+        x = trace_data[0][trace_data[1].index("craneModelBlock.x")]
+        theta = trace_data[0][trace_data[1].index("craneModelBlock.theta")]
+
+        # calculate cost
+        cost = PIDCostFunction(np.max(np.power(theta, 2)), getTaskTime(t, x, theta, set_point, theta_bounds, accuracy))
+        if cost < lowest_cost:
+            lowest_cost = cost
+            pid = trace_data[2]
+            print(f"Current lowest cost {lowest_cost} for {pid}.")
+    print(f"Lowest cost {lowest_cost} for {pid}.")
+    return lowest_cost, pid
+
+def tunePIDControl(p_start: float = 1, i_start: float = 0, d_start: float = 10, 
+                   p_interval: float = 1, i_interval: float = 0, d_interval: float = 10,
+                   p_end: float = 40, i_end: float = -1, d_end: float = 500,
+                   set_point=10, theta_bounds = 10 * np.pi / 180, accuracy=0.1):
+    """Run simulations to fine tune PID controller.
+
+    Args:
+        p_start (float, optional): Starting value of K_p. Defaults to 1.
+        i_start (float, optional): Starting value of K_i. Defaults to 0.
+        d_start (float, optional): Starting value of K_d. Defaults to 10.
+        p_interval (float, optional): amount to increase K_p by. Defaults to 1.
+        i_interval (float, optional): amount to increase K_i by. Defaults to 0.
+        d_interval (float, optional): amount to increase K_d by. Defaults to 10.
+        p_end (float, optional): End value of K_p. Defaults to 40.
+        i_end (float, optional): End value of K_i. Defaults to -1.
+        d_end (float, optional): End value of K_d. Defaults to 500.
+        set_point (float, optional): Trolley needs to reach this point for task to be considered done. Defaults to 10.
+        theta_bounds (float, optional): Theta must be within this angle for task to be considered done. Defaults to 10 degrees.
+        accuracy (float, optional): Accuracy considered for trolley to reach set_point. Defaults to 0.1.
+    """
+    cost_output = None
+    with concurrent.futures.ThreadPoolExecutor() as executor:
+        q = queue.Queue()
+        future = executor.submit(lowestCostMultiThread, q, set_point, theta_bounds, accuracy)
+
+        # p-loop
+        p = p_start
+        while True:
+            i = i_start
+            
+            # i-loop
+            while True:
+                d = d_start
+
+                # d-loop
+                while True:
+
+                    print(f"Running simulation with parameters: {p = }, {i = }, {d = }")
+                    data, names = simPIDControlModel(K_p=p, K_i=i,K_d=d,K_constant=set_point)
+                    q.put((data, names, (p, i, d)))
+
+                    d += d_interval
+                    if d > d_end:
+                        break
+                
+                i += i_interval
+                if i > i_end:
+                    break
+            
+            p += p_interval
+            if p > p_end:
+                break
+
+        q.put(None)
+        cost_output = future.result()
+
+
 if __name__ == "__main__":
-    runExperiment(1)
+    # runExperiment(1)
     # runExperiment(2)
+    tunePIDControl()
