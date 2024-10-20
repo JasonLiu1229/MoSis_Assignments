@@ -97,7 +97,7 @@ def smallestErrorMultiThread(q: queue.Queue, calibration_file):
     return (smallest_error, smallest_error_data, param_value)
 
 
-def plotData(param_value, error_value, calibration_file, output_file):
+def plotData(param_value, error_value, calibration_file, output_file, param_name):
     """Plot the model data and the calibration data
     
     Args:
@@ -105,6 +105,7 @@ def plotData(param_value, error_value, calibration_file, output_file):
         error_value (str): Value of smallest error, part of file name.
         calibration_file (str): File name to open for calibration data.
         output_file (str): Part of output file name.
+        param_name (str): Label on y value.
     """
     data1 = pd.read_csv(f"answers/part_2/{output_file}_{param_value}_{error_value}.csv")
     data2 = pd.read_csv(calibration_file)
@@ -112,11 +113,11 @@ def plotData(param_value, error_value, calibration_file, output_file):
     extracted_data1 = data1.iloc[:, 1]
     extracted_data2 = data2.iloc[:, 1]
     
-    plt.plot(extracted_data1, label="Model Output", color="red")
     plt.plot(extracted_data2, label="Calibration Data", color="blue")
+    plt.plot(extracted_data1, label="Model Output", color="red")
     
     plt.xlabel("Iteration")
-    plt.ylabel("x")
+    plt.ylabel(param_name)
     plt.title("Model Output vs Calibration Data")
     
     plt.legend()
@@ -127,7 +128,7 @@ def plotData(param_value, error_value, calibration_file, output_file):
     plt.figure()
     plt.plot(extracted_data1, label="Model Output", color="red")
     plt.xlabel("Iteration")
-    plt.ylabel("x")
+    plt.ylabel(param_name)
     plt.title("Model Output")
     
     plt.legend()
@@ -138,7 +139,7 @@ def plotData(param_value, error_value, calibration_file, output_file):
     plt.figure()
     plt.plot(extracted_data2, label="Calibration Output", color="blue")
     plt.xlabel("Iteration")
-    plt.ylabel("x")
+    plt.ylabel(param_name)
     plt.title("Calibration Data")
     
     plt.legend()
@@ -224,12 +225,9 @@ def runExperiment(exp=1, interval=5.00/10000):
     # # delete the traces exp1 folder
     # shutil.rmtree(f"traces/exp{exp}")
 
-    plotData(param_value, error_output[0], calibration_file, output_file)
+    plotData(param_value, error_output[0], calibration_file, output_file, param_name)
 
-            
-def runExperimintTwo():
-    pass
 
 if __name__ == "__main__":
-    # runExperiment(1)
-    runExperiment(2)
+    runExperiment(1)
+    # runExperiment(2)
