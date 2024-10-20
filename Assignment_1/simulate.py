@@ -75,43 +75,6 @@ def singleSimExpOne(d_c=2, M=10, r=1):
     # Return the data and names
     return (data, names)
 
-def simPIDControlModel(K_p=1, K_i=1, K_d=1, K_constant=20):
-    """Single simulation function
-
-    Args:
-        K_p (int, optional): proportional gain. Defaults to 1.
-        K_i (int, optional): integral gain. Defaults to 1.
-        K_d (int, optional): derivative gain. Defaults to 1.
-        K_constant (int, optional): constant gain. Defaults to 1.
-        
-    Returns:
-        tuple: data and names
-    """
-    try:
-        # Change directory to the folder where the CraneModelExpOne executable is located
-        os.chdir('GantryControlSystem.PIDControlLoopModel')
-        
-        # Create the list of arguments that will
-        simulationCOmmand = [
-            './PIDControlLoopModel',
-            '-override',
-            f'PIDControllerBlock.K_p={K_p},PIDControllerBlock.K_i={K_i},PIDControllerBlock.K_d={K_d},K_constant={K_constant}'
-        ]
-        
-        # Simulate the model using subprocess without shell=True
-        subprocess.run(simulationCOmmand)
-        
-        # Obtain the variable values by reading the MAT-file
-        [names, data] = readMat('PIDControlLoopModel_res.mat')
-        
-    finally:
-        # Change back to the parent directory
-        os.chdir('..')
-        
-    # Return the data and names
-    return (data, names)
-        
-        
 
 def singleSimExpTwo(d_p=0.5, m=0.2, r=1):
     """Single simulation function, exactly the same as `singleSimExpOne`, except a different model.
@@ -148,6 +111,49 @@ def singleSimExpTwo(d_p=0.5, m=0.2, r=1):
     # Return the data and names
     return (data, names)
 
+
+def simPIDControlModel(*, K_p=1, K_i=1, K_d=1, K_constant=20, M=10, m=0.2, r=1, x = 0, theta=0):
+    """Single simulation function
+
+    Args:
+        K_p (float, optional): proportional gain. Defaults to 1.
+        K_i (float, optional): integral gain. Defaults to 1.
+        K_d (float, optional): derivative gain. Defaults to 1.
+        K_constant (float, optional): constant gain. Defaults to 1.
+        M (float, optional): Mass of the cart. Defaults to 10.
+        m (float, optional): Mass of the pendulum. Defaults to 0.2.
+        r (float, optional): Length of the rope in meters. Defaults to 1.
+        x (float, optional): Cart displacement in meters. Defaults to 0.
+        theta (float, optional): Angular displacement of pendulum in radians. Defaults to 0.
+        
+    Returns:
+        tuple: data and names
+    """
+    try:
+        # Change directory to the folder where the CraneModelExpOne executable is located
+        os.chdir('GantryControlSystem.PIDControlLoopModel')
+        
+        # Create the list of arguments that will
+        simulationCOmmand = [
+            './PIDControlLoopModel',
+            '-override',
+            f'pIDControllerBlock.K_p={K_p},pIDControllerBlock.K_i={K_i},pIDControllerBlock.K_d={K_d},K_constant={K_constant}'
+            f',craneModelBlock.M={M},craneModelBlock.m={m},craneModelBlock.r={r}'
+        ]
+        
+        # Simulate the model using subprocess without shell=True
+        subprocess.run(simulationCOmmand)
+        
+        # Obtain the variable values by reading the MAT-file
+        [names, data] = readMat('PIDControlLoopModel_res.mat')
+        
+    finally:
+        # Change back to the parent directory
+        os.chdir('..')
+        
+    # Return the data and names
+    return (data, names)
+        
 
 # You need scipy package to read MAT-files
 from scipy import io

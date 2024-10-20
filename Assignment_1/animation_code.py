@@ -137,10 +137,11 @@ if __name__ == "__main__":
     # x = 2 * np.sin(0.5 * t)  # Example cart positions
     # theta = 0.2 * np.sin(2 * t)  # Example pendulum angles (in radians)
 
-    # Obtain the variable values by reading the MAT-file
-    names, data = readMat("GantryControlSystem.CraneModel/CraneModel_res.mat")
-    x = data[names.index("x")] / 10
-    theta = data[names.index("theta")]
+    from simulate import simPIDControlModel
+
+    data, names = simPIDControlModel(K_p=5, K_i=5, K_d=10)
+    x = data[names.index("craneModelBlock.x")]
+    theta = data[names.index("craneModelBlock.theta")]
 
     # Call the animation function with sample data
     # NOTE: if max(x) is very big compared to the cart, the pendulum will not be visible
