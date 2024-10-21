@@ -169,9 +169,11 @@ if __name__ == "__main__":
     # 240.68844433057455 for (16, 0, 10)
     x = data[names.index("craneModelBlock.x")]
     theta = data[names.index("craneModelBlock.theta")]
+    v = data[names.index("craneModelBlock.v")]
     
-    plot_graph(range(len(x)), x, "Time", "Cart Position", "Cart Position vs Time")
-    plot_graph(range(len(theta)), theta, "Time", "Pendulum Angle", "Pendulum Angle vs Time")
+    # plot_graph(range(len(x)), x, "Time", "Cart Position", "Cart Position vs Time")
+    # plot_graph(range(len(theta)), theta, "Time", "Pendulum Angle", "Pendulum Angle vs Time")
+    # plot_graph(range(len(v)), v, "Time", "Cart Velocity", "Cart Velocity vs Time")
 
     # Call the animation function with sample data
     # NOTE: if max(x) is very big compared to the cart, the pendulum will not be visible
