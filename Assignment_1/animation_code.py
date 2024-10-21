@@ -143,12 +143,17 @@ def plot_graph(x_data, y_data, x_label, y_label, title):
     os.makedirs("assets/", exist_ok=True)
     os.makedirs("assets/part_4", exist_ok=True)
     
-    plt.plot(x_data, y_data)
+    plt.figure()
+    plt.plot(x_data, y_data, label=y_label)
     plt.xlabel(x_label)
     plt.ylabel(y_label)
     plt.title(title)
     
     title_name = title.replace(" ", "_")
+    
+    plt.legend()
+    plt.grid(True)
+    
     plt.savefig(f"assets/part_4/{title_name}.png")
 
 # Example usage:
