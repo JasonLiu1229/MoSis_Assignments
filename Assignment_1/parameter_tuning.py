@@ -244,7 +244,7 @@ def PIDCostFunction(max_theta: float, task_time: float):
     """
     # Higher a means more stability is required
     # Higher b means faster task time is required
-    a, b = 0.5, 5
+    a, b = 17, 12
     return (a * max_theta) + (b * task_time)
 
 

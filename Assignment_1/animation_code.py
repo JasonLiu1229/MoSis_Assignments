@@ -10,6 +10,7 @@ This Python module is used to animate the gantry system Modelica model based on 
 executed Modelica-compiled code.
 """
 import numpy as np
+import os
 import matplotlib
 import matplotlib.pyplot as plt
 import matplotlib.animation as animation
@@ -129,6 +130,26 @@ def animate_gantry_system(x_array, theta_array, length, interval=1):
 
     plt.show()
 
+def plot_graph(x_data, y_data, x_label, y_label, title):
+    """Plot data of given datasets
+
+    Args:
+        x_data (list): List of x-axis data
+        y_data (list): List of y-axis data
+        x_label (string): Label for x-axis
+        y_label (string): Label for y-axis
+        title (string): Title of the plot
+    """
+    os.makedirs("assets/", exist_ok=True)
+    os.makedirs("assets/part_4", exist_ok=True)
+    
+    plt.plot(x_data, y_data)
+    plt.xlabel(x_label)
+    plt.ylabel(y_label)
+    plt.title(title)
+    
+    title_name = title.replace(" ", "_")
+    plt.savefig(f"assets/part_4/{title_name}.png")
 
 # Example usage:
 if __name__ == "__main__":
@@ -140,8 +161,12 @@ if __name__ == "__main__":
     from simulate import simPIDControlModel
 
     data, names = simPIDControlModel(K_p=16, K_i=0, K_d=10)
+    # 240.68844433057455 for (16, 0, 10)
     x = data[names.index("craneModelBlock.x")]
     theta = data[names.index("craneModelBlock.theta")]
+    
+    plot_graph(range(len(x)), x, "Time", "Cart Position", "Cart Position vs Time")
+    plot_graph(range(len(theta)), theta, "Time", "Pendulum Angle", "Pendulum Angle vs Time")
 
     # Call the animation function with sample data
     # NOTE: if max(x) is very big compared to the cart, the pendulum will not be visible

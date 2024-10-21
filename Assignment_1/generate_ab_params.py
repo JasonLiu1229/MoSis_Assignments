@@ -29,4 +29,4 @@ def generate_cost_function_params(student_id1, student_id2=0):
         print('a=' + str(a / hcf) + ', b=' + str(b / hcf))
 
 if __name__ == "__main__":
-    generate_cost_function_params("3082", "")
+    generate_cost_function_params("3082", "2054")
