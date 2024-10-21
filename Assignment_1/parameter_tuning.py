@@ -229,7 +229,7 @@ def runExperiment(exp=1, interval=5.00/10000):
     plotData(param_value, error_output[0], calibration_file, output_file, param_name)
 
 
-def PIDCostFunction(max_theta: float, tast_time: float):
+def PIDCostFunction(max_theta: float, task_time: float):
     """Cost function to fine tune PID controller. Modifier is based on student number.
     Used student number: `{student_number}`
     theta modifer: `{a}`
@@ -238,9 +238,14 @@ def PIDCostFunction(max_theta: float, tast_time: float):
     Args:
         max_theta (float): Largest angular displacement observed in radians.
         task_time (float): Time it takes to reach the set-point, with theta within 10 degrees.
+        
+    Returns:
+        float: Cost of the PID controller.
     """
-    a, b = 1, 1
-    return (a * max_theta) + (b * tast_time)
+    # Higher a means more stability is required
+    # Higher b means faster task time is required
+    a, b = 0.5, 5
+    return (a * max_theta) + (b * task_time)
 
 
 def getTaskTime(t_list, x_list, theta_list, set_point=10, theta_bounds = 10 * np.pi / 180, accuracy=0.1):
@@ -263,14 +268,14 @@ def getTaskTime(t_list, x_list, theta_list, set_point=10, theta_bounds = 10 * np
         for i, x in enumerate(x_list):
             if x > (set_point - accuracy):
                 yield i, x
-        raise "No more points"
+        raise RuntimeError("No more points")
     
     gen = nextPoint(x_list, set_point, accuracy)
     while True:
         try:
             i, _x = next(gen)
         except:
-            return np.Infinity
+            return np.inf
         
         # See if pendulum is stable
         current_theta = theta_list[i]
@@ -281,13 +286,13 @@ def getTaskTime(t_list, x_list, theta_list, set_point=10, theta_bounds = 10 * np
         else:
             break
     return t_list[i]
-
-
+            
+    
 def lowestCostMultiThread(q: queue.Queue, set_point=10, theta_bounds = 10 * np.pi / 180, accuracy=0.1):
     """data send by queue should be of (data, names, (p, i, d))"""
 
     print("Calculating smallest cost on a different thread.", flush=True)
-    lowest_cost = np.Infinity
+    lowest_cost = np.inf
     pid = None
 
     # pop from queue
@@ -297,12 +302,11 @@ def lowestCostMultiThread(q: queue.Queue, set_point=10, theta_bounds = 10 * np.p
         theta = trace_data[0][trace_data[1].index("craneModelBlock.theta")]
 
         # calculate cost
-        cost = PIDCostFunction(np.max(np.power(theta, 2)), getTaskTime(t, x, theta, set_point, theta_bounds, accuracy))
-        if cost < lowest_cost:
+        cost = PIDCostFunction(np.max(abs(theta)), getTaskTime(t, x, theta, set_point, theta_bounds, accuracy))
+        if cost <= lowest_cost:
             lowest_cost = cost
             pid = trace_data[2]
             print(f"Current lowest cost {lowest_cost} for {pid}.")
-    print(f"Lowest cost {lowest_cost} for {pid}.")
     return lowest_cost, pid
 
 def tunePIDControl(p_start: float = 1, i_start: float = 0, d_start: float = 10, 
@@ -360,6 +364,7 @@ def tunePIDControl(p_start: float = 1, i_start: float = 0, d_start: float = 10,
 
         q.put(None)
         cost_output = future.result()
+        print(f"Lowest cost: {cost_output[0]} for {cost_output[1]}")
 
 
 if __name__ == "__main__":
