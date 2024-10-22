@@ -1,7 +1,6 @@
 from simulate import singleSimExpOne, singleSimExpTwo, simPIDControlModel
 
 import os
-import shutil
 import pandas as pd
 import matplotlib.pyplot as plt
 import queue
@@ -165,12 +164,12 @@ def runExperiment(exp=1, interval=5.00/10000):
 
     if exp == 1: 
         calibration_file = "calibration_data_d_c.csv"
-        output_file = "experiminent_one_traces"
+        output_file = "experiment_one_traces"
         simulate_function = singleSimExpOne
         param_name = "x"
     else:
         calibration_file = "calibration_data_d_p.csv"
-        output_file = "experiminent_two_traces"
+        output_file = "experiment_two_traces"
         simulate_function = singleSimExpTwo
         param_name = "theta"
 
@@ -308,6 +307,7 @@ def lowestCostMultiThread(q: queue.Queue, set_point=10, theta_bounds = 10 * np.p
             pid = trace_data[2]
             print(f"Current lowest cost {lowest_cost} for {pid}.")
     return lowest_cost, pid
+
 
 def tunePIDControl(p_start: float = 1, i_start: float = 0, d_start: float = 10, 
                    p_interval: float = 1, i_interval: float = 0, d_interval: float = 10,
