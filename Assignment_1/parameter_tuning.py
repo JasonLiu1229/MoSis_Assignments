@@ -123,7 +123,7 @@ def plotData(param_value, error_value, calibration_file, output_file, param_name
     plt.legend()
     plt.grid(True)
     
-    plt.savefig(f"assets/part_2/{output_file}_{param_value}_{error_value}.png")
+    plt.savefig(f"assets/part_2/{output_file}_comb.png")
     
     plt.figure()
     plt.plot(extracted_data1, label="Model Output", color="red")
@@ -134,7 +134,7 @@ def plotData(param_value, error_value, calibration_file, output_file, param_name
     plt.legend()
     plt.grid(True)
     
-    plt.savefig(f"assets/part_2/{output_file}_{param_value}_{error_value}_Model.png")
+    plt.savefig(f"assets/part_2/{output_file}_rl.png")
     
     plt.figure()
     plt.plot(extracted_data2, label="Calibration Output", color="blue")
@@ -145,7 +145,7 @@ def plotData(param_value, error_value, calibration_file, output_file, param_name
     plt.legend()
     plt.grid(True)
     
-    plt.savefig(f"assets/part_2/{output_file}_{param_value}_{error_value}_Cali.png")
+    plt.savefig(f"assets/part_2/{output_file}_sim.png")
 
 
 def runExperiment(exp=1, interval=5.00/10000):
