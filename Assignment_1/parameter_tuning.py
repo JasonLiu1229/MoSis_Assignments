@@ -295,17 +295,21 @@ def lowestCostMultiThread(q: queue.Queue, set_point=10, theta_bounds = 10 * np.p
     pid = None
 
     # pop from queue
-    while (trace_data := q.get()) is not None:
-        t = trace_data[0][0]
-        x = trace_data[0][trace_data[1].index("craneModelBlock.x")]
-        theta = trace_data[0][trace_data[1].index("craneModelBlock.theta")]
+    with open("traces/costs.csv", "w") as f:
+        while (trace_data := q.get()) is not None:
+            t = trace_data[0][0]
+            x = trace_data[0][trace_data[1].index("craneModelBlock.x")]
+            theta = trace_data[0][trace_data[1].index("craneModelBlock.theta")]
 
-        # calculate cost
-        cost = PIDCostFunction(np.max(abs(theta)), getTaskTime(t, x, theta, set_point, theta_bounds, accuracy))
-        if cost <= lowest_cost:
-            lowest_cost = cost
-            pid = trace_data[2]
-            print(f"Current lowest cost {lowest_cost} for {pid}.")
+            # calculate cost
+            max_theta = np.absolute(theta).max()
+            task_time = getTaskTime(t, x, theta, set_point, theta_bounds, accuracy)
+            cost = PIDCostFunction(max_theta, task_time)
+            f.write(f"{trace_data[2][0]}, {trace_data[2][2]}, {cost}, {max_theta}, {task_time}, {len(theta)}\n")
+            if cost <= lowest_cost:
+                lowest_cost = cost
+                pid = trace_data[2]
+                print(f"Current lowest cost {lowest_cost} for {pid}.")
     return lowest_cost, pid
 
 

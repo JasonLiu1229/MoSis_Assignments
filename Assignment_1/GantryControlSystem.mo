@@ -98,7 +98,7 @@ package GantryControlSystem
     Modelica.Blocks.Math.Feedback feedback annotation(
       Placement(transformation(origin = {-72, 0}, extent = {{-10, -10}, {10, 10}})));
     
-    parameter Real K_p = 26 "The proportional gain of the PID controller";
+    parameter Real K_p = 16 "The proportional gain of the PID controller";
     parameter Real K_i = 0 "The integral gain of the PID controller";
     parameter Real K_d = 10 "The derivative gain of the PID controller";
   

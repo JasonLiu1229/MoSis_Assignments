@@ -130,7 +130,7 @@ def animate_gantry_system(x_array, theta_array, length, interval=1):
 
     plt.show()
 
-def plot_graph(x_data, y_data, x_label, y_label, title):
+def plot_graph(x_data, y_data, x_label, y_label, title, filename):
     """Plot data of given datasets
 
     Args:
@@ -139,6 +139,7 @@ def plot_graph(x_data, y_data, x_label, y_label, title):
         x_label (string): Label for x-axis
         y_label (string): Label for y-axis
         title (string): Title of the plot
+        filename (string): name of the file to save to
     """
     os.makedirs("assets/", exist_ok=True)
     os.makedirs("assets/part_4", exist_ok=True)
@@ -148,13 +149,31 @@ def plot_graph(x_data, y_data, x_label, y_label, title):
     plt.xlabel(x_label)
     plt.ylabel(y_label)
     plt.title(title)
+    plt.xticks()
     
     title_name = title.replace(" ", "_")
     
     plt.legend()
     plt.grid(True)
     
-    plt.savefig(f"assets/part_4/{title_name}.png")
+    plt.savefig(filename)
+
+
+def multi_plot_graph(x_data, y_data_list, x_label, y_label, y_label_list, title, filename):
+
+    plt.figure()
+    plt.xlabel(x_label)
+    plt.ylabel(y_label)
+    plt.title(title)
+    
+    plt.grid(True)
+
+    for y, label in zip(y_data_list, y_label_list):
+        plt.plot(x_data, y, label=label)
+    
+    plt.legend()
+    # plt.savefig(filename)
+    plt.show()
 
 # Example usage:
 if __name__ == "__main__":
@@ -165,16 +184,32 @@ if __name__ == "__main__":
 
     from simulate import simPIDControlModel
 
-    data, names = simPIDControlModel(K_p=16, K_i=0, K_d=10)
+    value = "1_0_1"
+    name = "pid"
+    data, names = simPIDControlModel(K_p=16, K_i=0, K_d=10, K_constant=10)
     # 240.68844433057455 for (16, 0, 10)
     x = data[names.index("craneModelBlock.x")]
-    theta = data[names.index("craneModelBlock.theta")]
+    theta = np.absolute(data[names.index("craneModelBlock.theta")])
     v = data[names.index("craneModelBlock.v")]
     t = data[names.index("time")]
+    u = data[names.index("craneModelBlock.u")]
+
+    print(theta.max())
+
     
-    plot_graph(t, x, "Time (s)", "Cart Position (m)", "Cart Position vs Time")
-    plot_graph(t, theta, "Time (s)", "Pendulum Angle (rad)", "Pendulum Angle vs Time")
-    plot_graph(t, v, "Time (s)", "Cart Velocity (m/s)", "Cart Velocity vs Time")
+    # data, names = simPIDControlModel(K_p=0, K_i=0, K_d=10)
+    # x2 = data[names.index("craneModelBlock.x")]
+
+    # data, names = simPIDControlModel(K_p=0, K_i=0, K_d=500)
+    # x3 = data[names.index("craneModelBlock.x")]
+
+    # multi_plot_graph(t, [x, x2, x3], "Time (s)", "Cart Position (m)", ["K_d = 1", "K_d = 10", "K_d = 500"], 
+    #                  "Comparing multiple K_d values", "assets/part_3/d_compare.png")
+
+    # plot_graph(t, x, "Time (s)", "Cart Position (m)", "Cart Position vs Time", f"assets/part_3/{name}{value}_cart_position.png")
+    plot_graph(t, theta, "Time (s)", "Pendulum Angle (rad)", "Pendulum Angle vs Time", f"assets/part_3/{name}{value}_pendulum_angle.png")
+    # plot_graph(t, v, "Time (s)", "Cart Velocity (m/s)", "Cart Velocity vs Time", f"assets/part_3/{name}{value}_cart_velocity.png")
+    # plot_graph(t, u, "Time (s)", "Control Signal", "Control Signal vs Time", f"assets/part_3/{name}{value}_control_signal.png")
 
     # Call the animation function with sample data
     # NOTE: if max(x) is very big compared to the cart, the pendulum will not be visible
