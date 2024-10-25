@@ -305,7 +305,7 @@ def lowestCostMultiThread(q: queue.Queue, set_point=10, theta_bounds = 10 * np.p
             max_theta = np.absolute(theta).max()
             task_time = getTaskTime(t, x, theta, set_point, theta_bounds, accuracy)
             cost = PIDCostFunction(max_theta, task_time)
-            f.write(f"{trace_data[2][0]}, {trace_data[2][2]}, {cost}, {max_theta}, {task_time}, {len(theta)}\n")
+            f.write(f"{trace_data[2][0]}, {trace_data[2][2]}, {cost}, {max_theta}, {task_time}\n")
             if cost <= lowest_cost:
                 lowest_cost = cost
                 pid = trace_data[2]

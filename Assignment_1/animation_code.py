@@ -156,7 +156,8 @@ def plot_graph(x_data, y_data, x_label, y_label, title, filename):
     plt.legend()
     plt.grid(True)
     
-    plt.savefig(filename)
+    # plt.savefig(filename)
+    plt.show()
 
 
 def multi_plot_graph(x_data, y_data_list, x_label, y_label, y_label_list, title, filename):
@@ -172,8 +173,7 @@ def multi_plot_graph(x_data, y_data_list, x_label, y_label, y_label_list, title,
         plt.plot(x_data, y, label=label)
     
     plt.legend()
-    # plt.savefig(filename)
-    plt.show()
+    plt.savefig(filename)
 
 # Example usage:
 if __name__ == "__main__":
@@ -184,8 +184,6 @@ if __name__ == "__main__":
 
     from simulate import simPIDControlModel
 
-    value = "1_0_1"
-    name = "pid"
     data, names = simPIDControlModel(K_p=16, K_i=0, K_d=10, K_constant=10)
     # 240.68844433057455 for (16, 0, 10)
     x = data[names.index("craneModelBlock.x")]
@@ -194,9 +192,6 @@ if __name__ == "__main__":
     t = data[names.index("time")]
     u = data[names.index("craneModelBlock.u")]
 
-    print(theta.max())
-
-    
     # data, names = simPIDControlModel(K_p=0, K_i=0, K_d=10)
     # x2 = data[names.index("craneModelBlock.x")]
 
@@ -206,10 +201,10 @@ if __name__ == "__main__":
     # multi_plot_graph(t, [x, x2, x3], "Time (s)", "Cart Position (m)", ["K_d = 1", "K_d = 10", "K_d = 500"], 
     #                  "Comparing multiple K_d values", "assets/part_3/d_compare.png")
 
-    # plot_graph(t, x, "Time (s)", "Cart Position (m)", "Cart Position vs Time", f"assets/part_3/{name}{value}_cart_position.png")
-    plot_graph(t, theta, "Time (s)", "Pendulum Angle (rad)", "Pendulum Angle vs Time", f"assets/part_3/{name}{value}_pendulum_angle.png")
-    # plot_graph(t, v, "Time (s)", "Cart Velocity (m/s)", "Cart Velocity vs Time", f"assets/part_3/{name}{value}_cart_velocity.png")
-    # plot_graph(t, u, "Time (s)", "Control Signal", "Control Signal vs Time", f"assets/part_3/{name}{value}_control_signal.png")
+    # plot_graph(t, x, "Time (s)", "Cart Position (m)", "Cart Position vs Time", f"assets/part_4/Cart_Position_vs_Time.png")
+    # plot_graph(t, theta, "Time (s)", "Pendulum Angle (rad)", "Pendulum Angle vs Time", f"assets/part_4/Pendulum_Angle_vs_Time.png")
+    # plot_graph(t, v, "Time (s)", "Cart Velocity (m/s)", "Cart Velocity vs Time", f"assets/part_4/Cart_Velocity_vs_Time.png")
+    # plot_graph(t, u, "Time (s)", "Control Signal", "Control Signal vs Time", f"assets/part_4/Control_Signal_vs_Time.png")
 
     # Call the animation function with sample data
     # NOTE: if max(x) is very big compared to the cart, the pendulum will not be visible
