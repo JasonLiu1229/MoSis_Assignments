@@ -265,7 +265,7 @@ def getTaskTime(t_list, x_list, theta_list, set_point=10, theta_bounds = 10 * np
         """Generator to get next point that crosses set_point
         """
         for i, x in enumerate(x_list):
-            if x > (set_point - accuracy):
+            if (set_point + accuracy) > x > (set_point - accuracy):
                 yield i, x
         raise RuntimeError("No more points")
     
@@ -273,7 +273,7 @@ def getTaskTime(t_list, x_list, theta_list, set_point=10, theta_bounds = 10 * np
     while True:
         try:
             i, _x = next(gen)
-        except:
+        except RuntimeError:
             return np.inf
         
         # See if pendulum is stable
@@ -375,3 +375,4 @@ if __name__ == "__main__":
     # runExperiment(1)
     # runExperiment(2)
     tunePIDControl()
+    
