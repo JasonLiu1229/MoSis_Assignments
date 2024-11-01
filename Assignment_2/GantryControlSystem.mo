@@ -7,9 +7,10 @@ package GantryControlSystem
     parameter Modelica.Units.SI.Length r = 1 "The length of the rope connecting the trolley/cart and the pendulum bob/container";
     parameter DampingFactor d_p = 0.12 "The damping factor of the pendulum";
     parameter DampingFactor d_c = 4.7895 "The damping factor for the motion of the trolley/cart";
+    parameter Real u(start = 0, fixed = false) "The control signal to move the pendulum and trolley/cart";
     constant Modelica.Units.SI.Acceleration g = Modelica.Constants.g_n "The acceleration due to gravity";
+    
     // Variables
-    Real u "The control signal to move the pendulum and trolley/cart";
     Modelica.Units.SI.Length x "The displacement of the trolley/cart";
     Modelica.Units.SI.Velocity v "The velocity of the trolley/cart";
     Modelica.Units.SI.Angle theta "The angular displacement of the pendulum";
@@ -19,6 +20,7 @@ package GantryControlSystem
     v = 0;
     theta = 0;
     omega = 0;
+    u = 0;
   equation
   // First equation
     der(x) = v;
