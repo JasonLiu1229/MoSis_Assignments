@@ -7,20 +7,20 @@ package GantryControlSystem
     parameter Modelica.Units.SI.Length r = 1 "The length of the rope connecting the trolley/cart and the pendulum bob/container";
     parameter DampingFactor d_p = 0.12 "The damping factor of the pendulum";
     parameter DampingFactor d_c = 4.7895 "The damping factor for the motion of the trolley/cart";
-    parameter Real u(start = 0, fixed = false) "The control signal to move the pendulum and trolley/cart";
     constant Modelica.Units.SI.Acceleration g = Modelica.Constants.g_n "The acceleration due to gravity";
     
     // Variables
+    Real u;
     Modelica.Units.SI.Length x "The displacement of the trolley/cart";
     Modelica.Units.SI.Velocity v "The velocity of the trolley/cart";
     Modelica.Units.SI.Angle theta "The angular displacement of the pendulum";
     Modelica.Units.SI.AngularVelocity omega "The angular velocity of the pendulum";
   initial equation
+    u = 0;
     x = 0;
     v = 0;
     theta = 0;
     omega = 0;
-    u = 0;
   equation
   // First equation
     der(x) = v;
@@ -78,7 +78,7 @@ package GantryControlSystem
     Modelica.Blocks.Interfaces.RealInput x_output "Output signal connector" annotation(
       Placement(transformation(origin = {-10, 0}, extent = {{100, -10}, {120, 10}}), iconTransformation(extent = {{100, -10}, {120, 10}})));
   equation
-    u_input = u;
+    u = u_input;
     x_output = x;
   end CraneModelBlock;
 
