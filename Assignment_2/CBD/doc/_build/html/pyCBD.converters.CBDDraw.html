@@ -1,26 +1,24 @@
-
 <!DOCTYPE html>
 
-<html>
+<html lang="en" data-content_root="./">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Generate GraphViz from CBD Models &#8212; pyCBD Simulator  documentation</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/nature.css" />
-    <link rel="stylesheet" type="text/css" href="_static/style.css" />
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/math.js"></script>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="_static/nature.css?v=279e0f84" />
+    <link rel="stylesheet" type="text/css" href="_static/style.css?v=5d32c1a0" />
+    <script src="_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/math.js?v=af206e68"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Encapsulating CBD Models in PythonPDEVS" href="pyCBD.converters.hybrid.html" />
     <link rel="prev" title="Generate C code from CBDs" href="pyCBD.converters.CBD2C.html" /> 
   </head><body>
-    <div class="related" role="navigation" aria-label="related navigation">
+    <div class="related" role="navigation" aria-label="Related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -48,16 +46,17 @@
           <div class="body" role="main">
             
   <section id="module-pyCBD.converters.CBDDraw">
-<span id="generate-graphviz-from-cbd-models"></span><h1>Generate GraphViz from CBD Models<a class="headerlink" href="#module-pyCBD.converters.CBDDraw" title="Permalink to this headline">¶</a></h1>
+<span id="generate-graphviz-from-cbd-models"></span><h1>Generate GraphViz from CBD Models<a class="headerlink" href="#module-pyCBD.converters.CBDDraw" title="Link to this heading">¶</a></h1>
 <p>Useful drawing function to easily draw a CBD model in Graphviz.</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="pyCBD.converters.CBDDraw.gvDraw">
-<span class="sig-prename descclassname"><span class="pre">pyCBD.converters.CBDDraw.</span></span><span class="sig-name descname"><span class="pre">gvDraw</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cbd</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rankdir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'LR'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">colors</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyCBD/converters/CBDDraw.html#gvDraw"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyCBD.converters.CBDDraw.gvDraw" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">pyCBD.converters.CBDDraw.</span></span><span class="sig-name descname"><span class="pre">gvDraw</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cbd</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rankdir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'LR'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">colors</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyCBD/converters/CBDDraw.html#gvDraw"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyCBD.converters.CBDDraw.gvDraw" title="Link to this definition">¶</a></dt>
 <dd><p>Outputs a <code class="xref py py-class docutils literal notranslate"><span class="pre">CBD</span></code> as a <a class="reference external" href="https://graphviz.org/">GraphViz</a> script to filename.</p>
 <p>For instance, drawing the CBD given in the <a class="reference internal" href="examples/EvenNumberGen.html"><span class="doc">Hierarchical Even Number Generator</span></a> example, the following figure
 can be obtained:</p>
 <figure class="align-default">
-<img alt="_images/EvenNumberGV.svg" src="_images/EvenNumberGV.svg" /></figure>
+<img alt="_images/EvenNumberGV.svg" src="_images/EvenNumberGV.svg" />
+</figure>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The resulting Graphviz file might look “clunky” and messy when rendering with
@@ -65,7 +64,7 @@ the standard <code class="code docutils literal notranslate"><span class="pre">d
 engines might provide a cleaner and more readable result.</p>
 </div>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>cbd</strong> (<a class="reference internal" href="pyCBD.Core.html#pyCBD.Core.CBD" title="pyCBD.Core.CBD"><em>CBD</em></a>) – The <code class="xref py py-class docutils literal notranslate"><span class="pre">CBD</span></code> to draw.</p></li>
 <li><p><strong>filename</strong> (<em>str</em>) – The name of the dot-file.</p></li>
@@ -84,7 +83,7 @@ or <code class="code docutils literal notranslate"><span class="pre">LR</span></
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
         <div class="sphinxsidebarwrapper">
 <h3><a href="index.html">Table of Contents</a></h3>
 <p class="caption" role="heading"><span class="caption-text">Setup</span></p>
@@ -137,7 +136,7 @@ or <code class="code docutils literal notranslate"><span class="pre">LR</span></
     <p class="topless"><a href="pyCBD.converters.hybrid.html"
                           title="next chapter">Encapsulating CBD Models in PythonPDEVS</a></p>
   </div>
-<div id="searchbox" style="display: none" role="search">
+<search id="searchbox" style="display: none" role="search">
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
@@ -145,13 +144,13 @@ or <code class="code docutils literal notranslate"><span class="pre">LR</span></
       <input type="submit" value="Go" />
     </form>
     </div>
-</div>
-<script>$('#searchbox').show(0);</script>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related" role="navigation" aria-label="related navigation">
+    <div class="related" role="navigation" aria-label="Related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -173,8 +172,8 @@ or <code class="code docutils literal notranslate"><span class="pre">LR</span></
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2020, Randy Paredis.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
+    &#169; Copyright 2020, Randy Paredis.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.1.3.
     </div>
   </body>
 </html>

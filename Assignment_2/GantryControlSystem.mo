@@ -75,11 +75,14 @@ package GantryControlSystem
     extends Modelica.Blocks.Icons.Block;
     Modelica.Blocks.Interfaces.RealInput u_input "Input signal connector" annotation(
       Placement(transformation(origin = {-40, 0}, extent = {{-84, -12}, {-60, 12}}), iconTransformation(extent = {{-140, -20}, {-100, 20}})));
-    Modelica.Blocks.Interfaces.RealInput x_output "Output signal connector" annotation(
-      Placement(transformation(origin = {-10, 0}, extent = {{100, -10}, {120, 10}}), iconTransformation(extent = {{100, -10}, {120, 10}})));
+    Modelica.Blocks.Interfaces.RealInput x_output "Output signal x connector" annotation(
+      Placement(transformation(origin = {-10, 0}, extent = {{100, -10}, {120, 10}}), iconTransformation(origin = {0, 50}, extent = {{100, -10}, {120, 10}})));
+    Modelica.Blocks.Interfaces.RealInput theta_output "Output signal theta connector" annotation(
+      Placement(transformation(origin = {-10, 0}, extent = {{100, -10}, {120, 10}}), iconTransformation(origin = {0, -50}, extent = {{100, -10}, {120, 10}})));
   equation
     u = u_input;
     x_output = x;
+    theta_output = theta;
   end CraneModelBlock;
 
   block PIDControllerBlock

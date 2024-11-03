@@ -1,26 +1,24 @@
-
 <!DOCTYPE html>
 
-<html>
+<html lang="en" data-content_root="../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Continuous Time Simulation &#8212; pyCBD Simulator  documentation</title>
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/nature.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/style.css" />
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/math.js"></script>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../_static/nature.css?v=279e0f84" />
+    <link rel="stylesheet" type="text/css" href="../_static/style.css?v=5d32c1a0" />
+    <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/math.js?v=af206e68"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="pyCBD package" href="../pyCBD.html" />
     <link rel="prev" title="pyCBD.converters.latexify.functions module" href="../pyCBD.converters.latexify.functions.html" /> 
   </head><body>
-    <div class="related" role="navigation" aria-label="related navigation">
+    <div class="related" role="navigation" aria-label="Related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -46,17 +44,18 @@
           <div class="body" role="main">
             
   <section id="continuous-time-simulation">
-<h1>Continuous Time Simulation<a class="headerlink" href="#continuous-time-simulation" title="Permalink to this headline">¶</a></h1>
+<h1>Continuous Time Simulation<a class="headerlink" href="#continuous-time-simulation" title="Link to this heading">¶</a></h1>
 <p>Given that continuous time simulation will always have to be discretized when
 executed, it is important to ask <em>how</em> this discretization happens. In the
 <a class="reference internal" href="SinGen.html"><span class="doc">Sine Generator</span></a> example, this was done by reducing the delta inbetween multiple
 steps. However, this may compute too often for what is required in a given
 simulation. Assume we have the following data (from a sine wave):</p>
 <figure class="align-default">
-<a class="reference internal image-reference" href="../_images/sine.png"><img alt="../_images/sine.png" src="../_images/sine.png" style="width: 600px;" /></a>
+<a class="reference internal image-reference" href="../_images/sine.png"><img alt="../_images/sine.png" src="../_images/sine.png" style="width: 600px;" />
+</a>
 </figure>
 <section id="fixed-step-size">
-<h2>Fixed Step Size<a class="headerlink" href="#fixed-step-size" title="Permalink to this headline">¶</a></h2>
+<h2>Fixed Step Size<a class="headerlink" href="#fixed-step-size" title="Link to this heading">¶</a></h2>
 <p>With the previously discussed technique, the data could be plot using a fixed
 step size, where the new data is being computed every <code class="code docutils literal notranslate"><span class="pre">dt</span></code> time. The
 smaller this <code class="code docutils literal notranslate"><span class="pre">dt</span></code> value is, the more precise the plot. Below, the same
@@ -65,10 +64,12 @@ the marked points on the plot highlight <em>when</em> the data has been recomput
 is clear from these plots that a smaller step size identifies more accurate
 results.</p>
 <figure class="align-default">
-<a class="reference internal image-reference" href="../_images/sine-5.png"><img alt="../_images/sine-5.png" src="../_images/sine-5.png" style="width: 600px;" /></a>
+<a class="reference internal image-reference" href="../_images/sine-5.png"><img alt="../_images/sine-5.png" src="../_images/sine-5.png" style="width: 600px;" />
+</a>
 </figure>
 <figure class="align-default">
-<a class="reference internal image-reference" href="../_images/sine-1.png"><img alt="../_images/sine-1.png" src="../_images/sine-1.png" style="width: 600px;" /></a>
+<a class="reference internal image-reference" href="../_images/sine-1.png"><img alt="../_images/sine-1.png" src="../_images/sine-1.png" style="width: 600px;" />
+</a>
 </figure>
 <p>This behaviour is the default in the simulator. This can be explicitly set as follows
 (assuming <code class="code docutils literal notranslate"><span class="pre">sim</span></code> is the simulator object):</p>
@@ -80,7 +81,7 @@ fixed step size, as compared to varying step sizes. By default, the <code class=
 set to 1.</p>
 </section>
 <section id="manipulating-the-clock">
-<h2>Manipulating the Clock<a class="headerlink" href="#manipulating-the-clock" title="Permalink to this headline">¶</a></h2>
+<h2>Manipulating the Clock<a class="headerlink" href="#manipulating-the-clock" title="Link to this heading">¶</a></h2>
 <p>To maintain the block structure of the simulator, the simulation clock
 (see <code class="xref py py-class docutils literal notranslate"><span class="pre">CBD.lib.std.Clock</span></code>) is implemented as an actual block. If this clock is
 not used in the model to simulate, the simulator will automatically add a fixed-rate
@@ -93,7 +94,7 @@ either need to be linked to a Clock block, or should have an input that yields t
 correct value; i.e., a <code class="xref py py-class docutils literal notranslate"><span class="pre">CBD.lib.std.ConstantBlock</span></code>.</p>
 </section>
 <section id="adaptive-step-size">
-<h2>Adaptive Step Size<a class="headerlink" href="#adaptive-step-size" title="Permalink to this headline">¶</a></h2>
+<h2>Adaptive Step Size<a class="headerlink" href="#adaptive-step-size" title="Link to this heading">¶</a></h2>
 <p>Adaptive step size (or variable step size) is a simulation method in which the delta
 changes throughout the simulation time. The clock-as-a-block structure allows the
 variation of the <code class="code docutils literal notranslate"><span class="pre">dt</span></code>, as is required for adaptive step size. This can be done
@@ -145,7 +146,7 @@ of “transforming” the model to comply to adaptive step size simulation.</p>
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
         <div class="sphinxsidebarwrapper">
 <h3><a href="../index.html">Table of Contents</a></h3>
 <p class="caption" role="heading"><span class="caption-text">Setup</span></p>
@@ -190,7 +191,7 @@ of “transforming” the model to comply to adaptive step size simulation.</p>
     <p class="topless"><a href="../pyCBD.html"
                           title="next chapter">pyCBD package</a></p>
   </div>
-<div id="searchbox" style="display: none" role="search">
+<search id="searchbox" style="display: none" role="search">
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
@@ -198,13 +199,13 @@ of “transforming” the model to comply to adaptive step size simulation.</p>
       <input type="submit" value="Go" />
     </form>
     </div>
-</div>
-<script>$('#searchbox').show(0);</script>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related" role="navigation" aria-label="related navigation">
+    <div class="related" role="navigation" aria-label="Related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -224,8 +225,8 @@ of “transforming” the model to comply to adaptive step size simulation.</p>
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2020, Randy Paredis.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
+    &#169; Copyright 2020, Randy Paredis.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.1.3.
     </div>
   </body>
 </html>

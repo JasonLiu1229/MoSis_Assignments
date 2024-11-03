@@ -1,26 +1,24 @@
-
 <!DOCTYPE html>
 
-<html>
+<html lang="en" data-content_root="./">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>How to install the pyCBD framework? &#8212; pyCBD Simulator  documentation</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/nature.css" />
-    <link rel="stylesheet" type="text/css" href="_static/style.css" />
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/math.js"></script>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="_static/nature.css?v=279e0f84" />
+    <link rel="stylesheet" type="text/css" href="_static/style.css?v=5d32c1a0" />
+    <script src="_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/math.js?v=af206e68"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="pyCBD.util module" href="pyCBD.util.html" />
     <link rel="prev" title="Welcome to the pyCBD Simulator’s Documentation!" href="index.html" /> 
   </head><body>
-    <div class="related" role="navigation" aria-label="related navigation">
+    <div class="related" role="navigation" aria-label="Related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -46,11 +44,11 @@
           <div class="body" role="main">
             
   <section id="how-to-install-the-pycbd-framework">
-<h1>How to install the pyCBD framework?<a class="headerlink" href="#how-to-install-the-pycbd-framework" title="Permalink to this headline">¶</a></h1>
+<h1>How to install the pyCBD framework?<a class="headerlink" href="#how-to-install-the-pycbd-framework" title="Link to this heading">¶</a></h1>
 <p>This section describes the necessary components and steps to take to install
 the CBD framework.</p>
 <section id="dependencies">
-<h2>Dependencies<a class="headerlink" href="#dependencies" title="Permalink to this headline">¶</a></h2>
+<h2>Dependencies<a class="headerlink" href="#dependencies" title="Link to this heading">¶</a></h2>
 <p>The following dependencies are required:</p>
 <ul class="simple">
 <li><p>Python <code class="code docutils literal notranslate"><span class="pre">&gt;=</span> <span class="pre">3.6</span></code>, as identified by <a class="reference external" href="https://pypi.org/project/vermin/">vermin</a>.</p></li>
@@ -78,9 +76,9 @@ the CBD framework.</p>
 </li>
 <li><p><strong>Conversion:</strong></p>
 <ul>
-<li><p><a class="reference external" href="https://lark-parser.readthedocs.io/en/latest/">Lark</a> for the <a class="reference internal" href="pyCBD.converters.eq2CBD.html#module-pyCBD.converters.eq2CBD" title="pyCBD.converters.eq2CBD"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pyCBD.converters.eq2CBD</span></code></a> converter, to
+<li><p><a class="reference external" href="https://lark-parser.readthedocs.io/en/latest/">Lark</a> for the <code class="xref py py-mod docutils literal notranslate"><span class="pre">pyCBD.converters.eq2CBD</span></code> converter, to
 allow the creation of CBDs directly from a textual language.</p></li>
-<li><p><a class="reference external" href="http://msdl.cs.mcgill.ca/projects/DEVS/PythonPDEVS">PythonPDEVS</a> for the <a class="reference internal" href="pyCBD.converters.hybrid.html#module-pyCBD.converters.hybrid" title="pyCBD.converters.hybrid"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pyCBD.converters.hybrid</span></code></a>
+<li><p><a class="reference external" href="http://msdl.cs.mcgill.ca/projects/DEVS/PythonPDEVS">PythonPDEVS</a> for the <code class="xref py py-mod docutils literal notranslate"><span class="pre">pyCBD.converters.hybrid</span></code>
 module. This allows CBDs to be run inside of DEVS simulations.</p></li>
 </ul>
 </li>
@@ -92,7 +90,7 @@ module. This allows CBDs to be run inside of DEVS simulations.</p></li>
 </ul>
 </section>
 <section id="installation">
-<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<h2>Installation<a class="headerlink" href="#installation" title="Link to this heading">¶</a></h2>
 <p>There are a few ways of using the framework:</p>
 <ol class="arabic">
 <li><p>Use it as a project dependency. Simply add the <code class="code docutils literal notranslate"><span class="pre">src/pyCBD</span></code> folder to your project and
@@ -111,22 +109,29 @@ a directory as “Sources Root”, which basically adds it to your path upon exe
 <li><p>Execute one of the following commands in the <code class="code docutils literal notranslate"><span class="pre">src</span></code> folder to install the project to your
 user directory or update it:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># BUILDING:</span>
-python setup.py install --user
+python<span class="w"> </span>setup.py<span class="w"> </span>install<span class="w"> </span>--user
 
 <span class="c1"># UPDATING:</span>
-python -m pip install .
+python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>.
 </pre></div>
 </div>
 </li>
 </ol>
 </section>
 <section id="standalone">
-<h2>Standalone<a class="headerlink" href="#standalone" title="Permalink to this headline">¶</a></h2>
+<h2>Standalone<a class="headerlink" href="#standalone" title="Link to this heading">¶</a></h2>
 <p>There are some additional standalone components that have been made to work with
 the framework, but can technically be used without the connection to CBDs. These are:</p>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="pyCBD.util.html">pyCBD.util module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pyCBD.util.html">pyCBD.util module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pyCBD.util.html#pyCBD.util.PYCBD_VERSION"><code class="docutils literal notranslate"><span class="pre">PYCBD_VERSION</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="pyCBD.util.html#pyCBD.util.PYTHON_VERSION"><code class="docutils literal notranslate"><span class="pre">PYTHON_VERSION</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="pyCBD.util.html#pyCBD.util.enum"><code class="docutils literal notranslate"><span class="pre">enum()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="pyCBD.util.html#pyCBD.util.hash64"><code class="docutils literal notranslate"><span class="pre">hash64()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="pyCBD.util.html#pyCBD.util.unhash64"><code class="docutils literal notranslate"><span class="pre">unhash64()</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="pyCBD.naivelog.html">pyCBD.naivelog module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pyCBD.realtime.html">pyCBD.realtime package</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="pyCBD.realtime.html#submodules">Submodules</a><ul>
@@ -151,7 +156,7 @@ the framework, but can technically be used without the connection to CBDs. These
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
         <div class="sphinxsidebarwrapper">
 <h3><a href="index.html">Table of Contents</a></h3>
 <p class="caption" role="heading"><span class="caption-text">Setup</span></p>
@@ -196,7 +201,7 @@ the framework, but can technically be used without the connection to CBDs. These
     <p class="topless"><a href="pyCBD.util.html"
                           title="next chapter">pyCBD.util module</a></p>
   </div>
-<div id="searchbox" style="display: none" role="search">
+<search id="searchbox" style="display: none" role="search">
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
@@ -204,13 +209,13 @@ the framework, but can technically be used without the connection to CBDs. These
       <input type="submit" value="Go" />
     </form>
     </div>
-</div>
-<script>$('#searchbox').show(0);</script>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related" role="navigation" aria-label="related navigation">
+    <div class="related" role="navigation" aria-label="Related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -230,8 +235,8 @@ the framework, but can technically be used without the connection to CBDs. These
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2020, Randy Paredis.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
+    &#169; Copyright 2020, Randy Paredis.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.1.3.
     </div>
   </body>
 </html>

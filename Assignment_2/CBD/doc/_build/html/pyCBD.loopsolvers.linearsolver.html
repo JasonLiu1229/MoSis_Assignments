@@ -1,26 +1,24 @@
-
 <!DOCTYPE html>
 
-<html>
+<html lang="en" data-content_root="./">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>pyCBD.loopsolvers.linearsolver module &#8212; pyCBD Simulator  documentation</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/nature.css" />
-    <link rel="stylesheet" type="text/css" href="_static/style.css" />
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/math.js"></script>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="_static/nature.css?v=279e0f84" />
+    <link rel="stylesheet" type="text/css" href="_static/style.css?v=5d32c1a0" />
+    <script src="_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/math.js?v=af206e68"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="pyCBD.loopsolvers.sympysolver module" href="pyCBD.loopsolvers.sympysolver.html" />
     <link rel="prev" title="pyCBD.loopsolvers.solver module" href="pyCBD.loopsolvers.solver.html" /> 
   </head><body>
-    <div class="related" role="navigation" aria-label="related navigation">
+    <div class="related" role="navigation" aria-label="Related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -48,19 +46,19 @@
           <div class="body" role="main">
             
   <section id="module-pyCBD.loopsolvers.linearsolver">
-<span id="pycbd-loopsolvers-linearsolver-module"></span><h1>pyCBD.loopsolvers.linearsolver module<a class="headerlink" href="#module-pyCBD.loopsolvers.linearsolver" title="Permalink to this headline">¶</a></h1>
+<span id="pycbd-loopsolvers-linearsolver-module"></span><h1>pyCBD.loopsolvers.linearsolver module<a class="headerlink" href="#module-pyCBD.loopsolvers.linearsolver" title="Link to this heading">¶</a></h1>
 <p>This module provides a Gauss-Jordan solver to solve linear algebraic loops.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="pyCBD.loopsolvers.linearsolver.LinearSolver">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyCBD.loopsolvers.linearsolver.</span></span><span class="sig-name descname"><span class="pre">LinearSolver</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">logger</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyCBD/loopsolvers/linearsolver.html#LinearSolver"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyCBD.loopsolvers.linearsolver.LinearSolver" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="pyCBD.loopsolvers.solver.html#pyCBD.loopsolvers.solver.Solver" title="pyCBD.loopsolvers.solver.Solver"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyCBD.loopsolvers.solver.Solver</span></code></a></p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyCBD.loopsolvers.linearsolver.</span></span><span class="sig-name descname"><span class="pre">LinearSolver</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">logger</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyCBD/loopsolvers/linearsolver.html#LinearSolver"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyCBD.loopsolvers.linearsolver.LinearSolver" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="pyCBD.loopsolvers.solver.html#pyCBD.loopsolvers.solver.Solver" title="pyCBD.loopsolvers.solver.Solver"><code class="xref py py-class docutils literal notranslate"><span class="pre">Solver</span></code></a></p>
 <p>Solves linear algebraic loops using matrices.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="pyCBD.loopsolvers.linearsolver.LinearSolver.checkValidity">
-<span class="sig-name descname"><span class="pre">checkValidity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">component</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyCBD/loopsolvers/linearsolver.html#LinearSolver.checkValidity"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyCBD.loopsolvers.linearsolver.LinearSolver.checkValidity" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">checkValidity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">component</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyCBD/loopsolvers/linearsolver.html#LinearSolver.checkValidity"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyCBD.loopsolvers.linearsolver.LinearSolver.checkValidity" title="Link to this definition">¶</a></dt>
 <dd><p>Checks the validity of an algebraic loop.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>path</strong> (<em>str</em>) – The path of the top-level block.</p></li>
 <li><p><strong>component</strong> (<em>list</em>) – The blocks in the algebraic loop.</p></li>
@@ -71,7 +69,7 @@
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pyCBD.loopsolvers.linearsolver.LinearSolver.constructInput">
-<span class="sig-name descname"><span class="pre">constructInput</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">strongComponent</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">curIteration</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyCBD/loopsolvers/linearsolver.html#LinearSolver.constructInput"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyCBD.loopsolvers.linearsolver.LinearSolver.constructInput" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">constructInput</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">strongComponent</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">curIteration</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyCBD/loopsolvers/linearsolver.html#LinearSolver.constructInput"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyCBD.loopsolvers.linearsolver.LinearSolver.constructInput" title="Link to this definition">¶</a></dt>
 <dd><p>Constructs input for a solver of systems of linear equations
 Input consists of two matrices:</p>
 <blockquote>
@@ -84,15 +82,15 @@ Input consists of two matrices:</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pyCBD.loopsolvers.linearsolver.LinearSolver.get_matrix">
-<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_matrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">strongComponent</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'.'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">known</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyCBD/loopsolvers/linearsolver.html#LinearSolver.get_matrix"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyCBD.loopsolvers.linearsolver.LinearSolver.get_matrix" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_matrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">strongComponent</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'.'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">known</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyCBD/loopsolvers/linearsolver.html#LinearSolver.get_matrix"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyCBD.loopsolvers.linearsolver.LinearSolver.get_matrix" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pyCBD.loopsolvers.linearsolver.LinearSolver.solve">
-<span class="sig-name descname"><span class="pre">solve</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">solverInput</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyCBD/loopsolvers/linearsolver.html#LinearSolver.solve"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyCBD.loopsolvers.linearsolver.LinearSolver.solve" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">solve</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">solverInput</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyCBD/loopsolvers/linearsolver.html#LinearSolver.solve"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyCBD.loopsolvers.linearsolver.LinearSolver.solve" title="Link to this definition">¶</a></dt>
 <dd><p>Solves the algebraic loop.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>solverInput</strong> – The constructed input.</p>
 </dd>
 </dl>
@@ -106,7 +104,7 @@ Input consists of two matrices:</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="pyCBD.loopsolvers.linearsolver.Matrix">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyCBD.loopsolvers.linearsolver.</span></span><span class="sig-name descname"><span class="pre">Matrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rows</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cols</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyCBD/loopsolvers/linearsolver.html#Matrix"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyCBD.loopsolvers.linearsolver.Matrix" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyCBD.loopsolvers.linearsolver.</span></span><span class="sig-name descname"><span class="pre">Matrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rows</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cols</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyCBD/loopsolvers/linearsolver.html#Matrix"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyCBD.loopsolvers.linearsolver.Matrix" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Custom, efficient matrix class. This class is used for efficiency purposes.</p>
 <blockquote>
@@ -125,12 +123,12 @@ required dependencies for external hardware systems (that may not provide these 
 </div>
 <dl class="py method">
 <dt class="sig sig-object py" id="pyCBD.loopsolvers.linearsolver.Matrix.format">
-<span class="sig-name descname"><span class="pre">format</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'\t'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">paren</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'[]'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">floats</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'%8.4f'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'\n'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyCBD/loopsolvers/linearsolver.html#Matrix.format"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyCBD.loopsolvers.linearsolver.Matrix.format" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">format</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'\t'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">paren</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'[]'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">floats</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'%8.4f'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'\n'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyCBD/loopsolvers/linearsolver.html#Matrix.format"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyCBD.loopsolvers.linearsolver.Matrix.format" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pyCBD.loopsolvers.linearsolver.Matrix.concat">
-<span class="sig-name descname"><span class="pre">concat</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyCBD/loopsolvers/linearsolver.html#Matrix.concat"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyCBD.loopsolvers.linearsolver.Matrix.concat" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">concat</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyCBD/loopsolvers/linearsolver.html#Matrix.concat"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyCBD.loopsolvers.linearsolver.Matrix.concat" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -142,7 +140,7 @@ required dependencies for external hardware systems (that may not provide these 
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
         <div class="sphinxsidebarwrapper">
 <h3><a href="index.html">Table of Contents</a></h3>
 <p class="caption" role="heading"><span class="caption-text">Setup</span></p>
@@ -195,7 +193,7 @@ required dependencies for external hardware systems (that may not provide these 
     <p class="topless"><a href="pyCBD.loopsolvers.sympysolver.html"
                           title="next chapter">pyCBD.loopsolvers.sympysolver module</a></p>
   </div>
-<div id="searchbox" style="display: none" role="search">
+<search id="searchbox" style="display: none" role="search">
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
@@ -203,13 +201,13 @@ required dependencies for external hardware systems (that may not provide these 
       <input type="submit" value="Go" />
     </form>
     </div>
-</div>
-<script>$('#searchbox').show(0);</script>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related" role="navigation" aria-label="related navigation">
+    <div class="related" role="navigation" aria-label="Related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -231,8 +229,8 @@ required dependencies for external hardware systems (that may not provide these 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2020, Randy Paredis.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
+    &#169; Copyright 2020, Randy Paredis.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.1.3.
     </div>
   </body>
 </html>

@@ -1,26 +1,24 @@
-
 <!DOCTYPE html>
 
-<html>
+<html lang="en" data-content_root="./">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>pyCBD.realtime.plotting module &#8212; pyCBD Simulator  documentation</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/nature.css" />
-    <link rel="stylesheet" type="text/css" href="_static/style.css" />
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/math.js"></script>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="_static/nature.css?v=279e0f84" />
+    <link rel="stylesheet" type="text/css" href="_static/style.css?v=5d32c1a0" />
+    <script src="_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/math.js?v=af206e68"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="pyCBD.realtime.threadingBackend module" href="pyCBD.realtime.threadingBackend.html" />
     <link rel="prev" title="pyCBD.realtime.accurate_time module" href="pyCBD.realtime.accurate_time.html" /> 
   </head><body>
-    <div class="related" role="navigation" aria-label="related navigation">
+    <div class="related" role="navigation" aria-label="Related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -48,13 +46,13 @@
           <div class="body" role="main">
             
   <section id="module-pyCBD.realtime.plotting">
-<span id="pycbd-realtime-plotting-module"></span><h1>pyCBD.realtime.plotting module<a class="headerlink" href="#module-pyCBD.realtime.plotting" title="Permalink to this headline">¶</a></h1>
+<span id="pycbd-realtime-plotting-module"></span><h1>pyCBD.realtime.plotting module<a class="headerlink" href="#module-pyCBD.realtime.plotting" title="Link to this heading">¶</a></h1>
 <p>This module contains all classes and structures needed for live plotting of data via
 polling an object. While specifically made for the CBD simulator, it is independent
 of any internal workings.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="pyCBD.realtime.plotting.Backend">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyCBD.realtime.plotting.</span></span><span class="sig-name descname"><span class="pre">Backend</span></span><a class="reference internal" href="_modules/pyCBD/realtime/plotting.html#Backend"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyCBD.realtime.plotting.Backend" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyCBD.realtime.plotting.</span></span><span class="sig-name descname"><span class="pre">Backend</span></span><a class="reference internal" href="_modules/pyCBD/realtime/plotting.html#Backend"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyCBD.realtime.plotting.Backend" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>In which framework the plots need to be made.</p>
 <div class="admonition note">
@@ -63,29 +61,29 @@ of any internal workings.</p>
 </div>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="pyCBD.realtime.plotting.Backend.MPL">
-<span class="sig-name descname"><span class="pre">MPL</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></em><a class="headerlink" href="#pyCBD.realtime.plotting.Backend.MPL" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">MPL</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></em><a class="headerlink" href="#pyCBD.realtime.plotting.Backend.MPL" title="Link to this definition">¶</a></dt>
 <dd><p>Use <a class="reference external" href="https://matplotlib.org/">Matplotlib</a>.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="pyCBD.realtime.plotting.Backend.MATPLOTLIB">
-<span class="sig-name descname"><span class="pre">MATPLOTLIB</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></em><a class="headerlink" href="#pyCBD.realtime.plotting.Backend.MATPLOTLIB" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">MATPLOTLIB</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></em><a class="headerlink" href="#pyCBD.realtime.plotting.Backend.MATPLOTLIB" title="Link to this definition">¶</a></dt>
 <dd><p>Use <a class="reference external" href="https://matplotlib.org/">Matplotlib</a>.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="pyCBD.realtime.plotting.Backend.BKH">
-<span class="sig-name descname"><span class="pre">BKH</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">2</span></em><a class="headerlink" href="#pyCBD.realtime.plotting.Backend.BKH" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">BKH</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">2</span></em><a class="headerlink" href="#pyCBD.realtime.plotting.Backend.BKH" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="pyCBD.realtime.plotting.Backend.BOKEH">
-<span class="sig-name descname"><span class="pre">BOKEH</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">2</span></em><a class="headerlink" href="#pyCBD.realtime.plotting.Backend.BOKEH" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">BOKEH</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">2</span></em><a class="headerlink" href="#pyCBD.realtime.plotting.Backend.BOKEH" title="Link to this definition">¶</a></dt>
 <dd><p>Use <a class="reference external" href="//docs.bokeh.org/en/latest/index.html">Bokeh</a>.</p>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
 <p>For <code class="code docutils literal notranslate"><span class="pre">BOKEH</span></code>, a server must be started with:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>bokeh serve &lt;experiment file&gt;
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>bokeh<span class="w"> </span>serve<span class="w"> </span>&lt;experiment<span class="w"> </span>file&gt;
 </pre></div>
 </div>
 </div>
@@ -98,28 +96,28 @@ close events on a system. The plots will always remain active once started.</p>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="pyCBD.realtime.plotting.Backend.SNS">
-<span class="sig-name descname"><span class="pre">SNS</span></span><a class="headerlink" href="#pyCBD.realtime.plotting.Backend.SNS" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">SNS</span></span><a class="headerlink" href="#pyCBD.realtime.plotting.Backend.SNS" title="Link to this definition">¶</a></dt>
 <dd><p>Use <a class="reference external" href="https://seaborn.pydata.org/">Seaborn</a>.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="pyCBD.realtime.plotting.Backend.SEABORN">
-<span class="sig-name descname"><span class="pre">SEABORN</span></span><a class="headerlink" href="#pyCBD.realtime.plotting.Backend.SEABORN" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">SEABORN</span></span><a class="headerlink" href="#pyCBD.realtime.plotting.Backend.SEABORN" title="Link to this definition">¶</a></dt>
 <dd><p>Use <a class="reference external" href="https://seaborn.pydata.org/">Seaborn</a>.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pyCBD.realtime.plotting.Backend.exists">
-<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">exists</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyCBD/realtime/plotting.html#Backend.exists"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyCBD.realtime.plotting.Backend.exists" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">exists</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyCBD/realtime/plotting.html#Backend.exists"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyCBD.realtime.plotting.Backend.exists" title="Link to this definition">¶</a></dt>
 <dd><p>Checks that a given backend exists.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pyCBD.realtime.plotting.Backend.compare">
-<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">compare</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyCBD/realtime/plotting.html#Backend.compare"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyCBD.realtime.plotting.Backend.compare" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">compare</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyCBD/realtime/plotting.html#Backend.compare"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyCBD.realtime.plotting.Backend.compare" title="Link to this definition">¶</a></dt>
 <dd><p>Compares the value against a backend name.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>name</strong> (<em>str</em>) – The name of the backend to check for.</p></li>
 <li><p><strong>value</strong> (<em>int</em>) – The value to compare.</p></li>
@@ -130,10 +128,10 @@ close events on a system. The plots will always remain active once started.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pyCBD.realtime.plotting.Backend.get">
-<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyCBD/realtime/plotting.html#Backend.get"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyCBD.realtime.plotting.Backend.get" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyCBD/realtime/plotting.html#Backend.get"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyCBD.realtime.plotting.Backend.get" title="Link to this definition">¶</a></dt>
 <dd><p>Gets the backend with a specific name if it exists and if it’s installed.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>name</strong> (<em>str</em>) – The name of the backend to get.</p>
 </dd>
 </dl>
@@ -143,7 +141,7 @@ close events on a system. The plots will always remain active once started.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="pyCBD.realtime.plotting.PlotHandler">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyCBD.realtime.plotting.</span></span><span class="sig-name descname"><span class="pre">PlotHandler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">object</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">figure</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kind</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">backend</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interval</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">frames</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">static</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyCBD/realtime/plotting.html#PlotHandler"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyCBD.realtime.plotting.PlotHandler" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyCBD.realtime.plotting.</span></span><span class="sig-name descname"><span class="pre">PlotHandler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">object</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">figure</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kind</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">backend</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interval</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">frames</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">static</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyCBD/realtime/plotting.html#PlotHandler"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyCBD.realtime.plotting.PlotHandler" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Handles Real-Time plotting, independent of a plotting framework.</p>
 <p>Every <code class="code docutils literal notranslate"><span class="pre">interval</span></code> time, data will be polled from the <code class="code docutils literal notranslate"><span class="pre">object</span></code>,
@@ -166,10 +164,10 @@ overhead in your code.</p>
 <p>Bokeh is still in active development. Not all features will work as required.</p>
 </div>
 <dl class="field-list simple">
-<dt class="field-odd">Raises</dt>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>AssertionError</strong> – if the backend cannot be located.</p>
 </dd>
-<dt class="field-even">Parameters</dt>
+<dt class="field-even">Parameters<span class="colon">:</span></dt>
 <dd class="field-even"><ul class="simple">
 <li><p><strong>object</strong> (<em>Any</em>) – The object from which data needs to be polled. By default,
 the <code class="code docutils literal notranslate"><span class="pre">data_xy</span></code> attribute will be used on the object,
@@ -207,7 +205,7 @@ animation needs to be saved.</p></li>
 </div>
 <dl class="py method">
 <dt class="sig sig-object py" id="pyCBD.realtime.plotting.PlotHandler.signal">
-<span class="sig-name descname"><span class="pre">signal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyCBD/realtime/plotting.html#PlotHandler.signal"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyCBD.realtime.plotting.PlotHandler.signal" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">signal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyCBD/realtime/plotting.html#PlotHandler.signal"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyCBD.realtime.plotting.PlotHandler.signal" title="Link to this definition">¶</a></dt>
 <dd><p>Raise a signal with a specific name and arguments.</p>
 <p>The accepted signals are:</p>
 <ul class="simple">
@@ -223,7 +221,7 @@ are associated with this event.</p></li>
 <p>Normally, users do not need to call this function.</p>
 </div>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>name</strong> (<em>str</em>) – The name of the signal to raise.</p></li>
 <li><p><strong>*args</strong> – Additional arguments to pass to the connected events.</p></li>
@@ -242,7 +240,7 @@ are associated with this event.</p></li>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pyCBD.realtime.plotting.PlotHandler.connect">
-<span class="sig-name descname"><span class="pre">connect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">function</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyCBD/realtime/plotting.html#PlotHandler.connect"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyCBD.realtime.plotting.PlotHandler.connect" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">connect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">function</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyCBD/realtime/plotting.html#PlotHandler.connect"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyCBD.realtime.plotting.PlotHandler.connect" title="Link to this definition">¶</a></dt>
 <dd><p>Connect an event with an additional function.
 Useful for e.g. updating the plot axes w.r.t. the data.</p>
 <p>The functions will be called in the order they were connected to the
@@ -256,7 +254,7 @@ new plot data that has been polled.</p></li>
 are associated with this event.</p></li>
 </ul>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>name</strong> (<em>str</em>) – The name of the signal to raise.</p></li>
 <li><p><strong>function</strong> – A function that will be called with the optional arguments
@@ -276,11 +274,11 @@ whenever the event is raised.</p></li>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pyCBD.realtime.plotting.PlotHandler.set_data_getter">
-<span class="sig-name descname"><span class="pre">set_data_getter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">function</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyCBD/realtime/plotting.html#PlotHandler.set_data_getter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyCBD.realtime.plotting.PlotHandler.set_data_getter" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">set_data_getter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">function</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyCBD/realtime/plotting.html#PlotHandler.set_data_getter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyCBD.realtime.plotting.PlotHandler.set_data_getter" title="Link to this definition">¶</a></dt>
 <dd><p>Sets the data getter function call. By default, the <code class="code docutils literal notranslate"><span class="pre">data_xy</span></code> attribute
 is polled, but this function provides the flexibility to alter this behaviour.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>function</strong> – The function to obtain the data. Takes the <code class="code docutils literal notranslate"><span class="pre">object</span></code> as an
 input and should return a 2xN array in the form of
 <code class="code docutils literal notranslate"><span class="pre">[[x1,</span> <span class="pre">x2,</span> <span class="pre">x3...],</span> <span class="pre">[y1,</span> <span class="pre">y2,</span> <span class="pre">y3...]]</span></code>.</p>
@@ -290,19 +288,19 @@ input and should return a 2xN array in the form of
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pyCBD.realtime.plotting.PlotHandler.get_data">
-<span class="sig-name descname"><span class="pre">get_data</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyCBD/realtime/plotting.html#PlotHandler.get_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyCBD.realtime.plotting.PlotHandler.get_data" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">get_data</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyCBD/realtime/plotting.html#PlotHandler.get_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyCBD.realtime.plotting.PlotHandler.get_data" title="Link to this definition">¶</a></dt>
 <dd><p>Actually gets the data from the object.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pyCBD.realtime.plotting.PlotHandler.get_animation">
-<span class="sig-name descname"><span class="pre">get_animation</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyCBD/realtime/plotting.html#PlotHandler.get_animation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyCBD.realtime.plotting.PlotHandler.get_animation" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">get_animation</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyCBD/realtime/plotting.html#PlotHandler.get_animation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyCBD.realtime.plotting.PlotHandler.get_animation" title="Link to this definition">¶</a></dt>
 <dd><p>Returns the animation object, if MatPlotLib is used as a backend.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pyCBD.realtime.plotting.PlotHandler.close_event">
-<span class="sig-name descname"><span class="pre">close_event</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyCBD/realtime/plotting.html#PlotHandler.close_event"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyCBD.realtime.plotting.PlotHandler.close_event" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">close_event</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyCBD/realtime/plotting.html#PlotHandler.close_event"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyCBD.realtime.plotting.PlotHandler.close_event" title="Link to this definition">¶</a></dt>
 <dd><p>Closes the plot/figure associated with this handler.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
@@ -312,37 +310,37 @@ input and should return a 2xN array in the form of
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pyCBD.realtime.plotting.PlotHandler.is_opened">
-<span class="sig-name descname"><span class="pre">is_opened</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyCBD/realtime/plotting.html#PlotHandler.is_opened"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyCBD.realtime.plotting.PlotHandler.is_opened" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">is_opened</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyCBD/realtime/plotting.html#PlotHandler.is_opened"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyCBD.realtime.plotting.PlotHandler.is_opened" title="Link to this definition">¶</a></dt>
 <dd><p>Checks if the plots are still open.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pyCBD.realtime.plotting.PlotHandler.update">
-<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyCBD/realtime/plotting.html#PlotHandler.update"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyCBD.realtime.plotting.PlotHandler.update" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyCBD/realtime/plotting.html#PlotHandler.update"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyCBD.realtime.plotting.PlotHandler.update" title="Link to this definition">¶</a></dt>
 <dd><p>Updates the plot information.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pyCBD.realtime.plotting.PlotHandler.stop">
-<span class="sig-name descname"><span class="pre">stop</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyCBD/realtime/plotting.html#PlotHandler.stop"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyCBD.realtime.plotting.PlotHandler.stop" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">stop</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyCBD/realtime/plotting.html#PlotHandler.stop"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyCBD.realtime.plotting.PlotHandler.stop" title="Link to this definition">¶</a></dt>
 <dd><p>Requests the process to finish polling.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pyCBD.realtime.plotting.PlotHandler.terminate">
-<span class="sig-name descname"><span class="pre">terminate</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyCBD/realtime/plotting.html#PlotHandler.terminate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyCBD.realtime.plotting.PlotHandler.terminate" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">terminate</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyCBD/realtime/plotting.html#PlotHandler.terminate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyCBD.realtime.plotting.PlotHandler.terminate" title="Link to this definition">¶</a></dt>
 <dd><p>Terminate the animation and close the plot.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pyCBD.realtime.plotting.PlotHandler.set_kind_args">
-<span class="sig-name descname"><span class="pre">set_kind_args</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyCBD/realtime/plotting.html#PlotHandler.set_kind_args"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyCBD.realtime.plotting.PlotHandler.set_kind_args" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">set_kind_args</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyCBD/realtime/plotting.html#PlotHandler.set_kind_args"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyCBD.realtime.plotting.PlotHandler.set_kind_args" title="Link to this definition">¶</a></dt>
 <dd><p>Sets the (keyword) arguments used for the plot.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pyCBD.realtime.plotting.PlotHandler.hide">
-<span class="sig-name descname"><span class="pre">hide</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyCBD/realtime/plotting.html#PlotHandler.hide"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyCBD.realtime.plotting.PlotHandler.hide" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">hide</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyCBD/realtime/plotting.html#PlotHandler.hide"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyCBD.realtime.plotting.PlotHandler.hide" title="Link to this definition">¶</a></dt>
 <dd><p>Hides the plot in the view.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
@@ -355,7 +353,7 @@ input and should return a 2xN array in the form of
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pyCBD.realtime.plotting.PlotHandler.show">
-<span class="sig-name descname"><span class="pre">show</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyCBD/realtime/plotting.html#PlotHandler.show"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyCBD.realtime.plotting.PlotHandler.show" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">show</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyCBD/realtime/plotting.html#PlotHandler.show"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyCBD.realtime.plotting.PlotHandler.show" title="Link to this definition">¶</a></dt>
 <dd><p>Shows the plot in the view.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
@@ -368,7 +366,7 @@ input and should return a 2xN array in the form of
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pyCBD.realtime.plotting.PlotHandler.toggle">
-<span class="sig-name descname"><span class="pre">toggle</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyCBD/realtime/plotting.html#PlotHandler.toggle"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyCBD.realtime.plotting.PlotHandler.toggle" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">toggle</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyCBD/realtime/plotting.html#PlotHandler.toggle"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyCBD.realtime.plotting.PlotHandler.toggle" title="Link to this definition">¶</a></dt>
 <dd><p>Toggles between hiding and showing the plot in the view.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
@@ -383,12 +381,12 @@ input and should return a 2xN array in the form of
 
 <dl class="py function">
 <dt class="sig sig-object py" id="pyCBD.realtime.plotting.follow">
-<span class="sig-prename descclassname"><span class="pre">pyCBD.realtime.plotting.</span></span><span class="sig-name descname"><span class="pre">follow</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lower_bound</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-</span> <span class="pre">inf</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">upper_bound</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">inf</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lower_lim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">upper_lim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">perc_keep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyCBD/realtime/plotting.html#follow"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyCBD.realtime.plotting.follow" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">pyCBD.realtime.plotting.</span></span><span class="sig-name descname"><span class="pre">follow</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lower_bound</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-inf</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">upper_bound</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">inf</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lower_lim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">upper_lim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">perc_keep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyCBD/realtime/plotting.html#follow"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyCBD.realtime.plotting.follow" title="Link to this definition">¶</a></dt>
 <dd><p>Compute the new limits for the given dataset if the last data point must be followed.
 This is a convenience function for updating the plotting axes’ limits. Whenever not
 enough data is available, the axis won’t scale down.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>data</strong> (<em>list</em>) – The data that must be plotted on the axes. Can be a
 shortened version of only the final n values (n &gt; 0).</p></li>
@@ -463,14 +461,14 @@ Defaults to <code class="code docutils literal notranslate"><span class="pre">0.
 
 <dl class="py class">
 <dt class="sig sig-object py" id="pyCBD.realtime.plotting.PlotKind">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyCBD.realtime.plotting.</span></span><span class="sig-name descname"><span class="pre">PlotKind</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyCBD/realtime/plotting.html#PlotKind"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyCBD.realtime.plotting.PlotKind" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyCBD.realtime.plotting.</span></span><span class="sig-name descname"><span class="pre">PlotKind</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyCBD/realtime/plotting.html#PlotKind"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyCBD.realtime.plotting.PlotKind" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>The kind of plot that needs to be rendered. This class is an abstract superclass.</p>
 <p>Not all backends provide the same functionality for plotting the same shape.
 This class provides a wrapper around all those functionalities to allow for users
 that they only need to change the figure information.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>*args</strong> – <p>The arguments to add to the ‘shape’, excluding the data points.</p>
 <div class="admonition note">
@@ -493,16 +491,16 @@ that they only need to change the figure information.</p>
 </div>
 <dl class="py method">
 <dt class="sig sig-object py" id="pyCBD.realtime.plotting.PlotKind.is_backend">
-<span class="sig-name descname"><span class="pre">is_backend</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">backends</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyCBD/realtime/plotting.html#PlotKind.is_backend"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyCBD.realtime.plotting.PlotKind.is_backend" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">is_backend</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">backends</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyCBD/realtime/plotting.html#PlotKind.is_backend"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyCBD.realtime.plotting.PlotKind.is_backend" title="Link to this definition">¶</a></dt>
 <dd><p>Checks the backend for the plot.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pyCBD.realtime.plotting.PlotKind.create">
-<span class="sig-name descname"><span class="pre">create</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">figure</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyCBD/realtime/plotting.html#PlotKind.create"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyCBD.realtime.plotting.PlotKind.create" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">create</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">figure</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyCBD/realtime/plotting.html#PlotKind.create"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyCBD.realtime.plotting.PlotKind.create" title="Link to this definition">¶</a></dt>
 <dd><p>Called when the figure is first created in the manager.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>The ‘shape’ information that is created on the plot.</p>
 </dd>
 </dl>
@@ -510,10 +508,10 @@ that they only need to change the figure information.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pyCBD.realtime.plotting.PlotKind.update">
-<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">element</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyCBD/realtime/plotting.html#PlotKind.update"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyCBD.realtime.plotting.PlotKind.update" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">element</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyCBD/realtime/plotting.html#PlotKind.update"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyCBD.realtime.plotting.PlotKind.update" title="Link to this definition">¶</a></dt>
 <dd><p>Called when the figure is updated in the manager.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>element</strong> – The shape that was returned from the <a class="reference internal" href="#pyCBD.realtime.plotting.PlotKind.create" title="pyCBD.realtime.plotting.PlotKind.create"><code class="xref py py-func docutils literal notranslate"><span class="pre">PlotKind.create()</span></code></a>
 method.</p></li>
@@ -527,8 +525,8 @@ method.</p></li>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="pyCBD.realtime.plotting.LinePlot">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyCBD.realtime.plotting.</span></span><span class="sig-name descname"><span class="pre">LinePlot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyCBD/realtime/plotting.html#LinePlot"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyCBD.realtime.plotting.LinePlot" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#pyCBD.realtime.plotting.PlotKind" title="pyCBD.realtime.plotting.PlotKind"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyCBD.realtime.plotting.PlotKind</span></code></a></p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyCBD.realtime.plotting.</span></span><span class="sig-name descname"><span class="pre">LinePlot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyCBD/realtime/plotting.html#LinePlot"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyCBD.realtime.plotting.LinePlot" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pyCBD.realtime.plotting.PlotKind" title="pyCBD.realtime.plotting.PlotKind"><code class="xref py py-class docutils literal notranslate"><span class="pre">PlotKind</span></code></a></p>
 <p>Draws a line between all given coordinates.</p>
 <dl class="simple">
 <dt>Backend Information:</dt><dd><ul class="simple">
@@ -540,10 +538,10 @@ method.</p></li>
 </dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="pyCBD.realtime.plotting.LinePlot.create">
-<span class="sig-name descname"><span class="pre">create</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">figure</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyCBD/realtime/plotting.html#LinePlot.create"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyCBD.realtime.plotting.LinePlot.create" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">create</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">figure</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyCBD/realtime/plotting.html#LinePlot.create"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyCBD.realtime.plotting.LinePlot.create" title="Link to this definition">¶</a></dt>
 <dd><p>Called when the figure is first created in the manager.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>The ‘shape’ information that is created on the plot.</p>
 </dd>
 </dl>
@@ -551,10 +549,10 @@ method.</p></li>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pyCBD.realtime.plotting.LinePlot.update">
-<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">element</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyCBD/realtime/plotting.html#LinePlot.update"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyCBD.realtime.plotting.LinePlot.update" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">element</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyCBD/realtime/plotting.html#LinePlot.update"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyCBD.realtime.plotting.LinePlot.update" title="Link to this definition">¶</a></dt>
 <dd><p>Called when the figure is updated in the manager.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>element</strong> – The shape that was returned from the <a class="reference internal" href="#pyCBD.realtime.plotting.PlotKind.create" title="pyCBD.realtime.plotting.PlotKind.create"><code class="xref py py-func docutils literal notranslate"><span class="pre">PlotKind.create()</span></code></a>
 method.</p></li>
@@ -568,8 +566,8 @@ method.</p></li>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="pyCBD.realtime.plotting.StepPlot">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyCBD.realtime.plotting.</span></span><span class="sig-name descname"><span class="pre">StepPlot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyCBD/realtime/plotting.html#StepPlot"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyCBD.realtime.plotting.StepPlot" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#pyCBD.realtime.plotting.PlotKind" title="pyCBD.realtime.plotting.PlotKind"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyCBD.realtime.plotting.PlotKind</span></code></a></p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyCBD.realtime.plotting.</span></span><span class="sig-name descname"><span class="pre">StepPlot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyCBD/realtime/plotting.html#StepPlot"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyCBD.realtime.plotting.StepPlot" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pyCBD.realtime.plotting.PlotKind" title="pyCBD.realtime.plotting.PlotKind"><code class="xref py py-class docutils literal notranslate"><span class="pre">PlotKind</span></code></a></p>
 <p>Draws a stepped line between all given coordinates.
 See the corresponding backend information to change the step “levels”.</p>
 <dl class="simple">
@@ -582,10 +580,10 @@ See the corresponding backend information to change the step “levels”.</p>
 </dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="pyCBD.realtime.plotting.StepPlot.create">
-<span class="sig-name descname"><span class="pre">create</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">figure</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyCBD/realtime/plotting.html#StepPlot.create"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyCBD.realtime.plotting.StepPlot.create" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">create</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">figure</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyCBD/realtime/plotting.html#StepPlot.create"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyCBD.realtime.plotting.StepPlot.create" title="Link to this definition">¶</a></dt>
 <dd><p>Called when the figure is first created in the manager.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>The ‘shape’ information that is created on the plot.</p>
 </dd>
 </dl>
@@ -593,10 +591,10 @@ See the corresponding backend information to change the step “levels”.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pyCBD.realtime.plotting.StepPlot.update">
-<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">element</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyCBD/realtime/plotting.html#StepPlot.update"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyCBD.realtime.plotting.StepPlot.update" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">element</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyCBD/realtime/plotting.html#StepPlot.update"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyCBD.realtime.plotting.StepPlot.update" title="Link to this definition">¶</a></dt>
 <dd><p>Called when the figure is updated in the manager.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>element</strong> – The shape that was returned from the <a class="reference internal" href="#pyCBD.realtime.plotting.PlotKind.create" title="pyCBD.realtime.plotting.PlotKind.create"><code class="xref py py-func docutils literal notranslate"><span class="pre">PlotKind.create()</span></code></a>
 method.</p></li>
@@ -610,8 +608,8 @@ method.</p></li>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="pyCBD.realtime.plotting.ScatterPlot">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyCBD.realtime.plotting.</span></span><span class="sig-name descname"><span class="pre">ScatterPlot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyCBD/realtime/plotting.html#ScatterPlot"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyCBD.realtime.plotting.ScatterPlot" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#pyCBD.realtime.plotting.PlotKind" title="pyCBD.realtime.plotting.PlotKind"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyCBD.realtime.plotting.PlotKind</span></code></a></p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyCBD.realtime.plotting.</span></span><span class="sig-name descname"><span class="pre">ScatterPlot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyCBD/realtime/plotting.html#ScatterPlot"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyCBD.realtime.plotting.ScatterPlot" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pyCBD.realtime.plotting.PlotKind" title="pyCBD.realtime.plotting.PlotKind"><code class="xref py py-class docutils literal notranslate"><span class="pre">PlotKind</span></code></a></p>
 <p>Draws all given coordinates as points in a 2D space.
 See the corresponding backend information to change the shape of the indicators.</p>
 <dl class="simple">
@@ -624,10 +622,10 @@ See the corresponding backend information to change the shape of the indicators.
 </dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="pyCBD.realtime.plotting.ScatterPlot.create">
-<span class="sig-name descname"><span class="pre">create</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">figure</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyCBD/realtime/plotting.html#ScatterPlot.create"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyCBD.realtime.plotting.ScatterPlot.create" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">create</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">figure</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyCBD/realtime/plotting.html#ScatterPlot.create"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyCBD.realtime.plotting.ScatterPlot.create" title="Link to this definition">¶</a></dt>
 <dd><p>Called when the figure is first created in the manager.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>The ‘shape’ information that is created on the plot.</p>
 </dd>
 </dl>
@@ -635,10 +633,10 @@ See the corresponding backend information to change the shape of the indicators.
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pyCBD.realtime.plotting.ScatterPlot.update">
-<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">element</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyCBD/realtime/plotting.html#ScatterPlot.update"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyCBD.realtime.plotting.ScatterPlot.update" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">element</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyCBD/realtime/plotting.html#ScatterPlot.update"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyCBD.realtime.plotting.ScatterPlot.update" title="Link to this definition">¶</a></dt>
 <dd><p>Called when the figure is updated in the manager.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>element</strong> – The shape that was returned from the <a class="reference internal" href="#pyCBD.realtime.plotting.PlotKind.create" title="pyCBD.realtime.plotting.PlotKind.create"><code class="xref py py-func docutils literal notranslate"><span class="pre">PlotKind.create()</span></code></a>
 method.</p></li>
@@ -652,8 +650,8 @@ method.</p></li>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="pyCBD.realtime.plotting.Arrow">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyCBD.realtime.plotting.</span></span><span class="sig-name descname"><span class="pre">Arrow</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">position</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyCBD/realtime/plotting.html#Arrow"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyCBD.realtime.plotting.Arrow" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#pyCBD.realtime.plotting.PlotKind" title="pyCBD.realtime.plotting.PlotKind"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyCBD.realtime.plotting.PlotKind</span></code></a></p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyCBD.realtime.plotting.</span></span><span class="sig-name descname"><span class="pre">Arrow</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">position</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyCBD/realtime/plotting.html#Arrow"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyCBD.realtime.plotting.Arrow" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pyCBD.realtime.plotting.PlotKind" title="pyCBD.realtime.plotting.PlotKind"><code class="xref py py-class docutils literal notranslate"><span class="pre">PlotKind</span></code></a></p>
 <p>Draws a “direction” arrow at a position, indicative of an angle.
 This <a class="reference internal" href="#pyCBD.realtime.plotting.PlotKind" title="pyCBD.realtime.plotting.PlotKind"><code class="xref py py-class docutils literal notranslate"><span class="pre">PlotKind</span></code></a> assumes that the y-component indicates the
 angle.</p>
@@ -667,10 +665,10 @@ angle.</p>
 </dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="pyCBD.realtime.plotting.Arrow.create">
-<span class="sig-name descname"><span class="pre">create</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">figure</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyCBD/realtime/plotting.html#Arrow.create"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyCBD.realtime.plotting.Arrow.create" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">create</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">figure</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyCBD/realtime/plotting.html#Arrow.create"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyCBD.realtime.plotting.Arrow.create" title="Link to this definition">¶</a></dt>
 <dd><p>Called when the figure is first created in the manager.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>The ‘shape’ information that is created on the plot.</p>
 </dd>
 </dl>
@@ -678,10 +676,10 @@ angle.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pyCBD.realtime.plotting.Arrow.update">
-<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">element</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyCBD/realtime/plotting.html#Arrow.update"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyCBD.realtime.plotting.Arrow.update" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">element</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyCBD/realtime/plotting.html#Arrow.update"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyCBD.realtime.plotting.Arrow.update" title="Link to this definition">¶</a></dt>
 <dd><p>Called when the figure is updated in the manager.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>element</strong> – The shape that was returned from the <a class="reference internal" href="#pyCBD.realtime.plotting.PlotKind.create" title="pyCBD.realtime.plotting.PlotKind.create"><code class="xref py py-func docutils literal notranslate"><span class="pre">PlotKind.create()</span></code></a>
 method.</p></li>
@@ -695,15 +693,15 @@ method.</p></li>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="pyCBD.realtime.plotting.PlotManager">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyCBD.realtime.plotting.</span></span><span class="sig-name descname"><span class="pre">PlotManager</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">backend</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyCBD/realtime/plotting.html#PlotManager"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyCBD.realtime.plotting.PlotManager" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyCBD.realtime.plotting.</span></span><span class="sig-name descname"><span class="pre">PlotManager</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">backend</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyCBD/realtime/plotting.html#PlotManager"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyCBD.realtime.plotting.PlotManager" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Manages multiple <a class="reference internal" href="#pyCBD.realtime.plotting.PlotHandler" title="pyCBD.realtime.plotting.PlotHandler"><code class="xref py py-class docutils literal notranslate"><span class="pre">PlotHandler</span></code></a> instances.
 Use this class as a centralized unit to manage one or more plots in the system.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>backend</strong> (<a class="reference internal" href="#pyCBD.realtime.plotting.Backend" title="pyCBD.realtime.plotting.Backend"><em>Backend</em></a>) – The backend to use.</p>
 </dd>
-<dt class="field-even">Raises</dt>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>AssertionError</strong> – if the backend cannot be located.</p>
 </dd>
 </dl>
@@ -716,22 +714,22 @@ Use this class as a centralized unit to manage one or more plots in the system.<
 </div>
 <dl class="py method">
 <dt class="sig sig-object py" id="pyCBD.realtime.plotting.PlotManager.is_opened">
-<span class="sig-name descname"><span class="pre">is_opened</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyCBD/realtime/plotting.html#PlotManager.is_opened"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyCBD.realtime.plotting.PlotManager.is_opened" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">is_opened</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyCBD/realtime/plotting.html#PlotManager.is_opened"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyCBD.realtime.plotting.PlotManager.is_opened" title="Link to this definition">¶</a></dt>
 <dd><p>Checks if there is at least a single plot left open.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pyCBD.realtime.plotting.PlotManager.all_opened">
-<span class="sig-name descname"><span class="pre">all_opened</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyCBD/realtime/plotting.html#PlotManager.all_opened"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyCBD.realtime.plotting.PlotManager.all_opened" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">all_opened</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyCBD/realtime/plotting.html#PlotManager.all_opened"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyCBD.realtime.plotting.PlotManager.all_opened" title="Link to this definition">¶</a></dt>
 <dd><p>Checks if all plots are still open.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pyCBD.realtime.plotting.PlotManager.register">
-<span class="sig-name descname"><span class="pre">register</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">object</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">figure</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kind</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyCBD/realtime/plotting.html#PlotManager.register"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyCBD.realtime.plotting.PlotManager.register" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">register</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">object</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">figure</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kind</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyCBD/realtime/plotting.html#PlotManager.register"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyCBD.realtime.plotting.PlotManager.register" title="Link to this definition">¶</a></dt>
 <dd><p>Register a single <a class="reference internal" href="#pyCBD.realtime.plotting.PlotHandler" title="pyCBD.realtime.plotting.PlotHandler"><code class="xref py py-class docutils literal notranslate"><span class="pre">PlotHandler</span></code></a> to plot information.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>name</strong> (<em>str</em>) – The name for this handler. Will be used to optionally
 access it afterwards.</p></li>
@@ -757,10 +755,10 @@ constructor.</p></li>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pyCBD.realtime.plotting.PlotManager.unregister">
-<span class="sig-name descname"><span class="pre">unregister</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyCBD/realtime/plotting.html#PlotManager.unregister"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyCBD.realtime.plotting.PlotManager.unregister" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">unregister</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyCBD/realtime/plotting.html#PlotManager.unregister"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyCBD.realtime.plotting.PlotManager.unregister" title="Link to this definition">¶</a></dt>
 <dd><p>Removes a single <a class="reference internal" href="#pyCBD.realtime.plotting.PlotHandler" title="pyCBD.realtime.plotting.PlotHandler"><code class="xref py py-class docutils literal notranslate"><span class="pre">PlotHandler</span></code></a> from the manager.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>name</strong> (<em>str</em>) – The identifying name for the handler.</p>
 </dd>
 </dl>
@@ -768,10 +766,10 @@ constructor.</p></li>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pyCBD.realtime.plotting.PlotManager.get">
-<span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyCBD/realtime/plotting.html#PlotManager.get"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyCBD.realtime.plotting.PlotManager.get" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyCBD/realtime/plotting.html#PlotManager.get"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyCBD.realtime.plotting.PlotManager.get" title="Link to this definition">¶</a></dt>
 <dd><p>Obtains a single <a class="reference internal" href="#pyCBD.realtime.plotting.PlotHandler" title="pyCBD.realtime.plotting.PlotHandler"><code class="xref py py-class docutils literal notranslate"><span class="pre">PlotHandler</span></code></a>, given its name.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>name</strong> (<em>str</em>) – The identifying name for the handler to obtain.</p>
 </dd>
 </dl>
@@ -779,10 +777,10 @@ constructor.</p></li>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pyCBD.realtime.plotting.PlotManager.connect">
-<span class="sig-name descname"><span class="pre">connect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">handler_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">event_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">function</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyCBD/realtime/plotting.html#PlotManager.connect"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyCBD.realtime.plotting.PlotManager.connect" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">connect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">handler_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">event_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">function</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyCBD/realtime/plotting.html#PlotManager.connect"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyCBD.realtime.plotting.PlotManager.connect" title="Link to this definition">¶</a></dt>
 <dd><p>Connect an event to a specific handler.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>handler_name</strong> (<em>str</em>) – The identifying name for the handler.</p></li>
 <li><p><strong>event_name</strong> (<em>str</em>) – The name for the event.</p></li>
@@ -801,19 +799,19 @@ constructor.</p></li>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pyCBD.realtime.plotting.PlotManager.terminate">
-<span class="sig-name descname"><span class="pre">terminate</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyCBD/realtime/plotting.html#PlotManager.terminate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyCBD.realtime.plotting.PlotManager.terminate" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">terminate</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyCBD/realtime/plotting.html#PlotManager.terminate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyCBD.realtime.plotting.PlotManager.terminate" title="Link to this definition">¶</a></dt>
 <dd><p>Forcibly terminate the manager and all its handlers.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pyCBD.realtime.plotting.PlotManager.stop">
-<span class="sig-name descname"><span class="pre">stop</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyCBD/realtime/plotting.html#PlotManager.stop"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyCBD.realtime.plotting.PlotManager.stop" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">stop</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyCBD/realtime/plotting.html#PlotManager.stop"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyCBD.realtime.plotting.PlotManager.stop" title="Link to this definition">¶</a></dt>
 <dd><p>Stop polling for all updates.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pyCBD.realtime.plotting.PlotManager.set_xlim">
-<span class="sig-name descname"><span class="pre">set_xlim</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">figure</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">values</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyCBD/realtime/plotting.html#PlotManager.set_xlim"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyCBD.realtime.plotting.PlotManager.set_xlim" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">set_xlim</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">figure</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">values</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyCBD/realtime/plotting.html#PlotManager.set_xlim"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyCBD.realtime.plotting.PlotManager.set_xlim" title="Link to this definition">¶</a></dt>
 <dd><p>Shorthand method for setting the x limits of the figure.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -821,7 +819,7 @@ constructor.</p></li>
 <a class="reference internal" href="#pyCBD.realtime.plotting.PlotManager.bokeh_set_xlim" title="pyCBD.realtime.plotting.PlotManager.bokeh_set_xlim"><code class="xref py py-meth docutils literal notranslate"><span class="pre">bokeh_set_xlim()</span></code></a> instead.</p>
 </div>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>figure</strong> – The figure to alter.</p></li>
 <li><p><strong>values</strong> (<em>tuple</em>) – The new limits for the x-axis.</p></li>
@@ -832,7 +830,7 @@ constructor.</p></li>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pyCBD.realtime.plotting.PlotManager.set_ylim">
-<span class="sig-name descname"><span class="pre">set_ylim</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">figure</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">values</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyCBD/realtime/plotting.html#PlotManager.set_ylim"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyCBD.realtime.plotting.PlotManager.set_ylim" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">set_ylim</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">figure</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">values</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyCBD/realtime/plotting.html#PlotManager.set_ylim"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyCBD.realtime.plotting.PlotManager.set_ylim" title="Link to this definition">¶</a></dt>
 <dd><p>Shorthand method for setting the y limits of the figure.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -840,7 +838,7 @@ constructor.</p></li>
 <a class="reference internal" href="#pyCBD.realtime.plotting.PlotManager.bokeh_set_ylim" title="pyCBD.realtime.plotting.PlotManager.bokeh_set_ylim"><code class="xref py py-meth docutils literal notranslate"><span class="pre">bokeh_set_ylim()</span></code></a> instead.</p>
 </div>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>figure</strong> – The figure to alter.</p></li>
 <li><p><strong>values</strong> (<em>tuple</em>) – The new limits for the y-axis.</p></li>
@@ -851,10 +849,10 @@ constructor.</p></li>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pyCBD.realtime.plotting.PlotManager.bokeh_set_xlim">
-<span class="sig-name descname"><span class="pre">bokeh_set_xlim</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">figure</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">doc</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">values</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyCBD/realtime/plotting.html#PlotManager.bokeh_set_xlim"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyCBD.realtime.plotting.PlotManager.bokeh_set_xlim" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">bokeh_set_xlim</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">figure</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">doc</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">values</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyCBD/realtime/plotting.html#PlotManager.bokeh_set_xlim"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyCBD.realtime.plotting.PlotManager.bokeh_set_xlim" title="Link to this definition">¶</a></dt>
 <dd><p>Helper function to set the x limits in Bokeh, as it should be called in a “safe” tick.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>figure</strong> – The figure to set the x limits for.</p></li>
 <li><p><strong>doc</strong> – The Bokeh document to which the figure belongs.</p></li>
@@ -866,10 +864,10 @@ constructor.</p></li>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pyCBD.realtime.plotting.PlotManager.bokeh_set_ylim">
-<span class="sig-name descname"><span class="pre">bokeh_set_ylim</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">figure</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">doc</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">values</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyCBD/realtime/plotting.html#PlotManager.bokeh_set_ylim"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyCBD.realtime.plotting.PlotManager.bokeh_set_ylim" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">bokeh_set_ylim</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">figure</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">doc</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">values</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyCBD/realtime/plotting.html#PlotManager.bokeh_set_ylim"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyCBD.realtime.plotting.PlotManager.bokeh_set_ylim" title="Link to this definition">¶</a></dt>
 <dd><p>Helper function to set the y limits in Bokeh, as it should be called in a “safe” tick.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>figure</strong> – The figure to set the y limits for.</p></li>
 <li><p><strong>doc</strong> – The Bokeh document to which the figure belongs.</p></li>
@@ -883,11 +881,11 @@ constructor.</p></li>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="pyCBD.realtime.plotting.plot">
-<span class="sig-prename descclassname"><span class="pre">pyCBD.realtime.plotting.</span></span><span class="sig-name descname"><span class="pre">plot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">object</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">figure</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kind</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">backend</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">margin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0.02,</span> <span class="pre">0.02)</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyCBD/realtime/plotting.html#plot"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyCBD.realtime.plotting.plot" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">pyCBD.realtime.plotting.</span></span><span class="sig-name descname"><span class="pre">plot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">object</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">figure</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kind</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">backend</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">margin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0.02,</span> <span class="pre">0.02)</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyCBD/realtime/plotting.html#plot"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyCBD.realtime.plotting.plot" title="Link to this definition">¶</a></dt>
 <dd><p>Plot data on a figure after the simulation has finished.
 This will automatically plot the full graph, so all axis scaling needs to be done afterwards.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>object</strong> (<em>Any</em>) – The object from which data needs to be polled. By default,
 the <code class="code docutils literal notranslate"><span class="pre">data_xy</span></code> attribute will be used on the object,
@@ -916,7 +914,7 @@ info.</p></li>
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
         <div class="sphinxsidebarwrapper">
 <h3><a href="index.html">Table of Contents</a></h3>
 <p class="caption" role="heading"><span class="caption-text">Setup</span></p>
@@ -969,7 +967,7 @@ info.</p></li>
     <p class="topless"><a href="pyCBD.realtime.threadingBackend.html"
                           title="next chapter">pyCBD.realtime.threadingBackend module</a></p>
   </div>
-<div id="searchbox" style="display: none" role="search">
+<search id="searchbox" style="display: none" role="search">
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
@@ -977,13 +975,13 @@ info.</p></li>
       <input type="submit" value="Go" />
     </form>
     </div>
-</div>
-<script>$('#searchbox').show(0);</script>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related" role="navigation" aria-label="related navigation">
+    <div class="related" role="navigation" aria-label="Related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -1005,8 +1003,8 @@ info.</p></li>
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2020, Randy Paredis.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
+    &#169; Copyright 2020, Randy Paredis.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.1.3.
     </div>
   </body>
 </html>

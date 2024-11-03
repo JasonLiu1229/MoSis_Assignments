@@ -1,26 +1,24 @@
-
 <!DOCTYPE html>
 
-<html>
+<html lang="en" data-content_root="./">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>pyCBD.loopsolvers.solver module &#8212; pyCBD Simulator  documentation</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/nature.css" />
-    <link rel="stylesheet" type="text/css" href="_static/style.css" />
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/math.js"></script>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="_static/nature.css?v=279e0f84" />
+    <link rel="stylesheet" type="text/css" href="_static/style.css?v=5d32c1a0" />
+    <script src="_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/math.js?v=af206e68"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="pyCBD.loopsolvers.linearsolver module" href="pyCBD.loopsolvers.linearsolver.html" />
     <link rel="prev" title="pyCBD.loopsolvers module" href="pyCBD.loopsolvers.html" /> 
   </head><body>
-    <div class="related" role="navigation" aria-label="related navigation">
+    <div class="related" role="navigation" aria-label="Related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -48,25 +46,25 @@
           <div class="body" role="main">
             
   <section id="module-pyCBD.loopsolvers.solver">
-<span id="pycbd-loopsolvers-solver-module"></span><h1>pyCBD.loopsolvers.solver module<a class="headerlink" href="#module-pyCBD.loopsolvers.solver" title="Permalink to this headline">¶</a></h1>
+<span id="pycbd-loopsolvers-solver-module"></span><h1>pyCBD.loopsolvers.solver module<a class="headerlink" href="#module-pyCBD.loopsolvers.solver" title="Link to this heading">¶</a></h1>
 <p>Algebraic loops can be complex to solve.
 This module provides a base class for all loop solvers.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="pyCBD.loopsolvers.solver.Solver">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyCBD.loopsolvers.solver.</span></span><span class="sig-name descname"><span class="pre">Solver</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">logger</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyCBD/loopsolvers/solver.html#Solver"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyCBD.loopsolvers.solver.Solver" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyCBD.loopsolvers.solver.</span></span><span class="sig-name descname"><span class="pre">Solver</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">logger</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyCBD/loopsolvers/solver.html#Solver"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyCBD.loopsolvers.solver.Solver" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Superclass that can solve algebraic loops.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>logger</strong> (<em>Logger</em>) – The logger to use.</p>
 </dd>
 </dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="pyCBD.loopsolvers.solver.Solver.checkValidity">
-<span class="sig-name descname"><span class="pre">checkValidity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">component</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyCBD/loopsolvers/solver.html#Solver.checkValidity"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyCBD.loopsolvers.solver.Solver.checkValidity" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">checkValidity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">component</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyCBD/loopsolvers/solver.html#Solver.checkValidity"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyCBD.loopsolvers.solver.Solver.checkValidity" title="Link to this definition">¶</a></dt>
 <dd><p>Checks the validity of an algebraic loop.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>path</strong> (<em>str</em>) – The path of the top-level block.</p></li>
 <li><p><strong>component</strong> (<em>list</em>) – The blocks in the algebraic loop.</p></li>
@@ -77,10 +75,10 @@ This module provides a base class for all loop solvers.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pyCBD.loopsolvers.solver.Solver.constructInput">
-<span class="sig-name descname"><span class="pre">constructInput</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">component</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">curIt</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyCBD/loopsolvers/solver.html#Solver.constructInput"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyCBD.loopsolvers.solver.Solver.constructInput" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">constructInput</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">component</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">curIt</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyCBD/loopsolvers/solver.html#Solver.constructInput"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyCBD.loopsolvers.solver.Solver.constructInput" title="Link to this definition">¶</a></dt>
 <dd><p>Constructs input for the solver.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>component</strong> (<em>list</em>) – The blocks in the algebraic loop.</p></li>
 <li><p><strong>curIt</strong> (<em>int</em>) – The current iteration of the simulation.</p></li>
@@ -95,10 +93,10 @@ This module provides a base class for all loop solvers.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pyCBD.loopsolvers.solver.Solver.solve">
-<span class="sig-name descname"><span class="pre">solve</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">solverInput</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyCBD/loopsolvers/solver.html#Solver.solve"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyCBD.loopsolvers.solver.Solver.solve" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">solve</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">solverInput</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyCBD/loopsolvers/solver.html#Solver.solve"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyCBD.loopsolvers.solver.Solver.solve" title="Link to this definition">¶</a></dt>
 <dd><p>Solves the algebraic loop.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>solverInput</strong> – The constructed input.</p>
 </dd>
 </dl>
@@ -117,7 +115,7 @@ This module provides a base class for all loop solvers.</p>
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
         <div class="sphinxsidebarwrapper">
 <h3><a href="index.html">Table of Contents</a></h3>
 <p class="caption" role="heading"><span class="caption-text">Setup</span></p>
@@ -170,7 +168,7 @@ This module provides a base class for all loop solvers.</p>
     <p class="topless"><a href="pyCBD.loopsolvers.linearsolver.html"
                           title="next chapter">pyCBD.loopsolvers.linearsolver module</a></p>
   </div>
-<div id="searchbox" style="display: none" role="search">
+<search id="searchbox" style="display: none" role="search">
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
@@ -178,13 +176,13 @@ This module provides a base class for all loop solvers.</p>
       <input type="submit" value="Go" />
     </form>
     </div>
-</div>
-<script>$('#searchbox').show(0);</script>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related" role="navigation" aria-label="related navigation">
+    <div class="related" role="navigation" aria-label="Related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -206,8 +204,8 @@ This module provides a base class for all loop solvers.</p>
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2020, Randy Paredis.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
+    &#169; Copyright 2020, Randy Paredis.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.1.3.
     </div>
   </body>
 </html>

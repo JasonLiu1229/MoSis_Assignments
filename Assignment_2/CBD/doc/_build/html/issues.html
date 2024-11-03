@@ -1,26 +1,24 @@
-
 <!DOCTYPE html>
 
-<html>
+<html lang="en" data-content_root="./">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Common Issues and Solutions &#8212; pyCBD Simulator  documentation</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/nature.css" />
-    <link rel="stylesheet" type="text/css" href="_static/style.css" />
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/math.js"></script>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="_static/nature.css?v=279e0f84" />
+    <link rel="stylesheet" type="text/css" href="_static/style.css?v=5d32c1a0" />
+    <script src="_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/math.js?v=af206e68"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Sine Generator" href="examples/SinGen.html" />
     <link rel="prev" title="Changelog" href="changelog.html" /> 
   </head><body>
-    <div class="related" role="navigation" aria-label="related navigation">
+    <div class="related" role="navigation" aria-label="Related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -46,24 +44,24 @@
           <div class="body" role="main">
             
   <section id="common-issues-and-solutions">
-<h1>Common Issues and Solutions<a class="headerlink" href="#common-issues-and-solutions" title="Permalink to this headline">¶</a></h1>
+<h1>Common Issues and Solutions<a class="headerlink" href="#common-issues-and-solutions" title="Link to this heading">¶</a></h1>
 <p>Not all models will simulate flawlessly. Some problems may arise upon the
 initialization of the model, or during the simulation itself. Below, the
 most common exceptions and/or issues are shown.</p>
 <section id="assertionerror-can-only-add-baseblock-subclass-instances-to-a-cbd">
-<h2>AssertionError: Can only add BaseBlock (subclass) instances to a CBD<a class="headerlink" href="#assertionerror-can-only-add-baseblock-subclass-instances-to-a-cbd" title="Permalink to this headline">¶</a></h2>
+<h2>AssertionError: Can only add BaseBlock (subclass) instances to a CBD<a class="headerlink" href="#assertionerror-can-only-add-baseblock-subclass-instances-to-a-cbd" title="Link to this heading">¶</a></h2>
 <p>This error is thrown whenever you try adding a block using the
 <a class="reference internal" href="pyCBD.Core.html#pyCBD.Core.CBD.addBlock" title="pyCBD.Core.CBD.addBlock"><code class="xref py py-func docutils literal notranslate"><span class="pre">pyCBD.Core.CBD.addBlock()</span></code></a> function if that block does <strong>not</strong> inherit from
 the <a class="reference internal" href="pyCBD.Core.html#pyCBD.Core.BaseBlock" title="pyCBD.Core.BaseBlock"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyCBD.Core.BaseBlock</span></code></a> class.</p>
 </section>
 <section id="notimplementederror-baseblock-has-nothing-to-compute">
-<h2>NotImplementedError: BaseBlock has nothing to compute<a class="headerlink" href="#notimplementederror-baseblock-has-nothing-to-compute" title="Permalink to this headline">¶</a></h2>
+<h2>NotImplementedError: BaseBlock has nothing to compute<a class="headerlink" href="#notimplementederror-baseblock-has-nothing-to-compute" title="Link to this heading">¶</a></h2>
 <p>When invalidly inheriting a <a class="reference internal" href="pyCBD.Core.html#pyCBD.Core.BaseBlock" title="pyCBD.Core.BaseBlock"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyCBD.Core.BaseBlock</span></code></a>, this error may occur.
 It is a consequence of not overwriting the <a class="reference internal" href="pyCBD.Core.html#pyCBD.Core.BaseBlock.compute" title="pyCBD.Core.BaseBlock.compute"><code class="xref py py-func docutils literal notranslate"><span class="pre">pyCBD.Core.BaseBlock.compute()</span></code></a>
 method.</p>
 </section>
 <section id="valueerror-specified-object-influencer-dependent-is-not-member-of-this-graph">
-<h2>ValueError: Specified object/influencer/dependent is not member of this graph<a class="headerlink" href="#valueerror-specified-object-influencer-dependent-is-not-member-of-this-graph" title="Permalink to this headline">¶</a></h2>
+<h2>ValueError: Specified object/influencer/dependent is not member of this graph<a class="headerlink" href="#valueerror-specified-object-influencer-dependent-is-not-member-of-this-graph" title="Link to this heading">¶</a></h2>
 <p>This issue is indicative of an error in the dependency graph construction. Usually,
 this is due to an invalid connection between blocks. Make sure to always connect
 blocks that have been added to the CBD model. I.e. always call
@@ -71,12 +69,12 @@ blocks that have been added to the CBD model. I.e. always call
 that includes the same block.</p>
 </section>
 <section id="keyerror-x">
-<h2>KeyError: ‘X’<a class="headerlink" href="#keyerror-x" title="Permalink to this headline">¶</a></h2>
+<h2>KeyError: ‘X’<a class="headerlink" href="#keyerror-x" title="Link to this heading">¶</a></h2>
 <p>This exception occurs if <code class="code docutils literal notranslate"><span class="pre">X</span></code> cannot be found. Make sure that <code class="code docutils literal notranslate"><span class="pre">X</span></code> is
 actually a block or a port in your model.</p>
 </section>
 <section id="cannot-solve-non-linear-algebraic-loop">
-<h2>Cannot solve non-linear algebraic loop.<a class="headerlink" href="#cannot-solve-non-linear-algebraic-loop" title="Permalink to this headline">¶</a></h2>
+<h2>Cannot solve non-linear algebraic loop.<a class="headerlink" href="#cannot-solve-non-linear-algebraic-loop" title="Link to this heading">¶</a></h2>
 <p>The internal solver of the CBD simulator is a simple <a class="reference external" href="https://en.wikipedia.org/wiki/Gaussian_elimination">Gaussian-Jordan Linear solver</a>
 (see <code class="xref py py-class docutils literal notranslate"><span class="pre">pyCBD.solver.GaussianJordanLinearSolver</span></code>) that uses row reduction to solve
 the algebraic loop. However, if this loop represents a non-linear system, the solver
@@ -87,12 +85,12 @@ the loop.</p>
 they can be used to solve the issue.</p>
 </section>
 <section id="warning-did-not-add-this-block-as-it-has-the-same-name-x-as-an-already-existing-block">
-<h2>Warning: did not add this block as it has the same name X as an already existing block<a class="headerlink" href="#warning-did-not-add-this-block-as-it-has-the-same-name-x-as-an-already-existing-block" title="Permalink to this headline">¶</a></h2>
+<h2>Warning: did not add this block as it has the same name X as an already existing block<a class="headerlink" href="#warning-did-not-add-this-block-as-it-has-the-same-name-x-as-an-already-existing-block" title="Link to this heading">¶</a></h2>
 <p>A warning that’s generated by the <a class="reference internal" href="pyCBD.Core.html#pyCBD.Core.CBD.addBlock" title="pyCBD.Core.CBD.addBlock"><code class="xref py py-func docutils literal notranslate"><span class="pre">pyCBD.Core.CBD.addBlock()</span></code></a> method if it shares the
 same name as an already existing block. This is meant to ensure uniqueness of names.</p>
 </section>
 <section id="importerror-cannot-import-name-clock-from-partially-initialized-module-pycbd-lib-std">
-<h2>ImportError: cannot import name ‘Clock’ from partially initialized module ‘pyCBD.lib.std’<a class="headerlink" href="#importerror-cannot-import-name-clock-from-partially-initialized-module-pycbd-lib-std" title="Permalink to this headline">¶</a></h2>
+<h2>ImportError: cannot import name ‘Clock’ from partially initialized module ‘pyCBD.lib.std’<a class="headerlink" href="#importerror-cannot-import-name-clock-from-partially-initialized-module-pycbd-lib-std" title="Link to this heading">¶</a></h2>
 <p>Before importing the standard library, it is important to also import the <a class="reference internal" href="pyCBD.Core.html#module-pyCBD.Core" title="pyCBD.Core"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pyCBD.Core</span></code></a>
 module. This will solve the circular dependency and dissipate the error.</p>
 </section>
@@ -103,7 +101,7 @@ module. This will solve the circular dependency and dissipate the error.</p>
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
         <div class="sphinxsidebarwrapper">
 <h3><a href="index.html">Table of Contents</a></h3>
 <p class="caption" role="heading"><span class="caption-text">Setup</span></p>
@@ -152,7 +150,7 @@ module. This will solve the circular dependency and dissipate the error.</p>
     <p class="topless"><a href="examples/SinGen.html"
                           title="next chapter">Sine Generator</a></p>
   </div>
-<div id="searchbox" style="display: none" role="search">
+<search id="searchbox" style="display: none" role="search">
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
@@ -160,13 +158,13 @@ module. This will solve the circular dependency and dissipate the error.</p>
       <input type="submit" value="Go" />
     </form>
     </div>
-</div>
-<script>$('#searchbox').show(0);</script>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related" role="navigation" aria-label="related navigation">
+    <div class="related" role="navigation" aria-label="Related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -186,8 +184,8 @@ module. This will solve the circular dependency and dissipate the error.</p>
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2020, Randy Paredis.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
+    &#169; Copyright 2020, Randy Paredis.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.1.3.
     </div>
   </body>
 </html>

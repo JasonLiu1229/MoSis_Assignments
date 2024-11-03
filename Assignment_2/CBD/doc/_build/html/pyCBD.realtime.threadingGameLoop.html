@@ -1,26 +1,24 @@
-
 <!DOCTYPE html>
 
-<html>
+<html lang="en" data-content_root="./">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>pyCBD.realtime.threadingGameLoop module &#8212; pyCBD Simulator  documentation</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/nature.css" />
-    <link rel="stylesheet" type="text/css" href="_static/style.css" />
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/math.js"></script>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="_static/nature.css?v=279e0f84" />
+    <link rel="stylesheet" type="text/css" href="_static/style.css?v=5d32c1a0" />
+    <script src="_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/math.js?v=af206e68"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="pyCBD.realtime.threadingGameLoopAlt module" href="pyCBD.realtime.threadingGameLoopAlt.html" />
     <link rel="prev" title="pyCBD.realtime.threadingBackend module" href="pyCBD.realtime.threadingBackend.html" /> 
   </head><body>
-    <div class="related" role="navigation" aria-label="related navigation">
+    <div class="related" role="navigation" aria-label="Related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -48,25 +46,25 @@
           <div class="body" role="main">
             
   <section id="module-pyCBD.realtime.threadingGameLoop">
-<span id="pycbd-realtime-threadinggameloop-module"></span><h1>pyCBD.realtime.threadingGameLoop module<a class="headerlink" href="#module-pyCBD.realtime.threadingGameLoop" title="Permalink to this headline">¶</a></h1>
+<span id="pycbd-realtime-threadinggameloop-module"></span><h1>pyCBD.realtime.threadingGameLoop module<a class="headerlink" href="#module-pyCBD.realtime.threadingGameLoop" title="Link to this heading">¶</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="pyCBD.realtime.threadingGameLoop.ThreadingGameLoop">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyCBD.realtime.threadingGameLoop.</span></span><span class="sig-name descname"><span class="pre">ThreadingGameLoop</span></span><a class="reference internal" href="_modules/pyCBD/realtime/threadingGameLoop.html#ThreadingGameLoop"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyCBD.realtime.threadingGameLoop.ThreadingGameLoop" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyCBD.realtime.threadingGameLoop.</span></span><span class="sig-name descname"><span class="pre">ThreadingGameLoop</span></span><a class="reference internal" href="_modules/pyCBD/realtime/threadingGameLoop.html#ThreadingGameLoop"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyCBD.realtime.threadingGameLoop.ThreadingGameLoop" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Game loop subsystem for realtime simulation.
 Time will only progress when a <a class="reference internal" href="#pyCBD.realtime.threadingGameLoop.ThreadingGameLoop.step" title="pyCBD.realtime.threadingGameLoop.ThreadingGameLoop.step"><code class="xref py py-func docutils literal notranslate"><span class="pre">step()</span></code></a> call is made.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="pyCBD.realtime.threadingGameLoop.ThreadingGameLoop.step">
-<span class="sig-name descname"><span class="pre">step</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyCBD/realtime/threadingGameLoop.html#ThreadingGameLoop.step"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyCBD.realtime.threadingGameLoop.ThreadingGameLoop.step" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">step</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyCBD/realtime/threadingGameLoop.html#ThreadingGameLoop.step"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyCBD.realtime.threadingGameLoop.ThreadingGameLoop.step" title="Link to this definition">¶</a></dt>
 <dd><p>Perform a step in the simulation.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pyCBD.realtime.threadingGameLoop.ThreadingGameLoop.wait">
-<span class="sig-name descname"><span class="pre">wait</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">delay</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">func</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyCBD/realtime/threadingGameLoop.html#ThreadingGameLoop.wait"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyCBD.realtime.threadingGameLoop.ThreadingGameLoop.wait" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">wait</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">delay</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">func</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyCBD/realtime/threadingGameLoop.html#ThreadingGameLoop.wait"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyCBD.realtime.threadingGameLoop.ThreadingGameLoop.wait" title="Link to this definition">¶</a></dt>
 <dd><p>Wait for the specified time, or faster if interrupted</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>delay</strong> (<em>float</em>) – Time to wait.</p></li>
 <li><p><strong>func</strong> (<em>callable</em>) – The function to call.</p></li>
@@ -84,7 +82,7 @@ Time will only progress when a <a class="reference internal" href="#pyCBD.realti
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
         <div class="sphinxsidebarwrapper">
 <h3><a href="index.html">Table of Contents</a></h3>
 <p class="caption" role="heading"><span class="caption-text">Setup</span></p>
@@ -137,7 +135,7 @@ Time will only progress when a <a class="reference internal" href="#pyCBD.realti
     <p class="topless"><a href="pyCBD.realtime.threadingGameLoopAlt.html"
                           title="next chapter">pyCBD.realtime.threadingGameLoopAlt module</a></p>
   </div>
-<div id="searchbox" style="display: none" role="search">
+<search id="searchbox" style="display: none" role="search">
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
@@ -145,13 +143,13 @@ Time will only progress when a <a class="reference internal" href="#pyCBD.realti
       <input type="submit" value="Go" />
     </form>
     </div>
-</div>
-<script>$('#searchbox').show(0);</script>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related" role="navigation" aria-label="related navigation">
+    <div class="related" role="navigation" aria-label="Related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -173,8 +171,8 @@ Time will only progress when a <a class="reference internal" href="#pyCBD.realti
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2020, Randy Paredis.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
+    &#169; Copyright 2020, Randy Paredis.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.1.3.
     </div>
   </body>
 </html>

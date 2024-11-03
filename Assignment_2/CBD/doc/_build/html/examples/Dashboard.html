@@ -1,27 +1,25 @@
-
 <!DOCTYPE html>
 
-<html>
+<html lang="en" data-content_root="../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>TkInter Dashboard with Editable Values &#8212; pyCBD Simulator  documentation</title>
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/nature.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/style.css" />
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/doctools.js"></script>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../_static/nature.css?v=279e0f84" />
+    <link rel="stylesheet" type="text/css" href="../_static/style.css?v=5d32c1a0" />
+    <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script src="../_static/math.js"></script>
+    <script src="../_static/math.js?v=af206e68"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Generate LaTeX from CBD Models" href="../pyCBD.converters.latexify.html" />
     <link rel="prev" title="Live Plotting of Data During the Simulation" href="LivePlot.html" /> 
   </head><body>
-    <div class="related" role="navigation" aria-label="related navigation">
+    <div class="related" role="navigation" aria-label="Related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -47,13 +45,13 @@
           <div class="body" role="main">
             
   <section id="tkinter-dashboard-with-editable-values">
-<h1>TkInter Dashboard with Editable Values<a class="headerlink" href="#tkinter-dashboard-with-editable-values" title="Permalink to this headline">¶</a></h1>
+<h1>TkInter Dashboard with Editable Values<a class="headerlink" href="#tkinter-dashboard-with-editable-values" title="Link to this heading">¶</a></h1>
 <p>Often, users would like to have interaction with certain values during the simulation.
 This reduces the need to run multiple simulations in which only small values need to
 be changed. Seeing as the simulator provides a way of interacting with TkInter, building
 such a dashboard is quite easy.</p>
 <section id="example-model">
-<h2>Example Model<a class="headerlink" href="#example-model" title="Permalink to this headline">¶</a></h2>
+<h2>Example Model<a class="headerlink" href="#example-model" title="Link to this heading">¶</a></h2>
 <p>The normal <a class="reference internal" href="SinGen.html"><span class="doc">Sine Generator</span></a> will be slightly extended to comply to the following (more generic)
 formula:</p>
 <div class="math notranslate nohighlight">
@@ -88,7 +86,7 @@ formula:</p>
 </div>
 </section>
 <section id="the-dashboard">
-<h2>The Dashboard<a class="headerlink" href="#the-dashboard" title="Permalink to this headline">¶</a></h2>
+<h2>The Dashboard<a class="headerlink" href="#the-dashboard" title="Link to this heading">¶</a></h2>
 <p>As per <a class="reference internal" href="LivePlot.html"><span class="doc">Live Plotting of Data During the Simulation</span></a>, a TkInter window is being created and a <code class="xref py py-class docutils literal notranslate"><span class="pre">CBD.realtime.plotting.PlotManager</span></code>
 is assigned to display the plot. Notice there is an additional callback to ensure the y-axis will remain
 in the range of <code class="code docutils literal notranslate"><span class="pre">[-1.0,</span> <span class="pre">1.0]</span></code> if the values are smaller, but the axis may grow to a larger scope if
@@ -182,7 +180,7 @@ Lower the resolution for the scales to minimize this effect.</p>
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
         <div class="sphinxsidebarwrapper">
 <h3><a href="../index.html">Table of Contents</a></h3>
 <p class="caption" role="heading"><span class="caption-text">Setup</span></p>
@@ -226,7 +224,7 @@ Lower the resolution for the scales to minimize this effect.</p>
     <p class="topless"><a href="../pyCBD.converters.latexify.html"
                           title="next chapter">Generate LaTeX from CBD Models</a></p>
   </div>
-<div id="searchbox" style="display: none" role="search">
+<search id="searchbox" style="display: none" role="search">
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
@@ -234,13 +232,13 @@ Lower the resolution for the scales to minimize this effect.</p>
       <input type="submit" value="Go" />
     </form>
     </div>
-</div>
-<script>$('#searchbox').show(0);</script>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related" role="navigation" aria-label="related navigation">
+    <div class="related" role="navigation" aria-label="Related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -260,8 +258,8 @@ Lower the resolution for the scales to minimize this effect.</p>
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2020, Randy Paredis.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
+    &#169; Copyright 2020, Randy Paredis.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.1.3.
     </div>
   </body>
 </html>

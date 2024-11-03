@@ -1,26 +1,24 @@
-
 <!DOCTYPE html>
 
-<html>
+<html lang="en" data-content_root="../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Realtime Simulation &#8212; pyCBD Simulator  documentation</title>
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/nature.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/style.css" />
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/math.js"></script>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../_static/nature.css?v=279e0f84" />
+    <link rel="stylesheet" type="text/css" href="../_static/style.css?v=5d32c1a0" />
+    <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/math.js?v=af206e68"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Live Plotting of Data During the Simulation" href="LivePlot.html" />
     <link rel="prev" title="Linear Congruential Generator" href="LCG.html" /> 
   </head><body>
-    <div class="related" role="navigation" aria-label="related navigation">
+    <div class="related" role="navigation" aria-label="Related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -46,7 +44,7 @@
           <div class="body" role="main">
             
   <section id="realtime-simulation">
-<h1>Realtime Simulation<a class="headerlink" href="#realtime-simulation" title="Permalink to this headline">¶</a></h1>
+<h1>Realtime Simulation<a class="headerlink" href="#realtime-simulation" title="Link to this heading">¶</a></h1>
 <p>Besides normal (as-fast-as-possible) simulation, it is also possible to simulate CBD models in realtime. Here, the
 time (and therefore <cite>delta t</cite> as well) will be interpreted as seconds and the simulator will wait <strong>non-blocking</strong>
 until the required time has passed. There are several supported backend that provide this functionality. These
@@ -70,7 +68,7 @@ example, the <code class="xref py py-class docutils literal notranslate"><span c
 necessary.</p>
 </div>
 <section id="example-model">
-<h2>Example Model<a class="headerlink" href="#example-model" title="Permalink to this headline">¶</a></h2>
+<h2>Example Model<a class="headerlink" href="#example-model" title="Link to this heading">¶</a></h2>
 <p>To simplify the explanations of the following sections, we will be using the <a class="reference internal" href="SinGen.html"><span class="doc">Sine Generator</span></a> as a basis model.
 To recap:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">CBD.Core</span> <span class="kn">import</span> <span class="n">CBD</span>
@@ -111,7 +109,7 @@ terminate the simulation. To keep the script alive until after the simulation, y
 </div>
 </section>
 <section id="python-threading-backend">
-<h2>Python Threading Backend<a class="headerlink" href="#python-threading-backend" title="Permalink to this headline">¶</a></h2>
+<h2>Python Threading Backend<a class="headerlink" href="#python-threading-backend" title="Link to this heading">¶</a></h2>
 <p>The threading (or Python) backend/platform will use the <code class="xref py py-mod docutils literal notranslate"><span class="pre">threading</span></code> module for delaying the simulation steps.
 This is the default simulation backend.</p>
 <div class="admonition warning">
@@ -139,7 +137,7 @@ realtime anyway, it is important to note that delays could potentially become si
 </div>
 </section>
 <section id="tkinter-backend">
-<h2>TkInter Backend<a class="headerlink" href="#tkinter-backend" title="Permalink to this headline">¶</a></h2>
+<h2>TkInter Backend<a class="headerlink" href="#tkinter-backend" title="Link to this heading">¶</a></h2>
 <p>The <a class="reference external" href="https://docs.python.org/3/library/tkinter.html">TkInter</a> event loop can become quite complex, as it is
 required to interface to the GUI as wel as to the simulation. Luckily, this backend will wrap all the complexity
 into a white box. It is, however, required to define the GUI application and start the mainloop, but afterwards,
@@ -164,7 +162,7 @@ all will be handled for you.</p>
 </div>
 </section>
 <section id="gameloop-backend">
-<h2>GameLoop Backend<a class="headerlink" href="#gameloop-backend" title="Permalink to this headline">¶</a></h2>
+<h2>GameLoop Backend<a class="headerlink" href="#gameloop-backend" title="Link to this heading">¶</a></h2>
 <p>Whenever it is required to control the invocation of delays from another execution loop, like e.g. a gameloop,
 it is pertinent to make use of the <cite>GameLoop</cite> backend. Delays won’t happen internally anymore, as they should be
 handled by the execution loop. By making use of the <code class="xref py py-func docutils literal notranslate"><span class="pre">CBD.simulator.Simulator.realtime_gameloop_call()</span></code>, the
@@ -214,7 +212,7 @@ considered to be a bad practice.</p>
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
         <div class="sphinxsidebarwrapper">
 <h3><a href="../index.html">Table of Contents</a></h3>
 <p class="caption" role="heading"><span class="caption-text">Setup</span></p>
@@ -260,7 +258,7 @@ considered to be a bad practice.</p>
     <p class="topless"><a href="LivePlot.html"
                           title="next chapter">Live Plotting of Data During the Simulation</a></p>
   </div>
-<div id="searchbox" style="display: none" role="search">
+<search id="searchbox" style="display: none" role="search">
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
@@ -268,13 +266,13 @@ considered to be a bad practice.</p>
       <input type="submit" value="Go" />
     </form>
     </div>
-</div>
-<script>$('#searchbox').show(0);</script>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related" role="navigation" aria-label="related navigation">
+    <div class="related" role="navigation" aria-label="Related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -294,8 +292,8 @@ considered to be a bad practice.</p>
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2020, Randy Paredis.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
+    &#169; Copyright 2020, Randy Paredis.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.1.3.
     </div>
   </body>
 </html>

@@ -1,0 +1,6 @@
+Metadata-Version: 2.1
+Name: pyCBD
+Version: 1.6
+Summary: Python CBD simulator
+Home-page: http://msdl.cs.mcgill.ca/people/rparedis
+Author: Marc Provost <Marc.Provost@mail.mcgill.ca>, Hans Vangheluwe <Hans.Vangheluwe@uantwerpen.be>, Joachim Denil <Joachim.Denil@uantwerpen.be>, Claudio Gomes, Randy Paredis <Randy.Paredis@uantwerpen.be>
