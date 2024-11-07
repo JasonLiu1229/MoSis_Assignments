@@ -12,7 +12,8 @@ def gen_image(x_axis, y_axis, title, x_label, y_label, legend):
 	plt.xlabel(x_label)
 	plt.ylabel(y_label)
 	plt.legend(legend)
-	plt.savefig("assets/" + title + ".png")
+	png_title = title.replace(" ", "_")
+	plt.savefig("assets/" + png_title + ".png")
 
 if __name__ == "__main__":
 
