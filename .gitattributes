@@ -3,3 +3,6 @@
 # images
 *.jpg binary
 *.png binary
+
+# py
+*.py text eol=lf
