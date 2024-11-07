@@ -1,3 +1,5 @@
 * text eol=lf
 
-
+# images
+*.jpg binary
+*.png binary
