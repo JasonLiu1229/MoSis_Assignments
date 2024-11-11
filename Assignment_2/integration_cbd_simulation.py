@@ -39,19 +39,24 @@ if __name__ == "__main__":
     sim2 = Simulator(forwards)
     sim3 = Simulator(trapezoid)
 
-    ITERATIONS = 100.0
+    end_time = 100.0
     DELTA_T = 0.01
+    analytical = 3.21249210409227
 
     sim1.setDeltaT(DELTA_T)
-    sim1.run(ITERATIONS)
+    sim1.run(end_time)
 
-    sim2.setDeltaT(DELTA_T)
+    sim2.setDeltaT(end_time)
     sim2.run(ITERATIONS)
 
     sim3.setDeltaT(DELTA_T)
-    sim3.run(ITERATIONS)
-    print(backwards.getSignalHistory('OUT')[-1])
-    print(forwards.getSignalHistory('OUT')[-1])
-    print(trapezoid.getSignalHistory('OUT')[-1])
-    # testing if trapezoid = mean(backwards, forwards)
+    sim3.run(end_time)
+    print("Backwards Euler: ", backwards.getSignalHistory('OUT')[-1])
+    print("Forwards Euler: ", forwards.getSignalHistory('OUT')[-1])
+    print("Trapezoid Rule: ", trapezoid.getSignalHistory('OUT')[-1])
+    testing if trapezoid = mean(backwards, forwards)
     print((backwards.getSignalHistory('OUT')[-1][1] + forwards.getSignalHistory('OUT')[-1][1]) / 2)
+    print(f"{abs((backwards.getSignalHistory('OUT')[-1][1] + forwards.getSignalHistory('OUT')[-1][1]) / 2 - trapezoid.getSignalHistory('OUT')[-1][1]):.20f}")
+    print(f"{abs(analytical - backwards.getSignalHistory('OUT')[-1][1]):.20f}")
+    print(f"{abs(analytical - forwards.getSignalHistory('OUT')[-1][1]):.20f}")
+    print(f"{abs(analytical - trapezoid.getSignalHistory('OUT')[-1][1]):.20f}")
