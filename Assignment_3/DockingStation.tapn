@@ -1,6 +1,150 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <pnml xmlns="http://www.informatik.hu-berlin.de/top/pnml/ptNetb">
-  <net active="true" id="TAPN1" type="P/T net"/>
+  <net active="true" id="TAPN1" type="P/T net">
+    <place displayName="true" id="InboundPassage" initialMarking="0" invariant="&lt; inf" name="InboundPassage" nameOffsetX="0" nameOffsetY="0" positionX="279" positionY="144"/>
+    <place displayName="true" id="OutboundPassage" initialMarking="0" invariant="&lt; inf" name="OutboundPassage" nameOffsetX="0" nameOffsetY="0" positionX="447" positionY="696"/>
+    <place displayName="true" id="Served" initialMarking="0" invariant="&lt; inf" name="Served" nameOffsetX="0" nameOffsetY="0" positionX="88" positionY="701"/>
+    <place displayName="true" id="WaitingAreaSlack" initialMarking="3" invariant="&lt; inf" name="WaitingAreaSlack" nameOffsetX="0" nameOffsetY="0" positionX="281" positionY="554"/>
+    <place displayName="true" id="InboundBerth1" initialMarking="0" invariant="&lt; inf" name="InboundBerth1" nameOffsetX="0" nameOffsetY="0" positionX="713" positionY="132"/>
+    <place displayName="true" id="InboundBerth2" initialMarking="0" invariant="&lt; inf" name="InboundBerth2" nameOffsetX="0" nameOffsetY="0" positionX="713" positionY="234"/>
+    <place displayName="true" id="UnservedBerth1" initialMarking="0" invariant="&lt; inf" name="UnservedBerth1" nameOffsetX="0" nameOffsetY="0" positionX="873" positionY="361"/>
+    <place displayName="true" id="ServedBerth1" initialMarking="0" invariant="&lt; inf" name="ServedBerth1" nameOffsetX="0" nameOffsetY="0" positionX="874" positionY="491"/>
+    <place displayName="true" id="OutboundBerth1" initialMarking="0" invariant="&lt; inf" name="OutboundBerth1" nameOffsetX="0" nameOffsetY="0" positionX="876" positionY="616"/>
+    <place displayName="true" id="UnservedBerth2" initialMarking="0" invariant="&lt; inf" name="UnservedBerth2" nameOffsetX="0" nameOffsetY="0" positionX="709" positionY="366"/>
+    <place displayName="true" id="ServedBerth2" initialMarking="0" invariant="&lt; inf" name="ServedBerth2" nameOffsetX="0" nameOffsetY="0" positionX="706" positionY="496"/>
+    <place displayName="true" id="OutboundBerth2" initialMarking="0" invariant="&lt; inf" name="OutboundBerth2" nameOffsetX="0" nameOffsetY="0" positionX="704" positionY="615"/>
+    <place displayName="true" id="Berth1Slack" initialMarking="0" invariant="&lt; inf" name="Berth1Slack" nameOffsetX="0" nameOffsetY="0" positionX="994" positionY="446"/>
+    <place displayName="true" id="Berth2Slack" initialMarking="0" invariant="&lt; inf" name="Berth2Slack" nameOffsetX="0" nameOffsetY="0" positionX="579" positionY="441"/>
+    <place displayName="true" id="Workers" initialMarking="0" invariant="&lt; inf" name="Workers" nameOffsetX="0" nameOffsetY="0" positionX="1051" positionY="624"/>
+    <transition angle="0" displayName="true" id="T0" infiniteServer="false" name="T0" nameOffsetX="0" nameOffsetY="0" player="0" positionX="273" positionY="701" priority="0" urgent="false"/>
+    <transition angle="0" displayName="true" id="Generator" infiniteServer="false" name="Generator" nameOffsetX="0" nameOffsetY="0" player="0" positionX="159" positionY="139" priority="0" urgent="false"/>
+    <transition angle="0" displayName="true" id="T4" infiniteServer="false" name="T4" nameOffsetX="0" nameOffsetY="0" player="0" positionX="525" positionY="112" priority="0" urgent="false"/>
+    <transition angle="0" displayName="true" id="T5" infiniteServer="false" name="T5" nameOffsetX="0" nameOffsetY="0" player="0" positionX="525" positionY="247" priority="0" urgent="false"/>
+    <transition angle="0" displayName="true" id="T6" infiniteServer="false" name="T6" nameOffsetX="0" nameOffsetY="0" player="0" positionX="876" positionY="137" priority="0" urgent="false"/>
+    <transition angle="0" displayName="true" id="T7" infiniteServer="false" name="T7" nameOffsetX="0" nameOffsetY="0" player="0" positionX="710" positionY="303" priority="0" urgent="false"/>
+    <transition angle="0" displayName="true" id="T10" infiniteServer="false" name="T10" nameOffsetX="0" nameOffsetY="0" player="0" positionX="872" positionY="441" priority="0" urgent="false"/>
+    <transition angle="0" displayName="true" id="T12" infiniteServer="false" name="T12" nameOffsetX="0" nameOffsetY="0" player="0" positionX="874" positionY="561" priority="0" urgent="false"/>
+    <transition angle="0" displayName="true" id="T13" infiniteServer="false" name="T13" nameOffsetX="0" nameOffsetY="0" player="0" positionX="704" positionY="436" priority="0" urgent="false"/>
+    <transition angle="0" displayName="true" id="T14" infiniteServer="false" name="T14" nameOffsetX="0" nameOffsetY="0" player="0" positionX="704" positionY="561" priority="0" urgent="false"/>
+    <transition angle="0" displayName="true" id="T15" infiniteServer="false" name="T15" nameOffsetX="0" nameOffsetY="0" player="0" positionX="709" positionY="744" priority="0" urgent="false"/>
+    <transition angle="0" displayName="true" id="T16" infiniteServer="false" name="T16" nameOffsetX="0" nameOffsetY="0" player="0" positionX="706" positionY="675" priority="0" urgent="false"/>
+    <arc id="A0" inscription="1" nameOffsetX="0" nameOffsetY="0" source="Generator" target="InboundPassage" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="179" yCoord="154"/>
+      <arcpath arcPointType="false" id="1" xCoord="279" yCoord="159"/>
+    </arc>
+    <arc id="A1" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="OutboundPassage" target="T0" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="447" yCoord="711"/>
+      <arcpath arcPointType="false" id="1" xCoord="293" yCoord="714"/>
+    </arc>
+    <arc id="A2" inscription="1" nameOffsetX="0" nameOffsetY="0" source="T0" target="Served" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="282" yCoord="716"/>
+      <arcpath arcPointType="false" id="1" xCoord="118" yCoord="716"/>
+    </arc>
+    <arc id="A5" inscription="1" nameOffsetX="0" nameOffsetY="0" source="T4" target="InboundBerth1" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="544" yCoord="127"/>
+      <arcpath arcPointType="false" id="1" xCoord="713" yCoord="145"/>
+    </arc>
+    <arc id="A7" inscription="1" nameOffsetX="0" nameOffsetY="0" source="T5" target="InboundBerth2" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="544" yCoord="262"/>
+      <arcpath arcPointType="false" id="1" xCoord="713" yCoord="250"/>
+    </arc>
+    <arc id="A10" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="InboundPassage" target="T4" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="309" yCoord="157"/>
+      <arcpath arcPointType="false" id="1" xCoord="534" yCoord="129"/>
+    </arc>
+    <arc id="A11" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="InboundPassage" target="T5" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="308" yCoord="165"/>
+      <arcpath arcPointType="false" id="1" xCoord="534" yCoord="264"/>
+    </arc>
+    <arc id="A12" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="InboundBerth1" target="T6" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="742" yCoord="147"/>
+      <arcpath arcPointType="false" id="1" xCoord="886" yCoord="148"/>
+    </arc>
+    <arc id="A13" inscription="1" nameOffsetX="0" nameOffsetY="0" source="T6" target="UnservedBerth1" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="891" yCoord="167"/>
+      <arcpath arcPointType="false" id="1" xCoord="888" yCoord="361"/>
+    </arc>
+    <arc id="A14" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="UnservedBerth1" target="T10" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="888" yCoord="391"/>
+      <arcpath arcPointType="false" id="1" xCoord="888" yCoord="441"/>
+    </arc>
+    <arc id="A15" inscription="1" nameOffsetX="0" nameOffsetY="0" source="T10" target="ServedBerth1" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="887" yCoord="471"/>
+      <arcpath arcPointType="false" id="1" xCoord="888" yCoord="491"/>
+    </arc>
+    <arc id="A16" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="ServedBerth1" target="T12" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="889" yCoord="520"/>
+      <arcpath arcPointType="false" id="1" xCoord="890" yCoord="561"/>
+    </arc>
+    <arc id="A17" inscription="1" nameOffsetX="0" nameOffsetY="0" source="T12" target="OutboundBerth1" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="889" yCoord="591"/>
+      <arcpath arcPointType="false" id="1" xCoord="890" yCoord="616"/>
+    </arc>
+    <arc id="A18" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="InboundBerth2" target="T7" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="727" yCoord="264"/>
+      <arcpath arcPointType="false" id="1" xCoord="726" yCoord="303"/>
+    </arc>
+    <arc id="A19" inscription="1" nameOffsetX="0" nameOffsetY="0" source="T7" target="UnservedBerth2" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="725" yCoord="333"/>
+      <arcpath arcPointType="false" id="1" xCoord="724" yCoord="366"/>
+    </arc>
+    <arc id="A20" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="UnservedBerth2" target="T13" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="723" yCoord="395"/>
+      <arcpath arcPointType="false" id="1" xCoord="720" yCoord="436"/>
+    </arc>
+    <arc id="A21" inscription="1" nameOffsetX="0" nameOffsetY="0" source="T13" target="ServedBerth2" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="719" yCoord="466"/>
+      <arcpath arcPointType="false" id="1" xCoord="720" yCoord="496"/>
+    </arc>
+    <arc id="A22" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="ServedBerth2" target="T14" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="720" yCoord="525"/>
+      <arcpath arcPointType="false" id="1" xCoord="720" yCoord="561"/>
+    </arc>
+    <arc id="A23" inscription="1" nameOffsetX="0" nameOffsetY="0" source="T14" target="OutboundBerth2" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="719" yCoord="591"/>
+      <arcpath arcPointType="false" id="1" xCoord="719" yCoord="615"/>
+    </arc>
+    <arc id="A24" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="OutboundBerth2" target="T16" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="719" yCoord="644"/>
+      <arcpath arcPointType="false" id="1" xCoord="721" yCoord="675"/>
+    </arc>
+    <arc id="A25" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="OutboundBerth1" target="T15" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="879" yCoord="640"/>
+      <arcpath arcPointType="false" id="1" xCoord="729" yCoord="759"/>
+    </arc>
+    <arc id="A26" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="WaitingAreaSlack" target="Generator" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="291" yCoord="554"/>
+      <arcpath arcPointType="false" id="1" xCoord="174" yCoord="169"/>
+    </arc>
+    <arc id="A27" inscription="1" nameOffsetX="0" nameOffsetY="0" source="T4" target="WaitingAreaSlack" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="540" yCoord="142"/>
+      <arcpath arcPointType="false" id="1" xCoord="303" yCoord="556"/>
+    </arc>
+    <arc id="A28" inscription="1" nameOffsetX="0" nameOffsetY="0" source="T5" target="WaitingAreaSlack" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="534" yCoord="271"/>
+      <arcpath arcPointType="false" id="1" xCoord="305" yCoord="557"/>
+    </arc>
+    <arc id="A30" inscription="1" nameOffsetX="0" nameOffsetY="0" source="T0" target="WaitingAreaSlack" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="292" yCoord="721"/>
+      <arcpath arcPointType="false" id="1" xCoord="295" yCoord="584"/>
+    </arc>
+    <arc id="A29" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="WaitingAreaSlack" target="T16" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="310" yCoord="574"/>
+      <arcpath arcPointType="false" id="1" xCoord="715" yCoord="696"/>
+    </arc>
+    <arc id="A31" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="WaitingAreaSlack" target="T15" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="308" yCoord="578"/>
+      <arcpath arcPointType="false" id="1" xCoord="719" yCoord="765"/>
+    </arc>
+    <arc id="A32" inscription="1" nameOffsetX="0" nameOffsetY="0" source="T15" target="OutboundPassage" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="724" yCoord="774"/>
+      <arcpath arcPointType="false" id="1" xCoord="476" yCoord="714"/>
+    </arc>
+    <arc id="A33" inscription="1" nameOffsetX="0" nameOffsetY="0" source="T16" target="OutboundPassage" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="721" yCoord="705"/>
+      <arcpath arcPointType="false" id="1" xCoord="476" yCoord="710"/>
+    </arc>
+  </net>
   <k-bound bound="3"/>
   <feature isGame="false" isTimed="false"/>
 </pnml>
