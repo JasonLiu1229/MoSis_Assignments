@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <pnml xmlns="http://www.informatik.hu-berlin.de/top/pnml/ptNetb">
   <net active="true" id="TAPN1" type="P/T net">
-    <labels border="true" height="17" positionX="90" positionY="15" width="101">Dockingstation</labels>
-    <labels border="true" height="17" positionX="90" positionY="780" width="101">Clock</labels>
+    <labels border="true" height="18" positionX="91" positionY="16" width="102">Dockingstation</labels>
+    <labels border="true" height="18" positionX="121" positionY="811" width="102">Clock</labels>
     <place displayName="true" id="InboundPassage" initialMarking="0" invariant="&lt; inf" name="InboundPassage" nameOffsetX="0" nameOffsetY="0" positionX="594" positionY="144"/>
     <place displayName="true" id="OutboundPassage" initialMarking="0" invariant="&lt; inf" name="OutboundPassage" nameOffsetX="0" nameOffsetY="0" positionX="762" positionY="696"/>
     <place displayName="true" id="Served" initialMarking="0" invariant="&lt; inf" name="Served" nameOffsetX="0" nameOffsetY="0" positionX="403" positionY="701"/>
@@ -140,7 +140,7 @@
     </arc>
     <arc id="A29" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="WaitingAreaSlack" target="ExitBerth2" type="timed" weight="1">
       <arcpath arcPointType="false" id="0" xCoord="625" yCoord="573"/>
-      <arcpath arcPointType="false" id="1" xCoord="1030" yCoord="690"/>
+      <arcpath arcPointType="false" id="1" xCoord="1030" yCoord="695"/>
     </arc>
     <arc id="A31" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="WaitingAreaSlack" target="ExitBerth1" type="timed" weight="1">
       <arcpath arcPointType="false" id="0" xCoord="624" yCoord="575"/>
@@ -180,7 +180,7 @@
     </arc>
     <arc id="A39" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="Berth2Slack" target="EnterBerth2" type="timed" weight="1">
       <arcpath arcPointType="false" id="0" xCoord="904" yCoord="445"/>
-      <arcpath arcPointType="false" id="1" xCoord="1034" yCoord="318"/>
+      <arcpath arcPointType="false" id="1" xCoord="1034" yCoord="323"/>
     </arc>
     <arc id="A40" inscription="1" nameOffsetX="0" nameOffsetY="0" source="EnterOutboundBerth2" target="Berth2Slack" type="normal" weight="1">
       <arcpath arcPointType="false" id="0" xCoord="1029" yCoord="571"/>
@@ -219,8 +219,8 @@
       <arcpath arcPointType="false" id="1" xCoord="1331" yCoord="456"/>
     </arc>
     <arc id="A49" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="Workers" target="ServeBerth2" type="timed" weight="1">
-      <arcpath arcPointType="false" id="0" xCoord="1172" yCoord="513"/>
-      <arcpath arcPointType="false" id="1" xCoord="1038" yCoord="456"/>
+      <arcpath arcPointType="false" id="0" xCoord="1172" yCoord="512"/>
+      <arcpath arcPointType="false" id="1" xCoord="1038" yCoord="451"/>
     </arc>
     <arc id="A50" inscription="1" nameOffsetX="0" nameOffsetY="0" source="EnterOutboundBerth1" target="Workers" type="normal" weight="1">
       <arcpath arcPointType="false" id="0" xCoord="1333" yCoord="576"/>
