@@ -36,8 +36,6 @@
     <place displayName="true" id="enter_berth_entrance" initialMarking="0" invariant="&lt; inf" name="enter_berth_entrance" nameOffsetX="130" nameOffsetY="48" positionX="750" positionY="270"/>
     <place displayName="true" id="enter_common" initialMarking="0" invariant="&lt; inf" name="enter_common" nameOffsetX="0" nameOffsetY="0" positionX="390" positionY="360"/>
     <place displayName="true" id="exit_berth" initialMarking="0" invariant="&lt; inf" name="exit_berth" nameOffsetX="0" nameOffsetY="0" positionX="870" positionY="870"/>
-    <place displayName="true" id="berth_2_cap_exit" initialMarking="1" invariant="&lt; inf" name="berth_2_cap_exit" nameOffsetX="0" nameOffsetY="0" positionX="705" positionY="615"/>
-    <place displayName="true" id="berth_1_cap_exit" initialMarking="1" invariant="&lt; inf" name="berth_1_cap_exit" nameOffsetX="0" nameOffsetY="0" positionX="765" positionY="705"/>
     <transition angle="0" displayName="true" id="generate" infiniteServer="false" name="generate" nameOffsetX="0" nameOffsetY="0" player="0" positionX="270" positionY="120" priority="0" urgent="false"/>
     <transition angle="0" displayName="true" id="enter_passage" infiniteServer="false" name="enter_passage" nameOffsetX="0" nameOffsetY="0" player="0" positionX="510" positionY="120" priority="0" urgent="false"/>
     <transition angle="0" displayName="true" id="exit_passage" infiniteServer="false" name="exit_passage" nameOffsetX="25" nameOffsetY="2" player="0" positionX="390" positionY="750" priority="0" urgent="false"/>
@@ -113,8 +111,8 @@
       <arcpath arcPointType="false" id="1" xCoord="540" yCoord="765"/>
     </arc>
     <arc id="A17" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="berth_2_exit" target="enter_passage_outbound_2" type="timed" weight="1">
-      <arcpath arcPointType="false" id="0" xCoord="810" yCoord="665"/>
-      <arcpath arcPointType="false" id="1" xCoord="650" yCoord="700"/>
+      <arcpath arcPointType="false" id="0" xCoord="810" yCoord="664"/>
+      <arcpath arcPointType="false" id="1" xCoord="650" yCoord="697"/>
     </arc>
     <arc id="A18" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="berth_1_exit" target="enter_passage_outbound_1" type="timed" weight="1">
       <arcpath arcPointType="false" id="0" xCoord="750" yCoord="765"/>
@@ -141,9 +139,9 @@
       <arcpath arcPointType="false" id="1" xCoord="645" yCoord="780"/>
     </arc>
     <arc id="A24" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="exit_to_common" target="enter_passage_outbound_2" type="timed" weight="1">
-      <arcpath arcPointType="false" id="0" xCoord="657" yCoord="877"/>
-      <arcpath arcPointType="false" id="1" xCoord="739" yCoord="826"/>
-      <arcpath arcPointType="false" id="2" xCoord="649" yCoord="710"/>
+      <arcpath arcPointType="false" id="0" xCoord="657" yCoord="876"/>
+      <arcpath arcPointType="false" id="1" xCoord="735" yCoord="822"/>
+      <arcpath arcPointType="false" id="2" xCoord="650" yCoord="704"/>
     </arc>
     <arc id="A25" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="spawn_ships" target="generate" type="timed" weight="1">
       <arcpath arcPointType="false" id="0" xCoord="285" yCoord="210"/>
@@ -162,8 +160,8 @@
       <arcpath arcPointType="false" id="1" xCoord="765" yCoord="870"/>
     </arc>
     <arc id="I29" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="berth_2_exit" target="no_exits_to_common" type="tapnInhibitor" weight="1">
-      <arcpath arcPointType="false" id="0" xCoord="827" yCoord="676"/>
-      <arcpath arcPointType="false" id="1" xCoord="848" yCoord="832"/>
+      <arcpath arcPointType="false" id="0" xCoord="826" yCoord="676"/>
+      <arcpath arcPointType="false" id="1" xCoord="844" yCoord="828"/>
       <arcpath arcPointType="false" id="2" xCoord="770" yCoord="880"/>
     </arc>
     <arc id="A30" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="exit_to_common" target="no_exits_to_common" type="timed" weight="1">
@@ -236,8 +234,8 @@
     </arc>
     <arc id="A46" inscription="1" nameOffsetX="0" nameOffsetY="0" source="berth_entrances_full" target="enter_common" type="normal" weight="1">
       <arcpath arcPointType="false" id="0" xCoord="880" yCoord="280"/>
-      <arcpath arcPointType="false" id="1" xCoord="861" yCoord="260"/>
-      <arcpath arcPointType="false" id="2" xCoord="585" yCoord="260"/>
+      <arcpath arcPointType="false" id="1" xCoord="857" yCoord="256"/>
+      <arcpath arcPointType="false" id="2" xCoord="581" yCoord="256"/>
       <arcpath arcPointType="false" id="3" xCoord="417" yCoord="366"/>
     </arc>
     <arc id="I47" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="waiting" target="no_ships_waiting" type="tapnInhibitor" weight="1">
@@ -270,7 +268,7 @@
     </arc>
     <arc id="I53" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="passage_size" target="passage_no_more_space_enter" type="tapnInhibitor" weight="1">
       <arcpath arcPointType="false" id="0" xCoord="510" yCoord="437"/>
-      <arcpath arcPointType="false" id="1" xCoord="312" yCoord="471"/>
+      <arcpath arcPointType="false" id="1" xCoord="308" yCoord="467"/>
       <arcpath arcPointType="false" id="2" xCoord="285" yCoord="390"/>
     </arc>
     <arc id="A54" inscription="1" nameOffsetX="0" nameOffsetY="0" source="passage_no_more_space_enter" target="spawn_ships" type="normal" weight="1">
@@ -283,37 +281,29 @@
     </arc>
     <arc id="A56" inscription="1" nameOffsetX="0" nameOffsetY="0" source="enter_passage_outbound_2" target="exit_to_common" type="normal" weight="1">
       <arcpath arcPointType="false" id="0" xCoord="649" yCoord="711"/>
-      <arcpath arcPointType="false" id="1" xCoord="730" yCoord="831"/>
+      <arcpath arcPointType="false" id="1" xCoord="726" yCoord="827"/>
       <arcpath arcPointType="false" id="2" xCoord="657" yCoord="876"/>
     </arc>
     <arc id="I57" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="passage_size" target="passage_no_more_space_exit" type="tapnInhibitor" weight="1">
       <arcpath arcPointType="false" id="0" xCoord="537" yCoord="443"/>
-      <arcpath arcPointType="false" id="1" xCoord="637" yCoord="518"/>
-      <arcpath arcPointType="false" id="2" xCoord="912" yCoord="519"/>
+      <arcpath arcPointType="false" id="1" xCoord="633" yCoord="514"/>
+      <arcpath arcPointType="false" id="2" xCoord="908" yCoord="515"/>
       <arcpath arcPointType="false" id="3" xCoord="885" yCoord="690"/>
     </arc>
     <arc id="A58" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="exit_to_common" target="passage_no_more_space_exit" type="timed" weight="1">
       <arcpath arcPointType="false" id="0" xCoord="659" yCoord="881"/>
-      <arcpath arcPointType="false" id="1" xCoord="764" yCoord="858"/>
-      <arcpath arcPointType="false" id="2" xCoord="887" yCoord="858"/>
-      <arcpath arcPointType="false" id="3" xCoord="883" yCoord="743"/>
+      <arcpath arcPointType="false" id="1" xCoord="760" yCoord="854"/>
+      <arcpath arcPointType="false" id="2" xCoord="883" yCoord="854"/>
+      <arcpath arcPointType="false" id="3" xCoord="879" yCoord="739"/>
       <arcpath arcPointType="false" id="4" xCoord="885" yCoord="720"/>
     </arc>
     <arc id="A59" inscription="1" nameOffsetX="0" nameOffsetY="0" source="passage_no_more_space_exit" target="exit_berth" type="normal" weight="1">
       <arcpath arcPointType="false" id="0" xCoord="885" yCoord="720"/>
       <arcpath arcPointType="false" id="1" xCoord="885" yCoord="870"/>
     </arc>
-    <arc id="A60" inscription="1" nameOffsetX="0" nameOffsetY="0" source="enter_passage_outbound_2" target="berth_2_cap_exit" type="normal" weight="1">
-      <arcpath arcPointType="false" id="0" xCoord="650" yCoord="697"/>
-      <arcpath arcPointType="false" id="1" xCoord="709" yCoord="640"/>
-    </arc>
-    <arc id="A61" inscription="1" nameOffsetX="0" nameOffsetY="0" source="enter_passage_outbound_1" target="berth_1_cap_exit" type="normal" weight="1">
-      <arcpath arcPointType="false" id="0" xCoord="650" yCoord="760"/>
-      <arcpath arcPointType="false" id="1" xCoord="765" yCoord="724"/>
-    </arc>
   </net>
   <net active="true" id="Berth" type="P/T net">
-    <labels border="true" height="312" positionX="1495" positionY="193" width="229">Berth service fairness. Forces ships to be serviced alternately if there is a conflict.
+    <labels border="true" height="311" positionX="1494" positionY="192" width="228">Berth service fairness. Forces ships to be serviced alternately if there is a conflict.
 
 When a berth services a ship, it will mark that berth and unmark the other berth. The marked berth will not be able to service a ship until it has been unmarked.
 
@@ -355,335 +345,335 @@ There will always be 1 marked and 1 unmarked berth. Berth 2 will be marked by de
     <transition angle="0" displayName="true" id="berth_2_not_empty" infiniteServer="false" name="berth_2_not_empty" nameOffsetX="0" nameOffsetY="0" player="0" positionX="450" positionY="675" priority="0" urgent="false"/>
     <transition angle="0" displayName="true" id="no_berths_empty" infiniteServer="false" name="no_berths_empty" nameOffsetX="49" nameOffsetY="58" player="0" positionX="435" positionY="450" priority="0" urgent="false"/>
     <arc id="A0" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="berth_1_entrance" target="enter_berth_1" type="timed" weight="1">
-      <arcpath arcPointType="false" id="0" xCoord="342" yCoord="147"/>
-      <arcpath arcPointType="false" id="1" xCoord="681" yCoord="147"/>
+      <arcpath arcPointType="false" id="0" xCoord="338" yCoord="143"/>
+      <arcpath arcPointType="false" id="1" xCoord="677" yCoord="143"/>
     </arc>
     <arc id="A1" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="berth_1_empty" target="enter_berth_1" type="timed" weight="1">
-      <arcpath arcPointType="false" id="0" xCoord="912" yCoord="147"/>
-      <arcpath arcPointType="false" id="1" xCoord="691" yCoord="147"/>
+      <arcpath arcPointType="false" id="0" xCoord="908" yCoord="143"/>
+      <arcpath arcPointType="false" id="1" xCoord="687" yCoord="143"/>
     </arc>
     <arc id="A2" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="berth_2_empty" target="enter_berth_2" type="timed" weight="1">
-      <arcpath arcPointType="false" id="0" xCoord="912" yCoord="597"/>
-      <arcpath arcPointType="false" id="1" xCoord="691" yCoord="597"/>
+      <arcpath arcPointType="false" id="0" xCoord="908" yCoord="593"/>
+      <arcpath arcPointType="false" id="1" xCoord="687" yCoord="593"/>
     </arc>
     <arc id="A3" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="berth_2_entrance" target="enter_berth_2" type="timed" weight="1">
-      <arcpath arcPointType="false" id="0" xCoord="341" yCoord="596"/>
-      <arcpath arcPointType="false" id="1" xCoord="682" yCoord="592"/>
+      <arcpath arcPointType="false" id="0" xCoord="337" yCoord="592"/>
+      <arcpath arcPointType="false" id="1" xCoord="678" yCoord="588"/>
     </arc>
     <arc id="A7" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="berth_2_unserved" target="serve_berth_2" type="timed" weight="1">
-      <arcpath arcPointType="false" id="0" xCoord="821" yCoord="507"/>
-      <arcpath arcPointType="false" id="1" xCoord="921" yCoord="512"/>
+      <arcpath arcPointType="false" id="0" xCoord="817" yCoord="503"/>
+      <arcpath arcPointType="false" id="1" xCoord="917" yCoord="508"/>
     </arc>
     <arc id="A8" inscription="1" nameOffsetX="0" nameOffsetY="0" source="serve_berth_2" target="berth_2_served" type="normal" weight="1">
-      <arcpath arcPointType="false" id="0" xCoord="931" yCoord="512"/>
-      <arcpath arcPointType="false" id="1" xCoord="1032" yCoord="507"/>
+      <arcpath arcPointType="false" id="0" xCoord="927" yCoord="508"/>
+      <arcpath arcPointType="false" id="1" xCoord="1028" yCoord="503"/>
     </arc>
     <arc id="A11" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="berth_1_unserved" target="serve_berth_1" type="timed" weight="1">
-      <arcpath arcPointType="false" id="0" xCoord="821" yCoord="236"/>
-      <arcpath arcPointType="false" id="1" xCoord="922" yCoord="232"/>
+      <arcpath arcPointType="false" id="0" xCoord="817" yCoord="232"/>
+      <arcpath arcPointType="false" id="1" xCoord="918" yCoord="228"/>
     </arc>
     <arc id="A12" inscription="1" nameOffsetX="0" nameOffsetY="0" source="serve_berth_1" target="berth_1_served" type="normal" weight="1">
-      <arcpath arcPointType="false" id="0" xCoord="932" yCoord="232"/>
-      <arcpath arcPointType="false" id="1" xCoord="1032" yCoord="236"/>
+      <arcpath arcPointType="false" id="0" xCoord="928" yCoord="228"/>
+      <arcpath arcPointType="false" id="1" xCoord="1028" yCoord="232"/>
     </arc>
     <arc id="A14" inscription="1" nameOffsetX="0" nameOffsetY="0" source="exit_berth_1" target="berth_1_exit" type="normal" weight="1">
-      <arcpath arcPointType="false" id="0" xCoord="1171" yCoord="152"/>
-      <arcpath arcPointType="false" id="1" xCoord="1332" yCoord="147"/>
+      <arcpath arcPointType="false" id="0" xCoord="1167" yCoord="148"/>
+      <arcpath arcPointType="false" id="1" xCoord="1328" yCoord="143"/>
     </arc>
     <arc id="A15" inscription="1" nameOffsetX="0" nameOffsetY="0" source="exit_berth_2" target="berth_2_exit" type="normal" weight="1">
-      <arcpath arcPointType="false" id="0" xCoord="1171" yCoord="597"/>
-      <arcpath arcPointType="false" id="1" xCoord="1332" yCoord="597"/>
+      <arcpath arcPointType="false" id="0" xCoord="1167" yCoord="593"/>
+      <arcpath arcPointType="false" id="1" xCoord="1328" yCoord="593"/>
     </arc>
     <arc id="A28" inscription="1" nameOffsetX="0" nameOffsetY="0" source="exit_berth_2" target="berth_2_empty" type="normal" weight="1">
-      <arcpath arcPointType="false" id="0" xCoord="1161" yCoord="598"/>
-      <arcpath arcPointType="false" id="1" xCoord="941" yCoord="597"/>
+      <arcpath arcPointType="false" id="0" xCoord="1157" yCoord="594"/>
+      <arcpath arcPointType="false" id="1" xCoord="937" yCoord="593"/>
     </arc>
     <arc id="A16" inscription="1" nameOffsetX="0" nameOffsetY="0" source="exit_berth_1" target="berth_1_empty" type="normal" weight="1">
-      <arcpath arcPointType="false" id="0" xCoord="1162" yCoord="142"/>
-      <arcpath arcPointType="false" id="1" xCoord="941" yCoord="146"/>
+      <arcpath arcPointType="false" id="0" xCoord="1158" yCoord="138"/>
+      <arcpath arcPointType="false" id="1" xCoord="937" yCoord="142"/>
     </arc>
     <arc id="A21" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="just_served_2" target="let_2_go" type="timed" weight="1">
-      <arcpath arcPointType="false" id="0" xCoord="818" yCoord="336"/>
-      <arcpath arcPointType="false" id="1" xCoord="921" yCoord="418"/>
+      <arcpath arcPointType="false" id="0" xCoord="814" yCoord="332"/>
+      <arcpath arcPointType="false" id="1" xCoord="917" yCoord="414"/>
     </arc>
     <arc id="A22" inscription="1" nameOffsetX="0" nameOffsetY="0" source="let_2_go" target="just_served_1" type="normal" weight="1">
-      <arcpath arcPointType="false" id="0" xCoord="921" yCoord="420"/>
-      <arcpath arcPointType="false" id="1" xCoord="821" yCoord="417"/>
+      <arcpath arcPointType="false" id="0" xCoord="917" yCoord="416"/>
+      <arcpath arcPointType="false" id="1" xCoord="817" yCoord="413"/>
     </arc>
     <arc id="A23" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="just_served_1" target="let_1_go" type="timed" weight="1">
-      <arcpath arcPointType="false" id="0" xCoord="818" yCoord="407"/>
-      <arcpath arcPointType="false" id="1" xCoord="921" yCoord="330"/>
+      <arcpath arcPointType="false" id="0" xCoord="814" yCoord="403"/>
+      <arcpath arcPointType="false" id="1" xCoord="917" yCoord="326"/>
     </arc>
     <arc id="A24" inscription="1" nameOffsetX="0" nameOffsetY="0" source="let_1_go" target="just_served_2" type="normal" weight="1">
-      <arcpath arcPointType="false" id="0" xCoord="922" yCoord="325"/>
-      <arcpath arcPointType="false" id="1" xCoord="821" yCoord="326"/>
+      <arcpath arcPointType="false" id="0" xCoord="918" yCoord="321"/>
+      <arcpath arcPointType="false" id="1" xCoord="817" yCoord="322"/>
     </arc>
     <arc id="A25" inscription="1" nameOffsetX="0" nameOffsetY="0" source="serve_berth_1" target="just_served_1" type="normal" weight="1">
-      <arcpath arcPointType="false" id="0" xCoord="921" yCoord="245"/>
-      <arcpath arcPointType="false" id="1" xCoord="815" yCoord="403"/>
+      <arcpath arcPointType="false" id="0" xCoord="917" yCoord="241"/>
+      <arcpath arcPointType="false" id="1" xCoord="811" yCoord="399"/>
     </arc>
     <arc id="A26" inscription="1" nameOffsetX="0" nameOffsetY="0" source="serve_berth_2" target="just_served_2" type="normal" weight="1">
-      <arcpath arcPointType="false" id="0" xCoord="922" yCoord="501"/>
-      <arcpath arcPointType="false" id="1" xCoord="815" yCoord="340"/>
+      <arcpath arcPointType="false" id="0" xCoord="918" yCoord="497"/>
+      <arcpath arcPointType="false" id="1" xCoord="811" yCoord="336"/>
     </arc>
     <arc id="A27" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="workers" target="serve_berth_1" type="timed" weight="1">
-      <arcpath arcPointType="false" id="0" xCoord="1036" yCoord="346"/>
-      <arcpath arcPointType="false" id="1" xCoord="931" yCoord="237"/>
+      <arcpath arcPointType="false" id="0" xCoord="1032" yCoord="342"/>
+      <arcpath arcPointType="false" id="1" xCoord="927" yCoord="233"/>
     </arc>
     <arc id="A29" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="workers" target="serve_berth_2" type="timed" weight="1">
-      <arcpath arcPointType="false" id="0" xCoord="1037" yCoord="368"/>
-      <arcpath arcPointType="false" id="1" xCoord="931" yCoord="507"/>
+      <arcpath arcPointType="false" id="0" xCoord="1033" yCoord="364"/>
+      <arcpath arcPointType="false" id="1" xCoord="927" yCoord="503"/>
     </arc>
     <arc id="A30" inscription="1" nameOffsetX="0" nameOffsetY="0" source="exit_berth_2" target="workers" type="normal" weight="1">
-      <arcpath arcPointType="false" id="0" xCoord="1167" yCoord="582"/>
-      <arcpath arcPointType="false" id="1" xCoord="1053" yCoord="370"/>
+      <arcpath arcPointType="false" id="0" xCoord="1163" yCoord="578"/>
+      <arcpath arcPointType="false" id="1" xCoord="1049" yCoord="366"/>
     </arc>
     <arc id="A31" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="berth_1_unserved" target="let_1_go" type="timed" weight="1">
-      <arcpath arcPointType="false" id="0" xCoord="818" yCoord="246"/>
-      <arcpath arcPointType="false" id="1" xCoord="922" yCoord="325"/>
+      <arcpath arcPointType="false" id="0" xCoord="814" yCoord="242"/>
+      <arcpath arcPointType="false" id="1" xCoord="918" yCoord="321"/>
     </arc>
     <arc id="A32" inscription="1" nameOffsetX="0" nameOffsetY="0" source="let_1_go" target="berth_1_unserved" type="normal" weight="1">
-      <arcpath arcPointType="false" id="0" xCoord="922" yCoord="318"/>
-      <arcpath arcPointType="false" id="1" xCoord="818" yCoord="245"/>
+      <arcpath arcPointType="false" id="0" xCoord="918" yCoord="314"/>
+      <arcpath arcPointType="false" id="1" xCoord="814" yCoord="241"/>
     </arc>
     <arc id="A33" inscription="1" nameOffsetX="0" nameOffsetY="0" source="let_2_go" target="berth_2_unserved" type="normal" weight="1">
-      <arcpath arcPointType="false" id="0" xCoord="921" yCoord="426"/>
-      <arcpath arcPointType="false" id="1" xCoord="818" yCoord="498"/>
+      <arcpath arcPointType="false" id="0" xCoord="917" yCoord="422"/>
+      <arcpath arcPointType="false" id="1" xCoord="814" yCoord="494"/>
     </arc>
     <arc id="A34" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="berth_2_unserved" target="let_2_go" type="timed" weight="1">
-      <arcpath arcPointType="false" id="0" xCoord="818" yCoord="497"/>
-      <arcpath arcPointType="false" id="1" xCoord="921" yCoord="425"/>
+      <arcpath arcPointType="false" id="0" xCoord="814" yCoord="493"/>
+      <arcpath arcPointType="false" id="1" xCoord="917" yCoord="421"/>
     </arc>
     <arc id="I32" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="berth_2_unserved" target="let_1_go" type="tapnInhibitor" weight="1">
-      <arcpath arcPointType="false" id="0" xCoord="815" yCoord="495"/>
-      <arcpath arcPointType="false" id="1" xCoord="921" yCoord="336"/>
+      <arcpath arcPointType="false" id="0" xCoord="811" yCoord="491"/>
+      <arcpath arcPointType="false" id="1" xCoord="917" yCoord="332"/>
     </arc>
     <arc id="I33" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="berth_1_unserved" target="let_2_go" type="tapnInhibitor" weight="1">
-      <arcpath arcPointType="false" id="0" xCoord="815" yCoord="250"/>
-      <arcpath arcPointType="false" id="1" xCoord="922" yCoord="411"/>
+      <arcpath arcPointType="false" id="0" xCoord="811" yCoord="246"/>
+      <arcpath arcPointType="false" id="1" xCoord="918" yCoord="407"/>
     </arc>
     <arc id="A19" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="just_served_1" target="serve_berth_2" type="timed" weight="1">
-      <arcpath arcPointType="false" id="0" xCoord="818" yCoord="426"/>
-      <arcpath arcPointType="false" id="1" xCoord="922" yCoord="502"/>
+      <arcpath arcPointType="false" id="0" xCoord="814" yCoord="422"/>
+      <arcpath arcPointType="false" id="1" xCoord="918" yCoord="498"/>
     </arc>
     <arc id="A20" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="just_served_2" target="serve_berth_1" type="timed" weight="1">
-      <arcpath arcPointType="false" id="0" xCoord="818" yCoord="317"/>
-      <arcpath arcPointType="false" id="1" xCoord="921" yCoord="242"/>
+      <arcpath arcPointType="false" id="0" xCoord="814" yCoord="313"/>
+      <arcpath arcPointType="false" id="1" xCoord="917" yCoord="238"/>
     </arc>
     <arc id="A35" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="enter_berth" target="enter_berth_2" type="timed" weight="1">
-      <arcpath arcPointType="false" id="0" xCoord="576" yCoord="735"/>
-      <arcpath arcPointType="false" id="1" xCoord="681" yCoord="602"/>
+      <arcpath arcPointType="false" id="0" xCoord="572" yCoord="731"/>
+      <arcpath arcPointType="false" id="1" xCoord="677" yCoord="598"/>
     </arc>
     <arc id="A36" inscription="1" nameOffsetX="0" nameOffsetY="0" source="enter_berth_2" target="enter_berth" type="normal" weight="1">
-      <arcpath arcPointType="false" id="0" xCoord="681" yCoord="598"/>
-      <arcpath arcPointType="false" id="1" xCoord="576" yCoord="735"/>
+      <arcpath arcPointType="false" id="0" xCoord="677" yCoord="594"/>
+      <arcpath arcPointType="false" id="1" xCoord="572" yCoord="731"/>
     </arc>
     <arc id="A37" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="enter_berth" target="enter_berth_1" type="timed" weight="1">
-      <arcpath arcPointType="false" id="0" xCoord="570" yCoord="732"/>
-      <arcpath arcPointType="false" id="1" xCoord="687" yCoord="162"/>
+      <arcpath arcPointType="false" id="0" xCoord="566" yCoord="728"/>
+      <arcpath arcPointType="false" id="1" xCoord="683" yCoord="158"/>
     </arc>
     <arc id="A38" inscription="1" nameOffsetX="0" nameOffsetY="0" source="enter_berth_1" target="enter_berth" type="normal" weight="1">
-      <arcpath arcPointType="false" id="0" xCoord="687" yCoord="162"/>
-      <arcpath arcPointType="false" id="1" xCoord="570" yCoord="732"/>
+      <arcpath arcPointType="false" id="0" xCoord="683" yCoord="158"/>
+      <arcpath arcPointType="false" id="1" xCoord="566" yCoord="728"/>
     </arc>
     <arc id="A39" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="serve_ship" target="serve_berth_2" type="timed" weight="1">
-      <arcpath arcPointType="false" id="0" xCoord="813" yCoord="733"/>
-      <arcpath arcPointType="false" id="1" xCoord="927" yCoord="522"/>
+      <arcpath arcPointType="false" id="0" xCoord="809" yCoord="729"/>
+      <arcpath arcPointType="false" id="1" xCoord="923" yCoord="518"/>
     </arc>
     <arc id="A40" inscription="1" nameOffsetX="0" nameOffsetY="0" source="serve_berth_2" target="serve_ship" type="normal" weight="1">
-      <arcpath arcPointType="false" id="0" xCoord="927" yCoord="522"/>
-      <arcpath arcPointType="false" id="1" xCoord="813" yCoord="733"/>
+      <arcpath arcPointType="false" id="0" xCoord="923" yCoord="518"/>
+      <arcpath arcPointType="false" id="1" xCoord="809" yCoord="729"/>
     </arc>
     <arc id="A43" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="exit_berth" target="exit_berth_2" type="timed" weight="1">
-      <arcpath arcPointType="false" id="0" xCoord="1056" yCoord="735"/>
-      <arcpath arcPointType="false" id="1" xCoord="1161" yCoord="602"/>
+      <arcpath arcPointType="false" id="0" xCoord="1052" yCoord="731"/>
+      <arcpath arcPointType="false" id="1" xCoord="1157" yCoord="598"/>
     </arc>
     <arc id="A44" inscription="1" nameOffsetX="0" nameOffsetY="0" source="exit_berth_2" target="exit_berth" type="normal" weight="1">
-      <arcpath arcPointType="false" id="0" xCoord="1161" yCoord="598"/>
-      <arcpath arcPointType="false" id="1" xCoord="1056" yCoord="735"/>
+      <arcpath arcPointType="false" id="0" xCoord="1157" yCoord="594"/>
+      <arcpath arcPointType="false" id="1" xCoord="1052" yCoord="731"/>
     </arc>
     <arc id="A45" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="exit_berth" target="exit_berth_1" type="timed" weight="1">
-      <arcpath arcPointType="false" id="0" xCoord="1050" yCoord="732"/>
-      <arcpath arcPointType="false" id="1" xCoord="1167" yCoord="162"/>
+      <arcpath arcPointType="false" id="0" xCoord="1046" yCoord="728"/>
+      <arcpath arcPointType="false" id="1" xCoord="1163" yCoord="158"/>
     </arc>
     <arc id="A46" inscription="1" nameOffsetX="0" nameOffsetY="0" source="exit_berth_1" target="exit_berth" type="normal" weight="1">
-      <arcpath arcPointType="false" id="0" xCoord="1167" yCoord="162"/>
-      <arcpath arcPointType="false" id="1" xCoord="1050" yCoord="732"/>
+      <arcpath arcPointType="false" id="0" xCoord="1163" yCoord="158"/>
+      <arcpath arcPointType="false" id="1" xCoord="1046" yCoord="728"/>
     </arc>
     <arc id="A47" inscription="1" nameOffsetX="0" nameOffsetY="0" source="exit_berth_1" target="workers" type="normal" weight="1">
-      <arcpath arcPointType="false" id="0" xCoord="1167" yCoord="162"/>
-      <arcpath arcPointType="false" id="1" xCoord="1055" yCoord="343"/>
+      <arcpath arcPointType="false" id="0" xCoord="1163" yCoord="158"/>
+      <arcpath arcPointType="false" id="1" xCoord="1051" yCoord="339"/>
     </arc>
     <arc id="I46" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="berth_2_served" target="no_exits_berth" type="tapnInhibitor" weight="1">
-      <arcpath arcPointType="false" id="0" xCoord="1040" yCoord="520"/>
-      <arcpath arcPointType="false" id="1" xCoord="927" yCoord="732"/>
+      <arcpath arcPointType="false" id="0" xCoord="1036" yCoord="516"/>
+      <arcpath arcPointType="false" id="1" xCoord="923" yCoord="728"/>
     </arc>
     <arc id="I47" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="berth_1_served" target="no_exits_berth" type="tapnInhibitor" weight="1">
-      <arcpath arcPointType="false" id="0" xCoord="1043" yCoord="251"/>
-      <arcpath arcPointType="false" id="1" xCoord="927" yCoord="732"/>
+      <arcpath arcPointType="false" id="0" xCoord="1039" yCoord="247"/>
+      <arcpath arcPointType="false" id="1" xCoord="923" yCoord="728"/>
     </arc>
     <arc id="A48" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="exit_berth" target="no_exits_berth" type="timed" weight="1">
-      <arcpath arcPointType="false" id="0" xCoord="1032" yCoord="747"/>
-      <arcpath arcPointType="false" id="1" xCoord="931" yCoord="747"/>
+      <arcpath arcPointType="false" id="0" xCoord="1028" yCoord="743"/>
+      <arcpath arcPointType="false" id="1" xCoord="927" yCoord="743"/>
     </arc>
     <arc id="A49" inscription="1" nameOffsetX="0" nameOffsetY="0" source="no_exits_berth" target="serve_ship" type="normal" weight="1">
-      <arcpath arcPointType="false" id="0" xCoord="921" yCoord="747"/>
-      <arcpath arcPointType="false" id="1" xCoord="822" yCoord="747"/>
+      <arcpath arcPointType="false" id="0" xCoord="917" yCoord="743"/>
+      <arcpath arcPointType="false" id="1" xCoord="818" yCoord="743"/>
     </arc>
     <arc id="I50" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="berth_2_unserved" target="no_ships_to_serve" type="tapnInhibitor" weight="1">
-      <arcpath arcPointType="false" id="0" xCoord="798" yCoord="520"/>
-      <arcpath arcPointType="false" id="1" xCoord="687" yCoord="702"/>
+      <arcpath arcPointType="false" id="0" xCoord="794" yCoord="516"/>
+      <arcpath arcPointType="false" id="1" xCoord="683" yCoord="698"/>
     </arc>
     <arc id="I51" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="berth_1_unserved" target="no_ships_to_serve" type="tapnInhibitor" weight="1">
-      <arcpath arcPointType="false" id="0" xCoord="803" yCoord="251"/>
-      <arcpath arcPointType="false" id="1" xCoord="687" yCoord="702"/>
+      <arcpath arcPointType="false" id="0" xCoord="799" yCoord="247"/>
+      <arcpath arcPointType="false" id="1" xCoord="683" yCoord="698"/>
     </arc>
     <arc id="A52" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="serve_ship" target="no_ships_to_serve" type="timed" weight="1">
-      <arcpath arcPointType="false" id="0" xCoord="792" yCoord="743"/>
-      <arcpath arcPointType="false" id="1" xCoord="691" yCoord="717"/>
+      <arcpath arcPointType="false" id="0" xCoord="788" yCoord="739"/>
+      <arcpath arcPointType="false" id="1" xCoord="687" yCoord="713"/>
     </arc>
     <arc id="A53" inscription="1" nameOffsetX="0" nameOffsetY="0" source="no_ships_to_serve" target="enter_berth" type="normal" weight="1">
-      <arcpath arcPointType="false" id="0" xCoord="681" yCoord="717"/>
-      <arcpath arcPointType="false" id="1" xCoord="581" yCoord="742"/>
+      <arcpath arcPointType="false" id="0" xCoord="677" yCoord="713"/>
+      <arcpath arcPointType="false" id="1" xCoord="577" yCoord="738"/>
     </arc>
     <arc id="A57" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="serve_ship" target="no_more_workers" type="timed" weight="1">
-      <arcpath arcPointType="false" id="0" xCoord="793" yCoord="753"/>
-      <arcpath arcPointType="false" id="1" xCoord="692" yCoord="802"/>
+      <arcpath arcPointType="false" id="0" xCoord="789" yCoord="749"/>
+      <arcpath arcPointType="false" id="1" xCoord="688" yCoord="798"/>
     </arc>
     <arc id="A58" inscription="1" nameOffsetX="0" nameOffsetY="0" source="no_more_workers" target="enter_berth" type="normal" weight="1">
-      <arcpath arcPointType="false" id="0" xCoord="681" yCoord="807"/>
-      <arcpath arcPointType="false" id="1" xCoord="580" yCoord="753"/>
+      <arcpath arcPointType="false" id="0" xCoord="677" yCoord="803"/>
+      <arcpath arcPointType="false" id="1" xCoord="576" yCoord="749"/>
     </arc>
     <arc id="A65" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="serve_ship" target="serve_berth_1" type="timed" weight="1">
-      <arcpath arcPointType="false" id="0" xCoord="807" yCoord="732"/>
-      <arcpath arcPointType="false" id="1" xCoord="808" yCoord="685"/>
-      <arcpath arcPointType="false" id="2" xCoord="1467" yCoord="680"/>
-      <arcpath arcPointType="false" id="3" xCoord="1466" yCoord="195"/>
-      <arcpath arcPointType="false" id="4" xCoord="927" yCoord="200"/>
-      <arcpath arcPointType="false" id="5" xCoord="927" yCoord="222"/>
+      <arcpath arcPointType="false" id="0" xCoord="803" yCoord="728"/>
+      <arcpath arcPointType="false" id="1" xCoord="804" yCoord="681"/>
+      <arcpath arcPointType="false" id="2" xCoord="1463" yCoord="676"/>
+      <arcpath arcPointType="false" id="3" xCoord="1462" yCoord="191"/>
+      <arcpath arcPointType="false" id="4" xCoord="923" yCoord="196"/>
+      <arcpath arcPointType="false" id="5" xCoord="923" yCoord="218"/>
     </arc>
     <arc id="A66" inscription="1" nameOffsetX="0" nameOffsetY="0" source="serve_berth_1" target="serve_ship" type="normal" weight="1">
-      <arcpath arcPointType="false" id="0" xCoord="927" yCoord="222"/>
-      <arcpath arcPointType="false" id="1" xCoord="944" yCoord="196"/>
-      <arcpath arcPointType="false" id="2" xCoord="1487" yCoord="196"/>
-      <arcpath arcPointType="false" id="3" xCoord="1484" yCoord="685"/>
-      <arcpath arcPointType="false" id="4" xCoord="821" yCoord="680"/>
-      <arcpath arcPointType="false" id="5" xCoord="810" yCoord="732"/>
+      <arcpath arcPointType="false" id="0" xCoord="923" yCoord="218"/>
+      <arcpath arcPointType="false" id="1" xCoord="940" yCoord="192"/>
+      <arcpath arcPointType="false" id="2" xCoord="1483" yCoord="192"/>
+      <arcpath arcPointType="false" id="3" xCoord="1480" yCoord="681"/>
+      <arcpath arcPointType="false" id="4" xCoord="817" yCoord="676"/>
+      <arcpath arcPointType="false" id="5" xCoord="806" yCoord="728"/>
     </arc>
     <arc id="A60" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="enter_berth" target="no_ships_berth_entrance" type="timed" weight="1">
-      <arcpath arcPointType="false" id="0" xCoord="556" yCoord="757"/>
-      <arcpath arcPointType="false" id="1" xCoord="481" yCoord="837"/>
+      <arcpath arcPointType="false" id="0" xCoord="552" yCoord="753"/>
+      <arcpath arcPointType="false" id="1" xCoord="477" yCoord="833"/>
     </arc>
     <arc id="I61" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="berth_1_entrance" target="no_ships_berth_entrance" type="tapnInhibitor" weight="1">
-      <arcpath arcPointType="false" id="0" xCoord="330" yCoord="161"/>
-      <arcpath arcPointType="false" id="1" xCoord="477" yCoord="822"/>
+      <arcpath arcPointType="false" id="0" xCoord="326" yCoord="157"/>
+      <arcpath arcPointType="false" id="1" xCoord="473" yCoord="818"/>
     </arc>
     <arc id="I62" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="berth_2_entrance" target="no_ships_berth_entrance" type="tapnInhibitor" weight="1">
-      <arcpath arcPointType="false" id="0" xCoord="335" yCoord="610"/>
-      <arcpath arcPointType="false" id="1" xCoord="472" yCoord="832"/>
+      <arcpath arcPointType="false" id="0" xCoord="331" yCoord="606"/>
+      <arcpath arcPointType="false" id="1" xCoord="468" yCoord="828"/>
     </arc>
     <arc id="I63" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="workers" target="no_more_workers" type="tapnInhibitor" weight="1">
-      <arcpath arcPointType="false" id="0" xCoord="1061" yCoord="358"/>
-      <arcpath arcPointType="false" id="1" xCoord="1229" yCoord="377"/>
-      <arcpath arcPointType="false" id="2" xCoord="1231" yCoord="833"/>
-      <arcpath arcPointType="false" id="3" xCoord="691" yCoord="812"/>
+      <arcpath arcPointType="false" id="0" xCoord="1057" yCoord="354"/>
+      <arcpath arcPointType="false" id="1" xCoord="1225" yCoord="373"/>
+      <arcpath arcPointType="false" id="2" xCoord="1227" yCoord="829"/>
+      <arcpath arcPointType="false" id="3" xCoord="687" yCoord="808"/>
     </arc>
     <arc id="A62" inscription="1" nameOffsetX="0" nameOffsetY="0" source="enter_berth_2" target="berth_2_unserved" type="normal" weight="1">
-      <arcpath arcPointType="false" id="0" xCoord="687" yCoord="582"/>
-      <arcpath arcPointType="false" id="1" xCoord="705" yCoord="527"/>
-      <arcpath arcPointType="false" id="2" xCoord="792" yCoord="510"/>
+      <arcpath arcPointType="false" id="0" xCoord="683" yCoord="578"/>
+      <arcpath arcPointType="false" id="1" xCoord="701" yCoord="523"/>
+      <arcpath arcPointType="false" id="2" xCoord="788" yCoord="506"/>
     </arc>
     <arc id="A63" inscription="1" nameOffsetX="0" nameOffsetY="0" source="enter_berth_1" target="berth_1_unserved" type="normal" weight="1">
-      <arcpath arcPointType="false" id="0" xCoord="687" yCoord="162"/>
-      <arcpath arcPointType="false" id="1" xCoord="711" yCoord="267"/>
-      <arcpath arcPointType="false" id="2" xCoord="792" yCoord="241"/>
+      <arcpath arcPointType="false" id="0" xCoord="683" yCoord="158"/>
+      <arcpath arcPointType="false" id="1" xCoord="707" yCoord="263"/>
+      <arcpath arcPointType="false" id="2" xCoord="788" yCoord="237"/>
     </arc>
     <arc id="A13" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="berth_1_served" target="exit_berth_1" type="timed" weight="1">
-      <arcpath arcPointType="false" id="0" xCoord="1058" yCoord="227"/>
-      <arcpath arcPointType="false" id="1" xCoord="1161" yCoord="147"/>
+      <arcpath arcPointType="false" id="0" xCoord="1054" yCoord="223"/>
+      <arcpath arcPointType="false" id="1" xCoord="1157" yCoord="143"/>
     </arc>
     <arc id="A9" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="berth_2_served" target="exit_berth_2" type="timed" weight="1">
-      <arcpath arcPointType="false" id="0" xCoord="1058" yCoord="516"/>
-      <arcpath arcPointType="false" id="1" xCoord="1162" yCoord="592"/>
+      <arcpath arcPointType="false" id="0" xCoord="1054" yCoord="512"/>
+      <arcpath arcPointType="false" id="1" xCoord="1158" yCoord="588"/>
     </arc>
     <arc id="A67" inscription="1" nameOffsetX="0" nameOffsetY="0" source="no_ships_berth_entrance" target="enter_berth_entrance" type="normal" weight="1">
-      <arcpath arcPointType="false" id="0" xCoord="471" yCoord="842"/>
-      <arcpath arcPointType="false" id="1" xCoord="340" yCoord="755"/>
+      <arcpath arcPointType="false" id="0" xCoord="467" yCoord="838"/>
+      <arcpath arcPointType="false" id="1" xCoord="336" yCoord="751"/>
     </arc>
     <arc id="A68" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="berth_1_cap_exit" target="exit_berth_1" type="timed" weight="1">
-      <arcpath arcPointType="false" id="0" xCoord="1260" yCoord="81"/>
-      <arcpath arcPointType="false" id="1" xCoord="1171" yCoord="147"/>
+      <arcpath arcPointType="false" id="0" xCoord="1256" yCoord="77"/>
+      <arcpath arcPointType="false" id="1" xCoord="1167" yCoord="143"/>
     </arc>
     <arc id="A69" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="berth_2_cap_exit" target="exit_berth_2" type="timed" weight="1">
-      <arcpath arcPointType="false" id="0" xCoord="1178" yCoord="521"/>
-      <arcpath arcPointType="false" id="1" xCoord="1167" yCoord="582"/>
+      <arcpath arcPointType="false" id="0" xCoord="1174" yCoord="517"/>
+      <arcpath arcPointType="false" id="1" xCoord="1163" yCoord="578"/>
     </arc>
     <arc id="A70" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="enter_berth" target="berth_2_not_empty" type="timed" weight="1">
-      <arcpath arcPointType="false" id="0" xCoord="553" yCoord="740"/>
-      <arcpath arcPointType="false" id="1" xCoord="481" yCoord="707"/>
+      <arcpath arcPointType="false" id="0" xCoord="549" yCoord="736"/>
+      <arcpath arcPointType="false" id="1" xCoord="477" yCoord="703"/>
     </arc>
     <arc id="A71" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="enter_berth" target="berth_1_not_empty" type="timed" weight="1">
-      <arcpath arcPointType="false" id="0" xCoord="557" yCoord="735"/>
-      <arcpath arcPointType="false" id="1" xCoord="481" yCoord="633"/>
+      <arcpath arcPointType="false" id="0" xCoord="553" yCoord="731"/>
+      <arcpath arcPointType="false" id="1" xCoord="477" yCoord="629"/>
     </arc>
     <arc id="A72" inscription="1" nameOffsetX="0" nameOffsetY="0" source="berth_1_not_empty" target="enter_berth_entrance" type="normal" weight="1">
-      <arcpath arcPointType="false" id="0" xCoord="471" yCoord="627"/>
-      <arcpath arcPointType="false" id="1" xCoord="338" yCoord="737"/>
+      <arcpath arcPointType="false" id="0" xCoord="467" yCoord="623"/>
+      <arcpath arcPointType="false" id="1" xCoord="334" yCoord="733"/>
     </arc>
     <arc id="A73" inscription="1" nameOffsetX="0" nameOffsetY="0" source="berth_2_not_empty" target="enter_berth_entrance" type="normal" weight="1">
-      <arcpath arcPointType="false" id="0" xCoord="471" yCoord="702"/>
-      <arcpath arcPointType="false" id="1" xCoord="341" yCoord="742"/>
+      <arcpath arcPointType="false" id="0" xCoord="467" yCoord="698"/>
+      <arcpath arcPointType="false" id="1" xCoord="337" yCoord="738"/>
     </arc>
     <arc id="I71" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="berth_1_empty" target="berth_1_not_empty" type="tapnInhibitor" weight="1">
-      <arcpath arcPointType="false" id="0" xCoord="912" yCoord="150"/>
-      <arcpath arcPointType="false" id="1" xCoord="563" yCoord="238"/>
-      <arcpath arcPointType="false" id="2" xCoord="477" yCoord="612"/>
+      <arcpath arcPointType="false" id="0" xCoord="908" yCoord="146"/>
+      <arcpath arcPointType="false" id="1" xCoord="559" yCoord="234"/>
+      <arcpath arcPointType="false" id="2" xCoord="473" yCoord="608"/>
     </arc>
     <arc id="A64" inscription="1" nameOffsetX="0" nameOffsetY="0" source="no_berths_empty" target="enter_berth_entrance" type="normal" weight="1">
-      <arcpath arcPointType="false" id="0" xCoord="462" yCoord="492"/>
-      <arcpath arcPointType="false" id="1" xCoord="333" yCoord="733"/>
+      <arcpath arcPointType="false" id="0" xCoord="458" yCoord="488"/>
+      <arcpath arcPointType="false" id="1" xCoord="329" yCoord="729"/>
     </arc>
     <arc id="A59" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="enter_berth" target="no_berths_empty" type="timed" weight="1">
-      <arcpath arcPointType="false" id="0" xCoord="561" yCoord="732"/>
-      <arcpath arcPointType="false" id="1" xCoord="462" yCoord="492"/>
+      <arcpath arcPointType="false" id="0" xCoord="557" yCoord="728"/>
+      <arcpath arcPointType="false" id="1" xCoord="458" yCoord="488"/>
     </arc>
     <arc id="I59" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="berth_1_empty" target="no_berths_empty" type="tapnInhibitor" weight="1">
-      <arcpath arcPointType="false" id="0" xCoord="912" yCoord="150"/>
-      <arcpath arcPointType="false" id="1" xCoord="479" yCoord="231"/>
-      <arcpath arcPointType="false" id="2" xCoord="462" yCoord="462"/>
+      <arcpath arcPointType="false" id="0" xCoord="908" yCoord="146"/>
+      <arcpath arcPointType="false" id="1" xCoord="475" yCoord="227"/>
+      <arcpath arcPointType="false" id="2" xCoord="458" yCoord="458"/>
     </arc>
     <arc id="I60" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="berth_2_empty" target="no_berths_empty" type="tapnInhibitor" weight="1">
-      <arcpath arcPointType="false" id="0" xCoord="932" yCoord="611"/>
-      <arcpath arcPointType="false" id="1" xCoord="951" yCoord="652"/>
-      <arcpath arcPointType="false" id="2" xCoord="556" yCoord="645"/>
-      <arcpath arcPointType="false" id="3" xCoord="560" yCoord="681"/>
-      <arcpath arcPointType="false" id="4" xCoord="462" yCoord="492"/>
+      <arcpath arcPointType="false" id="0" xCoord="928" yCoord="607"/>
+      <arcpath arcPointType="false" id="1" xCoord="947" yCoord="648"/>
+      <arcpath arcPointType="false" id="2" xCoord="552" yCoord="641"/>
+      <arcpath arcPointType="false" id="3" xCoord="556" yCoord="677"/>
+      <arcpath arcPointType="false" id="4" xCoord="458" yCoord="488"/>
     </arc>
     <arc id="I72" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="berth_2_empty" target="berth_2_not_empty" type="tapnInhibitor" weight="1">
-      <arcpath arcPointType="false" id="0" xCoord="912" yCoord="600"/>
-      <arcpath arcPointType="false" id="1" xCoord="482" yCoord="697"/>
+      <arcpath arcPointType="false" id="0" xCoord="908" yCoord="596"/>
+      <arcpath arcPointType="false" id="1" xCoord="478" yCoord="693"/>
     </arc>
     <arc id="A74" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="berth_1_empty" target="berth_2_not_empty" type="timed" weight="1">
-      <arcpath arcPointType="false" id="0" xCoord="912" yCoord="151"/>
-      <arcpath arcPointType="false" id="1" xCoord="595" yCoord="250"/>
-      <arcpath arcPointType="false" id="2" xCoord="477" yCoord="687"/>
+      <arcpath arcPointType="false" id="0" xCoord="908" yCoord="147"/>
+      <arcpath arcPointType="false" id="1" xCoord="591" yCoord="246"/>
+      <arcpath arcPointType="false" id="2" xCoord="473" yCoord="683"/>
     </arc>
     <arc id="A75" inscription="1" nameOffsetX="0" nameOffsetY="0" source="berth_2_not_empty" target="berth_1_empty" type="normal" weight="1">
-      <arcpath arcPointType="false" id="0" xCoord="477" yCoord="687"/>
-      <arcpath arcPointType="false" id="1" xCoord="600" yCoord="257"/>
-      <arcpath arcPointType="false" id="2" xCoord="912" yCoord="151"/>
+      <arcpath arcPointType="false" id="0" xCoord="473" yCoord="683"/>
+      <arcpath arcPointType="false" id="1" xCoord="596" yCoord="253"/>
+      <arcpath arcPointType="false" id="2" xCoord="908" yCoord="147"/>
     </arc>
     <arc id="A76" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="berth_2_empty" target="berth_1_not_empty" type="timed" weight="1">
-      <arcpath arcPointType="false" id="0" xCoord="912" yCoord="597"/>
-      <arcpath arcPointType="false" id="1" xCoord="482" yCoord="618"/>
+      <arcpath arcPointType="false" id="0" xCoord="908" yCoord="593"/>
+      <arcpath arcPointType="false" id="1" xCoord="478" yCoord="614"/>
     </arc>
     <arc id="A77" inscription="1" nameOffsetX="0" nameOffsetY="0" source="berth_1_not_empty" target="berth_2_empty" type="normal" weight="1">
-      <arcpath arcPointType="false" id="0" xCoord="482" yCoord="626"/>
-      <arcpath arcPointType="false" id="1" xCoord="912" yCoord="597"/>
+      <arcpath arcPointType="false" id="0" xCoord="478" yCoord="622"/>
+      <arcpath arcPointType="false" id="1" xCoord="908" yCoord="593"/>
     </arc>
   </net>
   <net active="true" id="Clock" type="P/T net">
-    <labels border="true" height="57" positionX="248" positionY="98" width="109">Initialization of constants and clock.</labels>
+    <labels border="true" height="56" positionX="247" positionY="97" width="108">Initialization of constants and clock.</labels>
     <place displayName="true" id="init" initialMarking="1" invariant="&lt; inf" name="init" nameOffsetX="28" nameOffsetY="0" positionX="240" positionY="180"/>
     <place displayName="true" id="passage_size" initialMarking="0" invariant="&lt; inf" name="passage_size" nameOffsetX="0" nameOffsetY="0" positionX="540" positionY="90"/>
     <place displayName="true" id="workers" initialMarking="0" invariant="&lt; inf" name="workers" nameOffsetX="0" nameOffsetY="0" positionX="540" positionY="180"/>
@@ -699,46 +689,36 @@ There will always be 1 marked and 1 unmarked berth. Berth 2 will be marked by de
     <transition angle="0" displayName="true" id="initialize" infiniteServer="false" name="initialize" nameOffsetX="40" nameOffsetY="-3" player="0" positionX="360" positionY="180" priority="0" urgent="false"/>
     <transition angle="0" displayName="true" id="no_ships_appear" infiniteServer="false" name="no_ships_appear" nameOffsetX="0" nameOffsetY="0" player="0" positionX="1080" positionY="540" priority="0" urgent="false"/>
     <arc id="A0" inscription="1" nameOffsetX="23" nameOffsetY="-4" source="initialize" target="passage_size" type="normal" weight="PassageSize">
-      <arcpath arcPointType="false" id="0" xCoord="391" yCoord="207"/>
-      <arcpath arcPointType="false" id="1" xCoord="553" yCoord="123"/>
+      <arcpath arcPointType="false" id="0" xCoord="387" yCoord="203"/>
+      <arcpath arcPointType="false" id="1" xCoord="549" yCoord="119"/>
     </arc>
     <arc id="A1" inscription="1" nameOffsetX="31" nameOffsetY="2" source="initialize" target="workers" type="normal" weight="Workers">
-      <arcpath arcPointType="false" id="0" xCoord="391" yCoord="207"/>
-      <arcpath arcPointType="false" id="1" xCoord="552" yCoord="207"/>
+      <arcpath arcPointType="false" id="0" xCoord="387" yCoord="203"/>
+      <arcpath arcPointType="false" id="1" xCoord="548" yCoord="203"/>
     </arc>
     <arc id="A2" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="init" target="initialize" type="timed" weight="1">
-      <arcpath arcPointType="false" id="0" xCoord="282" yCoord="207"/>
-      <arcpath arcPointType="false" id="1" xCoord="381" yCoord="207"/>
+      <arcpath arcPointType="false" id="0" xCoord="278" yCoord="203"/>
+      <arcpath arcPointType="false" id="1" xCoord="377" yCoord="203"/>
     </arc>
     <arc id="A3" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="spawn_ships" target="no_ships_appear" type="timed" weight="1">
-      <arcpath arcPointType="false" id="0" xCoord="1107" yCoord="462"/>
-      <arcpath arcPointType="false" id="1" xCoord="1107" yCoord="552"/>
+      <arcpath arcPointType="false" id="0" xCoord="1103" yCoord="458"/>
+      <arcpath arcPointType="false" id="1" xCoord="1103" yCoord="548"/>
     </arc>
     <arc id="A4" inscription="1" nameOffsetX="0" nameOffsetY="0" source="no_ships_appear" target="exit_dock" type="normal" weight="1">
-      <arcpath arcPointType="false" id="0" xCoord="1101" yCoord="567"/>
-      <arcpath arcPointType="false" id="1" xCoord="287" yCoord="598"/>
-      <arcpath arcPointType="false" id="2" xCoord="268" yCoord="461"/>
+      <arcpath arcPointType="false" id="0" xCoord="1097" yCoord="563"/>
+      <arcpath arcPointType="false" id="1" xCoord="283" yCoord="594"/>
+      <arcpath arcPointType="false" id="2" xCoord="264" yCoord="457"/>
     </arc>
     <arc id="A5" inscription="1" nameOffsetX="0" nameOffsetY="0" source="no_ships_appear" target="ticks" type="normal" weight="1">
-      <arcpath arcPointType="false" id="0" xCoord="1111" yCoord="567"/>
-      <arcpath arcPointType="false" id="1" xCoord="1249" yCoord="587"/>
-      <arcpath arcPointType="false" id="2" xCoord="1229" yCoord="461"/>
+      <arcpath arcPointType="false" id="0" xCoord="1107" yCoord="563"/>
+      <arcpath arcPointType="false" id="1" xCoord="1245" yCoord="583"/>
+      <arcpath arcPointType="false" id="2" xCoord="1225" yCoord="457"/>
     </arc>
     <arc id="A6" inscription="1" nameOffsetX="0" nameOffsetY="0" source="initialize" target="exit_dock" type="normal" weight="1">
-      <arcpath arcPointType="false" id="0" xCoord="387" yCoord="222"/>
-      <arcpath arcPointType="false" id="1" xCoord="274" yCoord="433"/>
+      <arcpath arcPointType="false" id="0" xCoord="383" yCoord="218"/>
+      <arcpath arcPointType="false" id="1" xCoord="270" yCoord="429"/>
     </arc>
   </net>
-  <query active="true" algorithmOption="CERTAIN_ZERO" approximationDenominator="0" capacity="4" discreteInclusion="false" enableOverApproximation="false" enableUnderApproximation="false" extrapolationOption="null" gcd="false" hashTableSize="null" inclusionPlaces="*NONE*" name="Waiting smaller than 20" overApproximation="false" pTrie="false" reduction="true" reductionOption="VerifyPN" searchOption="DFS" symmetry="false" timeDarts="false" traceOption="NONE" type="CTL" useQueryReduction="true" useSiphonTrapAnalysis="false" useStubbornReduction="true" useTarOption="false" useTarjan="true">
-    <formula>
-      <integer-lt>
-        <tokens-count>
-          <place>WaitingArea_CommonPassage.waiting</place>
-        </tokens-count>
-        <integer-constant>20</integer-constant>
-      </integer-lt>
-    </formula>
-  </query>
   <k-bound bound="3"/>
   <feature isGame="false" isTimed="false"/>
 </pnml>
