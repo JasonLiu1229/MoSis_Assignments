@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<trace>
+  <transition id="Clock_initialize">
+    <token age="0" place="Clock_init"/>
+  </transition>
+  <transition id="WaitingArea_CommonPassage_no_dock_exits">
+    <token age="0" place="Shared_exit_dock"/>
+  </transition>
+  <transition id="WaitingArea_CommonPassage_no_exits_to_common">
+    <token age="0" place="Shared_exit_to_common"/>
+  </transition>
+  <transition id="Berth_no_exits_berth">
+    <token age="0" place="Shared_exit_berth"/>
+  </transition>
+  <transition id="Berth_no_ships_to_serve">
+    <token age="0" place="Shared_serve_ship"/>
+  </transition>
+  <transition id="Berth_no_ships_berth_entrance">
+    <token age="0" place="Shared_enter_berth"/>
+  </transition>
+  <transition id="WaitingArea_CommonPassage_no_ships_in_common">
+    <token age="0" place="Shared_enter_berth_entrance"/>
+  </transition>
+  <transition id="WaitingArea_CommonPassage_no_ships_waiting">
+    <token age="0" place="Shared_enter_common"/>
+  </transition>
+  <transition id="WaitingArea_CommonPassage_generate">
+    <token age="0" place="Shared_spawn_ships"/>
+  </transition>
+  <transition id="WaitingArea_CommonPassage_generate">
+    <token age="0" place="Shared_spawn_ships"/>
+  </transition>
+  <transition id="Clock_no_ships_appear">
+    <token age="0" place="Shared_spawn_ships"/>
+  </transition>
+  <transition id="WaitingArea_CommonPassage_no_dock_exits">
+    <token age="0" place="Shared_exit_dock"/>
+  </transition>
+  <transition id="WaitingArea_CommonPassage_no_exits_to_common">
+    <token age="0" place="Shared_exit_to_common"/>
+  </transition>
+  <transition id="Berth_no_exits_berth">
+    <token age="0" place="Shared_exit_berth"/>
+  </transition>
+  <transition id="Berth_no_ships_to_serve">
+    <token age="0" place="Shared_serve_ship"/>
+  </transition>
+  <transition id="Berth_no_ships_berth_entrance">
+    <token age="0" place="Shared_enter_berth"/>
+  </transition>
+  <transition id="WaitingArea_CommonPassage_no_ships_in_common">
+    <token age="0" place="Shared_enter_berth_entrance"/>
+  </transition>
+  <transition id="WaitingArea_CommonPassage_enter_passage">
+    <token age="0" place="Shared_passage_size"/>
+    <token age="0" place="WaitingArea_CommonPassage_waiting"/>
+    <token age="0" place="Shared_enter_common"/>
+  </transition>
+  <transition id="WaitingArea_CommonPassage_enter_passage">
+    <token age="0" place="Shared_passage_size"/>
+    <token age="0" place="WaitingArea_CommonPassage_waiting"/>
+    <token age="0" place="Shared_enter_common"/>
+  </transition>
+  <transition id="WaitingArea_CommonPassage_no_ships_waiting">
+    <token age="0" place="Shared_enter_common"/>
+  </transition>
+  <transition id="Clock_no_ships_appear">
+    <token age="0" place="Shared_spawn_ships"/>
+  </transition>
+  <transition id="WaitingArea_CommonPassage_no_dock_exits">
+    <token age="0" place="Shared_exit_dock"/>
+  </transition>
+  <transition id="WaitingArea_CommonPassage_no_exits_to_common">
+    <token age="0" place="Shared_exit_to_common"/>
+  </transition>
+  <transition id="Berth_no_exits_berth">
+    <token age="0" place="Shared_exit_berth"/>
+  </transition>
+  <transition id="Berth_no_ships_to_serve">
+    <token age="0" place="Shared_serve_ship"/>
+  </transition>
+  <transition id="Berth_no_ships_berth_entrance">
+    <token age="0" place="Shared_enter_berth"/>
+  </transition>
+  <transition id="WaitingArea_CommonPassage_enter_berth_1_entrance">
+    <token age="0" place="WaitingArea_CommonPassage_passage_inbound"/>
+    <token age="0" place="Shared_enter_berth_entrance"/>
+  </transition>
+  <transition id="WaitingArea_CommonPassage_enter_berth_1_entrance">
+    <token age="0" place="WaitingArea_CommonPassage_passage_inbound"/>
+    <token age="0" place="Shared_enter_berth_entrance"/>
+  </transition>
+</trace>

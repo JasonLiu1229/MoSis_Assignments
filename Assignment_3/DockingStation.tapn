@@ -141,8 +141,8 @@
       <arcpath arcPointType="false" id="1" xCoord="645" yCoord="780"/>
     </arc>
     <arc id="A24" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="exit_to_common" target="enter_passage_outbound_2" type="timed" weight="1">
-      <arcpath arcPointType="false" id="0" xCoord="658" yCoord="877"/>
-      <arcpath arcPointType="false" id="1" xCoord="743" yCoord="830"/>
+      <arcpath arcPointType="false" id="0" xCoord="659" yCoord="880"/>
+      <arcpath arcPointType="false" id="1" xCoord="763" yCoord="850"/>
       <arcpath arcPointType="false" id="2" xCoord="649" yCoord="710"/>
     </arc>
     <arc id="A25" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="spawn_ships" target="generate" type="timed" weight="1">
@@ -162,8 +162,8 @@
       <arcpath arcPointType="false" id="1" xCoord="765" yCoord="870"/>
     </arc>
     <arc id="I29" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="berth_2_exit" target="no_exits_to_common" type="tapnInhibitor" weight="1">
-      <arcpath arcPointType="false" id="0" xCoord="827" yCoord="676"/>
-      <arcpath arcPointType="false" id="1" xCoord="852" yCoord="836"/>
+      <arcpath arcPointType="false" id="0" xCoord="828" yCoord="676"/>
+      <arcpath arcPointType="false" id="1" xCoord="872" yCoord="856"/>
       <arcpath arcPointType="false" id="2" xCoord="770" yCoord="880"/>
     </arc>
     <arc id="A30" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="exit_to_common" target="no_exits_to_common" type="timed" weight="1">
@@ -235,10 +235,10 @@
       <arcpath arcPointType="false" id="1" xCoord="525" yCoord="150"/>
     </arc>
     <arc id="A46" inscription="1" nameOffsetX="0" nameOffsetY="0" source="berth_entrances_full" target="enter_common" type="normal" weight="1">
-      <arcpath arcPointType="false" id="0" xCoord="880" yCoord="280"/>
-      <arcpath arcPointType="false" id="1" xCoord="865" yCoord="264"/>
-      <arcpath arcPointType="false" id="2" xCoord="589" yCoord="264"/>
-      <arcpath arcPointType="false" id="3" xCoord="417" yCoord="367"/>
+      <arcpath arcPointType="false" id="0" xCoord="885" yCoord="270"/>
+      <arcpath arcPointType="false" id="1" xCoord="885" yCoord="284"/>
+      <arcpath arcPointType="false" id="2" xCoord="609" yCoord="284"/>
+      <arcpath arcPointType="false" id="3" xCoord="418" yCoord="368"/>
     </arc>
     <arc id="I47" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="waiting" target="no_ships_waiting" type="tapnInhibitor" weight="1">
       <arcpath arcPointType="false" id="0" xCoord="405" yCoord="150"/>
@@ -269,8 +269,8 @@
       <arcpath arcPointType="false" id="1" xCoord="289" yCoord="375"/>
     </arc>
     <arc id="I53" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="passage_size" target="passage_no_more_space_enter" type="tapnInhibitor" weight="1">
-      <arcpath arcPointType="false" id="0" xCoord="510" yCoord="437"/>
-      <arcpath arcPointType="false" id="1" xCoord="316" yCoord="475"/>
+      <arcpath arcPointType="false" id="0" xCoord="510" yCoord="439"/>
+      <arcpath arcPointType="false" id="1" xCoord="336" yCoord="495"/>
       <arcpath arcPointType="false" id="2" xCoord="285" yCoord="390"/>
     </arc>
     <arc id="A54" inscription="1" nameOffsetX="0" nameOffsetY="0" source="passage_no_more_space_enter" target="spawn_ships" type="normal" weight="1">
@@ -283,20 +283,20 @@
     </arc>
     <arc id="A56" inscription="1" nameOffsetX="0" nameOffsetY="0" source="enter_passage_outbound_2" target="exit_to_common" type="normal" weight="1">
       <arcpath arcPointType="false" id="0" xCoord="649" yCoord="711"/>
-      <arcpath arcPointType="false" id="1" xCoord="734" yCoord="835"/>
-      <arcpath arcPointType="false" id="2" xCoord="658" yCoord="877"/>
+      <arcpath arcPointType="false" id="1" xCoord="754" yCoord="855"/>
+      <arcpath arcPointType="false" id="2" xCoord="659" yCoord="881"/>
     </arc>
     <arc id="I57" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="passage_size" target="passage_no_more_space_exit" type="tapnInhibitor" weight="1">
-      <arcpath arcPointType="false" id="0" xCoord="537" yCoord="444"/>
-      <arcpath arcPointType="false" id="1" xCoord="641" yCoord="522"/>
-      <arcpath arcPointType="false" id="2" xCoord="916" yCoord="523"/>
+      <arcpath arcPointType="false" id="0" xCoord="536" yCoord="444"/>
+      <arcpath arcPointType="false" id="1" xCoord="661" yCoord="542"/>
+      <arcpath arcPointType="false" id="2" xCoord="936" yCoord="543"/>
       <arcpath arcPointType="false" id="3" xCoord="885" yCoord="690"/>
     </arc>
     <arc id="A58" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="exit_to_common" target="passage_no_more_space_exit" type="timed" weight="1">
-      <arcpath arcPointType="false" id="0" xCoord="659" yCoord="882"/>
-      <arcpath arcPointType="false" id="1" xCoord="768" yCoord="862"/>
-      <arcpath arcPointType="false" id="2" xCoord="891" yCoord="862"/>
-      <arcpath arcPointType="false" id="3" xCoord="887" yCoord="747"/>
+      <arcpath arcPointType="false" id="0" xCoord="659" yCoord="884"/>
+      <arcpath arcPointType="false" id="1" xCoord="788" yCoord="882"/>
+      <arcpath arcPointType="false" id="2" xCoord="911" yCoord="882"/>
+      <arcpath arcPointType="false" id="3" xCoord="907" yCoord="767"/>
       <arcpath arcPointType="false" id="4" xCoord="885" yCoord="720"/>
     </arc>
     <arc id="A59" inscription="1" nameOffsetX="0" nameOffsetY="0" source="passage_no_more_space_exit" target="exit_berth" type="normal" weight="1">
@@ -313,7 +313,7 @@
     </arc>
   </net>
   <net active="true" id="Berth" type="P/T net">
-    <labels border="true" height="313" positionX="1496" positionY="194" width="230">Berth service fairness. Forces ships to be serviced alternately if there is a conflict.
+    <labels border="true" height="318" positionX="1501" positionY="199" width="235">Berth service fairness. Forces ships to be serviced alternately if there is a conflict.
 
 When a berth services a ship, it will mark that berth and unmark the other berth. The marked berth will not be able to service a ship until it has been unmarked.
 
@@ -412,7 +412,7 @@ There will always be 1 marked and 1 unmarked berth. Berth 2 will be marked by de
     </arc>
     <arc id="A23" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="just_served_1" target="let_1_go" type="timed" weight="1">
       <arcpath arcPointType="false" id="0" xCoord="806" yCoord="395"/>
-      <arcpath arcPointType="false" id="1" xCoord="909" yCoord="318"/>
+      <arcpath arcPointType="false" id="1" xCoord="909" yCoord="316"/>
     </arc>
     <arc id="A24" inscription="1" nameOffsetX="0" nameOffsetY="0" source="let_1_go" target="just_served_2" type="normal" weight="1">
       <arcpath arcPointType="false" id="0" xCoord="910" yCoord="312"/>
@@ -440,7 +440,7 @@ There will always be 1 marked and 1 unmarked berth. Berth 2 will be marked by de
     </arc>
     <arc id="A31" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="berth_1_unserved" target="let_1_go" type="timed" weight="1">
       <arcpath arcPointType="false" id="0" xCoord="807" yCoord="233"/>
-      <arcpath arcPointType="false" id="1" xCoord="910" yCoord="312"/>
+      <arcpath arcPointType="false" id="1" xCoord="910" yCoord="309"/>
     </arc>
     <arc id="A32" inscription="1" nameOffsetX="0" nameOffsetY="0" source="let_1_go" target="berth_1_unserved" type="normal" weight="1">
       <arcpath arcPointType="false" id="0" xCoord="910" yCoord="306"/>
@@ -456,7 +456,7 @@ There will always be 1 marked and 1 unmarked berth. Berth 2 will be marked by de
     </arc>
     <arc id="I32" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="berth_2_unserved" target="let_1_go" type="tapnInhibitor" weight="1">
       <arcpath arcPointType="false" id="0" xCoord="803" yCoord="482"/>
-      <arcpath arcPointType="false" id="1" xCoord="909" yCoord="324"/>
+      <arcpath arcPointType="false" id="1" xCoord="909" yCoord="323"/>
     </arc>
     <arc id="I33" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="berth_1_unserved" target="let_2_go" type="tapnInhibitor" weight="1">
       <arcpath arcPointType="false" id="0" xCoord="803" yCoord="237"/>
@@ -555,20 +555,20 @@ There will always be 1 marked and 1 unmarked berth. Berth 2 will be marked by de
       <arcpath arcPointType="false" id="1" xCoord="568" yCoord="741"/>
     </arc>
     <arc id="A65" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="serve_ship" target="serve_berth_1" type="timed" weight="1">
-      <arcpath arcPointType="false" id="0" xCoord="800" yCoord="720"/>
-      <arcpath arcPointType="false" id="1" xCoord="812" yCoord="689"/>
-      <arcpath arcPointType="false" id="2" xCoord="1471" yCoord="684"/>
-      <arcpath arcPointType="false" id="3" xCoord="1470" yCoord="199"/>
-      <arcpath arcPointType="false" id="4" xCoord="931" yCoord="204"/>
-      <arcpath arcPointType="false" id="5" xCoord="920" yCoord="217"/>
+      <arcpath arcPointType="false" id="0" xCoord="807" yCoord="726"/>
+      <arcpath arcPointType="false" id="1" xCoord="832" yCoord="709"/>
+      <arcpath arcPointType="false" id="2" xCoord="1491" yCoord="704"/>
+      <arcpath arcPointType="false" id="3" xCoord="1490" yCoord="219"/>
+      <arcpath arcPointType="false" id="4" xCoord="951" yCoord="224"/>
+      <arcpath arcPointType="false" id="5" xCoord="920" yCoord="224"/>
     </arc>
     <arc id="A66" inscription="1" nameOffsetX="0" nameOffsetY="0" source="serve_berth_1" target="serve_ship" type="normal" weight="1">
-      <arcpath arcPointType="false" id="0" xCoord="920" yCoord="224"/>
-      <arcpath arcPointType="false" id="1" xCoord="948" yCoord="200"/>
-      <arcpath arcPointType="false" id="2" xCoord="1491" yCoord="200"/>
-      <arcpath arcPointType="false" id="3" xCoord="1488" yCoord="689"/>
-      <arcpath arcPointType="false" id="4" xCoord="825" yCoord="684"/>
-      <arcpath arcPointType="false" id="5" xCoord="802" yCoord="722"/>
+      <arcpath arcPointType="false" id="0" xCoord="920" yCoord="217"/>
+      <arcpath arcPointType="false" id="1" xCoord="968" yCoord="220"/>
+      <arcpath arcPointType="false" id="2" xCoord="1511" yCoord="220"/>
+      <arcpath arcPointType="false" id="3" xCoord="1508" yCoord="709"/>
+      <arcpath arcPointType="false" id="4" xCoord="845" yCoord="704"/>
+      <arcpath arcPointType="false" id="5" xCoord="807" yCoord="727"/>
     </arc>
     <arc id="A60" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="enter_berth" target="no_ships_berth_entrance" type="timed" weight="1">
       <arcpath arcPointType="false" id="0" xCoord="544" yCoord="745"/>
@@ -583,20 +583,20 @@ There will always be 1 marked and 1 unmarked berth. Berth 2 will be marked by de
       <arcpath arcPointType="false" id="1" xCoord="460" yCoord="820"/>
     </arc>
     <arc id="I63" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="workers" target="no_more_workers" type="tapnInhibitor" weight="1">
-      <arcpath arcPointType="false" id="0" xCoord="1049" yCoord="347"/>
-      <arcpath arcPointType="false" id="1" xCoord="1233" yCoord="381"/>
-      <arcpath arcPointType="false" id="2" xCoord="1235" yCoord="837"/>
+      <arcpath arcPointType="false" id="0" xCoord="1049" yCoord="348"/>
+      <arcpath arcPointType="false" id="1" xCoord="1253" yCoord="401"/>
+      <arcpath arcPointType="false" id="2" xCoord="1255" yCoord="857"/>
       <arcpath arcPointType="false" id="3" xCoord="679" yCoord="800"/>
     </arc>
     <arc id="A62" inscription="1" nameOffsetX="0" nameOffsetY="0" source="enter_berth_2" target="berth_2_unserved" type="normal" weight="1">
       <arcpath arcPointType="false" id="0" xCoord="680" yCoord="580"/>
-      <arcpath arcPointType="false" id="1" xCoord="709" yCoord="531"/>
-      <arcpath arcPointType="false" id="2" xCoord="781" yCoord="500"/>
+      <arcpath arcPointType="false" id="1" xCoord="729" yCoord="551"/>
+      <arcpath arcPointType="false" id="2" xCoord="783" yCoord="504"/>
     </arc>
     <arc id="A63" inscription="1" nameOffsetX="0" nameOffsetY="0" source="enter_berth_1" target="berth_1_unserved" type="normal" weight="1">
       <arcpath arcPointType="false" id="0" xCoord="675" yCoord="150"/>
-      <arcpath arcPointType="false" id="1" xCoord="715" yCoord="271"/>
-      <arcpath arcPointType="false" id="2" xCoord="781" yCoord="232"/>
+      <arcpath arcPointType="false" id="1" xCoord="735" yCoord="291"/>
+      <arcpath arcPointType="false" id="2" xCoord="784" yCoord="236"/>
     </arc>
     <arc id="A13" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="berth_1_served" target="exit_berth_1" type="timed" weight="1">
       <arcpath arcPointType="false" id="0" xCoord="1046" yCoord="215"/>
@@ -627,7 +627,7 @@ There will always be 1 marked and 1 unmarked berth. Berth 2 will be marked by de
       <arcpath arcPointType="false" id="1" xCoord="469" yCoord="621"/>
     </arc>
     <arc id="A72" inscription="1" nameOffsetX="0" nameOffsetY="0" source="berth_1_not_empty" target="enter_berth_entrance" type="normal" weight="1">
-      <arcpath arcPointType="false" id="0" xCoord="459" yCoord="615"/>
+      <arcpath arcPointType="false" id="0" xCoord="459" yCoord="620"/>
       <arcpath arcPointType="false" id="1" xCoord="326" yCoord="725"/>
     </arc>
     <arc id="A73" inscription="1" nameOffsetX="0" nameOffsetY="0" source="berth_2_not_empty" target="enter_berth_entrance" type="normal" weight="1">
@@ -635,8 +635,8 @@ There will always be 1 marked and 1 unmarked berth. Berth 2 will be marked by de
       <arcpath arcPointType="false" id="1" xCoord="329" yCoord="730"/>
     </arc>
     <arc id="I71" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="berth_1_empty" target="berth_1_not_empty" type="tapnInhibitor" weight="1">
-      <arcpath arcPointType="false" id="0" xCoord="900" yCoord="139"/>
-      <arcpath arcPointType="false" id="1" xCoord="567" yCoord="242"/>
+      <arcpath arcPointType="false" id="0" xCoord="901" yCoord="140"/>
+      <arcpath arcPointType="false" id="1" xCoord="587" yCoord="262"/>
       <arcpath arcPointType="false" id="2" xCoord="465" yCoord="600"/>
     </arc>
     <arc id="A64" inscription="1" nameOffsetX="0" nameOffsetY="0" source="no_berths_empty" target="enter_berth_entrance" type="normal" weight="1">
@@ -648,15 +648,15 @@ There will always be 1 marked and 1 unmarked berth. Berth 2 will be marked by de
       <arcpath arcPointType="false" id="1" xCoord="450" yCoord="480"/>
     </arc>
     <arc id="I59" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="berth_1_empty" target="no_berths_empty" type="tapnInhibitor" weight="1">
-      <arcpath arcPointType="false" id="0" xCoord="900" yCoord="138"/>
-      <arcpath arcPointType="false" id="1" xCoord="483" yCoord="235"/>
+      <arcpath arcPointType="false" id="0" xCoord="900" yCoord="139"/>
+      <arcpath arcPointType="false" id="1" xCoord="503" yCoord="255"/>
       <arcpath arcPointType="false" id="2" xCoord="450" yCoord="450"/>
     </arc>
     <arc id="I60" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="berth_2_empty" target="no_berths_empty" type="tapnInhibitor" weight="1">
-      <arcpath arcPointType="false" id="0" xCoord="922" yCoord="598"/>
-      <arcpath arcPointType="false" id="1" xCoord="955" yCoord="656"/>
-      <arcpath arcPointType="false" id="2" xCoord="560" yCoord="649"/>
-      <arcpath arcPointType="false" id="3" xCoord="564" yCoord="685"/>
+      <arcpath arcPointType="false" id="0" xCoord="923" yCoord="597"/>
+      <arcpath arcPointType="false" id="1" xCoord="975" yCoord="676"/>
+      <arcpath arcPointType="false" id="2" xCoord="580" yCoord="669"/>
+      <arcpath arcPointType="false" id="3" xCoord="584" yCoord="705"/>
       <arcpath arcPointType="false" id="4" xCoord="450" yCoord="480"/>
     </arc>
     <arc id="I72" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="berth_2_empty" target="berth_2_not_empty" type="tapnInhibitor" weight="1">
@@ -664,14 +664,14 @@ There will always be 1 marked and 1 unmarked berth. Berth 2 will be marked by de
       <arcpath arcPointType="false" id="1" xCoord="470" yCoord="685"/>
     </arc>
     <arc id="A74" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="berth_1_empty" target="berth_2_not_empty" type="timed" weight="1">
-      <arcpath arcPointType="false" id="0" xCoord="900" yCoord="140"/>
-      <arcpath arcPointType="false" id="1" xCoord="599" yCoord="254"/>
+      <arcpath arcPointType="false" id="0" xCoord="901" yCoord="141"/>
+      <arcpath arcPointType="false" id="1" xCoord="619" yCoord="274"/>
       <arcpath arcPointType="false" id="2" xCoord="465" yCoord="675"/>
     </arc>
     <arc id="A75" inscription="1" nameOffsetX="0" nameOffsetY="0" source="berth_2_not_empty" target="berth_1_empty" type="normal" weight="1">
       <arcpath arcPointType="false" id="0" xCoord="465" yCoord="675"/>
-      <arcpath arcPointType="false" id="1" xCoord="604" yCoord="261"/>
-      <arcpath arcPointType="false" id="2" xCoord="901" yCoord="140"/>
+      <arcpath arcPointType="false" id="1" xCoord="624" yCoord="281"/>
+      <arcpath arcPointType="false" id="2" xCoord="901" yCoord="141"/>
     </arc>
     <arc id="A76" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="berth_2_empty" target="berth_1_not_empty" type="timed" weight="1">
       <arcpath arcPointType="false" id="0" xCoord="900" yCoord="585"/>
@@ -681,9 +681,41 @@ There will always be 1 marked and 1 unmarked berth. Berth 2 will be marked by de
       <arcpath arcPointType="false" id="0" xCoord="470" yCoord="614"/>
       <arcpath arcPointType="false" id="1" xCoord="900" yCoord="585"/>
     </arc>
+    <arc id="I77" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="berth_2_entrance" target="berth_1_not_empty" type="tapnInhibitor" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="329" yCoord="588"/>
+      <arcpath arcPointType="false" id="1" xCoord="459" yCoord="615"/>
+    </arc>
+    <arc id="I78" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="berth_1_entrance" target="berth_2_not_empty" type="tapnInhibitor" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="319" yCoord="149"/>
+      <arcpath arcPointType="false" id="1" xCoord="465" yCoord="675"/>
+    </arc>
+    <arc id="A79" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="serve_ship" target="let_2_go" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="800" yCoord="720"/>
+      <arcpath arcPointType="false" id="1" xCoord="915" yCoord="420"/>
+    </arc>
+    <arc id="A80" inscription="1" nameOffsetX="0" nameOffsetY="0" source="let_2_go" target="serve_ship" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="915" yCoord="420"/>
+      <arcpath arcPointType="false" id="1" xCoord="800" yCoord="720"/>
+    </arc>
+    <arc id="A81" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="serve_ship" target="let_1_go" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="808" yCoord="727"/>
+      <arcpath arcPointType="false" id="1" xCoord="861" yCoord="700"/>
+      <arcpath arcPointType="false" id="2" xCoord="1480" yCoord="697"/>
+      <arcpath arcPointType="false" id="3" xCoord="1481" yCoord="225"/>
+      <arcpath arcPointType="false" id="4" xCoord="1186" yCoord="235"/>
+      <arcpath arcPointType="false" id="5" xCoord="920" yCoord="310"/>
+    </arc>
+    <arc id="A82" inscription="1" nameOffsetX="0" nameOffsetY="0" source="let_1_go" target="serve_ship" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="919" yCoord="320"/>
+      <arcpath arcPointType="false" id="1" xCoord="1193" yCoord="238"/>
+      <arcpath arcPointType="false" id="2" xCoord="1466" yCoord="236"/>
+      <arcpath arcPointType="false" id="3" xCoord="1465" yCoord="688"/>
+      <arcpath arcPointType="false" id="4" xCoord="878" yCoord="691"/>
+      <arcpath arcPointType="false" id="5" xCoord="808" yCoord="727"/>
+    </arc>
   </net>
   <net active="true" id="Clock" type="P/T net">
-    <labels border="true" height="58" positionX="249" positionY="99" width="110">Initialization of constants and clock.</labels>
+    <labels border="true" height="63" positionX="254" positionY="104" width="115">Initialization of constants and clock.</labels>
     <place displayName="true" id="init" initialMarking="1" invariant="&lt; inf" name="init" nameOffsetX="28" nameOffsetY="0" positionX="240" positionY="180"/>
     <place displayName="true" id="passage_size" initialMarking="0" invariant="&lt; inf" name="passage_size" nameOffsetX="0" nameOffsetY="0" positionX="540" positionY="90"/>
     <place displayName="true" id="workers" initialMarking="0" invariant="&lt; inf" name="workers" nameOffsetX="0" nameOffsetY="0" positionX="540" positionY="180"/>
@@ -716,20 +748,20 @@ There will always be 1 marked and 1 unmarked berth. Berth 2 will be marked by de
     </arc>
     <arc id="A4" inscription="1" nameOffsetX="0" nameOffsetY="0" source="no_ships_appear" target="exit_dock" type="normal" weight="1">
       <arcpath arcPointType="false" id="0" xCoord="1089" yCoord="555"/>
-      <arcpath arcPointType="false" id="1" xCoord="291" yCoord="602"/>
-      <arcpath arcPointType="false" id="2" xCoord="258" yCoord="449"/>
+      <arcpath arcPointType="false" id="1" xCoord="311" yCoord="622"/>
+      <arcpath arcPointType="false" id="2" xCoord="259" yCoord="449"/>
     </arc>
     <arc id="A5" inscription="1" nameOffsetX="0" nameOffsetY="0" source="no_ships_appear" target="ticks" type="normal" weight="1">
       <arcpath arcPointType="false" id="0" xCoord="1099" yCoord="555"/>
-      <arcpath arcPointType="false" id="1" xCoord="1253" yCoord="591"/>
-      <arcpath arcPointType="false" id="2" xCoord="1218" yCoord="449"/>
+      <arcpath arcPointType="false" id="1" xCoord="1273" yCoord="611"/>
+      <arcpath arcPointType="false" id="2" xCoord="1219" yCoord="449"/>
     </arc>
     <arc id="A6" inscription="1" nameOffsetX="0" nameOffsetY="0" source="initialize" target="exit_dock" type="normal" weight="1">
       <arcpath arcPointType="false" id="0" xCoord="375" yCoord="210"/>
       <arcpath arcPointType="false" id="1" xCoord="262" yCoord="421"/>
     </arc>
   </net>
-  <query active="true" algorithmOption="CERTAIN_ZERO" approximationDenominator="0" capacity="27" discreteInclusion="false" enableOverApproximation="false" enableUnderApproximation="false" extrapolationOption="null" gcd="false" hashTableSize="null" inclusionPlaces="*NONE*" name="Waiting smaller than 20" overApproximation="false" pTrie="false" reduction="true" reductionOption="VerifyPN" searchOption="DFS" symmetry="false" timeDarts="false" traceOption="NONE" type="CTL" useQueryReduction="true" useSiphonTrapAnalysis="false" useStubbornReduction="true" useTarOption="false" useTarjan="true">
+  <query active="true" algorithmOption="CERTAIN_ZERO" approximationDenominator="0" capacity="27" discreteInclusion="false" enableOverApproximation="false" enableUnderApproximation="false" extrapolationOption="AUTOMATIC" gcd="false" hashTableSize="MB_16" inclusionPlaces="*NONE*" name="1_Waiting smaller than 20" overApproximation="false" pTrie="false" reduction="true" reductionOption="VerifyPN" searchOption="DFS" symmetry="false" timeDarts="false" traceOption="NONE" type="CTL" useQueryReduction="true" useSiphonTrapAnalysis="false" useStubbornReduction="true" useTarOption="false" useTarjan="true">
     <formula>
       <all-paths>
         <globally>
@@ -743,7 +775,7 @@ There will always be 1 marked and 1 unmarked berth. Berth 2 will be marked by de
       </all-paths>
     </formula>
   </query>
-  <query active="true" algorithmOption="CERTAIN_ZERO" approximationDenominator="0" capacity="4" discreteInclusion="false" enableOverApproximation="false" enableUnderApproximation="false" extrapolationOption="null" gcd="false" hashTableSize="null" inclusionPlaces="*NONE*" name="Berth 1 cap exit" overApproximation="false" pTrie="false" reduction="true" reductionOption="VerifyPN" searchOption="HEURISTIC" symmetry="false" timeDarts="false" traceOption="NONE" type="CTL" useQueryReduction="true" useSiphonTrapAnalysis="false" useStubbornReduction="true" useTarOption="false" useTarjan="true">
+  <query active="true" algorithmOption="CERTAIN_ZERO" approximationDenominator="0" capacity="4" discreteInclusion="false" enableOverApproximation="false" enableUnderApproximation="false" extrapolationOption="AUTOMATIC" gcd="false" hashTableSize="MB_16" inclusionPlaces="*NONE*" name="1_Berth 1 cap exit" overApproximation="false" pTrie="false" reduction="true" reductionOption="VerifyPN" searchOption="HEURISTIC" symmetry="false" timeDarts="false" traceOption="NONE" type="CTL" useQueryReduction="true" useSiphonTrapAnalysis="false" useStubbornReduction="true" useTarOption="false" useTarjan="true">
     <formula>
       <all-paths>
         <globally>
@@ -762,11 +794,11 @@ There will always be 1 marked and 1 unmarked berth. Berth 2 will be marked by de
       </all-paths>
     </formula>
   </query>
-  <query active="true" algorithmOption="CERTAIN_ZERO" approximationDenominator="0" capacity="10" discreteInclusion="false" enableOverApproximation="false" enableUnderApproximation="false" extrapolationOption="null" gcd="false" hashTableSize="null" inclusionPlaces="*NONE*" name="Max 3 in common passage" overApproximation="false" pTrie="false" reduction="true" reductionOption="VerifyPN" searchOption="HEURISTIC" symmetry="false" timeDarts="false" traceOption="NONE" type="CTL" useQueryReduction="true" useSiphonTrapAnalysis="false" useStubbornReduction="true" useTarOption="false" useTarjan="true">
+  <query active="true" algorithmOption="CERTAIN_ZERO" approximationDenominator="0" capacity="10" discreteInclusion="false" enableOverApproximation="false" enableUnderApproximation="false" extrapolationOption="AUTOMATIC" gcd="false" hashTableSize="MB_16" inclusionPlaces="*NONE*" name="1_Max 3 in common passage" overApproximation="false" pTrie="false" reduction="true" reductionOption="VerifyPN" searchOption="HEURISTIC" symmetry="false" timeDarts="false" traceOption="NONE" type="CTL" useQueryReduction="true" useSiphonTrapAnalysis="false" useStubbornReduction="true" useTarOption="false" useTarjan="true">
     <formula>
       <all-paths>
         <globally>
-          <integer-eq>
+          <integer-le>
             <integer-sum>
               <tokens-count>
                 <place>WaitingArea_CommonPassage.passage_inbound</place>
@@ -779,12 +811,12 @@ There will always be 1 marked and 1 unmarked berth. Berth 2 will be marked by de
               </tokens-count>
             </integer-sum>
             <integer-constant>3</integer-constant>
-          </integer-eq>
+          </integer-le>
         </globally>
       </all-paths>
     </formula>
   </query>
-  <query active="true" algorithmOption="CERTAIN_ZERO" approximationDenominator="0" capacity="4" discreteInclusion="false" enableOverApproximation="false" enableUnderApproximation="false" extrapolationOption="null" gcd="false" hashTableSize="null" inclusionPlaces="*NONE*" name="bound berth 1" overApproximation="false" pTrie="false" reduction="true" reductionOption="VerifyPN" searchOption="HEURISTIC" symmetry="false" timeDarts="false" traceOption="NONE" type="CTL" useQueryReduction="true" useSiphonTrapAnalysis="false" useStubbornReduction="true" useTarOption="false" useTarjan="true">
+  <query active="true" algorithmOption="CERTAIN_ZERO" approximationDenominator="0" capacity="4" discreteInclusion="false" enableOverApproximation="false" enableUnderApproximation="false" extrapolationOption="null" gcd="false" hashTableSize="null" inclusionPlaces="*NONE*" name="1_bound berth 1" overApproximation="false" pTrie="false" reduction="true" reductionOption="VerifyPN" searchOption="HEURISTIC" symmetry="false" timeDarts="false" traceOption="NONE" type="CTL" useQueryReduction="true" useSiphonTrapAnalysis="false" useStubbornReduction="true" useTarOption="false" useTarjan="true">
     <formula>
       <all-paths>
         <globally>
@@ -798,7 +830,7 @@ There will always be 1 marked and 1 unmarked berth. Berth 2 will be marked by de
       </all-paths>
     </formula>
   </query>
-  <query active="true" algorithmOption="CERTAIN_ZERO" approximationDenominator="0" capacity="16" discreteInclusion="false" enableOverApproximation="false" enableUnderApproximation="false" extrapolationOption="null" gcd="false" hashTableSize="null" inclusionPlaces="*NONE*" name="bound clock init to 1" overApproximation="false" pTrie="false" reduction="true" reductionOption="VerifyPN" searchOption="HEURISTIC" symmetry="false" timeDarts="false" traceOption="NONE" type="CTL" useQueryReduction="true" useSiphonTrapAnalysis="false" useStubbornReduction="true" useTarOption="false" useTarjan="true">
+  <query active="true" algorithmOption="CERTAIN_ZERO" approximationDenominator="0" capacity="16" discreteInclusion="false" enableOverApproximation="false" enableUnderApproximation="false" extrapolationOption="AUTOMATIC" gcd="false" hashTableSize="MB_16" inclusionPlaces="*NONE*" name="1_bound clock init to 1" overApproximation="false" pTrie="false" reduction="true" reductionOption="VerifyPN" searchOption="HEURISTIC" symmetry="false" timeDarts="false" traceOption="NONE" type="CTL" useQueryReduction="true" useSiphonTrapAnalysis="false" useStubbornReduction="true" useTarOption="false" useTarjan="true">
     <formula>
       <all-paths>
         <globally>
@@ -812,7 +844,7 @@ There will always be 1 marked and 1 unmarked berth. Berth 2 will be marked by de
       </all-paths>
     </formula>
   </query>
-  <query active="true" algorithmOption="CERTAIN_ZERO" approximationDenominator="0" capacity="20" discreteInclusion="false" enableOverApproximation="false" enableUnderApproximation="false" extrapolationOption="null" gcd="false" hashTableSize="null" inclusionPlaces="*NONE*" name="Serviced smaller than 10" overApproximation="false" pTrie="false" reduction="true" reductionOption="VerifyPN" searchOption="HEURISTIC" symmetry="false" timeDarts="false" traceOption="NONE" type="CTL" useQueryReduction="true" useSiphonTrapAnalysis="false" useStubbornReduction="true" useTarOption="false" useTarjan="true">
+  <query active="true" algorithmOption="CERTAIN_ZERO" approximationDenominator="0" capacity="20" discreteInclusion="false" enableOverApproximation="false" enableUnderApproximation="false" extrapolationOption="AUTOMATIC" gcd="false" hashTableSize="MB_16" inclusionPlaces="*NONE*" name="1_Serviced smaller than 10" overApproximation="false" pTrie="false" reduction="true" reductionOption="VerifyPN" searchOption="HEURISTIC" symmetry="false" timeDarts="false" traceOption="NONE" type="CTL" useQueryReduction="true" useSiphonTrapAnalysis="false" useStubbornReduction="true" useTarOption="false" useTarjan="true">
     <formula>
       <all-paths>
         <globally>
@@ -822,6 +854,187 @@ There will always be 1 marked and 1 unmarked berth. Berth 2 will be marked by de
             </tokens-count>
             <integer-constant>10</integer-constant>
           </integer-le>
+        </globally>
+      </all-paths>
+    </formula>
+  </query>
+  <query active="true" algorithmOption="CERTAIN_ZERO" approximationDenominator="0" capacity="12" discreteInclusion="false" enableOverApproximation="false" enableUnderApproximation="false" extrapolationOption="AUTOMATIC" gcd="false" hashTableSize="MB_16" inclusionPlaces="*NONE*" name="2_deadlock" overApproximation="false" pTrie="false" reduction="true" reductionOption="VerifyPN" searchOption="HEURISTIC" symmetry="false" timeDarts="false" traceOption="SOME" type="CTL" useQueryReduction="true" useSiphonTrapAnalysis="false" useStubbornReduction="true" useTarOption="false" useTarjan="true">
+    <formula>
+      <exists-path>
+        <finally>
+          <deadlock/>
+        </finally>
+      </exists-path>
+    </formula>
+  </query>
+  <query active="true" algorithmOption="CERTAIN_ZERO" approximationDenominator="0" capacity="10" discreteInclusion="false" enableOverApproximation="false" enableUnderApproximation="false" extrapolationOption="null" gcd="false" hashTableSize="null" inclusionPlaces="*NONE*" name="4_liveness L1 serve_berth_1" overApproximation="false" pTrie="false" reduction="true" reductionOption="VerifyPN" searchOption="HEURISTIC" symmetry="false" timeDarts="false" traceOption="NONE" type="CTL" useQueryReduction="true" useSiphonTrapAnalysis="false" useStubbornReduction="true" useTarOption="false" useTarjan="true">
+    <formula>
+      <exists-path>
+        <finally>
+          <is-fireable>
+            <transition>Berth.serve_berth_1</transition>
+          </is-fireable>
+        </finally>
+      </exists-path>
+    </formula>
+  </query>
+  <query active="true" algorithmOption="CERTAIN_ZERO" approximationDenominator="0" capacity="100" discreteInclusion="false" enableOverApproximation="false" enableUnderApproximation="false" extrapolationOption="AUTOMATIC" gcd="false" hashTableSize="MB_16" inclusionPlaces="*NONE*" name="4_liveness L2 serve_berth_1" overApproximation="false" pTrie="false" reduction="true" reductionOption="VerifyPN" searchOption="HEURISTIC" symmetry="false" timeDarts="false" traceOption="NONE" type="CTL" useQueryReduction="true" useSiphonTrapAnalysis="false" useStubbornReduction="true" useTarOption="false" useTarjan="true">
+    <formula>
+      <exists-path>
+        <finally>
+          <conjunction>
+            <exists-path>
+              <finally>
+                <is-fireable>
+                  <transition>Berth.serve_berth_1</transition>
+                </is-fireable>
+              </finally>
+            </exists-path>
+            <integer-eq>
+              <tokens-count>
+                <place>Berth.berth_1_served</place>
+              </tokens-count>
+              <integer-constant>1</integer-constant>
+            </integer-eq>
+            <exists-path>
+              <finally>
+                <negation>
+                  <exists-path>
+                    <finally>
+                      <is-fireable>
+                        <transition>Berth.serve_berth_1</transition>
+                      </is-fireable>
+                    </finally>
+                  </exists-path>
+                </negation>
+              </finally>
+            </exists-path>
+          </conjunction>
+        </finally>
+      </exists-path>
+    </formula>
+  </query>
+  <query active="true" algorithmOption="CERTAIN_ZERO" approximationDenominator="0" capacity="100" discreteInclusion="false" enableOverApproximation="false" enableUnderApproximation="false" extrapolationOption="null" gcd="false" hashTableSize="null" inclusionPlaces="*NONE*" name="4_liveness L3 serve_berth_1" overApproximation="false" pTrie="false" reduction="true" reductionOption="VerifyPN" searchOption="HEURISTIC" symmetry="false" timeDarts="false" traceOption="NONE" type="CTL" useQueryReduction="true" useSiphonTrapAnalysis="false" useStubbornReduction="true" useTarOption="false" useTarjan="true">
+    <formula>
+      <exists-path>
+        <globally>
+          <exists-path>
+            <finally>
+              <is-fireable>
+                <transition>Berth.serve_berth_1</transition>
+              </is-fireable>
+            </finally>
+          </exists-path>
+        </globally>
+      </exists-path>
+    </formula>
+  </query>
+  <query active="true" algorithmOption="CERTAIN_ZERO" approximationDenominator="0" capacity="12" discreteInclusion="false" enableOverApproximation="false" enableUnderApproximation="false" extrapolationOption="null" gcd="false" hashTableSize="null" inclusionPlaces="*NONE*" name="4_liveness L4 serve_berth_1" overApproximation="false" pTrie="false" reduction="true" reductionOption="VerifyPN" searchOption="HEURISTIC" symmetry="false" timeDarts="false" traceOption="NONE" type="CTL" useQueryReduction="true" useSiphonTrapAnalysis="false" useStubbornReduction="true" useTarOption="false" useTarjan="true">
+    <formula>
+      <all-paths>
+        <globally>
+          <exists-path>
+            <finally>
+              <is-fireable>
+                <transition>Berth.serve_berth_1</transition>
+              </is-fireable>
+            </finally>
+          </exists-path>
+        </globally>
+      </all-paths>
+    </formula>
+  </query>
+  <query active="true" algorithmOption="CERTAIN_ZERO" approximationDenominator="0" capacity="1000" discreteInclusion="false" enableOverApproximation="false" enableUnderApproximation="false" extrapolationOption="null" gcd="false" hashTableSize="null" inclusionPlaces="*NONE*" name="5_Capacity test passage" overApproximation="false" pTrie="false" reduction="true" reductionOption="VerifyPN" searchOption="HEURISTIC" symmetry="false" timeDarts="false" traceOption="NONE" type="CTL" useQueryReduction="true" useSiphonTrapAnalysis="false" useStubbornReduction="true" useTarOption="false" useTarjan="true">
+    <formula>
+      <all-paths>
+        <globally>
+          <integer-le>
+            <integer-sum>
+              <tokens-count>
+                <place>WaitingArea_CommonPassage.passage_inbound</place>
+              </tokens-count>
+              <tokens-count>
+                <place>WaitingArea_CommonPassage.passage_outbound</place>
+              </tokens-count>
+            </integer-sum>
+            <integer-constant>3</integer-constant>
+          </integer-le>
+        </globally>
+      </all-paths>
+    </formula>
+  </query>
+  <query active="true" algorithmOption="CERTAIN_ZERO" approximationDenominator="0" capacity="10" discreteInclusion="false" enableOverApproximation="false" enableUnderApproximation="false" extrapolationOption="null" gcd="false" hashTableSize="null" inclusionPlaces="*NONE*" name="5_Capacity test berth entrance" overApproximation="false" pTrie="false" reduction="true" reductionOption="VerifyPN" searchOption="HEURISTIC" symmetry="false" timeDarts="false" traceOption="NONE" type="CTL" useQueryReduction="true" useSiphonTrapAnalysis="false" useStubbornReduction="true" useTarOption="false" useTarjan="true">
+    <formula>
+      <all-paths>
+        <globally>
+          <conjunction>
+            <integer-le>
+              <tokens-count>
+                <place>berth_1_entrance</place>
+              </tokens-count>
+              <integer-constant>1</integer-constant>
+            </integer-le>
+            <integer-le>
+              <tokens-count>
+                <place>berth_2_entrance</place>
+              </tokens-count>
+              <integer-constant>1</integer-constant>
+            </integer-le>
+          </conjunction>
+        </globally>
+      </all-paths>
+    </formula>
+  </query>
+  <query active="true" algorithmOption="CERTAIN_ZERO" approximationDenominator="0" capacity="10" discreteInclusion="false" enableOverApproximation="false" enableUnderApproximation="false" extrapolationOption="null" gcd="false" hashTableSize="null" inclusionPlaces="*NONE*" name="5_Capacity test berth exit" overApproximation="false" pTrie="false" reduction="true" reductionOption="VerifyPN" searchOption="HEURISTIC" symmetry="false" timeDarts="false" traceOption="NONE" type="CTL" useQueryReduction="true" useSiphonTrapAnalysis="false" useStubbornReduction="true" useTarOption="false" useTarjan="true">
+    <formula>
+      <all-paths>
+        <globally>
+          <conjunction>
+            <integer-le>
+              <tokens-count>
+                <place>berth_1_exit</place>
+              </tokens-count>
+              <integer-constant>1</integer-constant>
+            </integer-le>
+            <integer-le>
+              <tokens-count>
+                <place>berth_2_exit</place>
+              </tokens-count>
+              <integer-constant>1</integer-constant>
+            </integer-le>
+          </conjunction>
+        </globally>
+      </all-paths>
+    </formula>
+  </query>
+  <query active="true" algorithmOption="CERTAIN_ZERO" approximationDenominator="0" capacity="10" discreteInclusion="false" enableOverApproximation="false" enableUnderApproximation="false" extrapolationOption="null" gcd="false" hashTableSize="null" inclusionPlaces="*NONE*" name="5_Capacity test berth" overApproximation="false" pTrie="false" reduction="true" reductionOption="VerifyPN" searchOption="HEURISTIC" symmetry="false" timeDarts="false" traceOption="NONE" type="CTL" useQueryReduction="true" useSiphonTrapAnalysis="false" useStubbornReduction="true" useTarOption="false" useTarjan="true">
+    <formula>
+      <all-paths>
+        <globally>
+          <conjunction>
+            <integer-le>
+              <integer-sum>
+                <tokens-count>
+                  <place>Berth.berth_1_unserved</place>
+                </tokens-count>
+                <tokens-count>
+                  <place>Berth.berth_1_served</place>
+                </tokens-count>
+              </integer-sum>
+              <integer-constant>1</integer-constant>
+            </integer-le>
+            <integer-le>
+              <integer-sum>
+                <tokens-count>
+                  <place>Berth.berth_2_unserved</place>
+                </tokens-count>
+                <tokens-count>
+                  <place>Berth.berth_2_served</place>
+                </tokens-count>
+              </integer-sum>
+              <integer-constant>1</integer-constant>
+            </integer-le>
+          </conjunction>
         </globally>
       </all-paths>
     </formula>
