@@ -14,12 +14,11 @@ class C:
 		""" State Enum
 		"""
 		(
-			main_region_temp,
 			main_region_zero,
 			main_region_one,
 			main_region_initial,
 			null_state
-		) = range(5)
+		) = range(4)
 	
 	
 	def __init__(self):
@@ -60,8 +59,6 @@ class C:
 		"""Checks if the state is currently active.
 		"""
 		s = state
-		if s == self.__State.main_region_temp:
-			return self.__state_vector[0] == self.__State.main_region_temp
 		if s == self.__State.main_region_zero:
 			return self.__state_vector[0] == self.__State.main_region_zero
 		if s == self.__State.main_region_one:
@@ -102,13 +99,6 @@ class C:
 		#Exit action for state 'Initial'.
 		self.timer_service.unset_timer(self, 0)
 		
-	def __enter_sequence_main_region_temp_default(self):
-		"""'default' enter sequence for state Temp.
-		"""
-		#'default' enter sequence for state Temp
-		self.__state_vector[0] = self.State.main_region_temp
-		self.__state_conf_vector_changed = True
-		
 	def __enter_sequence_main_region_zero_default(self):
 		"""'default' enter sequence for state Zero.
 		"""
@@ -137,12 +127,6 @@ class C:
 		#'default' enter sequence for region main region
 		self.__react_main_region__entry_default()
 		
-	def __exit_sequence_main_region_temp(self):
-		"""Default exit sequence for state Temp.
-		"""
-		#Default exit sequence for state Temp
-		self.__state_vector[0] = self.State.null_state
-		
 	def __exit_sequence_main_region_zero(self):
 		"""Default exit sequence for state Zero.
 		"""
@@ -167,14 +151,21 @@ class C:
 		"""
 		#Default exit sequence for region main region
 		state = self.__state_vector[0]
-		if state == self.State.main_region_temp:
-			self.__exit_sequence_main_region_temp()
-		elif state == self.State.main_region_zero:
+		if state == self.State.main_region_zero:
 			self.__exit_sequence_main_region_zero()
 		elif state == self.State.main_region_one:
 			self.__exit_sequence_main_region_one()
 		elif state == self.State.main_region_initial:
 			self.__exit_sequence_main_region_initial()
+		
+	def __react_main_region__choice_0(self):
+		"""The reactions of state null..
+		"""
+		#The reactions of state null.
+		if self.x == 1:
+			self.__enter_sequence_main_region_one_default()
+		else:
+			self.__enter_sequence_main_region_zero_default()
 		
 	def __react_main_region__entry_default(self):
 		"""Default react sequence for initial entry .
@@ -187,29 +178,6 @@ class C:
 		"""
 		#State machine reactions.
 		return transitioned_before
-	
-	
-	def __main_region_temp_react(self, transitioned_before):
-		"""Implementation of __main_region_temp_react function.
-		"""
-		#The reactions of state Temp.
-		transitioned_after = transitioned_before
-		if transitioned_after < 0:
-			if self.x == 0:
-				self.__exit_sequence_main_region_temp()
-				self.__enter_sequence_main_region_zero_default()
-				self.__react(0)
-				transitioned_after = 0
-			elif self.x == 1:
-				self.__exit_sequence_main_region_temp()
-				self.__enter_sequence_main_region_one_default()
-				self.__react(0)
-				transitioned_after = 0
-		#If no transition was taken
-		if transitioned_after == transitioned_before:
-			#then execute local reactions.
-			transitioned_after = self.__react(transitioned_before)
-		return transitioned_after
 	
 	
 	def __main_region_zero_react(self, transitioned_before):
@@ -242,8 +210,7 @@ class C:
 				self.__exit_sequence_main_region_initial()
 				self.x = self.x + 1
 				self.__time_events[0] = False
-				self.__enter_sequence_main_region_temp_default()
-				self.__react(0)
+				self.__react_main_region__choice_0()
 				transitioned_after = 0
 		#If no transition was taken
 		if transitioned_after == transitioned_before:
@@ -262,9 +229,7 @@ class C:
 		"""Implementation of __micro_step function.
 		"""
 		state = self.__state_vector[0]
-		if state == self.State.main_region_temp:
-			self.__main_region_temp_react(-1)
-		elif state == self.State.main_region_zero:
+		if state == self.State.main_region_zero:
 			self.__main_region_zero_react(-1)
 		elif state == self.State.main_region_one:
 			self.__main_region_one_react(-1)
