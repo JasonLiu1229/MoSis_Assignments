@@ -15,11 +15,14 @@ class LockController:
 		""" State Enum
 		"""
 		(
-			main_region_controller,
-			main_region_controller_water_controller_idle,
-			main_region_controller_traffic_door_controller_temp,
+			main_region_door_obstruction,
+			main_region_door_obstruction_r1processing_request,
+			main_region_idle,
+			main_region_step1,
+			main_region_step2,
+			main_region_step3,
 			null_state
-		) = range(4)
+		) = range(7)
 	
 	
 	def __init__(self):
@@ -59,23 +62,34 @@ class LockController:
 		self.red_light_value = None
 		self.red_light_observable = Observable()
 		
+		self.__internal_event_queue = queue.Queue()
 		self.in_event_queue = queue.Queue()
+		self.__current_water_lvl = None
+		self.door_obstruction = None
+		self.close_door = None
 		
 		# enumeration of all states:
 		self.__State = LockController.State
 		self.__state_conf_vector_changed = None
-		self.__state_vector = [None] * 2
-		for __state_index in range(2):
+		self.__state_vector = [None] * 1
+		for __state_index in range(1):
 			self.__state_vector[__state_index] = self.State.null_state
 		
+		# for timed statechart:
+		self.timer_service = None
+		self.__time_events = [None] * 2
+		
 		# initializations:
+		#Default init sequence for statechart LockController
+		self.__current_water_lvl = 0
+		self.__completed = False
+		self.__do_completion = False
 		self.__is_executing = False
-		self.__state_conf_vector_position = None
 	
 	def is_active(self):
 		"""Checks if the state machine is active.
 		"""
-		return self.__state_vector[0] is not self.__State.null_state or self.__state_vector[1] is not self.__State.null_state
+		return self.__state_vector[0] is not self.__State.null_state
 	
 	def is_final(self):
 		"""Checks if the statemachine is final.
@@ -87,23 +101,63 @@ class LockController:
 		"""Checks if the state is currently active.
 		"""
 		s = state
-		if s == self.__State.main_region_controller:
-			return (self.__state_vector[0] >= self.__State.main_region_controller)\
-				and (self.__state_vector[0] <= self.__State.main_region_controller_traffic_door_controller_temp)
-		if s == self.__State.main_region_controller_water_controller_idle:
-			return self.__state_vector[0] == self.__State.main_region_controller_water_controller_idle
-		if s == self.__State.main_region_controller_traffic_door_controller_temp:
-			return self.__state_vector[1] == self.__State.main_region_controller_traffic_door_controller_temp
+		if s == self.__State.main_region_door_obstruction:
+			return (self.__state_vector[0] >= self.__State.main_region_door_obstruction)\
+				and (self.__state_vector[0] <= self.__State.main_region_door_obstruction_r1processing_request)
+		if s == self.__State.main_region_door_obstruction_r1processing_request:
+			return self.__state_vector[0] == self.__State.main_region_door_obstruction_r1processing_request
+		if s == self.__State.main_region_idle:
+			return self.__state_vector[0] == self.__State.main_region_idle
+		if s == self.__State.main_region_step1:
+			return self.__state_vector[0] == self.__State.main_region_step1
+		if s == self.__State.main_region_step2:
+			return self.__state_vector[0] == self.__State.main_region_step2
+		if s == self.__State.main_region_step3:
+			return self.__state_vector[0] == self.__State.main_region_step3
 		return False
 		
+	def time_elapsed(self, event_id):
+		"""Add time events to in event queue
+		"""
+		if event_id in range(2):
+			self.in_event_queue.put(lambda: self.raise_time_event(event_id))
+			self.run_cycle()
+	
+	def raise_time_event(self, event_id):
+		"""Raise timed events using the event_id.
+		"""
+		self.__time_events[event_id] = True
+	
 	def __execute_queued_event(self, func):
 		func()
 	
 	def __get_next_event(self):
+		if not self.__internal_event_queue.empty():
+			return self.__internal_event_queue.get()
 		if not self.in_event_queue.empty():
 			return self.in_event_queue.get()
 		return None
 	
+	
+	def raise_door_obstruction(self):
+		"""Raise method for event door_obstruction.
+		"""
+		self.__internal_event_queue.put(self.__raise_door_obstruction_call)
+	
+	def __raise_door_obstruction_call(self):
+		"""Raise callback for event door_obstruction.
+		"""
+		self.door_obstruction = True
+	
+	def raise_close_door(self):
+		"""Raise method for event close_door.
+		"""
+		self.__internal_event_queue.put(self.__raise_close_door_call)
+	
+	def __raise_close_door_call(self):
+		"""Raise callback for event close_door.
+		"""
+		self.close_door = True
 	
 	def raise_request_lvl_change(self):
 		"""Raise method for event request_lvl_change.
@@ -150,27 +204,92 @@ class LockController:
 		"""
 		self.door_obstructed = True
 	
-	def __enter_sequence_main_region_controller_default(self):
-		"""'default' enter sequence for state Controller.
+	def __entry_action_main_region_door_obstruction(self):
+		"""Entry action for state 'DoorObstruction'..
 		"""
-		#'default' enter sequence for state Controller
-		self.__enter_sequence_main_region_controller_water_controller_default()
-		self.__enter_sequence_main_region_controller_traffic_door_controller_default()
+		#Entry action for state 'DoorObstruction'.
+		self.timer_service.set_timer(self, 0, (1 * 1000), False)
 		
-	def __enter_sequence_main_region_controller_water_controller_idle_default(self):
+	def __entry_action_main_region_door_obstruction_r1_processing_request(self):
+		"""Entry action for state 'ProcessingRequest'..
+		"""
+		#Entry action for state 'ProcessingRequest'.
+		self.timer_service.set_timer(self, 1, (2 * 1000), False)
+		self.set_request_pending_observable.next(True)
+		self.red_light_observable.next(self.LOW)
+		self.set_request_pending_observable.next(True)
+		self.red_light_observable.next(self.LOW)
+		
+	def __entry_action_main_region_idle(self):
+		"""Entry action for state 'Idle'..
+		"""
+		#Entry action for state 'Idle'.
+		self.green_light_observable.next(self.LOW)
+		self.open_doors_observable.next(self.LOW)
+		self.set_request_pending_observable.next(False)
+		
+	def __entry_action_main_region_step1(self):
+		""".
+		"""
+		#Entry action for state 'step1'.
+		self.close_doors_observable.next(self.LOW)
+		self.__completed = True
+		
+	def __entry_action_main_region_step2(self):
+		""".
+		"""
+		#Entry action for state 'step2'.
+		self.open_flow_observable.next(self.HIGH)
+		self.__completed = True
+		
+	def __exit_action_main_region_door_obstruction(self):
+		"""Exit action for state 'DoorObstruction'..
+		"""
+		#Exit action for state 'DoorObstruction'.
+		self.timer_service.unset_timer(self, 0)
+		
+	def __exit_action_main_region_door_obstruction_r1_processing_request(self):
+		"""Exit action for state 'ProcessingRequest'..
+		"""
+		#Exit action for state 'ProcessingRequest'.
+		self.timer_service.unset_timer(self, 1)
+		
+	def __enter_sequence_main_region_door_obstruction_default(self):
+		"""'default' enter sequence for state DoorObstruction.
+		"""
+		#'default' enter sequence for state DoorObstruction
+		self.__entry_action_main_region_door_obstruction()
+		self.__enter_sequence_main_region_door_obstruction_r1_default()
+		
+	def __enter_sequence_main_region_door_obstruction_r1_processing_request_default(self):
+		"""'default' enter sequence for state ProcessingRequest.
+		"""
+		#'default' enter sequence for state ProcessingRequest
+		self.__entry_action_main_region_door_obstruction_r1_processing_request()
+		self.__state_vector[0] = self.State.main_region_door_obstruction_r1processing_request
+		self.__state_conf_vector_changed = True
+		
+	def __enter_sequence_main_region_idle_default(self):
 		"""'default' enter sequence for state Idle.
 		"""
 		#'default' enter sequence for state Idle
-		self.__state_vector[0] = self.State.main_region_controller_water_controller_idle
-		self.__state_conf_vector_position = 0
+		self.__entry_action_main_region_idle()
+		self.__state_vector[0] = self.State.main_region_idle
 		self.__state_conf_vector_changed = True
 		
-	def __enter_sequence_main_region_controller_traffic_door_controller_temp_default(self):
-		"""'default' enter sequence for state temp.
+	def __enter_sequence_main_region_step1_default(self):
+		"""'default' enter sequence for state step1.
 		"""
-		#'default' enter sequence for state temp
-		self.__state_vector[1] = self.State.main_region_controller_traffic_door_controller_temp
-		self.__state_conf_vector_position = 1
+		#'default' enter sequence for state step1
+		self.__entry_action_main_region_step1()
+		self.__state_vector[0] = self.State.main_region_step1
+		self.__state_conf_vector_changed = True
+		
+	def __enter_sequence_main_region_step3_default(self):
+		"""'default' enter sequence for state step3.
+		"""
+		#'default' enter sequence for state step3
+		self.__state_vector[0] = self.State.main_region_step3
 		self.__state_conf_vector_changed = True
 		
 	def __enter_sequence_main_region_default(self):
@@ -179,60 +298,89 @@ class LockController:
 		#'default' enter sequence for region main region
 		self.__react_main_region__entry_default()
 		
-	def __enter_sequence_main_region_controller_water_controller_default(self):
-		"""'default' enter sequence for region WaterController.
+	def __enter_sequence_main_region_door_obstruction_r1_default(self):
+		"""'default' enter sequence for region r1.
 		"""
-		#'default' enter sequence for region WaterController
-		self.__react_main_region_controller_water_controller__entry_default()
+		#'default' enter sequence for region r1
+		self.__react_main_region_door_obstruction_r1__entry_default()
 		
-	def __enter_sequence_main_region_controller_traffic_door_controller_default(self):
-		"""'default' enter sequence for region TrafficDoorController.
+	def __exit_sequence_main_region_door_obstruction(self):
+		"""Default exit sequence for state DoorObstruction.
 		"""
-		#'default' enter sequence for region TrafficDoorController
-		self.__react_main_region_controller_traffic_door_controller__entry_default()
+		#Default exit sequence for state DoorObstruction
+		self.__exit_sequence_main_region_door_obstruction_r1()
+		self.__state_vector[0] = self.State.null_state
+		self.__exit_action_main_region_door_obstruction()
 		
-	def __exit_sequence_main_region_controller_water_controller_idle(self):
+	def __exit_sequence_main_region_door_obstruction_r1_processing_request(self):
+		"""Default exit sequence for state ProcessingRequest.
+		"""
+		#Default exit sequence for state ProcessingRequest
+		self.__state_vector[0] = self.State.main_region_door_obstruction
+		self.__exit_action_main_region_door_obstruction_r1_processing_request()
+		
+	def __exit_sequence_main_region_idle(self):
 		"""Default exit sequence for state Idle.
 		"""
 		#Default exit sequence for state Idle
-		self.__state_vector[0] = self.State.main_region_controller
-		self.__state_conf_vector_position = 0
+		self.__state_vector[0] = self.State.null_state
 		
-	def __exit_sequence_main_region_controller_traffic_door_controller_temp(self):
-		"""Default exit sequence for state temp.
+	def __exit_sequence_main_region_step1(self):
+		"""Default exit sequence for state step1.
 		"""
-		#Default exit sequence for state temp
-		self.__state_vector[1] = self.State.main_region_controller
-		self.__state_conf_vector_position = 1
+		#Default exit sequence for state step1
+		self.__state_vector[0] = self.State.null_state
+		
+	def __exit_sequence_main_region_step2(self):
+		"""Default exit sequence for state step2.
+		"""
+		#Default exit sequence for state step2
+		self.__state_vector[0] = self.State.null_state
+		
+	def __exit_sequence_main_region_step3(self):
+		"""Default exit sequence for state step3.
+		"""
+		#Default exit sequence for state step3
+		self.__state_vector[0] = self.State.null_state
 		
 	def __exit_sequence_main_region(self):
 		"""Default exit sequence for region main region.
 		"""
 		#Default exit sequence for region main region
 		state = self.__state_vector[0]
-		if state == self.State.main_region_controller_water_controller_idle:
-			self.__exit_sequence_main_region_controller_water_controller_idle()
-		state = self.__state_vector[1]
-		if state == self.State.main_region_controller_traffic_door_controller_temp:
-			self.__exit_sequence_main_region_controller_traffic_door_controller_temp()
+		if state == self.State.main_region_door_obstruction:
+			self.__exit_sequence_main_region_door_obstruction()
+		elif state == self.State.main_region_door_obstruction_r1processing_request:
+			self.__exit_sequence_main_region_door_obstruction_r1_processing_request()
+			self.__exit_action_main_region_door_obstruction()
+		elif state == self.State.main_region_idle:
+			self.__exit_sequence_main_region_idle()
+		elif state == self.State.main_region_step1:
+			self.__exit_sequence_main_region_step1()
+		elif state == self.State.main_region_step2:
+			self.__exit_sequence_main_region_step2()
+		elif state == self.State.main_region_step3:
+			self.__exit_sequence_main_region_step3()
 		
-	def __react_main_region_controller_water_controller__entry_default(self):
+	def __exit_sequence_main_region_door_obstruction_r1(self):
+		"""Default exit sequence for region r1.
+		"""
+		#Default exit sequence for region r1
+		state = self.__state_vector[0]
+		if state == self.State.main_region_door_obstruction_r1processing_request:
+			self.__exit_sequence_main_region_door_obstruction_r1_processing_request()
+		
+	def __react_main_region_door_obstruction_r1__entry_default(self):
 		"""Default react sequence for initial entry .
 		"""
 		#Default react sequence for initial entry 
-		self.__enter_sequence_main_region_controller_water_controller_idle_default()
-		
-	def __react_main_region_controller_traffic_door_controller__entry_default(self):
-		"""Default react sequence for initial entry .
-		"""
-		#Default react sequence for initial entry 
-		self.__enter_sequence_main_region_controller_traffic_door_controller_temp_default()
+		self.__enter_sequence_main_region_door_obstruction_r1_processing_request_default()
 		
 	def __react_main_region__entry_default(self):
 		"""Default react sequence for initial entry .
 		"""
 		#Default react sequence for initial entry 
-		self.__enter_sequence_main_region_controller_default()
+		self.__enter_sequence_main_region_idle_default()
 		
 	def __react(self, transitioned_before):
 		"""Implementation of __react function.
@@ -241,25 +389,86 @@ class LockController:
 		return transitioned_before
 	
 	
-	def __main_region_controller_react(self, transitioned_before):
-		"""Implementation of __main_region_controller_react function.
+	def __main_region_door_obstruction_react(self, transitioned_before):
+		"""Implementation of __main_region_door_obstruction_react function.
 		"""
-		#The reactions of state Controller.
-		return self.__react(transitioned_before)
+		#The reactions of state DoorObstruction.
+		transitioned_after = self.__react(transitioned_before)
+		if not self.__do_completion:
+			if transitioned_after < 0:
+				if (self.__time_events[0]) and (self.door_obstructed):
+					self.__exit_sequence_main_region_door_obstruction()
+					self.raise_door_obstruction()
+					self.__time_events[0] = False
+					self.__enter_sequence_main_region_door_obstruction_default()
+					transitioned_after = 0
+		return transitioned_after
 	
 	
-	def __main_region_controller_water_controller_idle_react(self, transitioned_before):
-		"""Implementation of __main_region_controller_water_controller_idle_react function.
+	def __main_region_door_obstruction_r1_processing_request_react(self, transitioned_before):
+		"""Implementation of __main_region_door_obstruction_r1_processing_request_react function.
+		"""
+		#The reactions of state ProcessingRequest.
+		transitioned_after = self.__main_region_door_obstruction_react(transitioned_before)
+		if not self.__do_completion:
+			if transitioned_after < 0:
+				if self.__time_events[1]:
+					self.__exit_sequence_main_region_door_obstruction()
+					self.raise_close_door()
+					self.__time_events[1] = False
+					self.__enter_sequence_main_region_step1_default()
+					transitioned_after = 0
+		return transitioned_after
+	
+	
+	def __main_region_idle_react(self, transitioned_before):
+		"""Implementation of __main_region_idle_react function.
 		"""
 		#The reactions of state Idle.
-		return self.__main_region_controller_react(transitioned_before)
+		transitioned_after = self.__react(transitioned_before)
+		if not self.__do_completion:
+			if transitioned_after < 0:
+				if self.request_lvl_change:
+					self.__exit_sequence_main_region_idle()
+					self.__enter_sequence_main_region_door_obstruction_default()
+					transitioned_after = 0
+		return transitioned_after
 	
 	
-	def __main_region_controller_traffic_door_controller_temp_react(self, transitioned_before):
-		"""Implementation of __main_region_controller_traffic_door_controller_temp_react function.
+	def __main_region_step1_react(self, transitioned_before):
+		"""Implementation of __main_region_step1_react function.
 		"""
-		#The reactions of state temp.
-		return transitioned_before
+		#The reactions of state step1.
+		transitioned_after = self.__react(transitioned_before)
+		if self.__do_completion:
+			#Default exit sequence for state step1
+			self.__state_vector[0] = self.State.null_state
+			#'default' enter sequence for state step2
+			self.__entry_action_main_region_step2()
+			self.__state_vector[0] = self.State.main_region_step2
+			self.__state_conf_vector_changed = True
+		return transitioned_after
+	
+	
+	def __main_region_step2_react(self, transitioned_before):
+		"""Implementation of __main_region_step2_react function.
+		"""
+		#The reactions of state step2.
+		transitioned_after = self.__react(transitioned_before)
+		if self.__do_completion:
+			#Default exit sequence for state step2
+			self.__state_vector[0] = self.State.null_state
+			#The reactions of state null.
+			if self.__current_water_lvl >= (self.HIGH_LVL - 30):
+				self.__enter_sequence_main_region_step3_default()
+		return transitioned_after
+	
+	
+	def __main_region_step3_react(self, transitioned_before):
+		"""Implementation of __main_region_step3_react function.
+		"""
+		#The reactions of state step3.
+		return self.__react(transitioned_before)
 	
 	
 	def __clear_in_events(self):
@@ -269,26 +478,40 @@ class LockController:
 		self.water_lvl = False
 		self.resume = False
 		self.door_obstructed = False
+		self.__time_events[0] = False
+		self.__time_events[1] = False
+	
+	
+	def __clear_internal_events(self):
+		"""Implementation of __clear_internal_events function.
+		"""
+		self.door_obstruction = False
+		self.close_door = False
 	
 	
 	def __micro_step(self):
 		"""Implementation of __micro_step function.
 		"""
-		transitioned = -1
-		self.__state_conf_vector_position = 0
 		state = self.__state_vector[0]
-		if state == self.State.main_region_controller_water_controller_idle:
-			transitioned = self.__main_region_controller_water_controller_idle_react(transitioned)
-		if self.__state_conf_vector_position < 1:
-			state = self.__state_vector[1]
-			if state == self.State.main_region_controller_traffic_door_controller_temp:
-				self.__main_region_controller_traffic_door_controller_temp_react(transitioned)
+		if state == self.State.main_region_door_obstruction_r1processing_request:
+			self.__main_region_door_obstruction_r1_processing_request_react(-1)
+		elif state == self.State.main_region_idle:
+			self.__main_region_idle_react(-1)
+		elif state == self.State.main_region_step1:
+			self.__main_region_step1_react(-1)
+		elif state == self.State.main_region_step2:
+			self.__main_region_step2_react(-1)
+		elif state == self.State.main_region_step3:
+			self.__main_region_step3_react(-1)
 	
 	
 	def run_cycle(self):
 		"""Implementation of run_cycle function.
 		"""
 		#Performs a 'run to completion' step.
+		if self.timer_service is None:
+			raise ValueError('Timer service must be set.')
+		
 		if self.__is_executing:
 			return
 		self.__is_executing = True
@@ -297,8 +520,17 @@ class LockController:
 			self.__execute_queued_event(next_event)
 		condition_0 = True
 		while condition_0:
-			self.__micro_step()
+			self.__do_completion = False
+			condition_1 = True
+			while condition_1:
+				if self.__completed:
+					self.__do_completion = True
+				self.__completed = False
+				self.__micro_step()
+				self.__do_completion = False
+				condition_1 = self.__completed
 			self.__clear_in_events()
+			self.__clear_internal_events()
 			condition_0 = False
 			next_event = self.__get_next_event()
 			if next_event is not None:
@@ -311,11 +543,23 @@ class LockController:
 		"""Implementation of enter function.
 		"""
 		#Activates the state machine.
+		if self.timer_service is None:
+			raise ValueError('Timer service must be set.')
+		
 		if self.__is_executing:
 			return
 		self.__is_executing = True
 		#Default enter sequence for statechart LockController
 		self.__enter_sequence_main_region_default()
+		self.__do_completion = False
+		condition_0 = True
+		while condition_0:
+			if self.__completed:
+				self.__do_completion = True
+			self.__completed = False
+			self.__micro_step()
+			self.__do_completion = False
+			condition_0 = self.__completed
 		self.__is_executing = False
 	
 	
@@ -329,8 +573,6 @@ class LockController:
 		#Default exit sequence for statechart LockController
 		self.__exit_sequence_main_region()
 		self.__state_vector[0] = self.State.null_state
-		self.__state_vector[1] = self.State.null_state
-		self.__state_conf_vector_position = 1
 		self.__is_executing = False
 	
 	
