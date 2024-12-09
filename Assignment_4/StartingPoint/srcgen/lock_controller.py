@@ -15,14 +15,20 @@ class LockController:
 		""" State Enum
 		"""
 		(
-			main_region_door_obstruction,
-			main_region_door_obstruction_r1processing_request,
-			main_region_idle,
-			main_region_step1,
-			main_region_step2,
-			main_region_step3,
+			main_region_lock_controller,
+			main_region_lock_controller_sensor_sensor_good_state,
+			main_region_lock_controller_sensor_sensor_broken_state,
+			main_region_lock_controller_main_normal_mode,
+			main_region_lock_controller_main_normal_mode_r1idle,
+			main_region_lock_controller_main_normal_mode_r1close_doors,
+			main_region_lock_controller_main_normal_mode_r1low_to_high,
+			main_region_lock_controller_main_normal_mode_r1request_change_water_level,
+			main_region_lock_controller_main_normal_mode_r1door_obstruction,
+			main_region_lock_controller_main_normal_mode_r1high_to_low,
+			main_region_lock_controller_main_normal_mode_r1_1s_buffer,
+			main_region_lock_controller_main_emergency_mode,
 			null_state
-		) = range(7)
+		) = range(13)
 	
 	
 	def __init__(self):
@@ -64,15 +70,17 @@ class LockController:
 		
 		self.__internal_event_queue = queue.Queue()
 		self.in_event_queue = queue.Queue()
-		self.__current_water_lvl = None
-		self.door_obstruction = None
-		self.close_door = None
+		self.__status = None
+		self.__opposite_status = None
+		self.__prev_sen_val = None
+		self.__request_progress = None
+		self.broken_sensor = None
 		
 		# enumeration of all states:
 		self.__State = LockController.State
 		self.__state_conf_vector_changed = None
-		self.__state_vector = [None] * 1
-		for __state_index in range(1):
+		self.__state_vector = [None] * 2
+		for __state_index in range(2):
 			self.__state_vector[__state_index] = self.State.null_state
 		
 		# for timed statechart:
@@ -81,15 +89,19 @@ class LockController:
 		
 		# initializations:
 		#Default init sequence for statechart LockController
-		self.__current_water_lvl = 0
+		self.__status = self.LOW
+		self.__opposite_status = self.HIGH
+		self.__prev_sen_val = 0
+		self.__request_progress = 0
 		self.__completed = False
 		self.__do_completion = False
 		self.__is_executing = False
+		self.__state_conf_vector_position = None
 	
 	def is_active(self):
 		"""Checks if the state machine is active.
 		"""
-		return self.__state_vector[0] is not self.__State.null_state
+		return self.__state_vector[0] is not self.__State.null_state or self.__state_vector[1] is not self.__State.null_state
 	
 	def is_final(self):
 		"""Checks if the statemachine is final.
@@ -101,19 +113,32 @@ class LockController:
 		"""Checks if the state is currently active.
 		"""
 		s = state
-		if s == self.__State.main_region_door_obstruction:
-			return (self.__state_vector[0] >= self.__State.main_region_door_obstruction)\
-				and (self.__state_vector[0] <= self.__State.main_region_door_obstruction_r1processing_request)
-		if s == self.__State.main_region_door_obstruction_r1processing_request:
-			return self.__state_vector[0] == self.__State.main_region_door_obstruction_r1processing_request
-		if s == self.__State.main_region_idle:
-			return self.__state_vector[0] == self.__State.main_region_idle
-		if s == self.__State.main_region_step1:
-			return self.__state_vector[0] == self.__State.main_region_step1
-		if s == self.__State.main_region_step2:
-			return self.__state_vector[0] == self.__State.main_region_step2
-		if s == self.__State.main_region_step3:
-			return self.__state_vector[0] == self.__State.main_region_step3
+		if s == self.__State.main_region_lock_controller:
+			return (self.__state_vector[0] >= self.__State.main_region_lock_controller)\
+				and (self.__state_vector[0] <= self.__State.main_region_lock_controller_main_emergency_mode)
+		if s == self.__State.main_region_lock_controller_sensor_sensor_good_state:
+			return self.__state_vector[0] == self.__State.main_region_lock_controller_sensor_sensor_good_state
+		if s == self.__State.main_region_lock_controller_sensor_sensor_broken_state:
+			return self.__state_vector[0] == self.__State.main_region_lock_controller_sensor_sensor_broken_state
+		if s == self.__State.main_region_lock_controller_main_normal_mode:
+			return (self.__state_vector[1] >= self.__State.main_region_lock_controller_main_normal_mode)\
+				and (self.__state_vector[1] <= self.__State.main_region_lock_controller_main_normal_mode_r1_1s_buffer)
+		if s == self.__State.main_region_lock_controller_main_normal_mode_r1idle:
+			return self.__state_vector[1] == self.__State.main_region_lock_controller_main_normal_mode_r1idle
+		if s == self.__State.main_region_lock_controller_main_normal_mode_r1close_doors:
+			return self.__state_vector[1] == self.__State.main_region_lock_controller_main_normal_mode_r1close_doors
+		if s == self.__State.main_region_lock_controller_main_normal_mode_r1low_to_high:
+			return self.__state_vector[1] == self.__State.main_region_lock_controller_main_normal_mode_r1low_to_high
+		if s == self.__State.main_region_lock_controller_main_normal_mode_r1request_change_water_level:
+			return self.__state_vector[1] == self.__State.main_region_lock_controller_main_normal_mode_r1request_change_water_level
+		if s == self.__State.main_region_lock_controller_main_normal_mode_r1door_obstruction:
+			return self.__state_vector[1] == self.__State.main_region_lock_controller_main_normal_mode_r1door_obstruction
+		if s == self.__State.main_region_lock_controller_main_normal_mode_r1high_to_low:
+			return self.__state_vector[1] == self.__State.main_region_lock_controller_main_normal_mode_r1high_to_low
+		if s == self.__State.main_region_lock_controller_main_normal_mode_r1_1s_buffer:
+			return self.__state_vector[1] == self.__State.main_region_lock_controller_main_normal_mode_r1_1s_buffer
+		if s == self.__State.main_region_lock_controller_main_emergency_mode:
+			return self.__state_vector[1] == self.__State.main_region_lock_controller_main_emergency_mode
 		return False
 		
 	def time_elapsed(self, event_id):
@@ -139,25 +164,15 @@ class LockController:
 		return None
 	
 	
-	def raise_door_obstruction(self):
-		"""Raise method for event door_obstruction.
+	def raise_broken_sensor(self):
+		"""Raise method for event broken_sensor.
 		"""
-		self.__internal_event_queue.put(self.__raise_door_obstruction_call)
+		self.__internal_event_queue.put(self.__raise_broken_sensor_call)
 	
-	def __raise_door_obstruction_call(self):
-		"""Raise callback for event door_obstruction.
+	def __raise_broken_sensor_call(self):
+		"""Raise callback for event broken_sensor.
 		"""
-		self.door_obstruction = True
-	
-	def raise_close_door(self):
-		"""Raise method for event close_door.
-		"""
-		self.__internal_event_queue.put(self.__raise_close_door_call)
-	
-	def __raise_close_door_call(self):
-		"""Raise callback for event close_door.
-		"""
-		self.close_door = True
+		self.broken_sensor = True
 	
 	def raise_request_lvl_change(self):
 		"""Raise method for event request_lvl_change.
@@ -204,92 +219,182 @@ class LockController:
 		"""
 		self.door_obstructed = True
 	
-	def __entry_action_main_region_door_obstruction(self):
-		"""Entry action for state 'DoorObstruction'..
-		"""
-		#Entry action for state 'DoorObstruction'.
-		self.timer_service.set_timer(self, 0, (1 * 1000), False)
-		
-	def __entry_action_main_region_door_obstruction_r1_processing_request(self):
-		"""Entry action for state 'ProcessingRequest'..
-		"""
-		#Entry action for state 'ProcessingRequest'.
-		self.timer_service.set_timer(self, 1, (2 * 1000), False)
-		self.set_request_pending_observable.next(True)
-		self.red_light_observable.next(self.LOW)
-		self.set_request_pending_observable.next(True)
-		self.red_light_observable.next(self.LOW)
-		
-	def __entry_action_main_region_idle(self):
+	def __entry_action_main_region_lock_controller_main_normal_mode_r1_idle(self):
 		"""Entry action for state 'Idle'..
 		"""
 		#Entry action for state 'Idle'.
-		self.green_light_observable.next(self.LOW)
-		self.open_doors_observable.next(self.LOW)
-		self.set_request_pending_observable.next(False)
+		self.open_doors_observable.next(self.__status)
+		self.green_light_observable.next(self.__status)
 		
-	def __entry_action_main_region_step1(self):
+	def __entry_action_main_region_lock_controller_main_normal_mode_r1_close_doors(self):
 		""".
 		"""
-		#Entry action for state 'step1'.
+		#Entry action for state 'Close doors'.
+		self.close_doors_observable.next(self.__status)
+		self.__completed = True
+		
+	def __entry_action_main_region_lock_controller_main_normal_mode_r1_low_to_high(self):
+		"""Entry action for state 'Low to High'..
+		"""
+		#Entry action for state 'Low to High'.
+		self.open_flow_observable.next(self.__opposite_status)
+		
+	def __entry_action_main_region_lock_controller_main_normal_mode_r1_request_change_water_level(self):
+		""".
+		"""
+		#Entry action for state 'Request change water level'.
+		self.red_light_observable.next(self.__status)
+		self.set_request_pending_observable.next(True)
+		self.__request_progress = 1
+		self.__completed = True
+		
+	def __entry_action_main_region_lock_controller_main_normal_mode_r1_door_obstruction(self):
+		"""Entry action for state 'Door obstruction'..
+		"""
+		#Entry action for state 'Door obstruction'.
+		self.timer_service.set_timer(self, 0, (2 * 1000), False)
+		
+	def __entry_action_main_region_lock_controller_main_normal_mode_r1_high_to_low(self):
+		"""Entry action for state 'High to Low'..
+		"""
+		#Entry action for state 'High to Low'.
+		self.open_flow_observable.next(self.__opposite_status)
+		
+	def __entry_action_main_region_lock_controller_main_normal_mode_r1__1s_buffer(self):
+		"""Entry action for state '1s buffer'..
+		"""
+		#Entry action for state '1s buffer'.
+		self.timer_service.set_timer(self, 1, (1 * 1000), False)
+		
+	def __entry_action_main_region_lock_controller_main_emergency_mode(self):
+		"""Entry action for state 'EmergencyMode'..
+		"""
+		#Entry action for state 'EmergencyMode'.
+		self.red_light_observable.next(self.LOW)
+		self.red_light_observable.next(self.HIGH)
 		self.close_doors_observable.next(self.LOW)
-		self.__completed = True
+		self.close_doors_observable.next(self.HIGH)
+		self.close_flow_observable.next(self.LOW)
+		self.close_flow_observable.next(self.HIGH)
+		self.set_sensor_broken_observable.next()
 		
-	def __entry_action_main_region_step2(self):
-		""".
+	def __exit_action_main_region_lock_controller_sensor_sensor_broken_state(self):
+		"""Exit action for state 'sensorBrokenState'..
 		"""
-		#Entry action for state 'step2'.
-		self.open_flow_observable.next(self.HIGH)
-		self.__completed = True
+		#Exit action for state 'sensorBrokenState'.
+		self.__prev_sen_val = self.water_lvl_value
 		
-	def __exit_action_main_region_door_obstruction(self):
-		"""Exit action for state 'DoorObstruction'..
+	def __exit_action_main_region_lock_controller_main_normal_mode_r1_door_obstruction(self):
+		"""Exit action for state 'Door obstruction'..
 		"""
-		#Exit action for state 'DoorObstruction'.
+		#Exit action for state 'Door obstruction'.
 		self.timer_service.unset_timer(self, 0)
 		
-	def __exit_action_main_region_door_obstruction_r1_processing_request(self):
-		"""Exit action for state 'ProcessingRequest'..
+	def __exit_action_main_region_lock_controller_main_normal_mode_r1__1s_buffer(self):
+		"""Exit action for state '1s buffer'..
 		"""
-		#Exit action for state 'ProcessingRequest'.
+		#Exit action for state '1s buffer'.
 		self.timer_service.unset_timer(self, 1)
 		
-	def __enter_sequence_main_region_door_obstruction_default(self):
-		"""'default' enter sequence for state DoorObstruction.
+	def __enter_sequence_main_region_lock_controller_default(self):
+		"""'default' enter sequence for state LockController.
 		"""
-		#'default' enter sequence for state DoorObstruction
-		self.__entry_action_main_region_door_obstruction()
-		self.__enter_sequence_main_region_door_obstruction_r1_default()
+		#'default' enter sequence for state LockController
+		self.__enter_sequence_main_region_lock_controller_sensor_default()
+		self.__enter_sequence_main_region_lock_controller_main_default()
 		
-	def __enter_sequence_main_region_door_obstruction_r1_processing_request_default(self):
-		"""'default' enter sequence for state ProcessingRequest.
+	def __enter_sequence_main_region_lock_controller_sensor_sensor_good_state_default(self):
+		"""'default' enter sequence for state sensorGoodState.
 		"""
-		#'default' enter sequence for state ProcessingRequest
-		self.__entry_action_main_region_door_obstruction_r1_processing_request()
-		self.__state_vector[0] = self.State.main_region_door_obstruction_r1processing_request
+		#'default' enter sequence for state sensorGoodState
+		self.__state_vector[0] = self.State.main_region_lock_controller_sensor_sensor_good_state
+		self.__state_conf_vector_position = 0
 		self.__state_conf_vector_changed = True
 		
-	def __enter_sequence_main_region_idle_default(self):
+	def __enter_sequence_main_region_lock_controller_sensor_sensor_broken_state_default(self):
+		"""'default' enter sequence for state sensorBrokenState.
+		"""
+		#'default' enter sequence for state sensorBrokenState
+		self.__state_vector[0] = self.State.main_region_lock_controller_sensor_sensor_broken_state
+		self.__state_conf_vector_position = 0
+		self.__state_conf_vector_changed = True
+		
+	def __enter_sequence_main_region_lock_controller_main_normal_mode_default(self):
+		"""'default' enter sequence for state NormalMode.
+		"""
+		#'default' enter sequence for state NormalMode
+		self.__enter_sequence_main_region_lock_controller_main_normal_mode_r1_default()
+		
+	def __enter_sequence_main_region_lock_controller_main_normal_mode_r1_idle_default(self):
 		"""'default' enter sequence for state Idle.
 		"""
 		#'default' enter sequence for state Idle
-		self.__entry_action_main_region_idle()
-		self.__state_vector[0] = self.State.main_region_idle
+		self.__entry_action_main_region_lock_controller_main_normal_mode_r1_idle()
+		self.__state_vector[1] = self.State.main_region_lock_controller_main_normal_mode_r1idle
+		self.__state_conf_vector_position = 1
 		self.__state_conf_vector_changed = True
 		
-	def __enter_sequence_main_region_step1_default(self):
-		"""'default' enter sequence for state step1.
+	def __enter_sequence_main_region_lock_controller_main_normal_mode_r1_close_doors_default(self):
+		"""'default' enter sequence for state Close doors.
 		"""
-		#'default' enter sequence for state step1
-		self.__entry_action_main_region_step1()
-		self.__state_vector[0] = self.State.main_region_step1
+		#'default' enter sequence for state Close doors
+		self.__entry_action_main_region_lock_controller_main_normal_mode_r1_close_doors()
+		self.__state_vector[1] = self.State.main_region_lock_controller_main_normal_mode_r1close_doors
+		self.__state_conf_vector_position = 1
 		self.__state_conf_vector_changed = True
 		
-	def __enter_sequence_main_region_step3_default(self):
-		"""'default' enter sequence for state step3.
+	def __enter_sequence_main_region_lock_controller_main_normal_mode_r1_low_to_high_default(self):
+		"""'default' enter sequence for state Low to High.
 		"""
-		#'default' enter sequence for state step3
-		self.__state_vector[0] = self.State.main_region_step3
+		#'default' enter sequence for state Low to High
+		self.__entry_action_main_region_lock_controller_main_normal_mode_r1_low_to_high()
+		self.__state_vector[1] = self.State.main_region_lock_controller_main_normal_mode_r1low_to_high
+		self.__state_conf_vector_position = 1
+		self.__state_conf_vector_changed = True
+		
+	def __enter_sequence_main_region_lock_controller_main_normal_mode_r1_request_change_water_level_default(self):
+		"""'default' enter sequence for state Request change water level.
+		"""
+		#'default' enter sequence for state Request change water level
+		self.__entry_action_main_region_lock_controller_main_normal_mode_r1_request_change_water_level()
+		self.__state_vector[1] = self.State.main_region_lock_controller_main_normal_mode_r1request_change_water_level
+		self.__state_conf_vector_position = 1
+		self.__state_conf_vector_changed = True
+		
+	def __enter_sequence_main_region_lock_controller_main_normal_mode_r1_door_obstruction_default(self):
+		"""'default' enter sequence for state Door obstruction.
+		"""
+		#'default' enter sequence for state Door obstruction
+		self.__entry_action_main_region_lock_controller_main_normal_mode_r1_door_obstruction()
+		self.__state_vector[1] = self.State.main_region_lock_controller_main_normal_mode_r1door_obstruction
+		self.__state_conf_vector_position = 1
+		self.__state_conf_vector_changed = True
+		
+	def __enter_sequence_main_region_lock_controller_main_normal_mode_r1_high_to_low_default(self):
+		"""'default' enter sequence for state High to Low.
+		"""
+		#'default' enter sequence for state High to Low
+		self.__entry_action_main_region_lock_controller_main_normal_mode_r1_high_to_low()
+		self.__state_vector[1] = self.State.main_region_lock_controller_main_normal_mode_r1high_to_low
+		self.__state_conf_vector_position = 1
+		self.__state_conf_vector_changed = True
+		
+	def __enter_sequence_main_region_lock_controller_main_normal_mode_r1__1s_buffer_default(self):
+		"""'default' enter sequence for state 1s buffer.
+		"""
+		#'default' enter sequence for state 1s buffer
+		self.__entry_action_main_region_lock_controller_main_normal_mode_r1__1s_buffer()
+		self.__state_vector[1] = self.State.main_region_lock_controller_main_normal_mode_r1_1s_buffer
+		self.__state_conf_vector_position = 1
+		self.__state_conf_vector_changed = True
+		
+	def __enter_sequence_main_region_lock_controller_main_emergency_mode_default(self):
+		"""'default' enter sequence for state EmergencyMode.
+		"""
+		#'default' enter sequence for state EmergencyMode
+		self.__entry_action_main_region_lock_controller_main_emergency_mode()
+		self.__state_vector[1] = self.State.main_region_lock_controller_main_emergency_mode
+		self.__state_conf_vector_position = 1
 		self.__state_conf_vector_changed = True
 		
 	def __enter_sequence_main_region_default(self):
@@ -298,89 +403,195 @@ class LockController:
 		#'default' enter sequence for region main region
 		self.__react_main_region__entry_default()
 		
-	def __enter_sequence_main_region_door_obstruction_r1_default(self):
+	def __enter_sequence_main_region_lock_controller_sensor_default(self):
+		"""'default' enter sequence for region Sensor.
+		"""
+		#'default' enter sequence for region Sensor
+		self.__react_main_region_lock_controller_sensor__entry_default()
+		
+	def __enter_sequence_main_region_lock_controller_main_default(self):
+		"""'default' enter sequence for region Main.
+		"""
+		#'default' enter sequence for region Main
+		self.__react_main_region_lock_controller_main__entry_default()
+		
+	def __enter_sequence_main_region_lock_controller_main_normal_mode_r1_default(self):
 		"""'default' enter sequence for region r1.
 		"""
 		#'default' enter sequence for region r1
-		self.__react_main_region_door_obstruction_r1__entry_default()
+		self.__react_main_region_lock_controller_main_normal_mode_r1__entry_default()
 		
-	def __exit_sequence_main_region_door_obstruction(self):
-		"""Default exit sequence for state DoorObstruction.
+	def __exit_sequence_main_region_lock_controller_sensor_sensor_good_state(self):
+		"""Default exit sequence for state sensorGoodState.
 		"""
-		#Default exit sequence for state DoorObstruction
-		self.__exit_sequence_main_region_door_obstruction_r1()
-		self.__state_vector[0] = self.State.null_state
-		self.__exit_action_main_region_door_obstruction()
+		#Default exit sequence for state sensorGoodState
+		self.__state_vector[0] = self.State.main_region_lock_controller
+		self.__state_conf_vector_position = 0
 		
-	def __exit_sequence_main_region_door_obstruction_r1_processing_request(self):
-		"""Default exit sequence for state ProcessingRequest.
+	def __exit_sequence_main_region_lock_controller_sensor_sensor_broken_state(self):
+		"""Default exit sequence for state sensorBrokenState.
 		"""
-		#Default exit sequence for state ProcessingRequest
-		self.__state_vector[0] = self.State.main_region_door_obstruction
-		self.__exit_action_main_region_door_obstruction_r1_processing_request()
+		#Default exit sequence for state sensorBrokenState
+		self.__state_vector[0] = self.State.main_region_lock_controller
+		self.__state_conf_vector_position = 0
+		self.__exit_action_main_region_lock_controller_sensor_sensor_broken_state()
 		
-	def __exit_sequence_main_region_idle(self):
+	def __exit_sequence_main_region_lock_controller_main_normal_mode(self):
+		"""Default exit sequence for state NormalMode.
+		"""
+		#Default exit sequence for state NormalMode
+		self.__exit_sequence_main_region_lock_controller_main_normal_mode_r1()
+		self.__state_vector[1] = self.State.main_region_lock_controller
+		self.__state_conf_vector_position = 1
+		
+	def __exit_sequence_main_region_lock_controller_main_normal_mode_r1_idle(self):
 		"""Default exit sequence for state Idle.
 		"""
 		#Default exit sequence for state Idle
-		self.__state_vector[0] = self.State.null_state
+		self.__state_vector[1] = self.State.main_region_lock_controller_main_normal_mode
+		self.__state_conf_vector_position = 1
 		
-	def __exit_sequence_main_region_step1(self):
-		"""Default exit sequence for state step1.
+	def __exit_sequence_main_region_lock_controller_main_normal_mode_r1_close_doors(self):
+		"""Default exit sequence for state Close doors.
 		"""
-		#Default exit sequence for state step1
-		self.__state_vector[0] = self.State.null_state
+		#Default exit sequence for state Close doors
+		self.__state_vector[1] = self.State.main_region_lock_controller_main_normal_mode
+		self.__state_conf_vector_position = 1
 		
-	def __exit_sequence_main_region_step2(self):
-		"""Default exit sequence for state step2.
+	def __exit_sequence_main_region_lock_controller_main_normal_mode_r1_low_to_high(self):
+		"""Default exit sequence for state Low to High.
 		"""
-		#Default exit sequence for state step2
-		self.__state_vector[0] = self.State.null_state
+		#Default exit sequence for state Low to High
+		self.__state_vector[1] = self.State.main_region_lock_controller_main_normal_mode
+		self.__state_conf_vector_position = 1
 		
-	def __exit_sequence_main_region_step3(self):
-		"""Default exit sequence for state step3.
+	def __exit_sequence_main_region_lock_controller_main_normal_mode_r1_request_change_water_level(self):
+		"""Default exit sequence for state Request change water level.
 		"""
-		#Default exit sequence for state step3
-		self.__state_vector[0] = self.State.null_state
+		#Default exit sequence for state Request change water level
+		self.__state_vector[1] = self.State.main_region_lock_controller_main_normal_mode
+		self.__state_conf_vector_position = 1
+		
+	def __exit_sequence_main_region_lock_controller_main_normal_mode_r1_door_obstruction(self):
+		"""Default exit sequence for state Door obstruction.
+		"""
+		#Default exit sequence for state Door obstruction
+		self.__state_vector[1] = self.State.main_region_lock_controller_main_normal_mode
+		self.__state_conf_vector_position = 1
+		self.__exit_action_main_region_lock_controller_main_normal_mode_r1_door_obstruction()
+		
+	def __exit_sequence_main_region_lock_controller_main_normal_mode_r1_high_to_low(self):
+		"""Default exit sequence for state High to Low.
+		"""
+		#Default exit sequence for state High to Low
+		self.__state_vector[1] = self.State.main_region_lock_controller_main_normal_mode
+		self.__state_conf_vector_position = 1
+		
+	def __exit_sequence_main_region_lock_controller_main_normal_mode_r1__1s_buffer(self):
+		"""Default exit sequence for state 1s buffer.
+		"""
+		#Default exit sequence for state 1s buffer
+		self.__state_vector[1] = self.State.main_region_lock_controller_main_normal_mode
+		self.__state_conf_vector_position = 1
+		self.__exit_action_main_region_lock_controller_main_normal_mode_r1__1s_buffer()
+		
+	def __exit_sequence_main_region_lock_controller_main_emergency_mode(self):
+		"""Default exit sequence for state EmergencyMode.
+		"""
+		#Default exit sequence for state EmergencyMode
+		self.__state_vector[1] = self.State.main_region_lock_controller
+		self.__state_conf_vector_position = 1
 		
 	def __exit_sequence_main_region(self):
 		"""Default exit sequence for region main region.
 		"""
 		#Default exit sequence for region main region
 		state = self.__state_vector[0]
-		if state == self.State.main_region_door_obstruction:
-			self.__exit_sequence_main_region_door_obstruction()
-		elif state == self.State.main_region_door_obstruction_r1processing_request:
-			self.__exit_sequence_main_region_door_obstruction_r1_processing_request()
-			self.__exit_action_main_region_door_obstruction()
-		elif state == self.State.main_region_idle:
-			self.__exit_sequence_main_region_idle()
-		elif state == self.State.main_region_step1:
-			self.__exit_sequence_main_region_step1()
-		elif state == self.State.main_region_step2:
-			self.__exit_sequence_main_region_step2()
-		elif state == self.State.main_region_step3:
-			self.__exit_sequence_main_region_step3()
+		if state == self.State.main_region_lock_controller_sensor_sensor_good_state:
+			self.__exit_sequence_main_region_lock_controller_sensor_sensor_good_state()
+		elif state == self.State.main_region_lock_controller_sensor_sensor_broken_state:
+			self.__exit_sequence_main_region_lock_controller_sensor_sensor_broken_state()
+		state = self.__state_vector[1]
+		if state == self.State.main_region_lock_controller_main_normal_mode:
+			self.__exit_sequence_main_region_lock_controller_main_normal_mode()
+		elif state == self.State.main_region_lock_controller_main_normal_mode_r1idle:
+			self.__exit_sequence_main_region_lock_controller_main_normal_mode_r1_idle()
+		elif state == self.State.main_region_lock_controller_main_normal_mode_r1close_doors:
+			self.__exit_sequence_main_region_lock_controller_main_normal_mode_r1_close_doors()
+		elif state == self.State.main_region_lock_controller_main_normal_mode_r1low_to_high:
+			self.__exit_sequence_main_region_lock_controller_main_normal_mode_r1_low_to_high()
+		elif state == self.State.main_region_lock_controller_main_normal_mode_r1request_change_water_level:
+			self.__exit_sequence_main_region_lock_controller_main_normal_mode_r1_request_change_water_level()
+		elif state == self.State.main_region_lock_controller_main_normal_mode_r1door_obstruction:
+			self.__exit_sequence_main_region_lock_controller_main_normal_mode_r1_door_obstruction()
+		elif state == self.State.main_region_lock_controller_main_normal_mode_r1high_to_low:
+			self.__exit_sequence_main_region_lock_controller_main_normal_mode_r1_high_to_low()
+		elif state == self.State.main_region_lock_controller_main_normal_mode_r1_1s_buffer:
+			self.__exit_sequence_main_region_lock_controller_main_normal_mode_r1__1s_buffer()
+		elif state == self.State.main_region_lock_controller_main_emergency_mode:
+			self.__exit_sequence_main_region_lock_controller_main_emergency_mode()
 		
-	def __exit_sequence_main_region_door_obstruction_r1(self):
+	def __exit_sequence_main_region_lock_controller_main_normal_mode_r1(self):
 		"""Default exit sequence for region r1.
 		"""
 		#Default exit sequence for region r1
-		state = self.__state_vector[0]
-		if state == self.State.main_region_door_obstruction_r1processing_request:
-			self.__exit_sequence_main_region_door_obstruction_r1_processing_request()
+		state = self.__state_vector[1]
+		if state == self.State.main_region_lock_controller_main_normal_mode_r1idle:
+			self.__exit_sequence_main_region_lock_controller_main_normal_mode_r1_idle()
+		elif state == self.State.main_region_lock_controller_main_normal_mode_r1close_doors:
+			self.__exit_sequence_main_region_lock_controller_main_normal_mode_r1_close_doors()
+		elif state == self.State.main_region_lock_controller_main_normal_mode_r1low_to_high:
+			self.__exit_sequence_main_region_lock_controller_main_normal_mode_r1_low_to_high()
+		elif state == self.State.main_region_lock_controller_main_normal_mode_r1request_change_water_level:
+			self.__exit_sequence_main_region_lock_controller_main_normal_mode_r1_request_change_water_level()
+		elif state == self.State.main_region_lock_controller_main_normal_mode_r1door_obstruction:
+			self.__exit_sequence_main_region_lock_controller_main_normal_mode_r1_door_obstruction()
+		elif state == self.State.main_region_lock_controller_main_normal_mode_r1high_to_low:
+			self.__exit_sequence_main_region_lock_controller_main_normal_mode_r1_high_to_low()
+		elif state == self.State.main_region_lock_controller_main_normal_mode_r1_1s_buffer:
+			self.__exit_sequence_main_region_lock_controller_main_normal_mode_r1__1s_buffer()
 		
-	def __react_main_region_door_obstruction_r1__entry_default(self):
+	def __react_main_region_lock_controller_main_normal_mode_r1__choice_0(self):
+		"""The reactions of state null..
+		"""
+		#The reactions of state null.
+		if self.__status == self.HIGH:
+			self.__enter_sequence_main_region_lock_controller_main_normal_mode_r1_high_to_low_default()
+		else:
+			self.__enter_sequence_main_region_lock_controller_main_normal_mode_r1_low_to_high_default()
+		
+	def __react_main_region_lock_controller_main_normal_mode_r1__choice_1(self):
+		"""The reactions of state null..
+		"""
+		#The reactions of state null.
+		if self.__request_progress == 1:
+			self.__react_main_region_lock_controller_main_normal_mode_r1__choice_0()
+		else:
+			self.__enter_sequence_main_region_lock_controller_main_normal_mode_r1_idle_default()
+		
+	def __react_main_region_lock_controller_sensor__entry_default(self):
 		"""Default react sequence for initial entry .
 		"""
 		#Default react sequence for initial entry 
-		self.__enter_sequence_main_region_door_obstruction_r1_processing_request_default()
+		self.__enter_sequence_main_region_lock_controller_sensor_sensor_good_state_default()
+		
+	def __react_main_region_lock_controller_main_normal_mode_r1__entry_default(self):
+		"""Default react sequence for initial entry .
+		"""
+		#Default react sequence for initial entry 
+		self.__react_main_region_lock_controller_main_normal_mode_r1__choice_1()
+		
+	def __react_main_region_lock_controller_main__entry_default(self):
+		"""Default react sequence for initial entry .
+		"""
+		#Default react sequence for initial entry 
+		self.__enter_sequence_main_region_lock_controller_main_normal_mode_default()
 		
 	def __react_main_region__entry_default(self):
 		"""Default react sequence for initial entry .
 		"""
 		#Default react sequence for initial entry 
-		self.__enter_sequence_main_region_idle_default()
+		self.__enter_sequence_main_region_lock_controller_default()
 		
 	def __react(self, transitioned_before):
 		"""Implementation of __react function.
@@ -389,86 +600,194 @@ class LockController:
 		return transitioned_before
 	
 	
-	def __main_region_door_obstruction_react(self, transitioned_before):
-		"""Implementation of __main_region_door_obstruction_react function.
+	def __main_region_lock_controller_react(self, transitioned_before):
+		"""Implementation of __main_region_lock_controller_react function.
 		"""
-		#The reactions of state DoorObstruction.
-		transitioned_after = self.__react(transitioned_before)
+		#The reactions of state LockController.
+		return self.__react(transitioned_before)
+	
+	
+	def __main_region_lock_controller_sensor_sensor_good_state_react(self, transitioned_before):
+		"""Implementation of __main_region_lock_controller_sensor_sensor_good_state_react function.
+		"""
+		#The reactions of state sensorGoodState.
+		transitioned_after = self.__main_region_lock_controller_react(transitioned_before)
 		if not self.__do_completion:
 			if transitioned_after < 0:
-				if (self.__time_events[0]) and (self.door_obstructed):
-					self.__exit_sequence_main_region_door_obstruction()
-					self.raise_door_obstruction()
-					self.__time_events[0] = False
-					self.__enter_sequence_main_region_door_obstruction_default()
+				if self.broken_sensor:
+					self.__exit_sequence_main_region_lock_controller_sensor_sensor_good_state()
+					self.__enter_sequence_main_region_lock_controller_sensor_sensor_broken_state_default()
+					transitioned_after = 0
+			#If no transition was taken
+			if transitioned_after == transitioned_before:
+				#then execute local reactions.
+				if (self.water_lvl) and ((self.__prev_sen_val - self.water_lvl_value) >= 1000 or (self.water_lvl_value - self.__prev_sen_val) >= 1000):
+					self.raise_broken_sensor()
+				if self.water_lvl:
+					self.__prev_sen_val = self.water_lvl_value
+		return transitioned_after
+	
+	
+	def __main_region_lock_controller_sensor_sensor_broken_state_react(self, transitioned_before):
+		"""Implementation of __main_region_lock_controller_sensor_sensor_broken_state_react function.
+		"""
+		#The reactions of state sensorBrokenState.
+		transitioned_after = self.__main_region_lock_controller_react(transitioned_before)
+		if not self.__do_completion:
+			if transitioned_after < 0:
+				if self.resume:
+					self.__exit_sequence_main_region_lock_controller_sensor_sensor_broken_state()
+					self.__enter_sequence_main_region_lock_controller_sensor_sensor_good_state_default()
 					transitioned_after = 0
 		return transitioned_after
 	
 	
-	def __main_region_door_obstruction_r1_processing_request_react(self, transitioned_before):
-		"""Implementation of __main_region_door_obstruction_r1_processing_request_react function.
+	def __main_region_lock_controller_main_normal_mode_react(self, transitioned_before):
+		"""Implementation of __main_region_lock_controller_main_normal_mode_react function.
 		"""
-		#The reactions of state ProcessingRequest.
-		transitioned_after = self.__main_region_door_obstruction_react(transitioned_before)
+		#The reactions of state NormalMode.
+		transitioned_after = transitioned_before
 		if not self.__do_completion:
-			if transitioned_after < 0:
-				if self.__time_events[1]:
-					self.__exit_sequence_main_region_door_obstruction()
-					self.raise_close_door()
-					self.__time_events[1] = False
-					self.__enter_sequence_main_region_step1_default()
-					transitioned_after = 0
+			if transitioned_after < 1:
+				if self.broken_sensor:
+					self.__exit_sequence_main_region_lock_controller_main_normal_mode()
+					self.__enter_sequence_main_region_lock_controller_main_emergency_mode_default()
+					transitioned_after = 1
 		return transitioned_after
 	
 	
-	def __main_region_idle_react(self, transitioned_before):
-		"""Implementation of __main_region_idle_react function.
+	def __main_region_lock_controller_main_normal_mode_r1_idle_react(self, transitioned_before):
+		"""Implementation of __main_region_lock_controller_main_normal_mode_r1_idle_react function.
 		"""
 		#The reactions of state Idle.
-		transitioned_after = self.__react(transitioned_before)
+		transitioned_after = self.__main_region_lock_controller_main_normal_mode_react(transitioned_before)
 		if not self.__do_completion:
-			if transitioned_after < 0:
+			if transitioned_after < 1:
 				if self.request_lvl_change:
-					self.__exit_sequence_main_region_idle()
-					self.__enter_sequence_main_region_door_obstruction_default()
-					transitioned_after = 0
+					self.__exit_sequence_main_region_lock_controller_main_normal_mode_r1_idle()
+					self.__enter_sequence_main_region_lock_controller_main_normal_mode_r1_request_change_water_level_default()
+					transitioned_after = 1
 		return transitioned_after
 	
 	
-	def __main_region_step1_react(self, transitioned_before):
-		"""Implementation of __main_region_step1_react function.
+	def __main_region_lock_controller_main_normal_mode_r1_close_doors_react(self, transitioned_before):
+		"""Implementation of __main_region_lock_controller_main_normal_mode_r1_close_doors_react function.
 		"""
-		#The reactions of state step1.
-		transitioned_after = self.__react(transitioned_before)
+		#The reactions of state Close doors.
+		transitioned_after = self.__main_region_lock_controller_main_normal_mode_react(transitioned_before)
 		if self.__do_completion:
-			#Default exit sequence for state step1
-			self.__state_vector[0] = self.State.null_state
-			#'default' enter sequence for state step2
-			self.__entry_action_main_region_step2()
-			self.__state_vector[0] = self.State.main_region_step2
+			#Default exit sequence for state Close doors
+			self.__state_vector[1] = self.State.main_region_lock_controller_main_normal_mode
+			self.__state_conf_vector_position = 1
+			#The reactions of state null.
+			if self.__status == self.HIGH:
+				self.__enter_sequence_main_region_lock_controller_main_normal_mode_r1_high_to_low_default()
+			else:
+				self.__enter_sequence_main_region_lock_controller_main_normal_mode_r1_low_to_high_default()
+		return transitioned_after
+	
+	
+	def __main_region_lock_controller_main_normal_mode_r1_low_to_high_react(self, transitioned_before):
+		"""Implementation of __main_region_lock_controller_main_normal_mode_r1_low_to_high_react function.
+		"""
+		#The reactions of state Low to High.
+		transitioned_after = self.__main_region_lock_controller_main_normal_mode_react(transitioned_before)
+		if not self.__do_completion:
+			if transitioned_after < 1:
+				if (self.water_lvl) and (self.water_lvl_value > (self.HIGH_LVL - 30)):
+					self.__exit_sequence_main_region_lock_controller_main_normal_mode_r1_low_to_high()
+					self.__enter_sequence_main_region_lock_controller_main_normal_mode_r1__1s_buffer_default()
+					transitioned_after = 1
+		return transitioned_after
+	
+	
+	def __main_region_lock_controller_main_normal_mode_r1_request_change_water_level_react(self, transitioned_before):
+		"""Implementation of __main_region_lock_controller_main_normal_mode_r1_request_change_water_level_react function.
+		"""
+		#The reactions of state Request change water level.
+		transitioned_after = self.__main_region_lock_controller_main_normal_mode_react(transitioned_before)
+		if self.__do_completion:
+			#Default exit sequence for state Request change water level
+			self.__state_vector[1] = self.State.main_region_lock_controller_main_normal_mode
+			self.__state_conf_vector_position = 1
+			#'default' enter sequence for state Door obstruction
+			self.__entry_action_main_region_lock_controller_main_normal_mode_r1_door_obstruction()
+			self.__state_vector[1] = self.State.main_region_lock_controller_main_normal_mode_r1door_obstruction
+			self.__state_conf_vector_position = 1
 			self.__state_conf_vector_changed = True
 		return transitioned_after
 	
 	
-	def __main_region_step2_react(self, transitioned_before):
-		"""Implementation of __main_region_step2_react function.
+	def __main_region_lock_controller_main_normal_mode_r1_door_obstruction_react(self, transitioned_before):
+		"""Implementation of __main_region_lock_controller_main_normal_mode_r1_door_obstruction_react function.
 		"""
-		#The reactions of state step2.
-		transitioned_after = self.__react(transitioned_before)
-		if self.__do_completion:
-			#Default exit sequence for state step2
-			self.__state_vector[0] = self.State.null_state
-			#The reactions of state null.
-			if self.__current_water_lvl >= (self.HIGH_LVL - 30):
-				self.__enter_sequence_main_region_step3_default()
+		#The reactions of state Door obstruction.
+		transitioned_after = self.__main_region_lock_controller_main_normal_mode_react(transitioned_before)
+		if not self.__do_completion:
+			if transitioned_after < 1:
+				if self.door_obstructed:
+					self.__exit_sequence_main_region_lock_controller_main_normal_mode_r1_door_obstruction()
+					self.__enter_sequence_main_region_lock_controller_main_normal_mode_r1_door_obstruction_default()
+					transitioned_after = 1
+				elif self.__time_events[0]:
+					self.__exit_sequence_main_region_lock_controller_main_normal_mode_r1_door_obstruction()
+					self.__time_events[0] = False
+					self.__enter_sequence_main_region_lock_controller_main_normal_mode_r1_close_doors_default()
+					transitioned_after = 1
 		return transitioned_after
 	
 	
-	def __main_region_step3_react(self, transitioned_before):
-		"""Implementation of __main_region_step3_react function.
+	def __main_region_lock_controller_main_normal_mode_r1_high_to_low_react(self, transitioned_before):
+		"""Implementation of __main_region_lock_controller_main_normal_mode_r1_high_to_low_react function.
 		"""
-		#The reactions of state step3.
-		return self.__react(transitioned_before)
+		#The reactions of state High to Low.
+		transitioned_after = self.__main_region_lock_controller_main_normal_mode_react(transitioned_before)
+		if not self.__do_completion:
+			if transitioned_after < 1:
+				if (self.water_lvl) and (self.water_lvl_value < (self.LOW_LVL + 30)):
+					self.__exit_sequence_main_region_lock_controller_main_normal_mode_r1_high_to_low()
+					self.__enter_sequence_main_region_lock_controller_main_normal_mode_r1__1s_buffer_default()
+					transitioned_after = 1
+		return transitioned_after
+	
+	
+	def __main_region_lock_controller_main_normal_mode_r1__1s_buffer_react(self, transitioned_before):
+		"""Implementation of __main_region_lock_controller_main_normal_mode_r1__1s_buffer_react function.
+		"""
+		#The reactions of state 1s buffer.
+		transitioned_after = self.__main_region_lock_controller_main_normal_mode_react(transitioned_before)
+		if not self.__do_completion:
+			if transitioned_after < 1:
+				if self.__time_events[1]:
+					self.__exit_sequence_main_region_lock_controller_main_normal_mode_r1__1s_buffer()
+					self.close_flow_observable.next(self.__opposite_status)
+					self.__status = self.__opposite_status
+					self.__opposite_status = self.LOW if self.__status == self.HIGH else self.HIGH
+					self.__request_progress = 0
+					self.set_request_pending_observable.next(False)
+					self.__time_events[1] = False
+					self.__enter_sequence_main_region_lock_controller_main_normal_mode_r1_idle_default()
+					transitioned_after = 1
+		return transitioned_after
+	
+	
+	def __main_region_lock_controller_main_emergency_mode_react(self, transitioned_before):
+		"""Implementation of __main_region_lock_controller_main_emergency_mode_react function.
+		"""
+		#The reactions of state EmergencyMode.
+		transitioned_after = transitioned_before
+		if not self.__do_completion:
+			if transitioned_after < 1:
+				if self.resume:
+					self.__exit_sequence_main_region_lock_controller_main_emergency_mode()
+					self.__enter_sequence_main_region_lock_controller_main_normal_mode_default()
+					transitioned_after = 1
+			#If no transition was taken
+			if transitioned_after == transitioned_before:
+				#then execute local reactions.
+				if self.request_lvl_change:
+					self.__request_progress = 1
+		return transitioned_after
 	
 	
 	def __clear_in_events(self):
@@ -485,24 +804,37 @@ class LockController:
 	def __clear_internal_events(self):
 		"""Implementation of __clear_internal_events function.
 		"""
-		self.door_obstruction = False
-		self.close_door = False
+		self.broken_sensor = False
 	
 	
 	def __micro_step(self):
 		"""Implementation of __micro_step function.
 		"""
+		transitioned = -1
+		self.__state_conf_vector_position = 0
 		state = self.__state_vector[0]
-		if state == self.State.main_region_door_obstruction_r1processing_request:
-			self.__main_region_door_obstruction_r1_processing_request_react(-1)
-		elif state == self.State.main_region_idle:
-			self.__main_region_idle_react(-1)
-		elif state == self.State.main_region_step1:
-			self.__main_region_step1_react(-1)
-		elif state == self.State.main_region_step2:
-			self.__main_region_step2_react(-1)
-		elif state == self.State.main_region_step3:
-			self.__main_region_step3_react(-1)
+		if state == self.State.main_region_lock_controller_sensor_sensor_good_state:
+			transitioned = self.__main_region_lock_controller_sensor_sensor_good_state_react(transitioned)
+		elif state == self.State.main_region_lock_controller_sensor_sensor_broken_state:
+			transitioned = self.__main_region_lock_controller_sensor_sensor_broken_state_react(transitioned)
+		if self.__state_conf_vector_position < 1:
+			state = self.__state_vector[1]
+			if state == self.State.main_region_lock_controller_main_normal_mode_r1idle:
+				self.__main_region_lock_controller_main_normal_mode_r1_idle_react(transitioned)
+			elif state == self.State.main_region_lock_controller_main_normal_mode_r1close_doors:
+				self.__main_region_lock_controller_main_normal_mode_r1_close_doors_react(transitioned)
+			elif state == self.State.main_region_lock_controller_main_normal_mode_r1low_to_high:
+				self.__main_region_lock_controller_main_normal_mode_r1_low_to_high_react(transitioned)
+			elif state == self.State.main_region_lock_controller_main_normal_mode_r1request_change_water_level:
+				self.__main_region_lock_controller_main_normal_mode_r1_request_change_water_level_react(transitioned)
+			elif state == self.State.main_region_lock_controller_main_normal_mode_r1door_obstruction:
+				self.__main_region_lock_controller_main_normal_mode_r1_door_obstruction_react(transitioned)
+			elif state == self.State.main_region_lock_controller_main_normal_mode_r1high_to_low:
+				self.__main_region_lock_controller_main_normal_mode_r1_high_to_low_react(transitioned)
+			elif state == self.State.main_region_lock_controller_main_normal_mode_r1_1s_buffer:
+				self.__main_region_lock_controller_main_normal_mode_r1__1s_buffer_react(transitioned)
+			elif state == self.State.main_region_lock_controller_main_emergency_mode:
+				self.__main_region_lock_controller_main_emergency_mode_react(transitioned)
 	
 	
 	def run_cycle(self):
@@ -573,6 +905,8 @@ class LockController:
 		#Default exit sequence for statechart LockController
 		self.__exit_sequence_main_region()
 		self.__state_vector[0] = self.State.null_state
+		self.__state_vector[1] = self.State.null_state
+		self.__state_conf_vector_position = 1
 		self.__is_executing = False
 	
 	
