@@ -229,7 +229,7 @@ SCENARIOS = [
         (7000000000, "set_request_pending", False),
         (7000000000, "open_doors", 1),
         (7000000000, "green_light", 1),
-    ],
+    ]
 },
 {
     # Test if it can accept requests when in emergency mode and proceed with the request when it resumes.
@@ -254,7 +254,7 @@ SCENARIOS = [
         (4000000000, "set_request_pending", False),
         (4000000000, "open_doors", 1),
         (4000000000, "green_light", 1),
-    ],
+    ]
 }
 ]
 
