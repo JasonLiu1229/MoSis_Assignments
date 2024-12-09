@@ -786,6 +786,7 @@ class LockController:
 			if transitioned_after == transitioned_before:
 				#then execute local reactions.
 				if self.request_lvl_change:
+					self.set_request_pending_observable.next(True)
 					self.__request_progress = 1
 		return transitioned_after
 	

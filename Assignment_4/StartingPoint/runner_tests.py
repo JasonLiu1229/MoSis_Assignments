@@ -204,6 +204,57 @@ SCENARIOS = [
         (11613791769, "open_doors", 1),
         (11613791769, "green_light", 1),
     ],
+},
+{
+    # Test obstruct door
+    "name": "obstruct door and break sensor while obstructing",
+    "input_events": [
+        (0, "water_lvl", 500),
+        (1000000000, "request_lvl_change", None),
+        (2500000000, "door_obstructed", None),
+        (4000000000, "water_lvl", 10000),
+        (4500000000, "water_lvl", 1000),
+        (5000000000, "resume", None),
+        (6000000000, "water_lvl", 1500)
+    ],
+    "output_events": [
+        (0, "open_doors", 0),
+        (0, "green_light", 0),
+        (1000000000, "red_light", 0),
+        (1000000000, "set_request_pending", True),
+        (4000000000, "close_doors", 0), # close doors not after 2s, but because it enters emergency mode
+        (4000000000, "set_sensor_broken", None),
+        (5000000000, "open_flow", 1), # open correct flow, door stays closed
+        (7000000000, "close_flow", 1),
+        (7000000000, "set_request_pending", False),
+        (7000000000, "open_doors", 1),
+        (7000000000, "green_light", 1),
+    ],
+},
+{
+    # Test if it can accept requests when in emergency mode and proceed with the request when it resumes.
+    "name": "Break sensor, request water change, then resume",
+    "input_events": [
+        (0, "water_lvl", 500),
+        (500000000, "water_lvl", 10000),
+        (1000000000, "request_lvl_change", None),
+        (1500000000, "water_lvl", 1000),
+        (2000000000, "resume", None),
+        (3000000000, "water_lvl", 1500)
+    ],
+    "output_events": [
+        (0, "open_doors", 0),
+        (0, "green_light", 0),
+        (500000000, "red_light", 0),
+        (500000000, "close_doors", 0),
+        (500000000, "set_sensor_broken", None),
+        (1000000000, "set_request_pending", True), # accept request
+        (2000000000, "open_flow", 1), # immediately open the correct flow, doors stay closed
+        (4000000000, "close_flow", 1),
+        (4000000000, "set_request_pending", False),
+        (4000000000, "open_doors", 1),
+        (4000000000, "green_light", 1),
+    ],
 }
 ]
 
