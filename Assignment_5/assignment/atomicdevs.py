@@ -10,9 +10,11 @@ import queue
 @dataclasses.dataclass
 class QueueState:
     queues: dict[int, queue.Queue]
+    waiting: bool
     
     def __init__(self, ship_sizes):
         self.queues = {size: queue.Queue() for size in ship_sizes}
+        self.waiting = False
 
 class Queue(AtomicDEVS):
     def __init__(self, ship_sizes):
@@ -20,18 +22,33 @@ class Queue(AtomicDEVS):
         
         self.ship_sizes = ship_sizes
         self.state = QueueState(ship_sizes=ship_sizes)
+        
+        self.in_ship = self.addInPort("in_queue")
+        self.out_ship = self.addOutPort("out_queue")
 
-    # def extTransition(self, inputs):
-    #     pass
+    def extTransition(self, inputs):
+        if self.in_ship in inputs:
+            ship = inputs[self.in_ship]
+            self.state.queues[ship.size].put(ship)
+            self.state.waiting = True
+        return self.state
     
-    # def timeAdvance(self):
-    #     pass
+    def timeAdvance(self):
+        return 0 if self.state.waiting else float("inf")
     
-    # def outputFnc(self):
-    #     pass
+    def outputFnc(self):
+        for size, queue in self.state.queues.items():
+            if not queue.empty():
+                return {self.out_ship: queue.queue[0]}
+        return {}
     
-    # def intTransition(self):
-    #     pass
+    def intTransition(self):
+        self.state.waiting = any(not q.empty() for q in self.state.queues.values())
+        # pop the first ship from the queue
+        for size, queue in self.state.queues.items():
+            if not queue.empty():
+                queue.get()
+        return self.state
 
 PRIORITIZE_BIGGER_SHIPS = 0
 PRIORITIZE_SMALLER_SHIPS = 1
@@ -54,9 +71,27 @@ class RoundRobinLoadBalancer(AtomicDEVS):
     ):
         super().__init__("RoundRobinLoadBalancer")
         self.state = LoadBalancerState(lock_capacities=lock_capacities, priority=priority)
+        
+        self.in_ship = self.addInPort("in_event")
+        
+        self.out_ship = self.addOutPort("out_event")
 
-    # def extTransition(self, inputs):
-    #     pass
+    def extTransition(self, inputs):
+        # sort based on ship size
+        if self.state.priority == PRIORITIZE_BIGGER_SHIPS:
+            inputs = sorted(inputs, key=lambda ship: ship.size, reverse=True)
+        elif self.state.priority == PRIORITIZE_SMALLER_SHIPS:
+            inputs = sorted(inputs, key=lambda ship: ship.size)
+        if self.in_ship in inputs:
+            ship = inputs[self.in_ship]
+            ship_size = ship.size
+            for _ in range(len(self.state.lock_capacities)):
+                lock_index = self.state.current_lock
+                if self.state.lock_capacities[lock_index] >= ship_size:
+                    self.state.current_lock = (self.state.current_lock + 1) % len(self.state.lock_capacities)
+                    break
+                self.state.current_lock = (self.state.current_lock + 1) % len(self.state.lock_capacities)
+        return self.state
     
     # def timeAdvance(self):
     #     pass
@@ -74,6 +109,10 @@ class FillErUpLoadBalancer(AtomicDEVS):
     ):
         super().__init__("FillErUpLoadBalancer")
         self.state = LoadBalancerState(lock_capacities=lock_capacities, priority=priority)
+        
+        self.in_ship = self.addInPort("in_event")
+        
+        self.out_ship = self.addOutPort("out_event")
 
     # def extTransition(self, inputs):
     #     pass
@@ -90,9 +129,11 @@ class FillErUpLoadBalancer(AtomicDEVS):
 @dataclasses.dataclass
 class LockState:
     remaining_capacity: int
+    remaining_time: float
     
     def __init__(self, capacity):
         self.remaining_capacity = capacity
+        self.remaining_time = float("inf")
 
 class Lock(AtomicDEVS):
     def __init__(self,
@@ -104,6 +145,9 @@ class Lock(AtomicDEVS):
         self.state = LockState(capacity=capacity)
         self.max_wait_duration = max_wait_duration
         self.passthrough_duration = passthrough_duration
+        
+        self.in_ship = self.addInPort("in_lock")
+        self.out_ship = self.addOutPort("out_lock")
 
     # def extTransition(self, inputs):
     #     pass
