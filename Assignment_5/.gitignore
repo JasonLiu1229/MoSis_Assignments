@@ -12,3 +12,4 @@ test/output/*
 /.idea/*
 
 assignment_output/
+.venv/
