@@ -78,8 +78,6 @@ class RoundRobinLoadBalancer(AtomicDEVS):
         
         self.out_lock1 = self.addOutPort("out_event_to_lock1")
         self.out_lock2 = self.addOutPort("out_event_to_lock2")
-        
-        self.lock_capacities = lock_capacities
 
     def extTransition(self, inputs):
         # sort based on ship size
@@ -126,16 +124,36 @@ class FillErUpLoadBalancer(AtomicDEVS):
         
         self.in_ship = self.addInPort("in_event")
         
-        self.out_ship = self.addOutPort("out_event")
+        self.out_lock1 = self.addOutPort("out_event_to_lock1")
+        self.out_lock2 = self.addOutPort("out_event_to_lock2")
 
     def extTransition(self, inputs):
-        pass
+        if self.in_ship in inputs:
+            ship = inputs[self.in_ship]
+            ship_size = ship.size
+            
+            best_fit = None
+            for i, (lock_capacity, lock_ships) in enumerate(self.state.lock_capacities):
+                if lock_capacity >= ship_size:
+                    fit_value = lock_capacity - ship_size
+                    if not best_fit or fit_value < best_fit[1]:
+                        best_fit = (i, fit_value)
+                        
+            if best_fit:
+                lock_index = best_fit[0]
+                lock_capacity, lock_ships = self.state.lock_capacities[lock_index]
+                lock_ships.append(ship)
+                self.state.lock_capacities[lock_index] = (lock_capacity, lock_ships)
+        return self.state
     
     def timeAdvance(self):
         return 0
     
-    # def outputFnc(self):
-    #     pass
+    def outputFnc(self):
+        for i, (lock_capacity, lock_ships) in enumerate(self.state.lock_capacities):
+            if lock_ships:
+                return {self.out_lock1 if i == 0 else self.out_lock2: lock_ships[0]}
+        return {}
     
     def intTransition(self):
         return self.state
@@ -144,10 +162,14 @@ class FillErUpLoadBalancer(AtomicDEVS):
 class LockState:
     remaining_capacity: int
     remaining_time: float
+    ships: list
+    wait_time: float
     
     def __init__(self, capacity):
         self.remaining_capacity = capacity
         self.remaining_time = float("inf")
+        self.ships = []
+        self.wait_time = 0
 
 class Lock(AtomicDEVS):
     def __init__(self,
@@ -159,21 +181,40 @@ class Lock(AtomicDEVS):
         self.state = LockState(capacity=capacity)
         self.max_wait_duration = max_wait_duration
         self.passthrough_duration = passthrough_duration
+        self.capacity = capacity
         
         self.in_ship = self.addInPort("in_lock")
-        self.out_ship = self.addOutPort("out_lock")
+        self.out_ships = self.addOutPort("out_lock")
 
-    # def extTransition(self, inputs):
-    #     pass
+    def extTransition(self, inputs):
+        self.state.remaining_time -= self.elapsed
+        
+        if self.elapsed >= 60.0:
+            if self.state.remaining_time == float("inf"):
+                self.state.remaining_time = self.passthrough_duration
+            
+        if self.in_ship in inputs:
+            ship = inputs[self.in_ship]
+            if self.state.remaining_capacity >= ship.size:
+                self.state.remaining_capacity -= ship.size
+                self.state.ships.append(ship)
+                self.state.wait_time = self.max_wait_duration
+                if len(self.state.remaining_capacity) == 0:
+                    self.state.remaining_time = self.passthrough_duration
+        return self.state
     
-    # def timeAdvance(self):
-    #     pass
-    
-    # def outputFnc(self):
-    #     pass
-    
-    # def intTransition(self):
-    #     pass
+    def timeAdvance(self):
+        return self.state.remaining_time
+
+    def outputFnc(self):
+        if len(self.state.ships) > 0:
+            return {self.out_ships: self.state.ships}
+        return {}
+
+    def intTransition(self):
+        self.state.remaining_time = float("inf")
+        self.state.remaining_capacity = self.capacity
+        return self.state
 
 
 ### EDIT THIS FILE ###
