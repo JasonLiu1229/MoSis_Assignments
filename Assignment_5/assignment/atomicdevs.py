@@ -86,7 +86,8 @@ class FillErUpLoadBalancer(AtomicDEVS):
     
     # def intTransition(self):
     #     pass
-    
+
+@dataclasses.dataclass
 class LockState:
     remaining_capacity: int
     
