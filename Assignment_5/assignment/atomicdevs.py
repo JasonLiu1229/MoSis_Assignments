@@ -9,10 +9,10 @@ import dataclasses
 
 @dataclasses.dataclass
 class QueueState:
-    queues: dict[int, list]
-    request: bool
-    pop_index: int
-    new_size_available: bool
+    queues: dict[int, list] # A queue for each ship size
+    request: bool # If a ship has been requested from load balancer
+    pop_index: int # Size of ship to pop from queue
+    new_size_available: bool # Send out sizes available each time it changes
     
     def __init__(self, ship_sizes):
         self.queues = {size: [] for size in ship_sizes}
@@ -28,11 +28,15 @@ class Queue(AtomicDEVS):
         self.ship_sizes = ship_sizes
         self.state = QueueState(ship_sizes=ship_sizes)
         
-        self.in_ship = self.addInPort("in_queue")
-        self.in_request = self.addInPort("in_request")
+        # input: Ship
+        self.in_ship = self.addInPort("in_queue") # inbound ship
+        # input: int
+        self.in_request = self.addInPort("in_request") # prepare to output ship
 
-        self.out_ship = self.addOutPort("out_queue")
-        self.out_available = self.addOutPort("out_available")
+        # output: Ship
+        self.out_ship = self.addOutPort("out_queue") # outbound ship
+        # output: list[int]
+        self.out_available = self.addOutPort("out_available") # output available sizes of ships in queues
 
     def extTransition(self, inputs):
         # ship arrival
@@ -111,17 +115,25 @@ class LoadBalancer(AtomicDEVS):
         super().__init__(name)
         self.state = LoadBalancerState(lock_capacities=lock_capacities, priority=priority)
         
+        # input: Ship
         self.in_ship = self.addInPort("in_event") # ship inbound
+        # input: list[int]
         self.in_ships_available = self.addInPort("in_available") # which sizes of ships are in the queue
+        # input: bool
         self.in_locks = [self.addInPort(f"in_lock_open{i}") for i in range(len(lock_capacities))] # get notified if a lock is available or not
         
+        # output: int
         self.out_request = self.addOutPort("out_request_ship") # send a request for a ship to the queue
+        # output: Ship
         self.out_locks = [self.addOutPort(f"out_event_to_lock{i}") for i in range(len(lock_capacities))] # list of all locks to send ships to
-
-    def process_input(self, inputs):
+    
+    def request_ship():
         """
-        Process events from input ports
+        Apply load balancing strategy
         """
+        raise NotImplementedError()
+    
+    def extTransition(self, inputs):
         # update ships available
         if self.in_ships_available in inputs:
             # sort from small to large
@@ -138,6 +150,39 @@ class LoadBalancer(AtomicDEVS):
                 capacity = self.state.lock_capacities[i][0]
                 remaining_capacity = capacity if inputs[lock] else 0
                 self.state.lock_capacities[i] = (capacity, remaining_capacity)
+
+        # request next ship
+        if (self.state.ship is None) and (self.state.sizes_available):
+            self.request_ship()
+
+        return self.state
+                
+    def timeAdvance(self):
+        return 0 if self.state.send_request or self.state.ship else float("inf")
+    
+    def outputFnc(self):
+        output = {}
+        if self.state.ship:
+            output[self.out_locks[self.state.next_lock]] = self.state.ship
+        
+        if self.state.send_request:
+            output[self.out_request] = self.state.request_size
+        
+        return output
+    
+    def intTransition(self):
+        if self.state.ship:
+            max_capacity, current_capacity = self.state.lock_capacities[self.state.next_lock]
+            self.state.lock_capacities[self.state.next_lock] = (max_capacity, current_capacity - self.state.ship.size)
+            self.state.next_lock = (self.state.next_lock + 1) % len(self.state.lock_capacities)
+            self.state.ship = None
+            
+        if self.state.sizes_available and not self.state.send_request:
+            self.request_ship()
+        else:
+            self.state.send_request = False
+        
+        return self.state
                     
 
 class RoundRobinLoadBalancer(LoadBalancer):
@@ -147,7 +192,7 @@ class RoundRobinLoadBalancer(LoadBalancer):
     ):
         super().__init__("RoundRobinLoadBalancer", lock_capacities, priority)
 
-    def round_robin(self):
+    def request_ship(self):
         # skip locks that do not fit available ships
         i = 0
         while (i < len(self.state.lock_capacities)) and not self.state.send_request:
@@ -173,42 +218,6 @@ class RoundRobinLoadBalancer(LoadBalancer):
                     break
             i += 1
 
-    def extTransition(self, inputs):
-        self.process_input(inputs)
-
-        # request next ship
-        if (self.state.ship is None) and (self.state.sizes_available):
-            self.round_robin()
-
-        return self.state
-                
-    def timeAdvance(self):
-        return 0 if self.state.send_request or self.state.ship else float("inf")
-    
-    def outputFnc(self):
-        output = {}
-        if self.state.ship:
-            output[self.out_locks[self.state.next_lock]] = self.state.ship
-        
-        if self.state.send_request:
-            output[self.out_request] = self.state.request_size
-        
-        return output
-    
-    def intTransition(self):
-        if self.state.ship:
-            max_capacity, current_capacity = self.state.lock_capacities[self.state.next_lock]
-            self.state.lock_capacities[self.state.next_lock] = (max_capacity, current_capacity - self.state.ship.size)
-            self.state.next_lock = (self.state.next_lock + 1) % len(self.state.lock_capacities)
-            self.state.ship = None
-            
-        if self.state.sizes_available and not self.state.send_request:
-            self.round_robin()
-        else:
-            self.state.send_request = False
-        
-        return self.state
-
 
 class FillErUpLoadBalancer(LoadBalancer):
     def __init__(self,
@@ -217,53 +226,24 @@ class FillErUpLoadBalancer(LoadBalancer):
     ):
         super().__init__("FillErUpLoadBalancer", lock_capacities, priority)
 
-
-    def extTransition(self, inputs):
-        self.process_input(inputs)
-
-        if self.in_ship in inputs:
-            ship = inputs[self.in_ship]
-            ship_size = ship.size
-            
-            best_fit = None
-            for i, (lock_capacity, lock_ships) in enumerate(self.state.lock_capacities):
-                if lock_capacity >= ship_size:
-                    fit_value = lock_capacity - ship_size
-                    if not best_fit or fit_value < best_fit[1]:
-                        best_fit = (i, fit_value)
-                        
-            if best_fit:
-                lock_index = best_fit[0]
-                lock_capacity, lock_ships = self.state.lock_capacities[lock_index]
-                lock_ships.append(ship)
-                self.state.lock_capacities[lock_index] = (lock_capacity, lock_ships)
-        return self.state
-    
-    def timeAdvance(self):
-        return 0
-    
-    def outputFnc(self):
-        for i, (lock_capacity, lock_ships) in enumerate(self.state.lock_capacities):
-            if lock_ships:
-                return {self.out_lock1 if i == 0 else self.out_lock2: lock_ships[0]}
-        return {}
-    
-    def intTransition(self):
-        return self.state
+    def request_ship():
+        # TODO
+        raise NotImplementedError()
     
 
 @dataclasses.dataclass
 class LockState:
-    remaining_capacity: int
-    remaining_time: float
-    ships: list[Ship]
-    passing: bool # True: ships are passing through, False: Lock is waiting for ships, used for output
+    remaining_capacity: int # Capacity left until full
+    remaining_time: float # Time until internal transition
+    ships: list[Ship] # Ships currently in the lock
+    passing: bool # True: ships are passing through, False: Lock is waiting for ships. Used for output
     
     def __init__(self, capacity):
         self.remaining_capacity = capacity
         self.remaining_time = float("inf")
         self.ships = []
         self.passing = False
+
 
 class Lock(AtomicDEVS):
     def __init__(self,
@@ -277,8 +257,11 @@ class Lock(AtomicDEVS):
         self.passthrough_duration = passthrough_duration
         self.capacity = capacity
         
-        self.in_ship = self.addInPort("in_lock")
-        self.out_ships = self.addOutPort("out_lock")
+        # input: Ship
+        self.in_ship = self.addInPort("in_lock") # Inbound ship
+        # output: Ship
+        self.out_ships = self.addOutPort("out_lock") # Outbound ship
+        # output: bool
         self.out_open = self.addOutPort("out_open") # Tell the load balancer that the lock open or closed. True: open, False: closed
 
     def extTransition(self, inputs):
