@@ -226,6 +226,7 @@ class RoundRobinLoadBalancer(LoadBalancer):
     def request_ship(self):
         # skip locks that do not fit available ships
         i = 0
+
         # reverse list if bigger ships are prioritized
         available = self.state.sizes_available
         if self.state.priority == PRIORITIZE_BIGGER_SHIPS:
@@ -261,7 +262,11 @@ class FillErUpLoadBalancer(LoadBalancer):
     def request_ship(self):
         # skip locks that do not fit available ships
         if not self.state.send_request:
-            best_fit = (-1, float("inf"), float("inf"))  # (lock_index, ship difference, ship_size)
+            best_fit = (
+                -1,
+                float("inf"),
+                float("inf"),
+            )  # (lock_index, ship difference, ship_size)
 
             # reverse list if bigger ships are prioritized
             available = self.state.sizes_available
@@ -272,13 +277,13 @@ class FillErUpLoadBalancer(LoadBalancer):
                 max_capacity, current_capacity = cap_tuple
                 if current_capacity == 0:
                     continue
-                
+
                 for size in available:
                     if size <= current_capacity:
                         difference = current_capacity - size
                         if difference < best_fit[1]:
                             best_fit = (i, difference, size)
-                
+
             if best_fit[0] != -1:
                 self.state.send_request = True
                 self.state.request_size = best_fit[2]
