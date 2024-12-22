@@ -272,13 +272,13 @@ class FillErUpLoadBalancer(LoadBalancer):
             available = self.state.sizes_available
             if self.state.priority == PRIORITIZE_BIGGER_SHIPS:
                 available = reversed(available)
+            
+            for size in available:
+                for i, cap_tuple in enumerate(self.state.lock_capacities):
+                    _, current_capacity = cap_tuple
+                    if current_capacity == 0:
+                        continue
 
-            for i, cap_tuple in enumerate(self.state.lock_capacities):
-                max_capacity, current_capacity = cap_tuple
-                if current_capacity == 0:
-                    continue
-
-                for size in available:
                     if size <= current_capacity:
                         difference = current_capacity - size
                         if difference < best_fit[1]:
