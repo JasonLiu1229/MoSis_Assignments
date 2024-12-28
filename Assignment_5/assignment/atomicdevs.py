@@ -150,7 +150,7 @@ class LoadBalancer(AtomicDEVS):
             for i in range(len(lock_capacities))
         ]  # list of all locks to send ships to
 
-    def request_ship(self):
+    def requestShip(self):
         """
         Apply load balancing strategy
         """
@@ -176,7 +176,7 @@ class LoadBalancer(AtomicDEVS):
 
         # request next ship
         if (self.state.ship is None) and (self.state.sizes_available):
-            self.request_ship()
+            self.requestShip()
 
         return self.state
 
@@ -208,7 +208,7 @@ class LoadBalancer(AtomicDEVS):
             self.state.ship = None
 
         if self.state.sizes_available and not self.state.send_request:
-            self.request_ship()
+            self.requestShip()
         else:
             self.state.send_request = False
 
@@ -223,7 +223,7 @@ class RoundRobinLoadBalancer(LoadBalancer):
     ):
         super().__init__("RoundRobinLoadBalancer", lock_capacities, priority)
 
-    def request_ship(self):
+    def requestShip(self):
         # skip locks that do not fit available ships
         i = 0
 
@@ -259,7 +259,7 @@ class FillErUpLoadBalancer(LoadBalancer):
     ):
         super().__init__("FillErUpLoadBalancer", lock_capacities, priority)
 
-    def request_ship(self):
+    def requestShip(self):
         # skip locks that do not fit available ships
         if not self.state.send_request:
             best_fit = (
